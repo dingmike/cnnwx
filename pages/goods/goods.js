@@ -19,6 +19,7 @@ Page({
     userHasCollect: 0,
     number: 1,
     checkedSpecText: '请选择规格数量',
+    checkedSpecImg: '/static/images/cnnNoImg.jpg',
     openAttr: false,
     noCollectImage: "/static/images/icon_collect.png",
     hasCollectImage: "/static/images/icon_collect_checked.png",
@@ -28,6 +29,17 @@ Page({
     let that = this;
     util.request(api.GoodsDetail, { id: that.data.id }).then(function (res) {
       if (res.errno === 0) {
+          // 防止没有轮播图报错
+          if (res.data.gallery.length == 0) {
+              res.data.gallery.push({
+                  goods_id: 121212,
+                  id: 1,
+                  img_desc: "",
+                  img_url: "/static/images/cnnNoImg.jpg",
+                  sort_order: 5
+              })
+          }
+
         that.setData({
           goods: res.data.info,
           gallery: res.data.gallery,
@@ -36,6 +48,7 @@ Page({
           comment: res.data.comment,
           brand: res.data.brand,
           specificationList: res.data.specificationList,
+          checkedSpecImg: res.data.gallery[0].img_url,
           productList: res.data.productList,
           userHasCollect: res.data.userHasCollect
         });
@@ -110,12 +123,14 @@ Page({
       let _checkedObj = {
         nameId: _specificationList[i].specification_id,
         valueId: 0,
+        checkedImg: '',
         valueText: ''
       };
       for (let j = 0; j < _specificationList[i].valueList.length; j++) {
         if (_specificationList[i].valueList[j].checked) {
           _checkedObj.valueId = _specificationList[i].valueList[j].id;
           _checkedObj.valueText = _specificationList[i].valueList[j].value;
+          _checkedObj.checkedImg = _specificationList[i].valueList[j].pic_url;
         }
       }
       checkedValues.push(_checkedObj);
@@ -157,8 +172,18 @@ Page({
       return v.valueText;
     });
     if (checkedValue.length > 0) {
+        checkedNameValue.map((obj) => {
+            // 选择规格相应图片
+            if (obj.checkedImg != '' || obj.checkedImg != null || obj.checkedImg != undefined) {
+                this.setData({
+                    'checkedSpecImg': obj.checkedImg
+                });
+            }
+        });
+
       this.setData({
-        'checkedSpecText': checkedValue.join('　')
+        'checkedSpecText': checkedValue.join('　'),
+        //'checkedSpecImg': checkedNameValue.checkedImg
       });
     } else {
       this.setData({
@@ -182,7 +207,7 @@ Page({
       id: parseInt(options.id)
       // id: 1181000
     });
-    var that = this;
+    let that = this;
     this.getGoodsInfo();
     util.request(api.CartGoodsCount).then(function (res) {
       if (res.errno === 0) {
@@ -270,7 +295,7 @@ Page({
    * 直接购买
    */
   buyGoods: function () {
-    var that = this;
+    let that = this;
     if (this.data.openAttr == false) {
       //打开规格选择窗口
       this.setData({
@@ -325,7 +350,7 @@ Page({
    * 添加到购物车
    */
   addToCart: function () {
-    var that = this;
+    let that = this;
     if (this.data.openAttr == false) {
       //打开规格选择窗口
       this.setData({
