@@ -99,6 +99,12 @@ Page({
               _specificationList[i].valueList[j].checked = false;
             } else {
               _specificationList[i].valueList[j].checked = true;
+              // 规格图片
+              if(_specificationList[i].valueList[j].pic_url){
+                  this.setData({
+                      'checkedSpecImg': _specificationList[i].valueList[j].pic_url
+                  });
+              }
             }
           } else {
             _specificationList[i].valueList[j].checked = false;
@@ -130,7 +136,7 @@ Page({
         if (_specificationList[i].valueList[j].checked) {
           _checkedObj.valueId = _specificationList[i].valueList[j].id;
           _checkedObj.valueText = _specificationList[i].valueList[j].value;
-          _checkedObj.checkedImg = _specificationList[i].valueList[j].pic_url;
+          // _checkedObj.checkedImg = _specificationList[i].valueList[j].pic_url;
         }
       }
       checkedValues.push(_checkedObj);
@@ -171,25 +177,37 @@ Page({
     }).map(function (v) {
       return v.valueText;
     });
-    if (checkedValue.length > 0) {
-        checkedNameValue.map((obj) => {
-            // 选择规格相应图片
-            if (obj.checkedImg != '' || obj.checkedImg != null || obj.checkedImg != undefined) {
-                this.setData({
-                    'checkedSpecImg': obj.checkedImg
-                });
-            }
-        });
+      if (checkedValue.length > 0) {
+          this.setData({
+              'checkedSpecText': checkedValue.join('　')
+          });
+      } else {
+          this.setData({
+              'checkedSpecText': '请选择规格数量'
+          });
+      }
 
-      this.setData({
-        'checkedSpecText': checkedValue.join('　'),
-        //'checkedSpecImg': checkedNameValue.checkedImg
-      });
-    } else {
-      this.setData({
-        'checkedSpecText': '请选择规格数量'
-      });
-    }
+
+
+    // if (checkedValue.length > 0) {
+    //     checkedNameValue.map((obj) => {
+    //         // 选择规格相应图片
+    //         if (obj.checkedImg != '' || obj.checkedImg != null || obj.checkedImg != undefined) {
+    //             this.setData({
+    //                 'checkedSpecImg': obj.checkedImg
+    //             });
+    //         }
+    //     });
+    //
+    //   this.setData({
+    //     'checkedSpecText': checkedValue.join('　'),
+    //     'checkedSpecImg': checkedNameValue.checkedImg
+    //   });
+    // } else {
+    //   this.setData({
+    //     'checkedSpecText': '请选择规格数量'
+    //   });
+    // }
 
   },
   getCheckedProductItem: function (key) {
