@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/mall/mall",
     "pages/catalog/catalog",
     "pages/newGoods/newGoods",
     "pages/hotGoods/hotGoods",
@@ -50,15 +51,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "static/images/ic_menu_choice_nor.png",
-        "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
+        "iconPath": "static/images/ic_index_nor.png",
+        "selectedIconPath": "static/images/ic_index_pressed.png",
         "text": "首页"
       },
       {
-        "pagePath": "pages/topic/topic",
-        "iconPath": "static/images/ic_menu_topic_nor.png",
-        "selectedIconPath": "static/images/ic_menu_topic_pressed.png",
-        "text": "专题"
+        "pagePath": "pages/mall/mall",
+        "iconPath": "static/images/ic_menu_choice_nor.png",
+        "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
+        "text": "商城"
       },
       {
         "pagePath": "pages/catalog/catalog",

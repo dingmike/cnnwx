@@ -28,7 +28,7 @@ Component({
       */
     gotoHome: function (event) {
       wx.reLaunch({
-        url: '../index/index'
+        url: '../mall/mall'
       })
     }
 

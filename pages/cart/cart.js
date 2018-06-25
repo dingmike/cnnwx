@@ -168,9 +168,12 @@ Page({
 
   },
   toIndexPage: function () {
-    wx.switchTab({
-      url: "/pages/index/index"
-    });
+   /* wx.switchTab({
+      url: "/pages/mall/mall"
+    });*/
+      wx.navigateTo({
+          url: '/pages/mall/mall'
+      })
   },
   updateCart: function (productId, goodsId, number, id) {
     let that = this;
