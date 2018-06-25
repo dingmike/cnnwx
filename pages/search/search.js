@@ -10,8 +10,6 @@ Page({
     helpKeyword: [],
     historyKeyword: [],
     categoryFilter: false,
-    currentSortType: 'default',
-    currentSortOrder: '',
     filterCategory: [],
     defaultKeyword: {},
     hotKeyword: [],
@@ -94,7 +92,7 @@ Page({
         that.setData({
           searchStatus: true,
           categoryFilter: false,
-          goodsList: res.data.data,
+          goodsList: res.data.goodsList,
           filterCategory: res.data.filterCategory,
           page: res.data.currentPage,
           size: res.data.numsPerPage

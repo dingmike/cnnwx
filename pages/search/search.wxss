@@ -103,8 +103,8 @@ page{
     float: right;
     display: block;
     margin-left: 511rpx;
-    height: 55rpx;
-    width: 55rpx;
+    height: 44rpx;
+    width: 44rpx;
 }
 
 .serach-keywords .b{
