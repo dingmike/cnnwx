@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/gongDu/gongDu",
     "pages/mall/mall",
     "pages/catalog/catalog",
     "pages/newGoods/newGoods",
