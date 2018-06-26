@@ -1,0 +1,277 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.logoimg image {
+    width: 100%;
+    height: 300rpx;
+}
+
+.kefu-btn {
+    width: 150rpx;
+    height: 60rpx;
+    border-radius: 50px 0 0 50px;
+    font-size: 13px;
+    background: url('https://riyubao.net/oralproject/public/datas/img/logo2.jpg') no-repeat;
+    background-size: 100% 100%;
+}
+
+button::after {
+    border: none;
+}
+
+.kefu-btn::after {
+    border-style: none;
+    border: 0;
+}
+
+.kefu-popup {
+    width: 200rpx;
+    height: 40rpx;
+    border-radius: 50px 0 0 50px;
+    font-size: 13px;
+    position: fixed;
+    bottom: 100rpx;
+    right: -200rpx;
+}
+
+.punchTime {
+    border-bottom: 1px solid #edece8;
+    height: 100rpx;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.punchTime-set-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+.punchTime-set {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    vertical-align: middle;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+}
+
+.punchTime-info {
+    font-size: 13px;
+    border: 1px dashed #c1c1c0;
+    width: 100rpx;
+    height: 60rpx;
+    text-align: center;
+    line-height: 60rpx;
+    vertical-align: middle;
+    margin-top: 10rpx;
+}
+
+.enrollment {
+    display: flex;
+    flex-direction: column;
+    height: 150rpx;
+    border-bottom: 1px solid #edece8;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.enrollment-nums {
+    font-size: 13px;
+    color: #00b3ff;
+    padding-top: 20rpx;
+}
+
+.enrollment-images image {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+    margin-top: 15rpx;
+    margin-right: 10rpx;
+}
+
+.introduce-join {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.introduce-join-text {
+    padding-top: 20rpx;
+    font-size: 14px;
+    color: #4d4d4d;
+    line-height: 1.5;
+}
+
+.introduce-join-pay button::after {
+    border: none;
+    border-style: none;
+}
+
+.introduce-join-pay button {
+    width: 90%;
+    border: 1px solid #f4803b;
+    height: 80rpx;
+    margin-left: 5%;
+    margin-top: 100rpx;
+    border-radius: 15px 15px 15px 15px;
+    color: #fff;
+    background-color: #f4803b;
+    font-size: 14px;
+    text-align: center;
+    line-height: 80rpx;
+    margin-bottom: 30rpx;
+}
+
+.introduce-join-Continue {
+    width: 90%;
+    height: 80rpx;
+    margin-left: 5%;
+    border-radius: 15px 15px 15px 15px;
+    color: #fff;
+    background-color: #f4803b;
+    font-size: 15px;
+    text-align: center;
+    line-height: 80rpx;
+    margin-bottom: 30rpx;
+}
+
+.back {
+    background-color: #edece8;
+    height: 40rpx;
+}
+
+.introduce {
+    width: 90%;
+    border-bottom: 1px solid #c1c1c0;
+    height: 70rpx;
+    margin-left: 5%;
+    font-size: 15px;
+    line-height: 70rpx;
+}
+
+.History {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.History-text {
+    padding-top: 10rpx;
+    font-size: 13px;
+    color: #919191;
+}
+
+.History-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: space-between;
+    order: integer;
+    flex-wrap: wrap;
+    background-color: #fff;
+}
+
+.History-icon-item button {
+    margin-top: 20rpx;
+    margin-bottom: 30rpx;
+    border-radius: 50%;
+    height: 60rpx;
+    width: 60rpx;
+    line-height: 60rpx;
+    margin-left: 20rpx;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    padding: 0;
+}
+
+.signUp {
+    border: 1px solid #F4803B;
+    border-radius: 10rpx 10rpx 10rpx 10rpx;
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 30%;
+    background-color: #fff;
+    z-index: 999;
+}
+
+.signUp-title {
+    height: 80rpx;
+    background-color: #F4803B;
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.signUp-info {
+    border: 1rpx solid #c1c1c0;
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 30rpx;
+}
+
+.info-radio {
+    vertical-align: middle;
+    margin: auto 20rpx;
+}
+
+.info-title {
+    font-size: 15px;
+    padding-top: 10rpx;
+}
+
+.info-info {
+    font-size: 12px;
+    color: #c1c1c0;
+    padding-bottom: 10rpx;
+}
+
+.info-text {
+    margin-left: 10rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.signUp-submit {
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 30rpx 30rpx 30rpx 30rpx;
+    background-color: #F4803B;
+    margin-top: 20rpx;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20rpx;
+    line-height: 60rpx;
+}
+
+.drawer_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 0.5;
+    overflow: hidden;
+}
+
+.introduce-explain {
+    color: #f77620;
+    font-size: 14px;
+    margin-top: 30rpx;
+    float: right;
+    margin-right: 20rpx;
+    text-decoration: underline;
+}

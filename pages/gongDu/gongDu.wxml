@@ -1,0 +1,87 @@
+<view class="container" wx:if="{{Contents}}">
+    <view class="logoimg">
+        <image src="{{bgimg}}"></image>
+    </view>
+    <view class="punchTime" wx:if="{{setTimeSty}}">
+        <view class="punchTime-set-info">
+            <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
+                <view class="punchTime-set">
+                    <text>打卡时间：05:00 - 10:00</text>
+                    <picker bindchange="bindTimeChange" end="10:00" mode="time" name="setup" start="05:00" value="{{single.setup}}">
+                        <text style="color:#F77620">设置提醒：{{single.setup}}</text>
+                    </picker>
+                </view>
+            </form>
+            <view class="punchTime-info">
+                <text>第<text style="font-size:17px;color:red">{{single.unlocks}}</text>天</text>
+            </view>
+        </view>
+    </view>
+    <view class="enrollment">
+        <view class="enrollment-nums">
+            <text style="color:#000">{{studyUserNums}}人报名</text>
+        </view>
+        <view class="enrollment-images">
+            <image src="{{userInfo.avatarUrl}}" wx:if="{{avaData}}"></image>
+      <image src="{{item.avatar}}" wx:for="{{studyUser}}"></image>
+    </view>
+    </view>
+    <view animation="{{animationData}}" class="signUp" wx:if="{{showModalStatus}}">
+        <view class="signUp-title">
+            <text>报名</text>
+        </view>
+        <view class="signUp-info">
+            <radio checked="checked" class="info-radio"></radio>
+            <view class="info-text">
+                <text class="info-title">约定模式</text>
+                <text bindtap="bindExplain" class="info-info" decode="true" space="true">我已悉知活动详情，立即加入口语练习计划！</text>
+            </view>
+        </view>
+        <view style="width:90%;font-size:12px">
+            <text bindtap="bindExplain" style="text-decoration: underline;  color: #f77620; float: right;margin-top:20rpx;">了解活动详情</text>
+        </view>
+        <view bindtap="sendPay" class="signUp-submit">
+            <text>提交</text>
+        </view>
+    </view>
+    <view class="introduce-join">
+        <view class="introduce-join-text">
+            <text>【21天口语达人养成计划】是由@日语学习 联合日籍外教老师推出的日语口语场景练习计划。在这21天中 ，将出行、就餐、购物等七大场景中的常用口语进行罗列练习，在线跟读，在线答题。每天10分钟，告别哑巴日语。それでは、頑張りましょう！
+</text>
+        </view>
+        <view class="introduce-explain">
+            <text bindtap="bindExplain">活动详情</text>
+        </view>
+        <form bindsubmit="formSubmit" reportSubmit="true" wx:if="{{test}}">
+            <view class="introduce-join-btn">
+                <view bindtap="startStudy" class="introduce-join-pay" data-days="{{single.unlocks}}" data-statu="open">
+                    <button formType="submit">{{joinBtn}}</button>
+                </view>
+                <button class="introduce-join-Continue" openType="contact" wx:if="{{contact}}">学习完成</button>
+            </view>
+        </form>
+    </view>
+    <view class="back"></view>
+    <view class="introduce">
+    *知识回顾
+  </view>
+    <view class="History">
+        <view class="History-text">
+            <text>*点击日期按钮可回看当天知识点</text>
+        </view>
+        <form bindsubmit="formSubmit" reportSubmit="true">
+            <view class="History-icon">
+                <view bindtap="reviewHistory" class="History-icon-item" data-day="{{item.genusdays}}" wx:for="{{studyNums}}">
+                    <button formType="submit" style="background-color:#F4803B;" wx:if="{{!test}}">{{item.genusdays}}</button>
+                    <button formType="submit" style="{{single.unlocks<index+1?'background-color:#919191':'background-color:#F4803B'}}" wx:else>{{item.genusdays}}</button>
+                </view>
+            </view>
+        </form>
+    </view>
+    <view class="bottom-contact">
+        <button></button>
+    </view>
+</view>
+<view animation="{{animationData}}" class="kefu-popup">
+    <button class="kefu-btn" openType="contact"></button>
+</view>
