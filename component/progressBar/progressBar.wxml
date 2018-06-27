@@ -1,0 +1,5 @@
+<view class="progress_wrap" style="width:{{width}}rpx;">
+    <image bindtap="setStatus" class="icon_control" data-status="play" src="https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/playing.png" wx:if="{{!playing}}"></image>
+    <image bindtap="setStatus" class="icon_control" data-status="pause" src="https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/pause.png" wx:if="{{playing}}"></image>
+    <progress activeColor="#757d87" backgroundColor="#e0d4c8" class="progress" percent="{{percent}}" strokeWidth="1" style="width:{{width}}rpx;"></progress>
+</view>

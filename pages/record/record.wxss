@@ -1,0 +1,61 @@
+
+page {
+    padding: 24rpx 58rpx 0 58rpx;
+    box-sizing: border-box;
+}
+
+.poem_wrap {
+    margin: 0 auto;
+    width: 634rpx;
+}
+
+.poem_header {
+    height: 89rpx;
+    line-height: 89rpx;
+    width: 634rpx;
+    background-color: #757d87;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    font-size: 29rpx;
+    color: #e8ecf1;
+    display: flex;
+    align-items: center;
+    padding-left: 23rpx;
+    box-sizing: border-box;
+}
+
+.search_icon {
+    width: 44rpx;
+    height: 44rpx;
+    margin-right: 18rpx;
+}
+
+.shake_text {
+    font-size: 22rpx;
+    color: #857e71;
+    margin-top: 30rpx;
+    text-align: center;
+}
+
+.record_wrap {
+    margin-top: 45rpx;
+    text-align: center;
+}
+
+.record_time {
+    font-size: 38rpx;
+    color: #4d4d4d;
+    font-weight: bold;
+}
+
+.record_btn {
+    width: 162rpx;
+    height: 162rpx;
+    margin-top: 30rpx;
+}
+
+.start_hint {
+    text-align: center;
+    font-size: 28rpx;
+    margin-top: 5rpx;
+}

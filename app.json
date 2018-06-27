@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/gongDu/gongDu",
+    "pages/record/record",
     "pages/mall/mall",
     "pages/catalog/catalog",
     "pages/newGoods/newGoods",

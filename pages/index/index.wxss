@@ -1,0 +1,126 @@
+page {
+    font-family: Helvetica Neue,Helvetica,Roboto,Segoe UI,Arial,sans-serif;
+    background-color: #f2f1ed;
+    padding-bottom: 110rpx;
+}
+
+.header {
+    width: 750rpx;
+    height: 428rpx;
+    background-image: url(https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/text_gif.gif?v=1.0);
+    background-size: 100% 100%;
+    font-size: 0;
+    padding-top: 307rpx;
+    box-sizing: border-box;
+}
+
+.read_btn {
+    font-size: 30rpx;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 241rpx;
+    height: 64rpx;
+    border: 2rpx solid #fff;
+    border-radius: 50rpx;
+    margin: 0 auto;
+}
+
+.read_btn text {
+    margin-right: 15rpx;
+}
+
+.icon_read {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.main {
+    background-color: #f2f1ed;
+}
+
+.title {
+    font-size: 30rpx;
+    height: 90rpx;
+    line-height: 89rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #e4dfd7;
+    font-weight: bolder;
+    color: #7b7b79;
+    text-align: center;
+}
+
+.poem_wrap {
+    box-sizing: border-box;
+    padding: 0 36rpx;
+}
+
+.poem_item {
+    display: flex;
+    align-items: flex-start;
+    padding: 46rpx 0 37rpx 15rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #e4dfd7;
+    text-align: center;
+}
+
+.author_info {
+    margin-right: 26rpx;
+}
+
+.author_avatar {
+    width: 97rpx;
+    height: 97rpx;
+    border-radius: 50%;
+    margin-bottom: 5rpx;
+}
+
+.author_name {
+    font-size: 20rpx;
+    color: #555555;
+    font-weight: bold;
+}
+
+.poem_info {
+    margin-right: 42rpx;
+    text-align: left;
+    padding-left: 20rpx;
+    width: 352rpx;
+}
+
+.poem_title {
+    font-size: 30rpx;
+    color: #312f2f;
+    margin-bottom: 44rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.go_read {
+    text-align: center;
+}
+
+.go_read view {
+    font-size: 20rpx;
+    color: #a3a3a3;
+}
+
+.icon_mic {
+    width: 74rpx;
+    height: 50rpx;
+    margin-top: 50rpx;
+}
+
+.index_invite {
+    background-image: url(https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/index_invite.png);
+    width: 187rpx;
+    height: 77rpx;
+    background-size: 100% 100%;
+    position: fixed;
+    top: 80%;
+    right: 0;
+}

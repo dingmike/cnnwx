@@ -1,0 +1,15 @@
+<view class="poem_wrap">
+    <view catchtap="navigateTo" class="poem_header" data-navtype="" data-url="../search/search">
+        <image class="search_icon" src="https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/Searchicon.png"></image>
+    搜索诗库
+  </view>
+    <scrollView poem="{{poem}}"></scrollView>
+</view>
+<view class="shake_text">不喜欢这首诗? 摇一摇试试吧!</view>
+<view class="record_wrap">
+    <view class="record_time">{{countDown}}/00:120</view>
+    <image catchtap="record" class="record_btn" data-status="1" src="https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/record_play.png?v=1.0" wx:if="{{!REC}}"></image>
+    <image catchtap="record" class="record_btn" data-status="0" src="https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/record_pause.png?v=1.0" wx:if="{{REC}}"></image>
+    <view class="start_hint">{{REC?'120秒内录音完成后，下一步添加背景音乐':'点击开始读诗'}}</view>
+</view>
+<tabBar is_mt="true"></tabBar>

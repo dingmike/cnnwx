@@ -71,5 +71,8 @@ module.exports = {
     GoodsCouponList: NewApiRootUrl + 'coupon/listByGoods', // 商品优惠券列表   
     OrderQuery: NewApiRootUrl + 'pay/query',
     OrderSuccess: NewApiRootUrl + 'order/updateSuccess',
-    
+    ReadRecord: NewApiRootUrl + 'newscnn/recordList'   // 用户阅读列表
+/*newscnn learning api*/
+    // ReadRecord: NewApiRootUrl + 'newscnn/recordList'   // 用户阅读列表
+
 };
