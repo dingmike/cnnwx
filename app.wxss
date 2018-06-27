@@ -18,6 +18,7 @@ view,text{
   color: #333;
 }
 
+/*
 button {
   position: static;
   background-color: transparent;
@@ -29,6 +30,7 @@ button {
   line-height: normal;
   display: inline;
 }
+*/
 
 button::after {
   display: none;

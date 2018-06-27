@@ -1,4 +1,10 @@
-
 <view class="container">
-   rukou
+   <view>
+      <wxc-button bindtap="showToast" size="normal" type="beauty" value="beauty"></wxc-button>
+   </view>
+   <wxc-button >调用 show() 方法显示</wxc-button>
+   <button bindtap="showToast">点击设置以上按钮loading属性</button>
+
+   <wxc-toast class="J_toast"  text="Hello World"></wxc-toast>
+
 </view>
