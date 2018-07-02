@@ -1,10 +1,18 @@
 <view class="container">
 
     <view class="header">
-        <view catchtap="navigateTo" class="read_btn" data-url="../record/record">
-            <text>我要读诗</text>
-            <image class="icon_read" src="https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/Playbutton.png"></image>
-        </view>
+        <!--<view catchtap="navigateTo" class="read_btn" data-url="../record/record">-->
+            <!--<text>我要读诗</text>
+            <image class="icon_read" src="https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/Playbutton.png"></image>-->
+            <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000" circular="true">
+                <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
+                    <navigator url="{{item.link}}">
+                        <image src="{{item.imageUrl}}" background-size="cover"></image>
+                    </navigator>
+                </swiper-item>
+            </swiper>
+        <!--</view>-->
+
     </view>
     <view class="main">
         <view class="title">名人为你读的诗</view>

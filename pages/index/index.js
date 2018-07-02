@@ -9,7 +9,8 @@ Page({
         poem: "",
         current_poem_url: "",
         share: "",
-        uid: ""
+        uid: "",
+        banner: []
     },
 
     showToast() {
@@ -25,10 +26,10 @@ Page({
         }
     },
     onLoad: function (t) {
-        t.uid && this.setData({
+       /* t.uid && this.setData({
             uid: t.uid
-        });
-        var e = this.getData;
+        });*/
+        this.getIndexData()
     },
     onReady: function () {
         // 页面渲染完成
@@ -42,17 +43,14 @@ Page({
     onUnload: function () {
         // 页面关闭
     },
-    getData: function() {
+    getIndexData: function() {
 
         let that = this;
-        var e = this, i = t.globalData.url + "/index.php?m=Mini&c=Poetry&a=index", n = {};
-
-        util.request(api.ReadRecord).then(function (res) {
+        util.request(api.CnnIndexUrl).then(function (res) {
+            debugger
             if (res.errno === 0) {
                 that.setData({
-                    poem: t.data.list,
-                    share: t.data.share,
-                    uid: t.data.uid
+                    banner: res.data.banner
                 });
             }
         });
