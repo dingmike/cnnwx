@@ -126,3 +126,24 @@ page {
     top: 80%;
     right: 0;
 }
+.enrollment {
+    display: flex;
+    flex-direction: column;
+    height: 150rpx;
+    border-bottom: 1px solid #edece8;
+    width: 90%;
+    margin-left: 5%;
+}
+.enrollment-nums {
+    font-size: 13px;
+    color: #00b3ff;
+    padding-top: 20rpx;
+}
+
+.enrollment-images image {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+    margin-top: 15rpx;
+    margin-right: 10rpx;
+}

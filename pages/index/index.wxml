@@ -15,7 +15,34 @@
 
     </view>
     <view class="main">
-        <view class="title">名人为你读的诗</view>
+        <view class="title">阅读打卡</view>
+
+        <view class="enrollment">
+            <view class="enrollment-nums">
+                <text style="color:#000">{{studyUserNums}}人报名</text>
+            </view>
+            <view class="enrollment-images">
+                <image src="{{userInfo.avatarUrl}}" wx:if="{{avaData}}"></image>
+                <image src="{{item.avatar}}" wx:for="{{studyUser}}"></image>
+            </view>
+        </view>
+        <view class="introduce-join">
+            <view class="introduce-join-text">
+                <text>【21天阅读达人养成计划】是由@cnn每日更新联合资深英语老师推出的英语阅读练习计划。在这21天中 ，将涉及不同领域的文章，以及常用英语进行罗列练习。在这21天中，每天10分钟，养成阅读英文的习惯。加油！
+                </text>
+            </view>
+            <view class="introduce-explain">
+                <text bindtap="bindExplain">活动详情</text>
+            </view>
+            <form bindsubmit="formSubmit" reportSubmit="true" wx:if="{{test}}">
+                <view class="introduce-join-btn">
+                    <view bindtap="startStudy" class="introduce-join-pay" data-days="{{single.unlocks}}" data-statu="open">
+                        <button formType="submit">{{joinBtn}}</button>
+                    </view>
+                    <button class="introduce-join-Continue" openType="contact" wx:if="{{contact}}">学习完成</button>
+                </view>
+            </form>
+        </view>
        <!-- <view class="poem_wrap">
             <view class="poem_item" wx:for="{{poem}}">
                 <view class="author_info">
