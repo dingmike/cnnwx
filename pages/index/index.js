@@ -65,7 +65,7 @@ Page({
                 });
             }
         });
-        s._onLoad();
+        s._onLoad(); // 提前
         wx.getUserInfo({
             success: function(t) {
                 debugger
@@ -110,7 +110,9 @@ Page({
         });
     },
     updateUserInfo: function() {
-        var t = app.globalData.openid, e = app.globalData.userInfo.avatarUrl, o = app.globalData.userInfo.nickName;
+        var t = app.globalData.openid,
+            e = app.globalData.userInfo.avatarUrl,
+            o = app.globalData.userInfo.nickName;
         wx.request({
             url: app.globalData.url + "api/User/updateUserInfo",
             data: {

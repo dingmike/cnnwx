@@ -17,7 +17,7 @@ App({
   globalData: {
     url: "https://riyubao.net/oralproject/public/index.php/",
       //new
-      openid: "oy7Wo5ZMuRtj0Sq4yDZsJM3Q7zjs",
+      openid: "",
       type: "21天口语达人养成计划",
       img: "/images/item/ly.png",
       bgimg: "https://riyubao.net/oralproject/public/datas/item/b2.jpg",

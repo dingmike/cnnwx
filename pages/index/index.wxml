@@ -49,7 +49,7 @@
 
 
         <view class="logoimg">
-            <image src="{{bgimg}}"></image>
+            <!--<image src="{{bgimg}}"></image>-->
         </view>
         <view class="punchTime" wx:if="{{setTimeSty}}">
             <view class="punchTime-set-info">
