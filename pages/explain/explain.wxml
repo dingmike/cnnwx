@@ -1,0 +1,8 @@
+<view class="container">
+    <image bindload="imgLoad" lazyLoad="true" mode="widthFix" src="https://riyubao.net/oralproject/public/datas/item/1.jpg"></image>
+    <image bindload="imgLoad" lazyLoad="true" mode="widthFix" src="https://riyubao.net/oralproject/public/datas/item/2.png"></image>
+    <image bindload="imgLoad" lazyLoad="true" mode="widthFix" src="https://riyubao.net/oralproject/public/datas/item/3.png"></image>
+</view>
+<view bindtap="continueStudy" class="classbtn">
+    <text>开始学习</text>
+</view>

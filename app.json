@@ -2,6 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/gongDu/gongDu",
+    "pages/explain/explain",
+    "pages/orale/orale",
+    "pages/orale/orale-detail/orale-detail",
     "pages/record/record",
     "pages/mall/mall",
     "pages/catalog/catalog",

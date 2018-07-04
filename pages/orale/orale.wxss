@@ -1,0 +1,107 @@
+page {
+    background-color: #fff;
+}
+
+.sceneImg image {
+    width: 100%;
+    height: 300rpx;
+}
+
+.classbtn {
+    position: absolute;
+    bottom: 0px;
+    height: 100rpx;
+    width: 100%;
+    background-color: #FEA201;
+    color: #fff;
+    text-align: center;
+    font-family: 微软雅黑;
+    font-size: 15px;
+    line-height: 100rpx;
+}
+
+.classbtn image {
+    height: 50rpx;
+    width: 200rpx;
+    margin-top: 25rpx;
+}
+
+.today-content {
+    width: 90%;
+    margin-left: 5%;
+    background-color: #fff;
+    height: 85%;
+    position: absolute;
+    border-radius: 5px 5px 5px 5px;
+    top: 50rpx;
+    vertical-align: middle;
+}
+
+.today-content-title {
+    font-weight: bold;
+    text-align: center;
+    padding-top: 40rpx;
+    font-size: 15px;
+}
+
+.text-height {
+    height: 72%;
+    padding-bottom: 20rpx;
+    line-height: 2;
+}
+
+.top {
+    height: 28%;
+}
+
+.today-content-sound {
+    border: 1px solid #c0c0bf;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 40rpx;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px 20px 20px 20px;
+    height: 80rpx;
+    vertical-align: middle;
+}
+
+.today-sound {
+    align-content: center;
+    margin-top: 20rpx;
+}
+
+.today-sound-control image {
+    width: 70rpx;
+    height: 70rpx;
+    vertical-align: middle;
+    margin-top: 5rpx;
+    margin-left: 10rpx;
+}
+
+.today-sound-time {
+    font-size: 13px;
+    line-height: 80rpx;
+    margin-right: 20rpx;
+}
+
+.today-sound-process {
+    width: 90%;
+    margin-left: 10rpx;
+}
+
+.today-content-jp {
+    font-size: 14px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 20rpx;
+}
+
+.today-content-ch {
+    font-size: 14px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 20rpx;
+    padding-bottom: 20rpx;
+    color: #c0c0bf;
+}

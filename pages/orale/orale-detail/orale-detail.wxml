@@ -1,0 +1,114 @@
+<view class="container">
+    <view class="jindu">
+        <text wx:if="{{detailIndex<3}}">今日共读重难点学习：{{detailIndex+1}}/{{oraleDetail.length-2}}</text>
+        <text wx:if="{{detailIndex>2}}">今日共读练习题：{{detailIndex+1-3}}/{{oraleDetail.length-3}}</text>
+    </view>
+    <view class="today-content" wx:if="{{yuyinData}}">
+        <view class="top">
+            <view class="today-content-sound">
+                <view class="today-sound-control">
+                    <image bindtap="startPlay" src="{{isPlayingMusic?'/static/image/stop.png':'/static/image/start.png'}}"></image>
+                </view>
+                <view class="today-sound-process">
+                    <slider activeColor="#FEC868" bindchange="sliderchange" max="{{audioMax}}" min="0" value="{{currentPosition}}"></slider>
+                </view>
+            </view>
+        </view>
+        <scroll-view class="bottoms" scrollY="true">
+            <view class="content-text-jp">
+                <text>{{oraleDetail[detailIndex].oralitem}}</text>
+            </view>
+        </scroll-view>
+    </view>
+    <scroll-view class="keyWord" scrollY="true" wx:if="{{yuyinData}}">
+        <view class="keyWord-item">
+            <text>重点词汇：
+
+{{oraleDetail[detailIndex].keyword}}</text>
+        </view>
+    </scroll-view>
+    <block wx:if="{{!datiData}}">
+        <view class="interactive-text" wx:if="{{!voiceCon}}">
+            <text>长按底部录音按钮口语练习</text>
+        </view>
+    </block>
+    <block wx:if="{{yuyinData}}">
+        <view class="playRecording" wx:if="{{voiceCon}}">
+            <view bindtap="playVoice" class="box">
+                <image class="start" src="{{startPlay?playingUi.playingbtn:playingUi.playbtn}}"></image>
+                <image class="yuyin" src="/static/image/yuyin.gif" wx:if="{{startPlay}}"></image>
+                <image class="yuyin" src="/static/image/yuyin.png" wx:else></image>
+            </view>
+            <view class="avatar">
+                <image src="{{avatarUrl}}"></image>
+            </view>
+        </view>
+    </block>
+    <view class="botoptions" style="{{datiData?'background-color:#fff':''}}">
+        <view class="soundRecording" wx:if="{{yuyinData}}">
+            <view class="labacon">
+                <view class="line"></view>
+                <view bindtouchcancel="Recordinterrupt" bindtouchend="Recordingend" bindtouchstart="Recording" class="soundRecording-play">
+                    <image class="soundRecording-play-image" src="{{playing?playingUi.playing:playingUi.play}}"></image>
+                </view>
+                <view class="line"></view>
+            </view>
+        </view>
+        <view bindtap="previousOrale" class="Previous" wx:if="{{previousSty}}">
+            <image src="{{datiData?'/static/image/Previoussele.png':'/static/image/Previous.png'}}"></image>
+        </view>
+        <view bindtap="nextOrale" class="next" wx:if="{{nextSty&&detailIndex!=4}}">
+            <image src="{{datiData?'/static/image/nextsele.png':'/static/image/next.png'}}"></image>
+        </view>
+        <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
+            <view class="next" wx:if="{{completeSty}}">
+                <button formType="submit"></button>
+            </view>
+        </form>
+    </view>
+    <block wx:if="{{!selectedAns&&detailIndex>2}}">
+        <view class="dati-content" wx:if="{{datiData}}">
+            <view class="dati-title">
+                <text>{{oraleDetail[detailIndex].oralejp}}</text>
+            </view>
+            <view bindtap="subAnsTap" class="dati-option" data-number="1">
+                <text>{{oraleDetail[detailIndex].opt1}}</text>
+            </view>
+            <view bindtap="subAnsTap" class="dati-option" data-number="2">
+                <text>{{oraleDetail[detailIndex].opt2}}</text>
+            </view>
+            <view bindtap="subAnsTap" class="dati-option" data-number="3">
+                <text>{{oraleDetail[detailIndex].opt3}}</text>
+            </view>
+            <view bindtap="subAnsTap" class="dati-option" data-number="4">
+                <text>{{oraleDetail[detailIndex].opt4}}</text>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{selectedAns&&detailIndex>2}}">
+        <view class="dati-content" wx:if="{{datiData}}">
+            <view class="dati-title">
+                <text>{{oraleDetail[detailIndex].oralejp}}</text>
+            </view>
+            <view class="dati-option selected" data-number="1" style="{{oraleDetail[detailIndex].copt==1?'color:#409F01;':'color:black;'}}">
+                <text style="{{cuo1&&oraleDetail[detailIndex].copt==1?'color:#F9A303;':'color:red'}}">{{oraleDetail[detailIndex].opt1}}</text>
+                <image src="{{oraleDetail[detailIndex].copt==1?'/static/image/dui.png':'/static/image/cuo.png'}}" wx:if="{{cuo1}}"></image>
+            </view>
+            <view class="dati-option" data-number="2" style="{{oraleDetail[detailIndex].copt==2?'color:#409F01;':'color:black;'}}">
+                <text style="{{cuo2&&oraleDetail[detailIndex].copt==2?'color:#F9A303;':'color:red'}}">{{oraleDetail[detailIndex].opt2}}</text>
+                <image src="{{oraleDetail[detailIndex].copt==2?'/static/image/dui.png':'/static/image/cuo.png'}}" wx:if="{{cuo2}}"></image>
+            </view>
+            <view class="dati-option" data-number="3" style="{{oraleDetail[detailIndex].copt==3?'color:#409F01;':'color:black;'}}">
+                <text style="{{cuo3&&oraleDetail[detailIndex].copt==3?'color:#F9A303;':'color:red'}}">{{oraleDetail[detailIndex].opt3}}</text>
+                <image src="{{oraleDetail[detailIndex].copt==3?'/static/image/dui.png':'/static/image/cuo.png'}}" wx:if="{{cuo3}}"></image>
+            </view>
+            <view class="dati-option" data-number="4" style="{{oraleDetail[detailIndex].copt==4?'color:#409F01;':'color:black;'}}">
+                <text style="{{cuo4&&oraleDetail[detailIndex].copt==4?'color:#F9A303;':'color:red'}}">{{oraleDetail[detailIndex].opt4}}</text>
+                <image src="{{oraleDetail[detailIndex].copt==4?'/static/image/dui.png':'/static/image/cuo.png'}}" wx:if="{{cuo4}}"></image>
+            </view>
+            <view bindtap="subAnsTap" class="dati-jiexi">
+                <text>解析：{{oraleDetail[detailIndex].analysis}}</text>
+            </view>
+        </view>
+    </block>
+</view>

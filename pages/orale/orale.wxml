@@ -1,0 +1,30 @@
+<view class="container">
+    <view class="today-content">
+        <view class="top">
+            <view class="today-content-title">
+                <text>{{oraleContent.title}}
+</text>
+                <text style="font-size:13px;">全部内容</text>
+            </view>
+            <view class="today-content-sound">
+                <view class="today-sound-control">
+                    <image bindtap="startPlay" src="{{isPlayingMusic?'/static/image/stop.png':'/static/image/start.png'}}"></image>
+                </view>
+                <view class="today-sound-process">
+                    <slider activeColor="#FEC868" backgroundColor="#DCDCDC" bindchange="sliderchange" max="{{audioMax}}" min="0" value="{{currentPosition}}"></slider>
+                </view>
+                <view class="today-sound-time">
+                    <text>-{{dqTime}}</text>
+                </view>
+            </view>
+        </view>
+        <scroll-view class="text-height" scrollY="true">
+            <view class="today-content-jp">
+                <text>{{oraleContent.oralecontent}}</text>
+            </view>
+        </scroll-view>
+    </view>
+    <view bindtap="continueStudy" class="classbtn">
+        <image src="/static/image/read.png"></image>
+    </view>
+</view>

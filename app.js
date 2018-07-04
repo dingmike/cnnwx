@@ -15,6 +15,18 @@ App({
   },
   
   globalData: {
+    url: "https://riyubao.net/oralproject/public/index.php/",
+      //new
+      openid: "oy7Wo5ZMuRtj0Sq4yDZsJM3Q7zjs",
+      type: "21天口语达人养成计划",
+      img: "/images/item/ly.png",
+      bgimg: "https://riyubao.net/oralproject/public/datas/item/b2.jpg",
+      coimg: "/images/coimg/ly.jpg",
+      detailImg: "https://riyubao.net/oralproject/public/datas/item/lyDetail2.jpg",
+      ifFree: "1",
+      days: 0,
+      //new
+
     userInfo: {
       nickName: 'Hi,游客',
       userName: '点击去登录',

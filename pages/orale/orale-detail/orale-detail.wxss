@@ -1,0 +1,306 @@
+page {
+    background-color: #fff;
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+.today-content {
+    width: 90%;
+    margin-left: 5%;
+    height: 40%;
+    padding-top: 25rpx;
+    border-radius: 20px 20px 20px 20px;
+    color: black;
+    background-color: #fff;
+}
+
+.dati-content {
+    width: 90%;
+    margin: 40rpx auto;
+    padding: 30rpx;
+    background-color: #eee;
+    color: black;
+}
+
+.today-sound {
+    margin-left: 5%;
+    margin-top: 20rpx;
+}
+
+.content-text-jp {
+    width: 90%;
+    margin-left: 5%;
+    padding-top: 10rpx;
+    color: #202020;
+    font-size: 14px;
+    padding-bottom: 10rpx;
+    line-height: 20px;
+}
+
+.top {
+    height: 20%;
+    background-color: #eee;
+    padding-top: 30rpx;
+}
+
+.bottoms {
+    height: 70%;
+    background-color: #eee;
+    padding-top: 20rpx;
+}
+
+.content-text-ch {
+    width: 90%;
+    margin-left: 5%;
+    padding-top: 20rpx;
+    color: #fff;
+    font-size: 14px;
+    padding-bottom: 20rpx;
+}
+
+.today-content-sound {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px 20px 20px 20px;
+    height: 80rpx;
+    background-color: #fff;
+}
+
+.today-sound-control image {
+    width: 70rpx;
+    height: 70rpx;
+    vertical-align: middle;
+    margin-top: 5rpx;
+    margin-left: 10rpx;
+}
+
+.today-sound-process {
+    width: 90%;
+    margin-left: 10rpx;
+}
+
+.interactive-text {
+    font-size: 13px;
+    text-align: center;
+    color: #ea7d11;
+}
+
+.playRecording {
+    border-radius: 10px 10px 10px 10px;
+    height: 10%;
+    background-color: #fff;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 15rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.playRecording-play {
+    border: 1px solid #258bfd;
+    height: 70rpx;
+    background-color: #1296db;
+    width: 60%;
+    border-radius: 7px;
+    padding-top: 25rpx;
+}
+
+.box .start {
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 30rpx;
+    margin-top: 15rpx;
+    background-color: #fff;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.box .yuyin {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 20rpx;
+    margin-top: 15rpx;
+    vertical-align: middle;
+}
+
+.avatar image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin-top: 20rpx;
+}
+
+.soundRecording {
+    height: 150rpx;
+}
+
+.labacon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.line {
+    border-top: 1px solid #fff;
+    width: 100rpx;
+    margin-top: 75rpx;
+}
+
+.jindu {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: #faa20c;
+    padding-top: 20rpx;
+}
+
+.soundRecording-play {
+    border: 1px solid #ea7d11;
+    border-radius: 50%;
+    height: 120rpx;
+    width: 120rpx;
+    margin-top: 15rpx;
+    margin-left: 30rpx;
+    margin-right: 30rpx;
+    background-color: #fff;
+}
+
+.soundRecording-play-image {
+    width: 120rpx;
+    height: 120rpx;
+    vertical-align: middle;
+}
+
+.next image {
+    width: 40rpx;
+    height: 70rpx;
+    float: right;
+}
+
+.next {
+    position: absolute;
+    bottom: 20rpx;
+    width: 70rpx;
+    height: 90rpx;
+    right: 30rpx;
+}
+
+.next button::after {
+    border: none;
+}
+
+.next button {
+    position: absolute;
+    bottom: 20rpx;
+    width: 170rpx;
+    height: 70rpx;
+    background-color: #fff;
+    right: 20rpx;
+    background-image: url('https://riyubao.net/oralproject/public/datas/complete.png');
+    background-size: 100% 100%;
+}
+
+.iconbtn {
+    vertical-align: middle;
+}
+
+.Previous image {
+    width: 40rpx;
+    height: 70rpx;
+}
+
+.Previous {
+    position: absolute;
+    bottom: 20rpx;
+    width: 70rpx;
+    height: 90rpx;
+    left: 30rpx;
+}
+
+.dati-title {
+    width: 100%;
+    font-weight: bold;
+    margin-bottom: 25rpx;
+}
+
+.dati-option {
+    width: 100%;
+    font-size: 15px;
+    padding: 10rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dati-option image {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.dati-jiexi {
+    font-size: 15px;
+    color: black;
+    margin-top: 35rpx;
+}
+
+.keyWord {
+    width: 90%;
+    margin-left: 5%;
+    font-size: 14px;
+    height: 25%;
+    background-color: #eee;
+    color: black;
+    margin: 20rpx auto;
+}
+
+.fenge-line {
+    text-align: center;
+}
+
+.fenge-line image {
+    width: 100rpx;
+    height: 25rpx;
+}
+
+.keyWord-item {
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.box {
+    position: relative;
+    width: 60%;
+    height: 80rpx;
+    top: 20rpx;
+    background: #eee;
+    border-radius: 12px;
+}
+
+.box:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    left: 100%;
+    top: 20rpx;
+    border-top: 0rpx solid transparent;
+    border-left: 30rpx solid #eee;
+    border-bottom: 20rpx solid transparent;
+}
+
+.botoptions {
+    height: 150rpx;
+    position: absolute;
+    width: 100%;
+    background-color: #faa20c;
+    bottom: 0rpx;
+}
