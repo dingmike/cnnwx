@@ -52,6 +52,7 @@ page {
     font-weight: bolder;
     color: #7b7b79;
     text-align: center;
+    background-color:#fff;
 }
 
 .poem_wrap {
@@ -425,4 +426,11 @@ button::after {
     float: right;
     margin-right: 20rpx;
     text-decoration: underline;
+}
+.part-in-btn{
+    /*padding: 10px 0;*/
+    display: block;
+    width: 100%;
+    height: 100rpx;
+    background: #f2f2f2;
 }

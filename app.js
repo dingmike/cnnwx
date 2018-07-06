@@ -4,6 +4,16 @@ var user = require('./services/user.js');
 
 App({
   onLaunch: function () {
+
+      wx.getSetting({
+          success: function(t) {
+            debugger
+              t.authSetting["scope.userInfo"] || wx.reLaunch({
+                  url: "/pages/firstAuth/firstAuth"
+              });
+          }
+      });
+
     //获取用户的登录信息
     user.checkLogin().then(res => {
       console.log('app login')

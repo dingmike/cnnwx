@@ -1,0 +1,26 @@
+.main {
+    width: 80%;
+    padding: 50rpx;
+    margin: 50rpx auto;
+}
+
+.infowarn {
+    text-align: center;
+    color: tomato;
+}
+
+.getinfo>button {
+    width: 50%;
+    margin: 30rpx auto 10rpx;
+}
+
+.avatar {
+    text-align: center;
+    margin-bottom: 20rpx;
+}
+
+.avatar image {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+}

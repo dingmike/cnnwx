@@ -1,10 +1,24 @@
-var a = getApp();
+const util = require('../../utils/util.js');
+const api = require('../../config/api.js');
+const user = require('../../services/user.js');
 
+//获取应用实例
+const app = getApp()
 Page({
     data: {
+        single: {
+            unlocks: 10, //已经阅读打卡的天数
+            setup: '08:30',  // 设置提醒时间
+            starts: 1,  //是否已开始打卡
+        },
+        poem: "",
+        current_poem_url: "",
+        share: "",
+        uid: "",
+        banner: [],
         joinBtn: "继续学习",
-        setTimeSty: !0,
-        payStatus: !0,
+        setTimeSty: true,
+        payStatus: true,
         showModalStatus: !1,
         cardM: function(a, t, e) {
             return t in a ? Object.defineProperty(a, t, {
@@ -15,32 +29,64 @@ Page({
             }) : a[t] = e, a;
         }({}, "reasonable", !1)
     },
+
+    showToast() {
+        let $toast = this.selectComponent(".J_toast")
+        $toast && $toast.show()
+    },
+    onShareAppMessage: function () {
+        return {
+            desc: 'FecsTec English',
+            title: this.data.share.share_title,
+            imageUrl: this.data.share.share_img,
+            path: "pages/index/index?uid=" + this.data.uid
+        }
+    },
+
     onLoad: function(t) {
+        /* wx.showLoading({
+         title: "加载中"
+         });*/
+
+        // 获取首页数据
+        this.getIndexData();
+
+
         var e = this, o = decodeURIComponent(t.scene);
         console.log(o);
         var s = this;
-        wx.showLoading({
-            title: "加载中"
-        }), wx.request({
-            url: a.globalData.url + "api/Index/test",
+
+        wx.request({
+            url: app.globalData.url + "api/Index/test",
             success: function(a) {
-                console.log(a.data), e.setData({
+                console.log(a.data);
+                e.setData({
                     test: a.data
                 });
             }
-        }), wx.getUserInfo({
+        });
+        s._onLoad(); // 提前
+        wx.getUserInfo({
             success: function(t) {
+                debugger
                 var e = t.userInfo;
-                console.log(e.nickName), a.globalData.userInfo = e, s.setData({
+                console.log(e.nickName);
+                app.globalData.userInfo = e;
+                s.setData({
                     choiceDataShow: !0,
                     userInfo: e
                 });
                 var o = wx.getStorageSync("openid");
-                console.log(o.length), o.length < 20 ? (wx.showLoading({
+                console.log(o.length);
+                o.length < 20 ? (wx.showLoading({
                     title: "加载中"
-                }), wx.login({
+                }),wx.login({
                     success: function(t) {
-                        console.log(t.code), console.log("调用登录接口成功"), wx.request({
+                        console.log(t.code);
+                        console.log("调用登录接口成功");
+
+
+                        wx.request({
                             url: "https://riyubao.net/code3.php",
                             data: {
                                 code: t.code
@@ -48,7 +94,7 @@ Page({
                             success: function(t) {
                                 console.log(t), 200 == t.statusCode && wx.hideLoading(), wx.setStorageSync("openid", t.data.openid);
                                 var e = wx.getStorageSync("openid");
-                                a.globalData.openid = e, wx.hideNavigationBarLoading(), s.setData({
+                                app.globalData.openid = e, wx.hideNavigationBarLoading(), s.setData({
                                     openid: e
                                 }), s._onLoad();
                             }
@@ -59,47 +105,63 @@ Page({
                     }
                 })) : (wx.hideLoading(), s.setData({
                     openid: o
-                }), a.globalData.openid = o, s._onLoad());
+                }), app.globalData.openid = o, s._onLoad());
             }
         });
     },
     updateUserInfo: function() {
-        var t = a.globalData.openid, e = a.globalData.userInfo.avatarUrl, o = a.globalData.userInfo.nickName;
+        var t = app.globalData.openid,
+            e = app.globalData.userInfo.avatarUrl,
+            o = app.globalData.userInfo.nickName;
         wx.request({
-            url: a.globalData.url + "api/User/updateUserInfo",
+            url: app.globalData.url + "api/User/updateUserInfo",
             data: {
                 uid: t,
                 avatar: e,
                 username: o
             },
             success: function(a) {
-                console.log("更新结果"), console.log(a);
+                console.log("更新结果");
+                console.log(a);
             }
         });
     },
     _onLoad: function() {
+        debugger
         var t = this;
-        this.data.type = a.globalData.type, wx.showNavigationBarLoading();
-        var e = a.globalData.openid;
-        t.updateUserInfo(), console.log(e), this.setData({
+        this.data.type = app.globalData.type;
+        wx.showNavigationBarLoading();
+        var e = app.globalData.openid;
+        t.updateUserInfo();
+        console.log(e);
+        this.setData({
             openid: e,
-            bgimg: a.globalData.bgimg
-        }), t.addUser(), t.getStudyUser(), t.getLastDay(), t.getConnaissances(), t.getCard(), 
+            bgimg: app.globalData.bgimg
+        });
+        t.addUser();
+        t.getStudyUser();
+        t.getLastDay();
+        t.getConnaissances();
+        t.getCard();
         new Date().getHours() >= 10 && this.setData({
             joinBtn: "您已经错过规定打卡时间 点击学习"
         });
     },
     getCard: function() {
         var t = new Date(), e = this.data.openid, o = this, s = t.getMonth() + 1, n = t.getDate();
-        console.log("月份" + s), console.log("日期" + n), wx.request({
-            url: a.globalData.url + "api/user/getCard",
+        console.log("月份" + s);
+        console.log("日期" + n);
+        wx.request({
+            url: app.globalData.url + "api/user/getCard",
             data: {
                 uid: e,
                 mongth: s,
                 day: n
             },
             success: function(a) {
-                console.log("打卡结果"), console.log(a), o.setData({
+                console.log("打卡结果");
+                console.log(a);
+                o.setData({
                     cardM: a.data
                 }), a.data && o.setData({
                     joinBtn: "今日已打卡 点击回顾"
@@ -110,7 +172,7 @@ Page({
     getLastDay: function() {
         var t = this, e = this.data.openid;
         wx.request({
-            url: a.globalData.url + "api/user/getLastDay",
+            url: app.globalData.url + "api/user/getLastDay",
             data: {
                 uid: e
             },
@@ -122,7 +184,7 @@ Page({
     getConnaissances: function() {
         var t = this;
         wx.request({
-            url: a.globalData.url + "api/orale/getConnaissances",
+            url: app.globalData.url + "api/orale/getConnaissances",
             success: function(a) {
                 t.setData({
                     studyNums: a.data
@@ -131,9 +193,10 @@ Page({
         });
     },
     getStudyUser: function() {
-        var t = this, e = this.data.type, o = a.globalData.openid;
+        debugger
+        var t = this, e = this.data.type, o = app.globalData.openid;
         console.log(o), wx.request({
-            url: a.globalData.url + "api/index/getNewStudyUser",
+            url: app.globalData.url + "api/index/getNewStudyUser",
             data: {
                 type: e,
                 openid: o
@@ -152,11 +215,11 @@ Page({
     },
     addUser: function() {
         wx.showNavigationBarLoading();
-        var t = this, e = (t.data.cardM, a.globalData.userInfo);
+        var t = this, e = (t.data.cardM, app.globalData.userInfo);
         console.log(e);
         var o = t.data.openid, s = t.data.type;
         o && e && wx.request({
-            url: a.globalData.url + "api/index/joinStudy",
+            url: app.globalData.url + "api/index/joinStudy",
             data: {
                 uid: o,
                 type: s,
@@ -164,17 +227,21 @@ Page({
                 username: e.nickName
             },
             success: function(e) {
-                if (console.log("好的"), console.log(e), wx.hideLoading(), 21 == e.data.unlocks && t.setData({
-                    contact: !0
-                }), wx.hideNavigationBarLoading(), 0 == e.data.starts) t.setData({
+                console.log("好的");
+                console.log(e);
+                wx.hideLoading();
+                if (21 == e.data.unlocks && t.setData({
+                        contact: !0
+                    }), wx.hideNavigationBarLoading(), 0 == e.data.starts) t.setData({
                     joinBtn: "马上加入学习",
                     setTimeSty: !1
-                }), e.data.unlocks = 0, a.globalData.single = e.data, t.setData({
+                }), e.data.unlocks = 0, app.globalData.single = e.data, t.setData({
                     single: e.data,
                     Contents: !0
                 }); else {
-                    a.globalData.single = e.data, t.setData({
-                        single: e.data,
+                    app.globalData.single = e.data, t.setData({
+                        // single: e.data,
+                        single: {},
                         Contents: !0
                     });
                     var o = wx.createAnimation({
@@ -188,13 +255,13 @@ Page({
                         avaData: !0
                     });
                 }
-                console.log(a.globalData.iffree), 1 == a.globalData.iffree && 0 == e.data.starts && console.log("免费");
+                console.log(app.globalData.iffree), 1 == app.globalData.iffree && 0 == e.data.starts && console.log("免费");
             }
         });
     },
     startStudy: function(t) {
         var e = this.data.single, o = (this.data.openid, this), s = this.data.type, n = t.currentTarget.dataset.days;
-        a.globalData.days = n, e.starts || a.globalData.iffree ? wx.navigateTo({
+        app.globalData.days = n, e.starts || app.globalData.iffree ? wx.navigateTo({
             url: "../orale/orale?days=" + n + "&type=" + s
         }) : (console.log("用户还没开始付费学习"), o.powerDrawer(t.currentTarget.dataset.statu));
     },
@@ -203,7 +270,7 @@ Page({
         wx.showLoading({
             title: "加载中"
         }), wx.request({
-            url: a.globalData.url + "api/Jporder/placeAnOrder/",
+            url: app.globalData.url + "api/Jporder/placeAnOrder/",
             data: {
                 uid: t,
                 goodsinfo: "21口语练习计划" + e,
@@ -220,7 +287,7 @@ Page({
         console.log("准备向服务器发送支付请求");
         var e = this, o = this.data.openid, s = this.data.type;
         wx.request({
-            url: a.globalData.url + "api/Pay/getPreOrder",
+            url: app.globalData.url + "api/Pay/getPreOrder",
             data: {
                 uid: o,
                 id: t,
@@ -259,7 +326,7 @@ Page({
     },
     reviewHistory: function(t) {
         var e = t.currentTarget.dataset.day, o = this.data.type;
-        a.globalData.type = o, a.globalData.days = e, this.data.test && e > this.data.single.unlocks ? console.log("超出用户解锁的天数") : wx.navigateTo({
+        app.globalData.type = o, app.globalData.days = e, this.data.test && e > this.data.single.unlocks ? console.log("超出用户解锁的天数") : wx.navigateTo({
             url: "../orale/orale?days=" + e + "&type=" + o
         });
     },
@@ -290,16 +357,17 @@ Page({
     },
     bindTimeChange: function(t) {
         console.log(t);
-        var e = this, o = this.data.openid, s = a.globalData.type;
+        var e = this, o = this.data.openid, s = app.globalData.type;
         wx.request({
-            url: a.globalData.url + "api/User/setRemindTime",
+            url: app.globalData.url + "api/User/setRemindTime",
             data: {
                 uid: o,
                 type: s,
-                setup: t.detail.value
+                setup: t.detail.value  // 设置新的提醒时间
             },
             success: function(a) {
-                console.log(a), e.addUser();
+                console.log(a);
+                e.addUser();
             }
         });
     },
@@ -314,9 +382,50 @@ Page({
         });
     },
     onShow: function() {
-        var t = a.globalData.type;
+        var t = app.globalData.type;
         wx.setNavigationBarTitle({
             title: t + "练习"
         });
+    },
+    onReady: function () {
+        // 页面渲染完成
+    },
+    onHide: function () {
+        // 页面隐藏
+    },
+    onUnload: function () {
+        // 页面关闭
+    },
+    getIndexData: function() {
+
+        let that = this;
+        util.request(api.CnnIndexUrl).then(function (res) {
+            debugger
+            if (res.errno === 0) {
+                that.setData({
+                    banner: res.data.banner
+                });
+            }
+        });
+
+        /*app.request_post(i, n, function(t) {
+         if (e.data.uid.length > 0) {
+         var i = "https://fudai.i-meihao.shop/index.php?m=Mini&c=Poetry&a=help&uid=" + e.data.uid;
+         app.request_post(i, {}, {}, 1);
+         }
+         e.setData({
+         poem: t.data.list,
+         share: t.data.share,
+         uid: t.data.uid
+         });
+         }, 0);*/
+    },
+    navigateTo: function(t) {
+        wx.navigateTo(t);
+    },
+    select_poem: function(t) {
+        this.setData({
+            current_poem_url: t.currentTarget.dataset.url
+        });
     }
-});
+})

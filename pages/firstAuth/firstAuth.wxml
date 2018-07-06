@@ -1,0 +1,12 @@
+<view class="main">
+    <view class="getinfo" wx:if="{{!userInfo}}">
+        <view class="infowarn">点击下方登录方可正常使用</view>
+        <button bindgetuserinfo="getuserauth" openType="getUserInfo">登录</button>
+    </view>
+    <view wx:else>
+        <view class="avatar">
+            <image src="{{userInfo.avatarUrl}}"></image>
+        </view>
+        <view style="text-align:center;">{{userInfo.nickName}}</view>
+    </view>
+</view>

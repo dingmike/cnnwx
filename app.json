@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/firstAuth/firstAuth",
     "pages/gongDu/gongDu",
     "pages/explain/explain",
     "pages/orale/orale",
