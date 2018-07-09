@@ -12,6 +12,9 @@
 .getinfo>button {
     width: 50%;
     margin: 30rpx auto 10rpx;
+    background-color:orange;
+    color:#fff;
+
 }
 
 .avatar {
@@ -23,4 +26,24 @@
     width: 160rpx;
     height: 160rpx;
     border-radius: 50%;
+}
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    padding: 50rpx 0;
+    align-items: center;
+    background: #333;
+    width: 750rpx;
+}
+
+.userinfo-avatar {
+    width: 160rpx;
+    height: 160rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+}
+
+.userinfo-nickname {
+    margin-top: 20rpx;
+    color: #FFF;
 }

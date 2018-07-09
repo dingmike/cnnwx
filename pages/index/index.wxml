@@ -15,7 +15,7 @@
 
     </view>
     <view class="main">
-        <view class="title">21天阅读达人养成计划</view>
+        <view class="title">{{learnType}}</view>
         <wxc-panel border="{{false}}" >
             <view class="enrollment">
                 <view class="enrollment-nums">
@@ -23,7 +23,7 @@
                 </view>
                 <view class="enrollment-images">
                     <image src="{{userInfo.avatarUrl}}" wx:if="{{avaData}}"></image>
-                    <image src="{{item.avatar}}" wx:for="{{studyUser}}" wx:key="{{item}}"></image>
+                    <image src="{{item.avatar}}" wx:for="{{studyUser}}" wx:key="{{item.id}}"></image>
                 </view>
             </view>
             <view class="button-small-wrap">

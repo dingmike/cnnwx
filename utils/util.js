@@ -43,8 +43,11 @@ function request(url, data = {}, method = "GET") {
                 content: '请先登录',
                 success: function (res){
                     if (res.confirm) {
-                        wx.switchTab({
+                        /*wx.switchTab({
                             url: '/pages/ucenter/index/index'
+                        });*/
+                        wx.switchTab({
+                            url: '/pages/firstAuth/firstAuth'
                         });
                     }
                 }

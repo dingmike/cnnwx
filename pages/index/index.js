@@ -3,7 +3,7 @@ const api = require('../../config/api.js');
 const user = require('../../services/user.js');
 
 //获取应用实例
-const app = getApp()
+const app = getApp();
 Page({
     data: {
         single: {
@@ -16,8 +16,10 @@ Page({
         current_poem_url: "",
         share: "",
         uid: "",
+        userInfo: '',
         banner: [],
         joinBtn: "继续学习",
+        learnType: '',
         setTimeSty: true,
         payStatus: true,
         showModalStatus: !1,
@@ -44,16 +46,37 @@ Page({
         }
     },
 
-    onLoad: function(t) {
+    onLoad(t) {
+
+        if (app.globalData.userInfo && app.globalData.userInfo != '') {
+            this.setData({
+                userInfo: app.globalData.userInfo,
+            });
+        } else {
+            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+            // 所以此处加入 callback 以防止这种情况
+            app.employIdCallback = info => {
+                debugger
+                if (info != '') {
+                    this.setData({
+                       userInfo: info
+                    });
+                }
+            }
+        }
+
+
+
+
+        debugger
+
+
        /* wx.showLoading({
             title: "加载中"
         });*/
 
         // 获取首页数据
-        this.getIndexData();
-
-
-        var e = this, o = decodeURIComponent(t.scene);
+      /*  var e = this, o = decodeURIComponent(t.scene);
         console.log(o);
         var s = this;
 
@@ -65,9 +88,10 @@ Page({
                     test: a.data
                 });
             }
-        });
-        s._onLoad(); // 提前
-        wx.getUserInfo({
+        });*/
+        this.getIndexData();
+        this._onLoad(); // 提前
+       /* wx.getUserInfo({
             success: function(t) {
                 debugger
                 var e = t.userInfo;
@@ -108,9 +132,10 @@ Page({
                     openid: o
                 }), app.globalData.openid = o, s._onLoad());
             }
-        });
+        });*/
     },
     _onLoad: function() {
+        debugger
         debugger
         var t = this;
         this.data.type = app.globalData.type;
@@ -121,7 +146,7 @@ Page({
             openid: e,
             bgimg: app.globalData.bgimg
         });
-        t.getStudyUser();
+        // t.getStudyUser();
     },
     getStudyUser: function() {
         debugger
@@ -146,6 +171,9 @@ Page({
     },
     takePartIn(e){
         debugger;
+        wx.navigateTo({
+            url: "/pages/firstAuth/firstAuth"
+        })
     },
     onShow: function() {
         var t = app.globalData.type;
@@ -165,11 +193,22 @@ Page({
     getIndexData: function() {
 
         let that = this;
-        util.request(api.CnnIndexUrl).then(function (res) {
+        // learnTypeId  学习类型ID
+        util.request(api.CnnIndexUrl, {learnTypeId: 1}).then(function (res) {
             debugger
             if (res.errno === 0) {
-                that.setData({
-                    banner: res.data.banner
+
+                let e = res.data.userLearnList, o = res.data.userListTotal;
+                o > 200 ? (o = 200, that.setData({
+                    banner: res.data.banner,
+                    learnType: e[0].learnType,
+                    studyUser: e,
+                    studyUserNums: o + "+"
+                })) : that.setData({
+                    learnType: e[0].learnType,
+                    banner: res.data.banner,
+                    studyUser: e,
+                    studyUserNums: o
                 });
             }
         });
@@ -186,9 +225,9 @@ Page({
             });
         }, 0);*/
     },
-    navigateTo: function(t) {
+   /* navigateTo: function(t) {
         wx.navigateTo(t);
-    },
+    },*/
     select_poem: function(t) {
         this.setData({
             current_poem_url: t.currentTarget.dataset.url
