@@ -56,7 +56,7 @@ Page({
         console.log(o);
         var s = this;
 
-        wx.request({
+       /* wx.request({
             url: app.globalData.url + "api/Index/test",
             success: function(a) {
                 console.log(a.data);
@@ -64,9 +64,9 @@ Page({
                     test: a.data
                 });
             }
-        });
+        });*/
         s._onLoad(); // 提前
-        wx.getUserInfo({
+      /*  wx.getUserInfo({
             success: function(t) {
                 debugger
                 var e = t.userInfo;
@@ -107,24 +107,7 @@ Page({
                     openid: o
                 }), app.globalData.openid = o, s._onLoad());
             }
-        });
-    },
-    updateUserInfo: function() {
-        var t = app.globalData.openid,
-            e = app.globalData.userInfo.avatarUrl,
-            o = app.globalData.userInfo.nickName;
-        wx.request({
-            url: app.globalData.url + "api/User/updateUserInfo",
-            data: {
-                uid: t,
-                avatar: e,
-                username: o
-            },
-            success: function(a) {
-                console.log("更新结果");
-                console.log(a);
-            }
-        });
+        });*/
     },
     _onLoad: function() {
         debugger
@@ -132,7 +115,6 @@ Page({
         this.data.type = app.globalData.type;
         wx.showNavigationBarLoading();
         var e = app.globalData.openid;
-        t.updateUserInfo();
         console.log(e);
         this.setData({
             openid: e,

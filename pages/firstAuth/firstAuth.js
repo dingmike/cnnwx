@@ -46,7 +46,9 @@ Page({
                     userInfo: res.data.userInfo
                 });
                 app.globalData.userInfo = res.data.userInfo;
-                wx.setStorageSync('userInfo', res.data.userInfo)
+                wx.setStorageSync('userInfo', res.data.userInfo);
+                wx.setStorageSync("openid",res.data.userInfo.weixin_openid);
+                app.globalData.openid = res.data.userInfo.weixin_openid;
                 app.globalData.token = res.data.token;
                 setTimeout(function(){
                     wx.redirectTo({

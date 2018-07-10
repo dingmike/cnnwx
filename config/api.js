@@ -3,6 +3,7 @@ var NewApiRootUrl = 'http://localhost:8080/api/';
 module.exports = {
     CnnIndexUrl: NewApiRootUrl + 'index/cnnIndex', // cnn首页数据接口
     IndexUrl: NewApiRootUrl + 'index/index', //商城首页数据接口
+    UpdateUserInfo: NewApiRootUrl + 'api/user/updateUserInfo', //更新微信用户信息
     CatalogList: NewApiRootUrl + 'catalog/index',  //分类目录全部分类数据接口
     CatalogCurrent: NewApiRootUrl + 'catalog/current',  //分类目录当前分类数据接口
 

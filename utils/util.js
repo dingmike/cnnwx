@@ -19,7 +19,7 @@ function formatNumber(n) {
 }
 
 /**
- * 封封微信的的request
+ * 封微信的request
  */
 function request(url, data = {}, method = "GET") {
   return new Promise(function (resolve, reject) {
@@ -32,6 +32,7 @@ function request(url, data = {}, method = "GET") {
         'X-Nideshop-Token': wx.getStorageSync('token')
       },
       success: function (res) {
+        debugger
         console.log("success");
 
         if (res.statusCode == 200) {

@@ -101,7 +101,7 @@
             <view class="introduce-explain">
                 <text bindtap="bindExplain">活动详情</text>
             </view>
-            <form bindsubmit="formSubmit" reportSubmit="true" wx:if="{{test}}">
+            <form bindsubmit="formSubmit" reportSubmit="true">
                 <view class="introduce-join-btn">
                     <view bindtap="startStudy" class="introduce-join-pay" data-days="{{single.unlocks}}" data-statu="open">
                         <button formType="submit">{{joinBtn}}</button>
