@@ -137,6 +137,7 @@ Page({
         });
     },
     Recordingend: function() {
+        debugger
         var t = this;
         console.log("录音结束"), o.stop(), this.setData({
             playing: !1
@@ -183,6 +184,7 @@ Page({
         });
     },
     getStorage: function() {
+        debugger
         var t = this.data.oid, a = this.data.detailIndex, e = this.data.oraleDetail;
         this.getBackStatus(), this.setData({
             startPlay: !1,
@@ -199,6 +201,7 @@ Page({
             nextSty: !1,
             completeSty: !1
         });
+        debugger
         var o = this.data.type + "voice" + t + a;
         console.log(o);
         var s = wx.getStorageSync(o);

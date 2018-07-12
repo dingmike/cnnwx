@@ -75,6 +75,7 @@
                 <image src="{{item.avatar}}" wx:for="{{studyUser}}" wx:key="{{item}}"></image>
             </view>
         </view>
+        <!--支付弹窗 start-->
         <view animation="{{animationData}}" class="signUp" wx:if="{{showModalStatus}}">
             <view class="signUp-title">
                 <text>报名</text>
@@ -93,6 +94,7 @@
                 <text>提交</text>
             </view>
         </view>
+        <!--支付弹窗 end-->
         <view class="introduce-join">
             <view class="introduce-join-text">
                 <text>【21天阅读达人养成计划】是由@cnn每日更新联合资深英语老师推出的英语阅读练习计划。在这21天中 ，将涉及不同领域的文章，以及常用英语进行罗列练习。在这21天中，每天10分钟，养成阅读英文的习惯。加油！

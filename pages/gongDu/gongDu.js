@@ -44,6 +44,7 @@ Page({
     },
 
     onLoad: function(t) {
+        debugger
         /* wx.showLoading({
          title: "加载中"
          });*/
@@ -120,6 +121,7 @@ Page({
             openid: e,
             bgimg: app.globalData.bgimg
         });
+        t.getLearnInfo();
         t.addUser();
         t.getStudyUser();
         t.getLastDay();
@@ -148,6 +150,62 @@ Page({
                 }), a.data && o.setData({
                     joinBtn: "今日已打卡 点击回顾"
                 }), o.addUser();
+            }
+        });
+    },
+
+    getLearnInfo() {
+
+        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+            debugger
+            if (res.errno === 0) {
+
+                wx.hideLoading();
+
+                if(res.data.start_status == 1){ // 已支付开始学习
+
+
+
+                }else{
+                    wx.hideNavigationBarLoading();
+                    this.setData({
+                        contact: false,
+                        joinBtn: '马上加入学习',
+                        setTimeSty: false
+                    });
+
+                    // app.globalData.single = res.data
+                }
+
+
+
+
+                if (21 == res.data.unlocks && this.setData({
+                        contact: !0
+                    }), wx.hideNavigationBarLoading(), 0 == res.data.starts) this.setData({
+                    joinBtn: "马上加入学习",
+                    setTimeSty: !1
+                }), res.data.unlocks = 0, app.globalData.single = res.data, this.setData({
+                    single: res.data,
+                    Contents: !0
+                }); else {
+                    app.globalData.single = res.data, this.setData({
+                        // single: e.data,
+                        single: {},
+                        Contents: !0
+                    });
+                    var o = wx.createAnimation({
+                        transformOrigin: "50% 50%",
+                        duration: 1e3,
+                        timingFunction: "ease",
+                        delay: 0
+                    });
+                    o.translate(-95).step(), this.setData({
+                        animationData: o.export(),
+                        avaData: !0
+                    });
+                }
+
             }
         });
     },
@@ -197,7 +255,11 @@ Page({
     },
     addUser: function() {
         wx.showNavigationBarLoading();
-        var t = this, e = (t.data.cardM, app.globalData.userInfo);
+
+
+
+
+      /*  var t = this, e = (t.data.cardM, app.globalData.userInfo);
         console.log(e);
         var o = t.data.openid, s = t.data.type;
         o && e && wx.request({
@@ -239,7 +301,7 @@ Page({
                 }
                 console.log(app.globalData.iffree), 1 == app.globalData.iffree && 0 == e.data.starts && console.log("免费");
             }
-        });
+        });*/
     },
     startStudy: function(t) {
         var e = this.data.single, o = (this.data.openid, this), s = this.data.type, n = t.currentTarget.dataset.days;
