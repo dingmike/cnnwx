@@ -5,8 +5,23 @@ module.exports = {
     IndexUrl: NewApiRootUrl + 'index/index', //商城首页数据接口
     UpdateUserInfo: NewApiRootUrl + 'user/updateUserInfo', //更新微信用户信息
     GetLearnInfo: NewApiRootUrl + 'user/getLearnInfo', //更新微信用户学习信息 @params uid
+
+
+
+    IndexUrlNewGoods: NewApiRootUrl + 'index/newGoods', //
+    IndexUrlHotGoods: NewApiRootUrl + 'index/hotGoods', //首页数据接口
+    IndexUrlTopic: NewApiRootUrl + 'index/topic', //首页数据接口
+    IndexUrlBrand: NewApiRootUrl + 'index/brand', //首页数据接口IndexUrlChannel
+    IndexUrlCategory: NewApiRootUrl + 'index/category', //首页数据接口IndexUrlChannel
+    IndexUrlBanner: NewApiRootUrl + 'index/banner', //首页数据接口IndexUrlChannel
+    IndexUrlChannel: NewApiRootUrl + 'index/channel', //首页数据接口IndexUrlChannel
+
     CatalogList: NewApiRootUrl + 'catalog/index',  //分类目录全部分类数据接口
     CatalogCurrent: NewApiRootUrl + 'catalog/current',  //分类目录当前分类数据接口
+
+
+
+
 
     AuthLoginByWeixin: NewApiRootUrl + 'auth/login_by_weixin', //微信登录
 
@@ -23,7 +38,7 @@ module.exports = {
 
     CartList: NewApiRootUrl + 'cart/index', //获取购物车的数据
     CartAdd: NewApiRootUrl + 'cart/add', // 添加商品到购物车
-    BuyAdd: NewApiRootUrl + 'buy/add', // 直接购买    
+    BuyAdd: NewApiRootUrl + 'buy/add', // 直接购买
     CartUpdate: NewApiRootUrl + 'cart/update', // 更新购物车的商品
     CartDelete: NewApiRootUrl + 'cart/delete', // 删除购物车的商品
     CartChecked: NewApiRootUrl + 'cart/checked', // 选择或取消选择商品
@@ -64,17 +79,16 @@ module.exports = {
 
     FootprintList: NewApiRootUrl + 'footprint/list',  //足迹列表
     FootprintDelete: NewApiRootUrl + 'footprint/delete',  //删除足迹
-    
+
     FeedbackAdd: NewApiRootUrl + 'feedback/save', //添加反馈
     SmsCode: NewApiRootUrl + 'user/smscode', //发送短信
     BindMobile: NewApiRootUrl + 'user/bindMobile', //绑定手机
     Login: NewApiRootUrl + 'auth/login', //账号登录
     Register: NewApiRootUrl + 'auth/register', //注册
     CouponList: NewApiRootUrl + 'coupon/list', // 优惠券列表
-    GoodsCouponList: NewApiRootUrl + 'coupon/listByGoods', // 商品优惠券列表   
+    GoodsCouponList: NewApiRootUrl + 'coupon/listByGoods', // 商品优惠券列表
     OrderQuery: NewApiRootUrl + 'pay/query',
     OrderSuccess: NewApiRootUrl + 'order/updateSuccess',
-    ReadRecord: NewApiRootUrl + 'newscnn/recordList'   // 用户阅读列表
 /*newscnn learning api*/
     // ReadRecord: NewApiRootUrl + 'newscnn/recordList'   // 用户阅读列表
 

@@ -18,6 +18,7 @@ Page({
     cartGoodsCount: 0,
     userHasCollect: 0,
     number: 1,
+    checkedRetailPrice:0,
     checkedSpecText: '请选择规格数量',
     checkedSpecImg: '/static/images/cnnNoImg.jpg',
     openAttr: false,
@@ -158,6 +159,7 @@ Page({
     });
   },
   getCheckedSpecKey: function () {
+    debugger
     let checkedValue = this.getCheckedSpecValue().map(function (v) {
       return v.valueId;
     });
@@ -211,7 +213,9 @@ Page({
 
   },
   getCheckedProductItem: function (key) {
+    debugger
     return this.data.productList.filter(function (v) {
+      debugger
       if (v.goods_specification_ids == key) {
         return true;
       } else {
@@ -313,6 +317,7 @@ Page({
    * 直接购买
    */
   buyGoods: function () {
+    debugger
     let that = this;
     if (this.data.openAttr == false) {
       //打开规格选择窗口

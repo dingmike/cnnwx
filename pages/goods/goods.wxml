@@ -140,7 +140,8 @@
       </view>
     </view>
   </view>
-  
+
+</scroll-view>
   <view class="bottom-btn">
     <view class="l l-collect {{ openAttr ? 'back' : ''}}" bindtap="closeAttrOrCollect">
       <image class="icon" src="{{ collectBackImage }}"></image>
@@ -155,4 +156,3 @@
     <view class="c" bindtap='buyGoods'>立即购买</view>
     <view class="r" bindtap="addToCart">加入购物车</view>
   </view>
-</scroll-view>
