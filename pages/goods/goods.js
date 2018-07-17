@@ -24,7 +24,10 @@ Page({
     openAttr: false,
     noCollectImage: "/static/images/icon_collect.png",
     hasCollectImage: "/static/images/icon_collect_checked.png",
-    collectBackImage: "/static/images/icon_collect.png"
+    collectBackImage: "/static/images/icon_collect.png",
+    $toast: {
+          show: false
+      }
   },
   getGoodsInfo: function () {
     let that = this;
@@ -83,6 +86,7 @@ Page({
 
   },
   clickSkuValue: function (event) {
+    debugger
     let that = this;
     let specNameId = event.currentTarget.dataset.nameId;
     let specValueId = event.currentTarget.dataset.valueId;
@@ -214,12 +218,38 @@ Page({
   },
   getCheckedProductItem: function (key) {
     debugger
-    return this.data.productList.filter(function (v) {
+    return this.data.productList.filter((v)=>{
       debugger
-      if (v.goods_specification_ids == key) {
+        //规格比较
+        let idsArr =v.goods_specification_ids.split('_').sort();
+        let idsArr2 =key.split('_').sort();
+        // v.goods_specification_ids.sort();
+      if (idsArr.toString() === idsArr2.toString()) {
         return true;
       } else {
-        return false;
+        // 没有该规格组合的产品
+          return false;
+        /*  wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000,
+              complete: function () {
+                  return false;
+              }
+          })*/
+       /* this.setData({
+              $toast: {
+                  show: true
+              }
+          });
+          setTimeout(() => {
+              this.setData({
+                  $toast: {
+                      show: false
+                  }
+              })
+          }, 1500);*/
+        // return false;
       }
     });
   },
