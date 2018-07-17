@@ -102,7 +102,11 @@ Page({
             //如果已经选中，则反选
             if (_specificationList[i].valueList[j].checked) {
               _specificationList[i].valueList[j].checked = false;
+                //根据已选的值，计算其它值的状态
+                this.setSpecValueStatus();
             } else {
+                //根据已选的值，计算其它值的状态
+                this.setSpecValueStatus();
               _specificationList[i].valueList[j].checked = true;
               // 规格图片
               if(_specificationList[i].valueList[j].pic_url){
@@ -152,7 +156,8 @@ Page({
   },
   //根据已选的值，计算其它值的状态
   setSpecValueStatus: function () {
-
+      debugger
+      let selectSpecValue = this.getCheckedSpecValue();
   },
   //判断规格是否选择完整
   isCheckedAllSpec: function () {
