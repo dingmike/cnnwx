@@ -158,6 +158,24 @@ Page({
   setSpecValueStatus: function () {
       debugger
       let selectSpecValue = this.getCheckedSpecValue();
+      selectSpecValue.some((v, index, arr)=>{
+        if(v.valueId ==''||null){
+            this.setData({
+                $toast: {
+                    show: true
+                }
+            });
+            setTimeout(() => {
+                this.setData({
+                    $toast: {
+                        show: false
+                    }
+                })
+            }, 1500);
+        }
+      })
+
+
   },
   //判断规格是否选择完整
   isCheckedAllSpec: function () {
