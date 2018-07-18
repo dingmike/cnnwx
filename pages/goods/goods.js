@@ -7,6 +7,7 @@ Page({
     data: {
         id: 0,
         goods: {},
+        new_goods: {},
         gallery: [],
         attribute: [],
         issueList: [],
@@ -66,10 +67,11 @@ Page({
                         'collectBackImage': that.data.noCollectImage
                     });
                 }
-
+                that.data.new_goods = JSON.parse(JSON.stringify(that.data.goods));
                 WxParse.wxParse('goodsDetail', 'html', res.data.info.goods_desc, that);
 
                 that.getGoodsRelated();
+
             }
         });
 
@@ -86,7 +88,7 @@ Page({
 
     },
     clickSkuValue: function (event) {
-        debugger
+
         let that = this;
         let specNameId = event.currentTarget.dataset.nameId;
         let specValueId = event.currentTarget.dataset.valueId;
@@ -95,6 +97,7 @@ Page({
 
         //TODO 性能优化，可在wx:for中添加index，可以直接获取点击的属性名和属性值，不用循环
         let _specificationList = this.data.specificationList;
+        let _goods = this.data.goods;
         for (let i = 0; i < _specificationList.length; i++) {
             if (_specificationList[i].specification_id == specNameId) {
                 for (let j = 0; j < _specificationList[i].valueList.length; j++) {
@@ -127,7 +130,7 @@ Page({
             }
         }
         this.setData({
-            'specificationList': _specificationList
+            specificationList: _specificationList
         });
         //重新计算spec改变后的信息
         this.changeSpecInfo();
@@ -135,7 +138,6 @@ Page({
     },
     //重新计算哪些值不可以点击
     setDisabledSku(specNameId, specValueId){
-        debugger
         Array.prototype.distinct = function () {
             var arr = this,
                 result = [],
@@ -205,7 +207,6 @@ Page({
             }
             checkedValues.push(_checkedObj);
         }
-
         return checkedValues;
 
     },
@@ -248,13 +249,22 @@ Page({
 
         return checkedValue.join('_');
     },
+    // 清空规格选中参数
+    clearOutSku(){
+        let _specificationList = this.data.specificationList;
+        _specificationList.map((obj, index, array)=>{
+            obj.valueList.map((o, indexx, arr)=>{
+                o.disabled = false;
+            })
+        })
+    },
     changeSpecInfo: function () {
-        debugger
         let checkedNameValue = this.getCheckedSpecValue();
-
         //设置选择的信息
+        let chosedSpec = [];
         let checkedValue = checkedNameValue.filter(function (v) {
             if (v.valueId != 0) {
+                chosedSpec.push(v.valueId);
                 return true;
             } else {
                 return false;
@@ -262,42 +272,38 @@ Page({
         }).map(function (v) {
             return v.valueText;
         });
+
+        // 查询该规格产品价格
+        let _productList = this.data.productList;
+        let _goods = this.data.goods;
+        let _retail_price = '';
+        for (let i = 0; i<_productList.length; i++){
+            let goods_specification_idsArr = _productList[i].goods_specification_ids.split('_');
+            if(goods_specification_idsArr.sort().toString()===chosedSpec.sort().toString()){
+                _retail_price = _productList[i].retail_price;
+            }
+        }
+        _goods.retail_price = _retail_price;
+
+
         if (checkedValue.length > 0) {
             this.setData({
-                'checkedSpecText': checkedValue.join('　')
+                checkedSpecText: checkedValue.join('　'),
+                goods:_goods
             });
         } else {
+            this.clearOutSku();
+            let _specificationList = this.data.specificationList;
+            let _new_goods =  this.data.new_goods;
             this.setData({
-                'checkedSpecText': '请选择规格数量'
+                checkedSpecText: '请选择规格数量',
+                goods: _new_goods,
+                specificationList: _specificationList
             });
         }
-
-
-        // if (checkedValue.length > 0) {
-        //     checkedNameValue.map((obj) => {
-        //         // 选择规格相应图片
-        //         if (obj.checkedImg != '' || obj.checkedImg != null || obj.checkedImg != undefined) {
-        //             this.setData({
-        //                 'checkedSpecImg': obj.checkedImg
-        //             });
-        //         }
-        //     });
-        //
-        //   this.setData({
-        //     'checkedSpecText': checkedValue.join('　'),
-        //     'checkedSpecImg': checkedNameValue.checkedImg
-        //   });
-        // } else {
-        //   this.setData({
-        //     'checkedSpecText': '请选择规格数量'
-        //   });
-        // }
-
     },
     getCheckedProductItem: function (key) {
-        debugger
         return this.data.productList.filter((v) => {
-            debugger
             //规格比较
             let idsArr = v.goods_specification_ids.split('_').sort();
             let idsArr2 = key.split('_').sort();
@@ -425,7 +431,6 @@ Page({
      * 直接购买
      */
     buyGoods: function () {
-        debugger
         let that = this;
         if (this.data.openAttr == false) {
             //打开规格选择窗口
