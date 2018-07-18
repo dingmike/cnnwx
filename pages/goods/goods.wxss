@@ -656,16 +656,17 @@
 }
 
 .spec-con .value{
-    display: inline-block;
-    height: 62rpx;
-    padding: 0 35rpx;
-    line-height: 56rpx;
-    text-align: center;
-    margin-right: 25rpx;
-    margin-bottom: 16.5rpx;
-    border: 1px solid #333;
-    font-size: 25rpx;
-    color: #333;
+    display:inline-block;
+    height:54rpx;
+    padding:0 16rpx;
+    line-height:50rpx;
+    text-align:center;
+    margin-right:25rpx;
+    margin-bottom:16.5rpx;
+    border:1px solid #333;
+    font-size:25rpx;
+    color:#333;
+
 }
 
 .spec-con .value.disable{
@@ -708,5 +709,7 @@
     text-align: center;
     line-height: 65rpx;
 }
-
+.sku-btn{
+    margin:6rpx 14rpx;
+}
 
