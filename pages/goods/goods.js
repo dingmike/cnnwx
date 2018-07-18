@@ -242,7 +242,6 @@ Page({
         });
     },
     getCheckedSpecKey: function () {
-        debugger
         let checkedValue = this.getCheckedSpecValue().map(function (v) {
             return v.valueId;
         });
