@@ -46,7 +46,7 @@ App({
         //new
 
         userInfo: '',
-       /* userInfo: {
+        /* userInfo: {
             nickName: 'Hi,游客',
             userName: '点击去登录',
             avatarUrl: 'http://p9kyr79ne.bkt.clouddn.com/1/20180531/150547696d798c.png'

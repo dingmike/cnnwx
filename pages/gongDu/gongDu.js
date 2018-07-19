@@ -3,14 +3,16 @@ const api = require('../../config/api.js');
 const user = require('../../services/user.js');
 
 //获取应用实例
-const app = getApp()
+const app = getApp();
 Page({
     data: {
         single: {
             unlocks: 10, //已经阅读打卡的天数
-            setup: '08:30',  // 设置提醒时间
-            starts: 1,  //是否已开始打卡
+            setupTime: '08:30',  // 设置提醒时间
+            startStatus: 1,  //是否已开始打卡
+            miss:0,
         },
+        test:true,
         poem: "",
         current_poem_url: "",
         share: "",
@@ -31,7 +33,7 @@ Page({
     },
 
     showToast() {
-        let $toast = this.selectComponent(".J_toast")
+        let $toast = this.selectComponent(".J_toast");
         $toast && $toast.show()
     },
     onShareAppMessage: function () {
@@ -125,11 +127,13 @@ Page({
         t.addUser();
         t.getStudyUser();
         t.getLastDay();
-        t.getConnaissances();
+        // t.getConnaissances();
         t.getCard();
-        new Date().getHours() >= 10 && this.setData({
-            joinBtn: "您已经错过规定打卡时间 点击学习"
-        });
+        if(new Date().getHours() >= 10 ){
+            this.setData({
+                joinBtn: "您已经错过规定打卡时间 点击学习"
+            });
+        }
     },
     getCard: function() {
         var t = new Date(), e = this.data.openid, o = this, s = t.getMonth() + 1, n = t.getDate();
@@ -162,11 +166,28 @@ Page({
 
                 wx.hideLoading();
 
-                if(res.data.start_status == 1){ // 已支付开始学习
+                let studyNums = [];
+                for(let i=1; i<=res.data.genusdays; i++){
+                    studyNums.push({genusdays: i})
+                }
+                console.log(studyNums)
+                this.setData({
+                    studyNums: studyNums
+                });
+                app.globalData.single = res.data;
+                this.setData({
+                    single: res.data,
+                    Contents: !0
+                });
 
 
 
-                }else{
+                if(res.data.startStatus == 1){ // 已支付开始学习
+                    debugger
+
+
+
+                }else{ // 没支付
                     wx.hideNavigationBarLoading();
                     this.setData({
                         contact: false,
@@ -178,8 +199,19 @@ Page({
                 }
 
 
+                if(21 == res.data.unlocks){
+                    this.setData({
+                        contact: !0
+                    });
+                    wx.hideNavigationBarLoading();
+                }else{
+
+                }
 
 
+
+
+/*
                 if (21 == res.data.unlocks && this.setData({
                         contact: !0
                     }), wx.hideNavigationBarLoading(), 0 == res.data.starts) this.setData({
@@ -204,7 +236,7 @@ Page({
                         animationData: o.export(),
                         avaData: !0
                     });
-                }
+                }*/
 
             }
         });
@@ -304,10 +336,24 @@ Page({
         });*/
     },
     startStudy: function(t) {
-        var e = this.data.single, o = (this.data.openid, this), s = this.data.type, n = t.currentTarget.dataset.days;
-        app.globalData.days = n, e.starts || app.globalData.iffree ? wx.navigateTo({
+        let e = this.data.single, o = (this.data.openid, this), s = this.data.type, n = t.currentTarget.dataset.days;
+
+        app.globalData.days = n;
+
+
+        if(e.startStatus || app.globalData.iffree ){
+            wx.navigateTo({
+                url: "../orale/orale?days=" + n + "&type=" + s
+            })
+        }else{
+            console.log("用户还没开始付费学习");
+            debugger
+            o.powerDrawer(t.currentTarget.dataset.statu);
+        }
+
+   /*     e.starts || app.globalData.iffree ? wx.navigateTo({
             url: "../orale/orale?days=" + n + "&type=" + s
-        }) : (console.log("用户还没开始付费学习"), o.powerDrawer(t.currentTarget.dataset.statu));
+        }) : (console.log("用户还没开始付费学习"), o.powerDrawer(t.currentTarget.dataset.statu));*/
     },
     sendPay: function() {
         var t = this.data.openid, e = this.data.type, o = this;
@@ -369,13 +415,26 @@ Page({
         return !0;
     },
     reviewHistory: function(t) {
-        var e = t.currentTarget.dataset.day, o = this.data.type;
-        app.globalData.type = o, app.globalData.days = e, this.data.test && e > this.data.single.unlocks ? console.log("超出用户解锁的天数") : wx.navigateTo({
+        let e = t.currentTarget.dataset.day, o = this.data.type;
+        app.globalData.type = o;
+        app.globalData.days = e;
+
+        if(this.data.test&& e > this.data.single.unlocks){
+            console.log('超出用户解锁的天数')
+        }else{
+            wx.navigateTo({
+                url: "../orale/orale?days=" + e + "&type=" + o
+            });
+        }
+
+       /* this.data.test && e > this.data.single.unlocks ? console.log("超出用户解锁的天数") : wx.navigateTo({
             url: "../orale/orale?days=" + e + "&type=" + o
-        });
+        });*/
     },
     powerDrawer: function(a) {
-        console.log(a), this.util(a);
+        debugger
+        console.log(a);
+        this.util(a);
     },
     powerDrawer2: function(a) {
         var t = a.currentTarget.dataset.statu;

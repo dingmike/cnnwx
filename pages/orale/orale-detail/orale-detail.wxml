@@ -60,6 +60,7 @@
         <view bindtap="nextOrale" class="next" wx:if="{{nextSty&&detailIndex!=4}}">
             <image src="{{datiData?'/static/image/nextsele.png':'/static/image/next.png'}}"></image>
         </view>
+        <!--去打卡-->
         <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
             <view class="next" wx:if="{{completeSty}}">
                 <button formType="submit"></button>
