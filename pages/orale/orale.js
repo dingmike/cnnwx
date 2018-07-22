@@ -1,7 +1,8 @@
 function a(a) {
     return [ parseInt(a / 60 % 60), parseInt(a % 60) ].join(":").replace(/\b(\d)\b/g, "0$1");
 }
-
+const util = require('../../utils/util.js');
+const api = require('../../config/api.js');
 var t = getApp(), o = wx.getBackgroundAudioManager(), e = require("../../utils/dakaUtil.js");
 
 Page({
@@ -13,6 +14,7 @@ Page({
         wx.showNavigationBarLoading();
         var o = t.globalData.days, e = t.globalData.type;
         this.getOraleContent(o, e);
+        this.getContent(o, e);
     },
     getOraleContent: function(a, o) {
         var e = this;
@@ -24,16 +26,31 @@ Page({
             },
             success: function(a) {
                 var o = a.data;
-                o.oralesound = o.oralesound.replace(/\\/g, "/"), o.extendsound = o.extendsound.replace(/\\/g, "/"), 
+                o.oralesound = o.oralesound.replace(/\\/g, "/"), o.extendsound = o.extendsound.replace(/\\/g, "/"),
                 wx.hideLoading(), t.globalData.oraleCountent = o, e.setData({
                     oraleContent: o
                 }), e.playVoice();
             }
         });
     },
+    getContent(a, o){
+        util.request(api.GetGongduContent, {days: a, type: 1, uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+            debugger
+            console.log(res)
+            // var o = res.data;
+            // o.oraleSound = o.oraleSound.replace(/\\/g, "/");
+            // o.extendSound = o.extendSound.replace(/\\/g, "/");
+            // wx.hideLoading();
+            // t.globalData.oraleCountent = o;
+            // this.setData({
+            //     oraleContent: o
+            // });
+            // this.playVoice();
+        })
+    },
     playVoice: function() {
         var a = this, t = this.data.oraleContent;
-        console.log(t), console.log("neir"), t && (o.src = t.oralesound, o.stop(), o.src = t.oralesound, 
+        console.log(t), console.log("neir"), t && (o.src = t.oralesound, o.stop(), o.src = t.oralesound,
         console.log(o.src), o.title = t.title, o.onPlay(function() {
             wx.hideNavigationBarLoading(), o.pause();
             var t = setInterval(function() {
@@ -54,7 +71,7 @@ Page({
         var t = this, n = this.data.oraleContent;
         this.data.isPlayingMusic ? (o.pause(), this.setData({
             isPlayingMusic: !1
-        })) : (console.log(o.src), o.src || (o.src = n.oralesound), o.play(), o.title = n.title, 
+        })) : (console.log(o.src), o.src || (o.src = n.oralesound), o.play(), o.title = n.title,
         o.onPlay(function() {
             console.log("音乐进度变化");
             setInterval(function() {

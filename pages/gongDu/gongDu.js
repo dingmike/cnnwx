@@ -336,12 +336,13 @@ Page({
         });*/
     },
     startStudy: function(t) {
-        let e = this.data.single, o = (this.data.openid, this), s = this.data.type, n = t.currentTarget.dataset.days;
+        let e = this.data.single, o = (this.data.openid, this), s = this.data.type,
+            n = t.currentTarget.dataset.days;// 打卡unlock day 该打第几天的卡n
 
         app.globalData.days = n;
 
-
         if(e.startStatus || app.globalData.iffree ){
+            // 导航到第n天的学习内容
             wx.navigateTo({
                 url: "../orale/orale?days=" + n + "&type=" + s
             })

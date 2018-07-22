@@ -1,5 +1,6 @@
 var t = getApp(), a = wx.getBackgroundAudioManager(), e = wx.createInnerAudioContext(), o = wx.getRecorderManager();
-
+const util = require('../../../utils/util.js');
+const api = require('../../../config/api.js');
 Page({
     data: {
         detailIndex: 0,
@@ -32,6 +33,7 @@ Page({
             oid: o
         }), this.getOverview(o);
         var s = this;
+        this.getOraleDetail(o);
         wx.request({
             url: t.globalData.url + "api/orale/getOraleDetail",
             data: {
@@ -45,6 +47,21 @@ Page({
                 }), s.getStorage();
             }
         });
+    },
+    getOraleDetail(days){
+        util.request(api.GetOraleDetail, {days: days, type: 1, uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+            debugger
+            console.log(res)
+            // var o = res.data;
+            // o.oraleSound = o.oraleSound.replace(/\\/g, "/");
+            // o.extendSound = o.extendSound.replace(/\\/g, "/");
+            // wx.hideLoading();
+            // t.globalData.oraleCountent = o;
+            // this.setData({
+            //     oraleContent: o
+            // });
+            // this.playVoice();
+        })
     },
     getOverview: function(a) {
         var e = this;
@@ -245,7 +262,7 @@ Page({
     getBackStatus: function() {
         console.log("getBackStatus");
         var t = this.data.oraleDetail, e = this.data.detailIndex, o = this;
-        console.log(t[e].oralesound), t[e].oralesound && (a.src = t[e].oralesound, a.stop(), 
+        console.log(t[e].oralesound), t[e].oralesound && (a.src = t[e].oralesound, a.stop(),
         a.src = t[e].oralesound, a.title = "今日重点", a.onPlay(function() {
             wx.hideNavigationBarLoading(), a.pause();
             var t = setInterval(function() {

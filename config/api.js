@@ -5,6 +5,8 @@ module.exports = {
     IndexUrl: NewApiRootUrl + 'index/index', //商城首页数据接口
     UpdateUserInfo: NewApiRootUrl + 'user/updateUserInfo', //更新微信用户信息
     GetLearnInfo: NewApiRootUrl + 'user/getLearnInfo', //更新微信用户学习信息 @params uid
+    GetGongduContent: NewApiRootUrl + 'gongdu/getContent', //每天的学习主要内容
+    GetOraleDetail: NewApiRootUrl + 'gongdu/getOraleDetail', //每天的学习重点和问答
 
 
 

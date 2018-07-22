@@ -21,11 +21,17 @@
       </navigator>
     </view>
     <view class="item no-border">
+      <navigator url="/pages/ucenter/my-card/my-card" class="a">
+        <text class="icon kefu"></text>
+        <text class="txt">打卡记录</text>
+      </navigator>
+    </view>
+<!--    <view class="item no-border">
       <navigator url="url" class="a">
         <text class="icon gift"></text>
         <text class="txt">礼品卡</text>
       </navigator>
-    </view>
+    </view>-->
     <view class="item">
       <navigator url="/pages/ucenter/collect/collect" class="a">
         <text class="icon address"></text>

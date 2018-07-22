@@ -1,0 +1,47 @@
+.card-selectTime {
+    height: 60rpx;
+    font-size: 13px;
+    line-height: 60rpx;
+    background-color: #feebc6;
+    padding-left: 5%;
+}
+
+.tixing-info {
+    float: right;
+    padding-right: 20rpx;
+    font-size: 12px;
+}
+
+.showImg {
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.showDataNull {
+    color: #d3ac7d;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 200rpx;
+}
+
+.card-items image {
+    width: 70rpx;
+    height: 70rpx;
+    margin: auto 20rpx;
+}
+
+.card-items {
+    border-bottom: 1px solid darkgoldenrod;
+    width: 94%;
+    font-size: 14px;
+    color: #d3ac7d;
+    margin-left: 3%;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-text {
+    padding-top: 15rpx;
+    padding-bottom: 10rpx;
+    margin-left: 40rpx;
+}
