@@ -1,0 +1,24 @@
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+.myCanvas {
+    margin-left: 5%;
+    border-bottom: 1px solid #d4d4d4;
+    background-color: #fff;
+}
+
+.Achievementsbtn {
+    color: #fff;
+    height: 14%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 26rpx;
+}
+
+.Achievementsbtn image {
+    width: 150rpx;
+    height: 150rpx;
+}

@@ -34,6 +34,10 @@ Page({
         }), this.getOverview(o);
         var s = this;
         this.getOraleDetail(o);
+        // this.getOraleDetailOld(o);
+
+    },
+    getOraleDetailOld(o){
         wx.request({
             url: t.globalData.url + "api/orale/getOraleDetail",
             data: {
@@ -49,10 +53,29 @@ Page({
         });
     },
     getOraleDetail(days){
+        // type 学习类型 days学习第几天
         util.request(api.GetOraleDetail, {days: days, type: 1, uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
             debugger
-            console.log(res)
-            // var o = res.data;
+            console.log(res);
+            let o = res.data;
+
+            for(let e=0; e<o.length; e++){
+                if(o[e].oralesound){
+                    o[e].oralesound = o[e].oralesound.replace(/\\/g, "/");
+                }
+            }
+            this.setData({
+                oraleDetail: o
+            });
+            this.getStorage();
+
+
+          /*  for (var a = res.data, e = 0; e < a.length; e++) a[e].oralesound = a[e].oralesound.replace(/\\/g, "/");
+            this.setData({
+                oraleDetail: a
+            });
+            this.getStorage();*/
+
             // o.oraleSound = o.oraleSound.replace(/\\/g, "/");
             // o.extendSound = o.extendSound.replace(/\\/g, "/");
             // wx.hideLoading();
@@ -78,6 +101,7 @@ Page({
         });
     },
     formSubmit: function(a) {
+        debugger;
         console.log(a);
         var e = a.detail.formId, o = t.globalData.openid, s = t.globalData.type, i = t.globalData.userInfo;
         console.log(o), console.log(e), wx.request({

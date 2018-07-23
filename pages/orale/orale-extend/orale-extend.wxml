@@ -8,7 +8,7 @@
             </view>
             <view class="today-content-sound">
                 <view class="today-sound-control">
-                    <image bindtap="startPlay" src="{{isPlayingMusic?'/images/stop.png':'/images/start.png'}}"></image>
+                    <image bindtap="startPlay" src="{{isPlayingMusic?'/static/images/stop.png':'/static/images/start.png'}}"></image>
                 </view>
                 <view class="today-sound-process">
                     <slider activeColor="#FEC868" backgroundColor="#DCDCDC" bindchange="sliderchange" max="{{audioMax}}" min="0" value="{{currentPosition}}"></slider>
