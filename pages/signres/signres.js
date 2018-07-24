@@ -1,5 +1,9 @@
-var t = wx.createCanvasContext("myCanvas"), e = getApp();
 
+const util = require('../../utils/util.js');
+const api = require('../../config/api.js');
+
+let t = wx.createCanvasContext("myCanvas");
+let e = getApp();
 Page({
     data: {},
     onLoad: function(t) {
@@ -9,12 +13,22 @@ Page({
         console.log(n), console.log(o), a.setData({
             phoneWidth: n,
             phoneHeight: o
-        }), a.getParameter();
+        });
+        // a.getParameter();
+        a.getCardNum();
     },
     extendRead: function() {
         wx.reLaunch({
             url: "../orale/orale-extend/orale-extend"
         });
+    },
+    getCardNum(){
+        var openid = e.globalData.openid, a = e.globalData.type;
+        util.request(api.GetCardNums, {uid: wx.getStorageSync('openid'), type: 1,}, 'POST').then( res =>{
+            debugger
+            this.canvas(res.data.length, a);
+            wx.hideNavigationBarLoading();
+        })
     },
     getParameter: function() {
         var t = e.globalData.openid, a = e.globalData.type, n = this;

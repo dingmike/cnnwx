@@ -7,6 +7,8 @@ module.exports = {
     GetLearnInfo: NewApiRootUrl + 'user/getLearnInfo', //更新微信用户学习信息 @params uid
     GetGongduContent: NewApiRootUrl + 'gongdu/getContent', //每天的学习主要内容
     GetOraleDetail: NewApiRootUrl + 'gongdu/getOraleDetail', //每天的学习重点和问答
+    GetCardNums: NewApiRootUrl + 'gongdu/getCardNums', //每天的有效打卡
+    GetCardRecord: NewApiRootUrl + 'gongdu/getCardRecord', //每天的打卡
 
 
 

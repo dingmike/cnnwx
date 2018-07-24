@@ -1,5 +1,8 @@
-function t(e, n) {
-    var r = n ? new Date(1e3 * n) : new Date(), a = function(t, e) {
+function translateTime(e, n) {
+    debugger
+    n = n/1000;
+    var r = n ? new Date(1000*n) : new Date();
+    var a = function(t, e) {
         return (t += "").length < e ? new Array(++e - t.length).join("0") + t : t;
     }, u = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ], o = {
         1: "st",
@@ -114,7 +117,10 @@ function t(e, n) {
     });
 }
 
-var e = getApp();
+
+const util = require('../../../utils/util.js');
+const api = require('../../../config/api.js');
+let e = getApp();
 
 Page({
     data: {},
@@ -125,10 +131,24 @@ Page({
         }), this.setData({
             choiceYear: n,
             choiceMonth: r
-        }), this.getCardRecord();
+        });
+        // this.getCardRecord();
+        this.getCardRecord2();
     },
-    getCardRecord: function() {
-        var n = e.globalData.openid, r = this;
+
+    getCardRecord2(){
+        let n = e.globalData.openid, r = this;
+        util.request(api.GetCardRecord, {uid: wx.getStorageSync('openid'), type: 1,}, 'POST').then( res =>{
+            debugger
+            var n = res.data;
+            for (var a = 0; a < n.length; a++) n[a].card_time = translateTime("Y-m-d H:i:s", n[a].cardTime);
+            console.log(n), r.setData({
+                cardData: n
+            }), r.processingData(n);
+        })
+    },
+    getCardRecord() {
+        let n = e.globalData.openid, r = this;
         wx.request({
             url: e.globalData.url + "api/User/getCardRecord",
             data: {
@@ -137,7 +157,7 @@ Page({
             success: function(e) {
                 var n = e.data;
                 console.log(n), console.log("数据");
-                for (var a = 0; a < n.length; a++) n[a].card_time = t("Y-m-d H:i:s", n[a].card_time);
+                for (var a = 0; a < n.length; a++) n[a].card_time = translateTime("Y-m-d H:i:s", n[a].card_time);
                 console.log(n), r.setData({
                     cardData: n
                 }), r.processingData(n);
@@ -151,15 +171,19 @@ Page({
             date: t.detail.value,
             choiceYear: e,
             choiceMonth: n
-        }), this.processingData();
+        }); this.processingData();
     },
     processingData: function() {
-        for (var t = this.data.cardData, e = this.data.choiceYear, n = this.data.choiceMonth, r = new Object(), a = 0, u = 0; u < t.length; u++) t[u].month == n && t[u].year == e && (r[a] = t[u], 
-        a++);
-        console.log(r), 0 == Object.keys(r).length ? (console.log("判空成立"), this.setData({
-            showDatasNull: !0
+debugger
+        let r = new Object();
+
+        for (var t = this.data.cardData, e = this.data.choiceYear, n = this.data.choiceMonth, a = 0, u = 0; u < t.length; u++)
+            t[u].month == n && t[u].year == e && (r[a] = t[u], a++);
+
+         0 == Object.keys(r).length ? (console.log("判空成立"), this.setData({
+            showDatasNull: true
         })) : this.setData({
-            showDatasNull: !1
+            showDatasNull: false
         }), this.setData({
             showData: r
         });

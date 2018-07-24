@@ -104,7 +104,9 @@ Page({
         debugger;
         console.log(a);
         var e = a.detail.formId, o = t.globalData.openid, s = t.globalData.type, i = t.globalData.userInfo;
-        console.log(o), console.log(e), wx.request({
+        console.log(o);
+        console.log(e);
+        wx.request({
             url: t.globalData.url + "api/User/setFormId",
             data: {
                 uid: o,
