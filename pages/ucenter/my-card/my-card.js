@@ -140,11 +140,11 @@ Page({
         let n = e.globalData.openid, r = this;
         util.request(api.GetCardRecord, {uid: wx.getStorageSync('openid'), type: 1,}, 'POST').then( res =>{
             debugger
-            var n = res.data;
-            for (var a = 0; a < n.length; a++) n[a].card_time = translateTime("Y-m-d H:i:s", n[a].cardTime);
-            console.log(n), r.setData({
-                cardData: n
-            }), r.processingData(n);
+            var nd = res.data;
+            for (var a = 0; a < nd.length; a++) nd[a].card_time = translateTime("Y-m-d H:i:s", nd[a].cardTime);
+            console.log(nd), r.setData({
+                cardData: nd
+            }), r.processingData(nd);
         })
     },
     getCardRecord() {
