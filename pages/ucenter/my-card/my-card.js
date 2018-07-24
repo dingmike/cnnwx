@@ -141,7 +141,7 @@ Page({
         util.request(api.GetCardRecord, {uid: wx.getStorageSync('openid'), type: 1,}, 'POST').then( res =>{
             debugger
             var nd = res.data;
-            for (var a = 0; a < nd.length; a++) nd[a].card_time = translateTime("Y-m-d H:i:s", nd[a].cardTime);
+            for (var a = 0; a < nd.length; a++) nd[a].cardTime = translateTime("Y-m-d H:i:s", nd[a].cardTime);
             console.log(nd), r.setData({
                 cardData: nd
             }), r.processingData(nd);
