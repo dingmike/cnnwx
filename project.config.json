@@ -8,7 +8,6 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.0",
 	"appid": "wx1e7030ea0132ea90",
 	"projectname": "cnnwxmall",
 	"condition": {
