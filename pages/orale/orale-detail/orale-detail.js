@@ -100,7 +100,31 @@ Page({
             }
         });
     },
-    formSubmit: function(a) {
+
+    formSubmit(a){
+        var e = a.detail.formId, o = t.globalData.openid, s = t.globalData.type, i = t.globalData.userInfo;
+        let unlocks =   t.globalData.single.unlocks;
+        util.request(api.SetCardById, {type: 1, uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+debugger
+            if (res.data) wx.redirectTo({
+                url: "/pages/signres/signres"
+            }); else {
+                var a = "今日打卡成功！";
+                res.data || (a = "今日已经打过卡！", wx.showModal({
+                    title: "提示",
+                    content: a,
+                    showCancel: !1,
+                    success: function(t) {
+                        t.confirm && wx.redirectTo({
+                            url: "/pages/signres/signres"
+                        });
+                    }
+                }));
+            }
+
+        })
+    },
+    formSubmit2: function(a) {
         debugger;
         console.log(a);
         var e = a.detail.formId, o = t.globalData.openid, s = t.globalData.type, i = t.globalData.userInfo;

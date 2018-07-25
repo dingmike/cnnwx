@@ -1,121 +1,3 @@
-function translateTime(e, n) {
-    debugger
-    n = n/1000;
-    var r = n ? new Date(1000*n) : new Date();
-    var a = function(t, e) {
-        return (t += "").length < e ? new Array(++e - t.length).join("0") + t : t;
-    }, u = [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ], o = {
-        1: "st",
-        2: "nd",
-        3: "rd",
-        21: "st",
-        22: "nd",
-        23: "rd",
-        31: "st"
-    }, i = [ "", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ], c = {
-        d: function() {
-            return a(c.j(), 2);
-        },
-        D: function() {
-            return c.l().substr(0, 3);
-        },
-        j: function() {
-            return r.getDate();
-        },
-        l: function() {
-            return u[c.w()];
-        },
-        N: function() {
-            return c.w() + 1;
-        },
-        S: function() {
-            return o[c.j()] ? o[c.j()] : "th";
-        },
-        w: function() {
-            return r.getDay();
-        },
-        z: function() {
-            return (r - new Date(r.getFullYear() + "/1/1")) / 864e5 >> 0;
-        },
-        W: function() {
-            var e, n = c.z(), a = 364 + c.L() - n, u = (new Date(r.getFullYear() + "/1/1").getDay() || 7) - 1;
-            return a <= 2 && (r.getDay() || 7) - 1 <= 2 - a ? 1 : n <= 2 && u >= 4 && n >= 6 - u ? (e = new Date(r.getFullYear() - 1 + "/12/31"), 
-            t("W", Math.round(e.getTime() / 1e3))) : 1 + (u <= 3 ? (n + u) / 7 : (n - (7 - u)) / 7) >> 0;
-        },
-        F: function() {
-            return i[c.n()];
-        },
-        m: function() {
-            return a(c.n(), 2);
-        },
-        M: function() {
-            return c.F().substr(0, 3);
-        },
-        n: function() {
-            return r.getMonth() + 1;
-        },
-        t: function() {
-            var t;
-            return 2 == (t = r.getMonth() + 1) ? 28 + c.L() : 1 & t && t < 8 || !(1 & t) && t > 7 ? 31 : 30;
-        },
-        L: function() {
-            var t = c.Y();
-            return 3 & t || !(t % 100) && t % 400 ? 0 : 1;
-        },
-        Y: function() {
-            return r.getFullYear();
-        },
-        y: function() {
-            return (r.getFullYear() + "").slice(2);
-        },
-        a: function() {
-            return r.getHours() > 11 ? "pm" : "am";
-        },
-        A: function() {
-            return c.a().toUpperCase();
-        },
-        B: function() {
-            var t = 60 * (r.getTimezoneOffset() + 60), e = 3600 * r.getHours() + 60 * r.getMinutes() + r.getSeconds() + t, n = Math.floor(e / 86.4);
-            return n > 1e3 && (n -= 1e3), n < 0 && (n += 1e3), 1 == String(n).length && (n = "00" + n), 
-            2 == String(n).length && (n = "0" + n), n;
-        },
-        g: function() {
-            return r.getHours() % 12 || 12;
-        },
-        G: function() {
-            return r.getHours();
-        },
-        h: function() {
-            return a(c.g(), 2);
-        },
-        H: function() {
-            return a(r.getHours(), 2);
-        },
-        i: function() {
-            return a(r.getMinutes(), 2);
-        },
-        s: function() {
-            return a(r.getSeconds(), 2);
-        },
-        O: function() {
-            var t = a(Math.abs(r.getTimezoneOffset() / 60 * 100), 4);
-            return t = r.getTimezoneOffset() > 0 ? "-" + t : "+" + t;
-        },
-        P: function() {
-            var t = c.O();
-            return t.substr(0, 3) + ":" + t.substr(3, 2);
-        },
-        c: function() {
-            return c.Y() + "-" + c.m() + "-" + c.d() + "T" + c.h() + ":" + c.i() + ":" + c.s() + c.P();
-        },
-        U: function() {
-            return Math.round(r.getTime() / 1e3);
-        }
-    };
-    return e.replace(/[\\]?([a-zA-Z])/g, function(t, e) {
-        return t != e ? e : c[e] ? c[e]() : e;
-    });
-}
 
 
 const util = require('../../../utils/util.js');
@@ -128,7 +10,8 @@ Page({
         var e = new Date(), n = e.getFullYear(), r = e.getMonth() + 1, a = n + "-" + r;
         this.setData({
             date: a
-        }), this.setData({
+        });
+        this.setData({
             choiceYear: n,
             choiceMonth: r
         });
@@ -141,7 +24,7 @@ Page({
         util.request(api.GetCardRecord, {uid: wx.getStorageSync('openid'), type: 1,}, 'POST').then( res =>{
             debugger
             var nd = res.data;
-            for (var a = 0; a < nd.length; a++) nd[a].cardTime = translateTime("Y-m-d H:i:s", nd[a].cardTime);
+            for (var a = 0; a < nd.length; a++) nd[a].cardTime = util.translateTime("Y-m-d H:i:s", nd[a].cardTime);
             console.log(nd), r.setData({
                 cardData: nd
             }), r.processingData(nd);
@@ -157,7 +40,7 @@ Page({
             success: function(e) {
                 var n = e.data;
                 console.log(n), console.log("数据");
-                for (var a = 0; a < n.length; a++) n[a].card_time = translateTime("Y-m-d H:i:s", n[a].card_time);
+                for (var a = 0; a < n.length; a++) n[a].card_time = util.translateTime("Y-m-d H:i:s", n[a].card_time);
                 console.log(n), r.setData({
                     cardData: n
                 }), r.processingData(n);

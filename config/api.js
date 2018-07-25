@@ -8,7 +8,9 @@ module.exports = {
     GetGongduContent: NewApiRootUrl + 'gongdu/getContent', //每天的学习主要内容
     GetOraleDetail: NewApiRootUrl + 'gongdu/getOraleDetail', //每天的学习重点和问答
     GetCardNums: NewApiRootUrl + 'gongdu/getCardNums', //每天的有效打卡
-    GetCardRecord: NewApiRootUrl + 'gongdu/getCardRecord', //每天的打卡
+    GetCardRecord: NewApiRootUrl + 'gongdu/getCardRecord', //每天的打卡记录
+    SetCardById: NewApiRootUrl + 'gongdu/setCardById', //每天打卡
+    GetOneCard: NewApiRootUrl + 'gongdu/getOneCard', //每天打卡
 
 
 

@@ -128,12 +128,24 @@ Page({
         t.getStudyUser();
         t.getLastDay();
         // t.getConnaissances();
-        t.getCard();
+        t.getOneCard();
+        // t.getCard();
         if(new Date().getHours() >= 10 ){
             this.setData({
                 joinBtn: "您已经错过规定打卡时间 点击学习"
             });
         }
+    },
+    getOneCard(){
+        var t = new Date(), e = this.data.openid, s = t.getMonth() + 1, n = t.getDate(), y = t.getFullYear();
+        // type learn type id
+        util.request(api.GetOneCard, {uid: wx.getStorageSync('openid'), type: 1, day: n, month: s, year: y}, 'POST').then( res =>{
+            this.setData({
+                cardM: res.data
+            }), res.data && this.setData({
+                joinBtn: "今日已打卡 点击回顾"
+            }), this.addUser();
+        })
     },
     getCard: function() {
         var t = new Date(), e = this.data.openid, o = this, s = t.getMonth() + 1, n = t.getDate();
@@ -241,7 +253,12 @@ Page({
             }
         });
     },
-    getLastDay: function() {
+    getLastDay(){
+        var t = this, e = this.data.openid;
+
+
+    },
+    getLastDay2: function() {
         var t = this, e = this.data.openid;
         wx.request({
             url: app.globalData.url + "api/user/getLastDay",
