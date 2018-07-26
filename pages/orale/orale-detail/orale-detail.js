@@ -24,7 +24,7 @@ Page({
         wx.showNavigationBarLoading(), console.log(t.globalData.type), this.setData({
             type: t.globalData.type
         });
-        var e = t.globalData.userInfo.avatarUrl;
+        var e = t.globalData.userInfo.avatar;
         console.log(e), this.setData({
             avatarUrl: e
         });
