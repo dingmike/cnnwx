@@ -56,8 +56,8 @@
                 <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
                     <view class="punchTime-set">
                         <text>打卡时间：05:00 - 10:00</text>
-                        <picker bindchange="bindTimeChange" end="10:00" mode="time" name="setup" start="05:00" value="{{single.setup}}">
-                            <text style="color:#F77620">设置提醒：{{single.setup}}</text>
+                        <picker bindchange="bindTimeChange" end="10:00" mode="time" name="setupTime" start="05:00" value="{{single.setupTime}}">
+                            <text style="color:#F77620">设置提醒：{{single.setupTime}}</text>
                         </picker>
                     </view>
                 </form>

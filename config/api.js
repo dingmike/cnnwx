@@ -11,10 +11,11 @@ module.exports = {
     GetCardRecord: NewApiRootUrl + 'gongdu/getCardRecord', //每天的打卡记录
     SetCardById: NewApiRootUrl + 'gongdu/setCardById', //每天打卡
     GetOneCard: NewApiRootUrl + 'gongdu/getOneCard', //每天打卡
+    SetRemindTime: NewApiRootUrl + 'gongdu/setRemindTime', //设置提醒时间
 
 
 
-    IndexUrlNewGoods: NewApiRootUrl + 'index/newGoods', //
+    IndexUrlNewGoods: NewApiRootUrl + 'index/newGoods', //新产品
     IndexUrlHotGoods: NewApiRootUrl + 'index/hotGoods', //首页数据接口
     IndexUrlTopic: NewApiRootUrl + 'index/topic', //首页数据接口
     IndexUrlBrand: NewApiRootUrl + 'index/brand', //首页数据接口IndexUrlChannel

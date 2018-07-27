@@ -138,13 +138,18 @@ Page({
     },
     getOneCard(){
         var t = new Date(), e = this.data.openid, s = t.getMonth() + 1, n = t.getDate(), y = t.getFullYear();
-        // type learn type id
-        util.request(api.GetOneCard, {uid: wx.getStorageSync('openid'), type: 1, day: n, month: s, year: y}, 'POST').then( res =>{
+        // type learn type id 判断今日是否打过卡
+        util.request(api.GetOneCard, {uid: wx.getStorageSync('openid'), type: 1, day: n, month: 8, year: y}, 'POST').then( res =>{
+            debugger
             this.setData({
                 cardM: res.data
-            }), res.data && this.setData({
-                joinBtn: "今日已打卡 点击回顾"
-            }), this.addUser();
+            });
+            if(res.data){
+                this.setData({
+                    joinBtn: "今日已打卡 点击回顾"
+                });
+                this.addUser();
+            }
         })
     },
     getCard: function() {
@@ -304,10 +309,7 @@ Page({
     },
     addUser: function() {
         wx.showNavigationBarLoading();
-
-
-
-
+        
       /*  var t = this, e = (t.data.cardM, app.globalData.userInfo);
         console.log(e);
         var o = t.data.openid, s = t.data.type;
@@ -353,6 +355,7 @@ Page({
         });*/
     },
     startStudy: function(t) {
+        debugger
         let e = this.data.single, o = (this.data.openid, this), s = this.data.type,
             n = t.currentTarget.dataset.days;// 打卡unlock day 该打第几天的卡n
 
@@ -476,21 +479,14 @@ Page({
             showModalStatus: !0
         });
     },
-    bindTimeChange: function(t) {
-        console.log(t);
+    bindTimeChange (t){
+        console.log(t.detail.value);
         var e = this, o = this.data.openid, s = app.globalData.type;
-        wx.request({
-            url: app.globalData.url + "api/User/setRemindTime",
-            data: {
-                uid: o,
-                type: s,
-                setup: t.detail.value  // 设置新的提醒时间
-            },
-            success: function(a) {
-                console.log(a);
-                e.addUser();
+        util.request(api.SetRemindTime, {type: 1, setupTime: t.detail.value, uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+            if(res.data){
+                this.getLearnInfo();
             }
-        });
+        })
     },
     bindExplain: function() {
         wx.navigateTo({
