@@ -381,7 +381,7 @@ Page({
         wx.showLoading({
             title: "加载中"
         }), wx.request({
-            url: app.globalData.url + "api/Jporder/placeAnOrder/",
+            url: app.globalData.url + "api/Jporder/placeAnOrder/s",
             data: {
                 uid: t,
                 goodsinfo: "21口语练习计划" + e,
@@ -398,7 +398,7 @@ Page({
         console.log("准备向服务器发送支付请求");
         var e = this, o = this.data.openid, s = this.data.type;
         wx.request({
-            url: app.globalData.url + "api/Pay/getPreOrder",
+            url: app.globalData.url + "api/Pay/getPreOrder/s",
             data: {
                 uid: o,
                 id: t,
