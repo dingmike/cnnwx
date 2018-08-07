@@ -12,7 +12,8 @@ module.exports = {
     GetCardRecord: NewApiRootUrl + 'gongdu/getCardRecord', //每天的打卡记录
     SetCardById: NewApiRootUrl + 'gongdu/setCardById', //每天打卡
     GetOneCard: NewApiRootUrl + 'gongdu/getOneCard', //每天打卡
-    SetRemindTime: NewApiRootUrl + 'gongdu/setRemindTime', //设置提醒时间
+    SetRemindTime: NewApiRootUrl + 'gongdu/setRemindTime', //设置提醒时间 /api/gdOrder
+    GongduOrderSubmit: NewApiRootUrl + 'gdOrder/submit', // 生成共读订单
 
 
 
@@ -57,6 +58,7 @@ module.exports = {
 
     OrderSubmit: NewApiRootUrl + 'order/submit', // 提交订单
     PayPrepayId: NewApiRootUrl + 'pay/prepay', //获取微信统一下单prepay_id
+    PayGongDuPrepayId: NewApiRootUrl + 'pay/gongDuPrepay', //获取微信统一下单prepay_id 共读
 
     CollectList: NewApiRootUrl + 'collect/list',  //收藏列表
     CollectAddOrDelete: NewApiRootUrl + 'collect/addordelete',  //添加或取消收藏
@@ -96,6 +98,7 @@ module.exports = {
     CouponList: NewApiRootUrl + 'coupon/list', // 优惠券列表
     GoodsCouponList: NewApiRootUrl + 'coupon/listByGoods', // 商品优惠券列表
     OrderQuery: NewApiRootUrl + 'pay/query',
+    OrderGongDuQuery: NewApiRootUrl + 'pay/gongDuQuery',
     OrderSuccess: NewApiRootUrl + 'order/updateSuccess',
 /*newscnn learning api*/
     // ReadRecord: NewApiRootUrl + 'newscnn/recordList'   // 用户阅读列表

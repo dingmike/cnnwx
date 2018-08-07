@@ -195,7 +195,6 @@ Page({
         let that = this;
         // learnTypeId  学习类型ID
         util.request(api.CnnIndexUrl, {learnTypeId: 1}).then(function (res) {
-            debugger
             if (res.errno === 0) {
 
                 let e = res.data.userLearnList, o = res.data.userListTotal;

@@ -1,7 +1,7 @@
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 const user = require('../../services/user.js');
-
+const pay = require('../../services/pay');
 //获取应用实例
 const app = getApp();
 Page({
@@ -22,6 +22,8 @@ Page({
         setTimeSty: true,
         payStatus: true,
         showModalStatus: !1,
+        learnTypeId: 1,
+        orderSn: '',
         cardM: function(a, t, e) {
             return t in a ? Object.defineProperty(a, t, {
                 value: e,
@@ -125,7 +127,7 @@ Page({
         });
         t.getLearnInfo();
         t.addUser();
-        t.getStudyUser();
+        // t.getStudyUser();
         t.getLastDay();
         // t.getConnaissances();
         t.getOneCard();
@@ -179,10 +181,8 @@ Page({
 
         util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
             debugger
-            if (res.errno === 0) {
-
+            if (res.errno === 0&&res.data) {
                 wx.hideLoading();
-
                 let studyNums = [];
                 for(let i=1; i<=res.data.genusdays; i++){
                     studyNums.push({genusdays: i})
@@ -255,6 +255,37 @@ Page({
                     });
                 }*/
 
+            }else{
+                wx.hideNavigationBarLoading();
+                let mockData = {
+                    "id": "",
+                    "learnTypeId": 0,
+                    "userid": 0,
+                    "unlocks": 0,
+                    "formId": "",
+                    "miss": 0,
+                    "startStatus": 0,
+                    "setupTime": "",
+                    "addTime": "",
+                    "updateTime": "",
+                    "userName": "",
+                    "avatar": "",
+                    "nickname": "",
+                    "learnType": "",
+                    "genusdays": 21
+                };
+                let studyNums = [];
+                for(let i=1; i<=mockData.genusdays; i++){
+                    studyNums.push({genusdays: i})
+                }
+                this.setData({
+                    studyNums: studyNums,
+                    contact: false,
+                    joinBtn: '马上加入学习',
+                    setTimeSty: false,
+                    single: mockData,
+                    Contents: !0
+                });
             }
         });
     },
@@ -376,11 +407,45 @@ Page({
             url: "../orale/orale?days=" + n + "&type=" + s
         }) : (console.log("用户还没开始付费学习"), o.powerDrawer(t.currentTarget.dataset.statu));*/
     },
-    sendPay: function() {
-        var t = this.data.openid, e = this.data.type, o = this;
+    sendPay () {
+        var t = wx.getStorageSync("openid"), e = this.data.type, o = this;
+        debugger
+        // var e = this, o = this.data.openid, s = this.data.type;
         wx.showLoading({
             title: "加载中"
-        }), wx.request({
+        });
+
+        util.request(api.GongduOrderSubmit, {uid: t, learnTypeId: o.data.learnTypeId}, 'POST').then(res => {
+            if (res.errno === 0) {
+                console.log("数据库生成订单成功");
+                 // o.Pay(res.data.orderSn);
+                o.data.orderSn= res.data.orderSn;
+                pay.gongDuPayOrder(res.data.orderSn).then(res => {
+                    console.log("支付成功"), "requestPayment:ok" == res.errMsg && wx.showToast({
+                        title: "支付成功"
+                    }), o.setData({
+                        showModalStatus: false
+                    }), wx.reLaunch({
+                        url: "/pages/submitInfo/submitInfo?uid=" + t + "&type=" + e
+                    });
+                    wx.hideLoading();
+                }).catch(res => {
+                    console.log("支付失败或取消支付");
+                    console.log(res);
+                    wx.hideLoading();
+                    o.setData({
+                        showModalStatus: false
+                    });
+                    wx.hideLoading();
+                });
+
+            } else {
+                util.showErrorToast('下单失败,请重试');
+                wx.hideLoading();
+            }
+        });
+
+      /*  wx.request({
             url: app.globalData.url + "api/Jporder/placeAnOrder/s",
             data: {
                 uid: t,
@@ -392,7 +457,7 @@ Page({
                     title: "失败，请重试"
                 });
             }
-        });
+        });*/
     },
     Pay: function(t) {
         console.log("准备向服务器发送支付请求");
@@ -431,6 +496,12 @@ Page({
                 });
             }
         });
+    },
+    // 查看是否支付成功
+    updateSuccess: function () {
+        let that = this
+        util.request(api.OrderGongDuQuery, { orderId: this.data.orderId}).then(function (res) {
+        })
     },
     setUserStatus: function() {
         return !0;
@@ -513,15 +584,34 @@ Page({
     onUnload: function () {
         // 页面关闭
     },
+    // 获取信息
     getIndexData: function() {
 
         let that = this;
-        util.request(api.CnnIndexUrl).then(function (res) {
+        util.request(api.CnnIndexUrl).then(res =>{
             debugger
             if (res.errno === 0) {
-                that.setData({
-                    banner: res.data.banner
+                /*that.setData({
+                    banner: res.data.banner,
+                    learnTypeId: res.data.userLearnList[0].learnTypeId
+                });*/
+
+                let e = res.data.userLearnList, o = res.data.userListTotal;
+                o > 200 ? (o = 200, that.setData({
+                    banner: res.data.banner,
+                    learnType: e[0].learnType,
+                    studyUser: e,
+                    learnTypeId: res.data.userLearnList[0].learnTypeId,
+                    studyUserNums: o + "+"
+                })) : that.setData({
+                    learnType: e[0].learnType,
+                    banner: res.data.banner,
+                    studyUser: e,
+                    learnTypeId: res.data.userLearnList[0].learnTypeId,
+                    studyUserNums: o
                 });
+
+
             }
         });
 
