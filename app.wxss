@@ -1,6 +1,6 @@
 .container {
   box-sizing: border-box;
-  background-color: #f4f4f4;
+  background-color: #fff;
   font-family: PingFangSC-Light,helvetica,'Heiti SC';
 }
 

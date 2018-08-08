@@ -1,5 +1,6 @@
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
+const pay = require('../../../services/pay');
 
 Page({
     data: {
@@ -62,9 +63,49 @@ Page({
             }
         });
     },
-    payOrder(){
-        wx.redirectTo({
+    payOrder(e){
+       /* wx.redirectTo({
             url: '/pages/pay/pay',
+        })*/
+debugger
+        var orderId = e.target.dataset.orderid;
+        // let that = this;
+
+        pay.payOrder(parseInt(orderId)).then(res => {
+            wx.redirectTo({
+                url: '/pages/payResult/payResult?status=1&orderId=' + orderId
+            });
+        }).catch(res => {
+            wx.redirectTo({
+                url: '/pages/payResult/payResult?status=0&orderId=' + orderId
+            });
+        });
+        /*util.request(api.PayPrepayId, {
+            orderId: orderId || 15
+        }).then(function (res) {
+            if (res.errno === 0) {
+
+                const payParam = res.data;
+                wx.requestPayment({
+                    'timeStamp': payParam.timeStamp,
+                    'nonceStr': payParam.nonceStr,
+                    'package': payParam.package,
+                    'signType': payParam.signType,
+                    'paySign': payParam.paySign,
+                    'success': function (res) {
+                        console.log(res);
+                    },
+                    'fail': function (res) {
+                        console.log(res);
+                    }
+                });
+            }
+        });*/
+
+    },
+    updateSuccess() {
+        let that = this;
+        util.request(api.OrderQuery, { orderId: this.data.orderId}).then(function (res) {
         })
     },
     onReady: function () {

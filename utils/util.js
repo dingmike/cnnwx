@@ -155,9 +155,7 @@ function request(url, data = {}, method = "GET") {
                 'X-Nideshop-Token': wx.getStorageSync('token')
             },
             success: function (res) {
-                debugger
                 console.log("success");
-
                 if (res.statusCode == 200) {
 
                     if (res.data.errno == 401) {
@@ -167,6 +165,8 @@ function request(url, data = {}, method = "GET") {
                             content: '请先登录',
                             success: function (res) {
                                 if (res.confirm) {
+                                    wx.removeStorageSync("userInfo");
+                                    wx.removeStorageSync("token");
                                     /*wx.switchTab({
                                      url: '/pages/ucenter/index/index'
                                      });*/

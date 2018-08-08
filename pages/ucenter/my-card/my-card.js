@@ -23,11 +23,18 @@ Page({
         let n = e.globalData.openid, r = this;
         util.request(api.GetCardRecord, {uid: wx.getStorageSync('openid'), type: 1,}, 'POST').then( res =>{
             debugger
-            var nd = res.data;
-            for (var a = 0; a < nd.length; a++) nd[a].cardTime = util.translateTime("Y-m-d H:i:s", nd[a].cardTime);
-            console.log(nd), r.setData({
-                cardData: nd
-            }), r.processingData(nd);
+            let nd = res.data;
+            if(nd){
+                for (var a = 0; a < nd.length; a++) nd[a].cardTime = util.translateTime("Y-m-d H:i:s", nd[a].cardTime);
+                console.log(nd), r.setData({
+                    cardData: nd
+                }), r.processingData(nd);
+            }else{
+                this.setData({
+                    showDatasNull: true
+                })
+            }
+
         })
     },
     getCardRecord() {
@@ -56,20 +63,27 @@ Page({
             choiceMonth: n
         }); this.processingData();
     },
-    processingData: function() {
+    processingData() {
 debugger
+
         let r = new Object();
+        if(this.data.cardData){
+            for (var t = this.data.cardData, e = this.data.choiceYear, n = this.data.choiceMonth, a = 0, u = 0; u < t.length; u++)
+                t[u].month == n && t[u].year == e && (r[a] = t[u], a++);
 
-        for (var t = this.data.cardData, e = this.data.choiceYear, n = this.data.choiceMonth, a = 0, u = 0; u < t.length; u++)
-            t[u].month == n && t[u].year == e && (r[a] = t[u], a++);
+            0 == Object.keys(r).length ? (console.log("判空成立"), this.setData({
+                showDatasNull: true
+            })) : this.setData({
+                showDatasNull: false
+            }), this.setData({
+                showData: r
+            });
+        }else{
+            this.setData({
+                showDatasNull: true
+            })
+        }
 
-         0 == Object.keys(r).length ? (console.log("判空成立"), this.setData({
-            showDatasNull: true
-        })) : this.setData({
-            showDatasNull: false
-        }), this.setData({
-            showData: r
-        });
     },
     onReady: function() {},
     onShow: function() {},

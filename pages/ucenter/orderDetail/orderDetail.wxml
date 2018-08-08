@@ -38,7 +38,34 @@
         </view>
     </view>
 
+
+
     <view class="order-bottom">
+
+        <view bindtap="gotoExpress" class="express_area area_box" wx:if="{{orderInfo.shipping_name&&express[0]}}">
+            <view class="express_info wx_flex_wrp">
+                <view class="icon_wrp">
+                    <image class="express_icon" src="/static/image/express.png"></image>
+                </view>
+                <view class="wx_flex_item">
+                    <view class="express_addr">{{eexpress[0].accept_address}}</view>
+                    <view class="express_time">{{express[0].accept_time}}</view>
+                </view>
+                <view class="icon_more_wrp" wx:if="{{orderInfo.shipping_name&&express[0]}}">
+                    <icon class="icon_arrow" type=""></icon>
+                </view>
+            </view>
+        </view>
+        <view class="express_area area_box" wx:else>
+            <view class="express_info wx_flex_wrp">
+                <view class="icon_wrp">
+                    <image class="express_icon" src="/static/image/express.png"></image>
+                </view>
+                <view class="wx_flex_item">
+                    <view class="empty_box">暂无物流信息</view>
+                </view>
+            </view>
+        </view>
         <view class="address">
             <view class="t">
                 <text class="name">{{orderInfo.consignee}}</text>

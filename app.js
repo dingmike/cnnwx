@@ -28,7 +28,8 @@ App({
             }
 
         }).catch(() => {
-
+            wx.removeStorageSync('userInfo');
+            wx.removeStorageSync('token');
         });
     },
 

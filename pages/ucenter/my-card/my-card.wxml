@@ -7,13 +7,13 @@
             </picker>
         </view>
         <view class="showDataNull" wx:if="{{showDatasNull}}">
-            <image class="showImg" src="/image/null.png"></image>
+            <image class="showImg" src="/static/image/icon/null.png"></image>
             <view>
-                <text>没有打卡记录！</text>
+                <text>没有打卡记录!</text>
             </view>
         </view>
         <view class="card-content">
-            <view class="card-items" wx:for="{{showData}}">
+            <view class="card-items" wx:for="{{showData}}" wx:key="item.id">
                 <image src="{{item.reasonable?'/static/image/card.png':'/static/image/card2.png'}}"></image>
                 <text class="card-text">{{item.reasonable?'打卡成功！\n':'已打卡\n'}} <text style="{{item.reasonable?'color:#888888':'color:red'}};font-size:12px;">{{item.cardTime}} {{item.learnType}} {{item.reasonable?'':'\n没有在规定打卡时间内打卡'}}</text>
                 </text>

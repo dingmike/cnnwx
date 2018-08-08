@@ -253,3 +253,48 @@ page{
     width: 140rpx;
     color: #b4282d;
 }
+
+.express_area {
+    display: block;
+}
+.area_box {
+    margin-top: 20rpx;
+    background-color: #FFFFFF;
+}
+.express_info {
+    padding: 20rpx 0;
+    line-height: 34rpx;
+}
+.wx_flex_item {
+    flex: 1;
+}
+.wx_flex_wrp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.express_icon {
+    width: 26px;
+    height: 22px;
+    margin-right: 20rpx;
+}
+.express_time {
+    margin-top: 10rpx;
+}
+.icon_more_wrp {
+    padding-left: 20rpx;
+}
+.icon_arrow {
+    position: absolute;
+    right: 12px;
+    top: 11px;
+    width: 7px;
+    height: 7px;
+    border-color: #353535;
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    transform: rotate(45deg);
+}
+.empty_box {
+    color: #9A9A9A;
+}

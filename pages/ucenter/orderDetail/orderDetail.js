@@ -1,11 +1,13 @@
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
-
+const pay = require('../../../services/pay');
+let e = getApp()
 Page({
   data: {
     orderId: 0,
     orderInfo: {},
     orderGoods: [],
+    express:[],
     handleOption: {}
   },
   onLoad: function (options) {
@@ -25,8 +27,12 @@ Page({
         that.setData({
           orderInfo: res.data.orderInfo,
           orderGoods: res.data.orderGoods,
-          handleOption: res.data.handleOption
+          handleOption: res.data.handleOption,
+          express: res.data.shippingList
         });
+          e.globalData.shipping_no = res.data.orderInfo.shipping_no;
+          e.globalData.shipping_name = res.data.orderInfo.shipping_name;
+          e.globalData._expressDetail = res.data.shippingList;
         //that.payTimer();
       }
     });
@@ -127,7 +133,18 @@ Page({
   },
   payOrder() {
     let that = this;
-    util.request(api.PayPrepayId, {
+      pay.payOrder(parseInt(orderId)).then(res => {
+          wx.redirectTo({
+              url: '/pages/payResult/payResult?status=1&orderId=' + orderId
+          });
+      }).catch(res => {
+          wx.redirectTo({
+              url: '/pages/payResult/payResult?status=0&orderId=' + orderId
+          });
+      });
+
+
+/*    util.request(api.PayPrepayId, {
       orderId: that.data.orderId || 15
     }).then(function (res) {
       if (res.errno === 0) {
@@ -146,9 +163,15 @@ Page({
           }
         });
       }
-    });
+    });*/
 
   },
+  gotoExpress(e) {
+    debugger
+        wx.navigateTo({
+            url: "/pages/ucenter/express/express"
+        });
+    },
   onReady: function () {
     // 页面渲染完成
   },

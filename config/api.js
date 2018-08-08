@@ -97,10 +97,10 @@ module.exports = {
     Register: NewApiRootUrl + 'auth/register', //注册
     CouponList: NewApiRootUrl + 'coupon/list', // 优惠券列表
     GoodsCouponList: NewApiRootUrl + 'coupon/listByGoods', // 商品优惠券列表
-    OrderQuery: NewApiRootUrl + 'pay/query',
+    OrderQuery: NewApiRootUrl + 'pay/query',  // 查询写
     OrderGongDuQuery: NewApiRootUrl + 'pay/gongDuQuery',
     OrderSuccess: NewApiRootUrl + 'order/updateSuccess',
-/*newscnn learning api*/
+    /*newscnn learning api*/
     // ReadRecord: NewApiRootUrl + 'newscnn/recordList'   // 用户阅读列表
 
 };
