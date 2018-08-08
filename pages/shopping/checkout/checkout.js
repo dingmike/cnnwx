@@ -138,8 +138,8 @@ Page({
         const orderId = res.data.orderInfo.id;
         pay.payOrder(parseInt(orderId)).then(res => {
           wx.redirectTo({
-            url: '/pages/payResult/payResult?status=1&orderId=' + orderId
-          });
+                url: '/pages/payResult/payResult?status=1&orderId=' + orderId
+            });
         }).catch(res => {
           wx.redirectTo({
             url: '/pages/payResult/payResult?status=0&orderId=' + orderId
