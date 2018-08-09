@@ -48,6 +48,9 @@ Page({
   },
   onShow: function () {
     // 页面显示
+      wx.setNavigationBarTitle({
+          title: "店铺分类"
+      });
   },
   onHide: function () {
     // 页面隐藏

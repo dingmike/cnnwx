@@ -16,7 +16,9 @@ Page({
 
     },
     onShow: function () {
-
+        wx.setNavigationBarTitle({
+            title: "我的"
+        });
         let userInfo = wx.getStorageSync('userInfo');
         let token = wx.getStorageSync('token');
 

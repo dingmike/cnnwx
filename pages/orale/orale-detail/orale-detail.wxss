@@ -42,9 +42,9 @@ page {
 }
 
 .top {
-    height: 20%;
-    background-color: #eee;
-    padding-top: 30rpx;
+    height:20%;
+    /*background-color:#eee;*/
+    padding-top:12rpx;
 }
 
 .bottoms {

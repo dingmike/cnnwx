@@ -50,7 +50,7 @@
     "window": {
       "backgroundTextStyle": "dark",
       "navigationBarBackgroundColor": "#fff",
-      "navigationBarTitleText": "newscnn",
+      "navigationBarTitleText": "英文能力",
       "navigationBarTextStyle": "black",
       "enablePullDownRefresh": true
     },

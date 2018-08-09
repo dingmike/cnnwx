@@ -47,75 +47,16 @@ Page({
         }
     },
 
-    onLoad: function(t) {
-        debugger
+    onLoad(t) {
         /* wx.showLoading({
          title: "加载中"
          });*/
-
         // 获取首页数据
         this.getIndexData();
-
-
-        var e = this, o = decodeURIComponent(t.scene);
-        console.log(o);
-        var s = this;
-
-       /* wx.request({
-            url: app.globalData.url + "api/Index/test",
-            success: function(a) {
-                console.log(a.data);
-                e.setData({
-                    test: a.data
-                });
-            }
-        });*/
-        s._onLoad(); // 提前
-      /*  wx.getUserInfo({
-            success: function(t) {
-                debugger
-                var e = t.userInfo;
-                console.log(e.nickName);
-                app.globalData.userInfo = e;
-                s.setData({
-                    choiceDataShow: !0,
-                    userInfo: e
-                });
-                var o = wx.getStorageSync("openid");
-                console.log(o.length);
-                o.length < 20 ? (wx.showLoading({
-                    title: "加载中"
-                }),wx.login({
-                    success: function(t) {
-                        console.log(t.code);
-                        console.log("调用登录接口成功");
-
-
-                        wx.request({
-                            url: "https://riyubao.net/code3.php",
-                            data: {
-                                code: t.code
-                            },
-                            success: function(t) {
-                                console.log(t), 200 == t.statusCode && wx.hideLoading(), wx.setStorageSync("openid", t.data.openid);
-                                var e = wx.getStorageSync("openid");
-                                app.globalData.openid = e, wx.hideNavigationBarLoading(), s.setData({
-                                    openid: e
-                                }), s._onLoad();
-                            }
-                        });
-                    },
-                    fail: function(a) {
-                        console.log(a);
-                    }
-                })) : (wx.hideLoading(), s.setData({
-                    openid: o
-                }), app.globalData.openid = o, s._onLoad());
-            }
-        });*/
+        var o = decodeURIComponent(t.scene);
+        this._onLoad(); // 提前
     },
     _onLoad: function() {
-        debugger
         var t = this;
         this.data.type = app.globalData.type;
         wx.showNavigationBarLoading();
@@ -178,10 +119,9 @@ Page({
     },
 
     getLearnInfo() {
-
         util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
-            debugger
             if (res.errno === 0&&res.data) {
+                wx.hideNavigationBarLoading()
                 wx.hideLoading();
                 let studyNums = [];
                 for(let i=1; i<=res.data.genusdays; i++){
@@ -225,36 +165,6 @@ Page({
 
                 }
 
-
-
-
-/*
-                if (21 == res.data.unlocks && this.setData({
-                        contact: !0
-                    }), wx.hideNavigationBarLoading(), 0 == res.data.starts) this.setData({
-                    joinBtn: "马上加入学习",
-                    setTimeSty: !1
-                }), res.data.unlocks = 0, app.globalData.single = res.data, this.setData({
-                    single: res.data,
-                    Contents: !0
-                }); else {
-                    app.globalData.single = res.data, this.setData({
-                        // single: e.data,
-                        single: {},
-                        Contents: !0
-                    });
-                    var o = wx.createAnimation({
-                        transformOrigin: "50% 50%",
-                        duration: 1e3,
-                        timingFunction: "ease",
-                        delay: 0
-                    });
-                    o.translate(-95).step(), this.setData({
-                        animationData: o.export(),
-                        avaData: !0
-                    });
-                }*/
-
             }else{
                 wx.hideNavigationBarLoading();
                 let mockData = {
@@ -291,8 +201,6 @@ Page({
     },
     getLastDay(){
         var t = this, e = this.data.openid;
-
-
     },
     getLastDay2: function() {
         var t = this, e = this.data.openid;
@@ -318,7 +226,6 @@ Page({
         });
     },
     getStudyUser: function() {
-        debugger
         var t = this, e = this.data.type, o = app.globalData.openid;
         console.log(o), wx.request({
             url: app.globalData.url + "api/index/getNewStudyUser",

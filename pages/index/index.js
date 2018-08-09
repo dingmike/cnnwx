@@ -47,7 +47,7 @@ Page({
     },
 
     onLoad(t) {
-
+        wx.showNavigationBarLoading();
         if (app.globalData.userInfo && app.globalData.userInfo != '') {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -136,10 +136,9 @@ Page({
     },
     _onLoad: function() {
         debugger
-        debugger
         var t = this;
         this.data.type = app.globalData.type;
-        wx.showNavigationBarLoading();
+
         var e = app.globalData.openid;
         console.log(e);
         this.setData({
@@ -149,9 +148,8 @@ Page({
         // t.getStudyUser();
     },
     getStudyUser: function() {
-        debugger
         var t = this, e = this.data.type, o = app.globalData.openid;
-        console.log(o), wx.request({
+        wx.request({
             url: app.globalData.url + "api/index/getNewStudyUser",
             data: {
                 type: e,
@@ -170,7 +168,6 @@ Page({
         });
     },
     takePartIn(e){
-        debugger;
         wx.navigateTo({
             url: "/pages/firstAuth/firstAuth"
         })
@@ -209,20 +206,9 @@ Page({
                     studyUser: e,
                     studyUserNums: o
                 });
+                wx.hideNavigationBarLoading();
             }
         });
-
-        /*app.request_post(i, n, function(t) {
-            if (e.data.uid.length > 0) {
-                var i = "https://fudai.i-meihao.shop/index.php?m=Mini&c=Poetry&a=help&uid=" + e.data.uid;
-                app.request_post(i, {}, {}, 1);
-            }
-            e.setData({
-                poem: t.data.list,
-                share: t.data.share,
-                uid: t.data.uid
-            });
-        }, 0);*/
     },
    /* navigateTo: function(t) {
         wx.navigateTo(t);

@@ -94,6 +94,9 @@ Page({
     },
     onShow: function () {
         // 页面显示
+        wx.setNavigationBarTitle({
+            title: "爱学习小店"
+        });
     },
     onHide: function () {
         // 页面隐藏

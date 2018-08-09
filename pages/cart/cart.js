@@ -27,7 +27,11 @@ Page({
   },
   onShow: function () {
     // 页面显示
+      wx.setNavigationBarTitle({
+          title: "购物车"
+      });
     this.getCartList();
+
   },
   onHide: function () {
     // 页面隐藏
