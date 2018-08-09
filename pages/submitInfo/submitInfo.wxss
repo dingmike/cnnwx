@@ -1,0 +1,48 @@
+.container {
+    padding: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    border-shadow: 1px 1px #09c;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-top: 50rpx;
+}
+
+.row text {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.row input {
+    font-size: 0.7rem;
+    flex-grow: 4;
+    border: 1px solid #09c;
+    display: inline-block;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0.15rem #aaa;
+    padding: 0.3rem;
+    margin-right: 30rpx;
+}
+
+.row button {
+    padding: 0 2rem;
+}
+
+.headImg {
+    background-color: #f10c5a;
+    height: 300rpx;
+    width: 100%;
+    text-align: center;
+    flex-direction: column;
+    color: #fff;
+    font-size: 14px;
+}
+
+.headImg image {
+    width: 150rpx;
+    height: 150rpx;
+    margin-top: 70rpx;
+}

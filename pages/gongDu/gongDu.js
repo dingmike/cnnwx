@@ -420,18 +420,20 @@ Page({
                 console.log("数据库生成订单成功");
                  // o.Pay(res.data.orderSn);
                 o.data.orderSn= res.data.orderSn;
-                pay.gongDuPayOrder(res.data.orderSn).then(res => {
-                    console.log("支付成功"), "requestPayment:ok" == res.errMsg && wx.showToast({
+                pay.gongDuPayOrder(res.data.orderSn).then(ress => {
+                    debugger
+                    console.log("支付成功"), "requestPayment:ok" == ress.errMsg && wx.showToast({
                         title: "支付成功"
                     }), o.setData({
                         showModalStatus: false
-                    }), wx.reLaunch({
-                        url: "/pages/submitInfo/submitInfo?uid=" + t + "&type=" + e
+                    }),o.updateSuccess(), wx.hideLoading(), wx.reLaunch({
+                        url: "/pages/submitInfo/submitInfo?orderId=" +  o.data.orderSn
                     });
-                    wx.hideLoading();
-                }).catch(res => {
+
+                    //o.updateSucces(); // 暂时用来查询微信支付成功
+                }).catch(ress => {
                     console.log("支付失败或取消支付");
-                    console.log(res);
+                    console.log(ress);
                     wx.hideLoading();
                     o.setData({
                         showModalStatus: false
@@ -458,6 +460,11 @@ Page({
                 });
             }
         });*/
+    },
+    // 暂时使用查看是否支付成功
+    updateSuccess() {
+        util.request(api.OrderGongDuQuery, { orderId: this.data.orderSn}).then(res => {
+        })
     },
     Pay: function(t) {
         console.log("准备向服务器发送支付请求");
@@ -496,12 +503,6 @@ Page({
                 });
             }
         });
-    },
-    // 查看是否支付成功
-    updateSuccess: function () {
-        let that = this
-        util.request(api.OrderGongDuQuery, { orderId: this.data.orderId}).then(function (res) {
-        })
     },
     setUserStatus: function() {
         return !0;

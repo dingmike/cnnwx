@@ -67,7 +67,6 @@ Page({
        /* wx.redirectTo({
             url: '/pages/pay/pay',
         })*/
-debugger
         var orderId = e.target.dataset.orderid;
         // let that = this;
 

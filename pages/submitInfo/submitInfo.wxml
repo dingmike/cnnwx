@@ -1,0 +1,21 @@
+<view class="headImg">
+    <image class="headImg-img" src="{{userInfo.avatar}}"></image>
+    <view>
+        <text>{{userInfo.nickName}}</text>
+    </view>
+</view>
+<view class="container">
+    <form bindsubmit="formSubmit">
+        <view class="row">
+            <text>手 机：</text>
+            <input name="phone" placeholder="请输入手机号" type="number"></input>
+        </view>
+        <view class="row">
+            <text>微 信：</text>
+            <input name="weixin" placeholder="请输入微信号" type="text"></input>
+        </view>
+        <view class="row">
+            <button formType="submit" type="primary">提交信息</button>
+        </view>
+    </form>
+</view>

@@ -28,6 +28,7 @@
     "pages/auth/reset/reset",
     "pages/pay/pay",
     "pages/payResult/payResult",
+    "pages/submitInfo/submitInfo",
     "pages/ucenter/index/index",
     "pages/topic/topic",
     "pages/comment/comment",

@@ -25,27 +25,27 @@ Page({
                 type: o
             },
             success: function(a) {
-                var o = a.data;
+              /*  var o = a.data;
                 o.oralesound = o.oralesound.replace(/\\/g, "/"), o.extendsound = o.extendsound.replace(/\\/g, "/"),
                 wx.hideLoading(), t.globalData.oraleCountent = o, e.setData({
                     oraleContent: o
-                }), e.playVoice();
+                }), e.playVoice();*/
             }
         });
     },
     getContent(a, o){
+        var e = this;
         util.request(api.GetGongduContent, {days: a, type: 1, uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
             debugger
-            console.log(res)
-            // var o = res.data;
-            // o.oraleSound = o.oraleSound.replace(/\\/g, "/");
-            // o.extendSound = o.extendSound.replace(/\\/g, "/");
-            // wx.hideLoading();
-            // t.globalData.oraleCountent = o;
-            // this.setData({
-            //     oraleContent: o
-            // });
-            // this.playVoice();
+            var o = res.data;
+            o.oralesound = o.oraleSound.replace(/\\/g, "/");
+            o.extendsound = o.extendSound.replace(/\\/g, "/");
+            wx.hideLoading();
+            t.globalData.oraleCountent = o;
+            e.setData({
+                oraleContent: o
+            });
+            e.playVoice();
         })
     },
     playVoice: function() {

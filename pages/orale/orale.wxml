@@ -20,7 +20,7 @@
         </view>
         <scroll-view class="text-height" scrollY="true">
             <view class="today-content-jp">
-                <text>{{oraleContent.oralecontent}}</text>
+                <text>{{oraleContent.oraleContent}}</text>
             </view>
         </scroll-view>
     </view>
