@@ -158,3 +158,14 @@ page{
 .icon-pull-down:before { content: "\e996"; }
 
 .icon-loading:before { content: "\e9ac"; }
+
+
+.showDataNull {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 200rpx;
+}
+.showImg {
+    width: 150rpx;
+    height: 150rpx;
+}

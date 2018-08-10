@@ -22,6 +22,12 @@
                 </view>
             </view>
         </navigator>
+        <view class="showDataNull" wx:if="{{orderList.length == 0}}">
+            <image class="showImg" src="/static/image/icon/null.png"></image>
+            <view>
+                <text>还没有订单</text>
+            </view>
+        </view>
     </view>
 
     <view wx:if="{{orderList.length>6}}" class="loadmore">

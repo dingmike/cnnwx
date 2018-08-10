@@ -212,7 +212,6 @@ Page({
     },
     //根据已选的值，计算其它值的状态
     setSpecValueStatus: function () {
-        debugger
         let selectSpecValue = this.getCheckedSpecValue();
         selectSpecValue.some((v, index, arr) => {
             if (v.valueId == '' || null) {
@@ -342,6 +341,14 @@ Page({
             id: parseInt(options.id)
             // id: 1181000
         });
+
+    },
+    onReady: function () {
+        // 页面渲染完成
+
+    },
+    onShow: function () {
+        // 页面显示 返回后页面不刷新，也需要数据，需要刷新的操作写在onshow，，不需要刷新的操作写在onload
         let that = this;
         this.getGoodsInfo();
         util.request(api.CartGoodsCount).then(function (res) {
@@ -352,14 +359,6 @@ Page({
 
             }
         });
-    },
-    onReady: function () {
-        // 页面渲染完成
-
-    },
-    onShow: function () {
-        // 页面显示
-
     },
     onHide: function () {
         // 页面隐藏

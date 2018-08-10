@@ -10,8 +10,10 @@
 
 .no-course .img {
   margin-top: 116rpx;
-  width: 597rpx;
-  height: 467rpx;
+  /*width: 597rpx;*/
+  /*height: 467rpx;*/
+  width:252rpx;
+  height:158rpx;
   margin-bottom: 60rpx;
 }
 

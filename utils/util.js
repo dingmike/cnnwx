@@ -167,10 +167,7 @@ function request(url, data = {}, method = "GET") {
                                 if (res.confirm) {
                                     wx.removeStorageSync("userInfo");
                                     wx.removeStorageSync("token");
-                                    /*wx.switchTab({
-                                     url: '/pages/ucenter/index/index'
-                                     });*/
-                                    wx.switchTab({
+                                    wx.navigateTo({
                                         url: '/pages/firstAuth/firstAuth'
                                     });
                                 }
@@ -196,6 +193,7 @@ function request(url, data = {}, method = "GET") {
  * 检查微信会话是否过期
  */
 function checkSession() {
+    debugger
     return new Promise(function (resolve, reject) {
         wx.checkSession({
             success: function () {
@@ -213,6 +211,7 @@ function checkSession() {
  */
 function login() {
     return new Promise(function (resolve, reject) {
+
         wx.login({
             success: function (res) {
                 if (res.code) {
@@ -230,19 +229,20 @@ function login() {
     });
 }
 
+// 普通用户是否登录
 function redirect(url) {
-
-    //判断页面是否需要登录
-    if (false) {
+    debugger
+    //判断页面是否需要登录 暂时不适用
+   /* if (checkSession()) {
         wx.redirectTo({
-            url: '/pages/auth/login/login'
+            url: '/pages/firstAuth/firstAuth'
         });
         return false;
     } else {
-        wx.redirectTo({
+        wx.navigateTo({
             url: url
         });
-    }
+    }*/
 }
 
 function showErrorToast(msg) {

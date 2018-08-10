@@ -95,7 +95,7 @@ page{
 }
 
 .add-address{
-    background: #b4282d;
+    background: #58b406;
     text-align: center;
     width: 100%;
     height: 99rpx;
@@ -104,7 +104,7 @@ page{
     border-radius: 0;
     border: none;
     color: #fff;
-    font-size: 29rpx;
+    font-size: 30rpx;
     bottom: 0;
     left:0;
 }

@@ -34,8 +34,8 @@
 }
 
 .cate-nav .item.active .name{
-    color: #ab2b2b;
-    border-bottom: 2px solid #ab2b2b;
+    color: #cc0466;
+    border-bottom: 2px solid #cc0466;
 }
 
 .cate-item{

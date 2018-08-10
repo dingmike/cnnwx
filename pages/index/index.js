@@ -169,8 +169,8 @@ Page({
     },
     takePartIn(e){
         wx.navigateTo({
-            url: "/pages/firstAuth/firstAuth"
-        })
+            url: "/pages/gongDu/gongDu"
+        });
     },
     onShow: function() {
         var t = app.globalData.type;

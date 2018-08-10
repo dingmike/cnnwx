@@ -42,10 +42,12 @@ function loginByWeixin(userInfo) {
  * 判断用户是否登录
  */
 function checkLogin() {
+  debugger
   return new Promise(function (resolve, reject) {
     if (wx.getStorageSync('userInfo') && wx.getStorageSync('token')) {
-
+debugger
       util.checkSession().then(() => {
+  debugger
         resolve(true);
       }).catch(() => {
         reject(false);
@@ -56,7 +58,6 @@ function checkLogin() {
     }
   });
 }
-
 
 module.exports = {
   loginByWeixin,

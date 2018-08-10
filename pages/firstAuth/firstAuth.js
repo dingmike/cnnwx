@@ -40,7 +40,6 @@ Page({
         if (e.detail.userInfo){
             //用户按了允许授权按钮
             user.loginByWeixin(e.detail).then(res => {
-                debugger
                 this.setData({
                     userInfo: res.data.userInfo
                 });
@@ -50,9 +49,10 @@ Page({
                 app.globalData.openid = res.data.userInfo.weixin_openid;
                 app.globalData.token = res.data.token;
                 setTimeout(function(){
-                    wx.redirectTo({
+                    /*wx.redirectTo({
                         url: "/pages/gongDu/gongDu"
-                    });
+                    });*/
+                    wx.navigateBack({ changed: true });
                 },1500)
 
             }).catch((err) => {
@@ -69,16 +69,16 @@ Page({
                             success: (res) => {
                                 if (res.authSetting["scope.userInfo"]) {////如果用户重新同意了授权登录
                                     user.loginByWeixin(e.detail).then(res => {
-                                        debugger
                                         this.setData({
                                             userInfo: res.data.userInfo
                                         });
                                         app.globalData.userInfo = res.data.userInfo;
                                         wx.setStorageSync('userInfo', res.data.userInfo);
                                         app.globalData.token = res.data.token;
-                                        wx.redirectTo({
+                                        /*wx.redirectTo({
                                             url: "/pages/gongDu/gongDu"
-                                        });
+                                        });*/
+                                        wx.navigateBack({ changed: true });
                                     }).catch((err) => {
                                         console.log(err)
                                     });

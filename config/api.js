@@ -96,7 +96,7 @@ module.exports = {
     SmsCode: NewApiRootUrl + 'user/smscode', //发送短信
     BindMobile: NewApiRootUrl + 'user/bindMobile', //绑定手机
     Login: NewApiRootUrl + 'auth/login', //账号登录
-    Register: NewApiRootUrl + 'auth/register', //注册
+    Register: NewApiRootUrl + 'register/register', //注册普通用户
     CouponList: NewApiRootUrl + 'coupon/list', // 优惠券列表
     GoodsCouponList: NewApiRootUrl + 'coupon/listByGoods', // 商品优惠券列表
     OrderQuery: NewApiRootUrl + 'pay/query',  // 查询写

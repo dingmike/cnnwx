@@ -48,6 +48,16 @@ Page({
     },
 
     onLoad(t) {
+        user.checkLogin().then(res => {
+            //已经登录
+            return
+        }).catch((err) => {
+            // 未登录
+            wx.navigateTo({
+                url: "/pages/firstAuth/firstAuth"
+            })
+
+        });
         /* wx.showLoading({
          title: "加载中"
          });*/
@@ -84,15 +94,16 @@ Page({
         // type learn type id 判断今日是否打过卡
         util.request(api.GetOneCard, {uid: wx.getStorageSync('openid'), type: 1, day: n, month: 8, year: y}, 'POST').then( res =>{
             debugger
-            this.setData({
-                cardM: res.data
-            });
-            if(res.data){
-                this.setData({
-                    joinBtn: "今日已打卡 点击回顾"
-                });
-                this.addUser();
-            }
+                if(res.data){
+                    this.setData({
+                        cardM: res.data
+                    });
+                    this.setData({
+                        joinBtn: "今日已打卡 点击回顾"
+                    });
+                    this.addUser();
+                }
+
         })
     },
     getCard: function() {

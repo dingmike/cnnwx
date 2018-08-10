@@ -9,6 +9,19 @@ Page({
         hasMobile: ''
     },
     onLoad: function (options) {
+        //util.redirect("pages/ucenter/index/index");
+
+        user.checkLogin().then(res => {
+            //已经登录
+            return
+        }).catch((err) => {
+            // 未登录
+            wx.navigateTo({
+                url: "/pages/firstAuth/firstAuth"
+            })
+
+        });
+
         // 页面初始化 options为页面跳转所带来的参数
         console.log(app.globalData)
     },

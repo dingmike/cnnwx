@@ -2,8 +2,8 @@
     <view class="cardRecord">
         <view class="card-selectTime">
             <picker bindchange="bindDateChange" fields="month" mode="date" start="2018-01-01" value="{{date}}">
-                <text>打卡日期: {{date}}</text>
-                <text class="tixing-info">点此查看往期打卡记录</text>
+                <text class="card-t-color">打卡日期: {{date}}</text>
+                <text class="tixing-info card-t-color">点此查看往期打卡记录</text>
             </picker>
         </view>
         <view class="showDataNull" wx:if="{{showDatasNull}}">

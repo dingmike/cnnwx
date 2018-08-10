@@ -72,12 +72,13 @@ page{
 }
 
 .add-address .cannel{
-    background: #333;
+    background: #555555;
 }
 
 .add-address .save{
-    background: #b4282d;
+    background: #58b406;
 }
+
 
 
 .region-select{
