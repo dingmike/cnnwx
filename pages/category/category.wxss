@@ -37,7 +37,6 @@
     color: #cc0466;
     border-bottom: 2px solid #cc0466;
 }
-
 .cate-item{
     margin-top: 94rpx;
     height: auto;

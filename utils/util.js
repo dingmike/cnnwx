@@ -188,7 +188,6 @@ function request(url, data = {}, method = "GET") {
         })
     });
 }
-
 /**
  * 检查微信会话是否过期
  */

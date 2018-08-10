@@ -19,7 +19,6 @@ Page({
             wx.navigateTo({
                 url: "/pages/firstAuth/firstAuth"
             })
-
         });
 
         // 页面初始化 options为页面跳转所带来的参数

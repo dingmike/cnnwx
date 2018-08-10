@@ -33,7 +33,6 @@ module.exports = {
 
 
 
-
     AuthLoginByWeixin: NewApiRootUrl + 'auth/login_by_weixin', //微信登录
 
     GoodsCount: NewApiRootUrl + 'goods/count',  //统计商品总数
