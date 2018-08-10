@@ -29,16 +29,16 @@ Page({
     if (options.isBuy!=null) {
       this.data.isBuy = options.isBuy
     }
-    this.data.buyType = this.data.isBuy?'buy':'cart'
+    this.data.buyType = this.data.isBuy?'buy':'cart';
     //每次重新加载界面，清空数据
-    app.globalData.userCoupon = 'NO_USE_COUPON'
+    app.globalData.userCoupon = 'NO_USE_COUPON';
     app.globalData.courseCouponCode = {}
   },
   
   getCheckoutInfo: function () {
     let that = this;
-    var url = api.CartCheckout
-    let buyType = this.data.isBuy ? 'buy' : 'cart'
+    var url = api.CartCheckout;
+    let buyType = this.data.isBuy ? 'buy' : 'cart';
     util.request(url, { addressId: that.data.addressId, couponId: that.data.couponId, type: buyType }).then(function (res) {
       if (res.errno === 0) {
         console.log(res.data);

@@ -475,6 +475,7 @@ Page({
         });
     },
     onShow: function() {
+        debugger
         var t = app.globalData.type;
         wx.setNavigationBarTitle({
             title: t + "练习"

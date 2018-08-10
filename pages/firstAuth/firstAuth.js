@@ -14,11 +14,11 @@ Page({
     onLoad: function(e) {
         debugger
         // 页面渲染完成
-        if(app.globalData.userInfo){
+       /* if(app.globalData.userInfo){
             wx.redirectTo({
                 url: "/pages/gongDu/gongDu"
             });
-        }
+        }*/
     },
     /*getuserauth: function() {
         var n = this;
