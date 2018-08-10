@@ -48,23 +48,11 @@ Page({
     },
 
     onLoad(t) {
-        user.checkLogin().then(res => {
-            //已经登录
-            return
-        }).catch((err) => {
-            // 未登录
-            wx.navigateTo({
-                url: "/pages/firstAuth/firstAuth"
-            })
 
-        });
-        /* wx.showLoading({
-         title: "加载中"
-         });*/
         // 获取首页数据
-        this.getIndexData();
+      /*  this.getIndexData();
         var o = decodeURIComponent(t.scene);
-        this._onLoad(); // 提前
+        this._onLoad(); // 提前*/
     },
     _onLoad: function() {
         var t = this;
@@ -443,8 +431,6 @@ Page({
         });*/
     },
     powerDrawer: function(a) {
-        debugger
-        console.log(a);
         this.util(a);
     },
     powerDrawer2: function(a) {
@@ -493,6 +479,9 @@ Page({
         wx.setNavigationBarTitle({
             title: t + "练习"
         });
+        this.getIndexData();
+        var o = decodeURIComponent(t.scene);
+        this._onLoad(); // 提前
     },
     onReady: function () {
         // 页面渲染完成
