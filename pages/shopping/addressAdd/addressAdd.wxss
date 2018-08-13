@@ -26,6 +26,7 @@ page{
 }
 
 .add-address .form-default{
+    padding-left:27rpx;
     border-bottom: 1px solid #d9d9d9;
     height: 96rpx;
     background: #fafafa;
@@ -34,19 +35,19 @@ page{
 }
 
 .default-input{
-    margin: 0 auto;
+    /*margin: 0 auto;*/
     display: block;
     width: 240rpx;
     height: 40rpx;
     padding-left: 50rpx;
     line-height: 40rpx;
-    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/checkbox-sed825af9d3-a6b8540d42.png) 1rpx -448rpx no-repeat;
+    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180813/151418761b2f3e.png) 1rpx -447rpx no-repeat;
     background-size: 38rpx 486rpx;
     font-size: 28rpx;
 }
 
 .default-input.selected{
-    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/checkbox-sed825af9d3-a6b8540d42.png) 0 -192rpx no-repeat;
+    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180813/151418761b2f3e.png) 0 -191rpx no-repeat;
     background-size: 38rpx 486rpx;
 }
 

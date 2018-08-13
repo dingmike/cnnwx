@@ -160,7 +160,14 @@ function request(url, data = {}, method = "GET") {
 
                     if (res.data.errno == 401) {
                         //需要登录后才可以操作
-                        wx.showModal({
+
+                        wx.removeStorageSync("userInfo");
+                        wx.removeStorageSync("token");
+                        wx.navigateTo({
+                            url: '/pages/firstAuth/firstAuth'
+                        });
+
+                        /*wx.showModal({
                             title: '',
                             content: '请先登录',
                             success: function (res) {
@@ -172,7 +179,7 @@ function request(url, data = {}, method = "GET") {
                                     });
                                 }
                             }
-                        });
+                        });*/
                     } else {
                         resolve(res.data);
                     }

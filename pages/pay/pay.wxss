@@ -49,7 +49,7 @@ page{
 }
 
 .pay-list .checkbox{
-    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/checkbox-sed825af9d3-a6b8540d42.png) 0 -448rpx no-repeat;
+    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180813/151418761b2f3e.png) 0 -448rpx no-repeat;
     background-size: 38rpx 486rpx;
     width: 40rpx;
     height: 40rpx;
@@ -59,7 +59,7 @@ page{
 }
 
 .pay-list .checkbox.checked{
-    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/checkbox-sed825af9d3-a6b8540d42.png) 0 -192rpx no-repeat;
+    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180813/151418761b2f3e.png) 0 -192rpx no-repeat;
     background-size: 38rpx 486rpx;
 }
 

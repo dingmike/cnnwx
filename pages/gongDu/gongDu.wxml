@@ -15,58 +15,58 @@
 
     </view>
     <view class="main">
-        <view class="title">阅读打卡</view>
-        <!--
-                <view class="enrollment">
-                    <view class="enrollment-nums">
-                        <text style="color:#000">{{studyUserNums}}人报名</text>
-                    </view>
-                    <view class="enrollment-images">
-                        <image src="{{userInfo.avatarUrl}}" wx:if="{{avaData}}"></image>
-                        <image src="{{item.avatar}}" wx:for="{{studyUser}}"></image>
-                    </view>
-                </view>
-                <view class="introduce-join">
-                    <view class="introduce-join-text">
-                        <text>【21天阅读达人养成计划】是由@cnn每日更新联合资深英语老师推出的英语阅读练习计划。在这21天中 ，将涉及不同领域的文章，以及常用英语进行罗列练习。在这21天中，每天10分钟，养成阅读英文的习惯。加油！
-                        </text>
-                    </view>
-                    <view class="introduce-explain">
-                        <text bindtap="bindExplain">活动详情</text>
-                    </view>
-                    <form bindsubmit="formSubmit" reportSubmit="true" wx:if="{{test}}">
-                        <view class="introduce-join-btn">
-                            <view bindtap="startStudy" class="introduce-join-pay" data-days="{{single.unlocks}}" data-statu="open">
-                                <button formType="submit">{{joinBtn}}</button>
-                            </view>
-                            <button class="introduce-join-Continue" openType="contact" wx:if="{{contact}}">学习完成</button>
-                        </view>
-                    </form>
-                </view>-->
-
-
-
-
+        <!--<view class="title">阅读打卡</view>-->
 
         <view class="logoimg">
             <!--<image src="{{bgimg}}"></image>-->
         </view>
-        <view class="punchTime" wx:if="{{setTimeSty}}">
-            <view class="punchTime-set-info">
+
+        <wxc-panel border="{{false}}" wx:if="{{setTimeSty}}" >
+            <view class="punchTime punchTime-set-info content">
+                <view class="punchTime-info">
+                    <text class="punch-day">第<text style="font-size:18px;color:#fff; padding: 4px; margin: 0 4px; background: #58b406">{{single.unlocks}}</text>天</text>
+                </view>
                 <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
                     <view class="punchTime-set">
-                        <text>打卡时间：05:00 - 10:00</text>
+                        <text class="card-time-box">打卡时间：05:00 - 10:00</text>
                         <picker bindchange="bindTimeChange" end="24:00" mode="time" name="setupTime" start="05:00" value="{{single.setupTime}}">
                             <text style="color:#F77620">设置提醒：{{single.setupTime}}</text>
                         </picker>
                     </view>
                 </form>
+            </view>
+        </wxc-panel>
+   <!--     <view class="punchTime" wx:if="{{setTimeSty}}">
+            <view class="punchTime-set-info">
                 <view class="punchTime-info">
                     <text>第<text style="font-size:17px;color:red">{{single.unlocks}}</text>天</text>
                 </view>
+                <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
+                    <view class="punchTime-set">
+                        <text class="card-time-box">打卡时间：05:00 - 10:00</text>
+                        <picker bindchange="bindTimeChange" end="24:00" mode="time" name="setupTime" start="05:00" value="{{single.setupTime}}">
+                            <text style="color:#F77620">设置提醒：{{single.setupTime}}</text>
+                        </picker>
+                    </view>
+                </form>
+
             </view>
-        </view>
-        <view class="enrollment">
+        </view>-->
+
+        <wxc-panel border="{{false}}">
+            <view class="enrollment">
+                <view class="enrollment-nums">
+                    <text style="color:#000">{{studyUserNums}}人报名</text>
+                </view>
+                <view class="enrollment-images">
+                    <image src="{{userInfo.avatarUrl}}" wx:if="{{avaData}}"></image>
+                    <image src="{{item.avatar}}" wx:for="{{studyUser}}" wx:key="{{item}}"></image>
+                </view>
+            </view>
+
+        </wxc-panel>
+
+       <!-- <view class="enrollment">
             <view class="enrollment-nums">
                 <text style="color:#000">{{studyUserNums}}人报名</text>
             </view>
@@ -74,7 +74,7 @@
                 <image src="{{userInfo.avatarUrl}}" wx:if="{{avaData}}"></image>
                 <image src="{{item.avatar}}" wx:for="{{studyUser}}" wx:key="{{item}}"></image>
             </view>
-        </view>
+        </view>-->
         <!--支付弹窗 start-->
         <view animation="{{animationData}}" class="signUp" wx:if="{{showModalStatus}}">
             <view class="signUp-title">
@@ -95,7 +95,31 @@
             </view>
         </view>
         <!--支付弹窗 end-->
-        <view class="introduce-join">
+        <!--活动详情 start-->
+        <wxc-panel border="{{false}}">
+            <view class="introduce-join">
+                <view class="introduce-join-text">
+                    <text>【21天阅读达人养成计划】是由@cnn每日更新联合资深英语老师推出的英语阅读练习计划。在这21天中 ，将涉及不同领域的文章，以及常用英语进行罗列练习。在这21天中，每天10分钟，养成阅读英文的习惯。加油！
+                    </text>
+                </view>
+                <view class="introduce-explain">
+                    <text bindtap="bindExplain">活动详情</text>
+                </view>
+                <form bindsubmit="formSubmit" reportSubmit="true">
+                    <view class="introduce-join-btn">
+                        <view bindtap="startStudy" class="introduce-join-pay" data-days="{{single.unlocks}}" data-statu="open">
+                            <button formType="submit">{{joinBtn}}</button>
+                        </view>
+                        <button class="introduce-join-Continue" openType="contact" wx:if="{{contact}}">学习完成</button>
+                    </view>
+                </form>
+            </view>
+        </wxc-panel>
+        <!--活动详情 end-->
+
+
+        <!--活动详情 start-->
+        <!--<view class="introduce-join">
             <view class="introduce-join-text">
                 <text>【21天阅读达人养成计划】是由@cnn每日更新联合资深英语老师推出的英语阅读练习计划。在这21天中 ，将涉及不同领域的文章，以及常用英语进行罗列练习。在这21天中，每天10分钟，养成阅读英文的习惯。加油！
                 </text>
@@ -111,7 +135,8 @@
                     <button class="introduce-join-Continue" openType="contact" wx:if="{{contact}}">学习完成</button>
                 </view>
             </form>
-        </view>
+        </view>-->
+        <!--活动详情 end-->
         <view class="back"></view>
         <view class="introduce">
             *知识回顾

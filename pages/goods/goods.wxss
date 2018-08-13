@@ -624,8 +624,8 @@
 .attr-pop .p{
     font-size: 33rpx;
     color: #333;
-    height: 33rpx;
-    line-height: 33rpx;
+    height:36rpx;
+    line-height:36rpx;
     margin-bottom: 10rpx;
 }
 
@@ -643,10 +643,10 @@
 }
 
 .spec-con .name{
-    height: 32rpx;
-    margin-bottom: 22rpx;
-    font-size: 29rpx;
-    color: #333;
+    height:36rpx;
+    margin-bottom:22rpx;
+    font-size:26rpx;
+    color:#333;
 }
 
 .spec-con .values{

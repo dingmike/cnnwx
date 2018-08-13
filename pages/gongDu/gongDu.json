@@ -2,6 +2,7 @@
   "usingComponents": {
     "wxc-toast": "../../packages/@minui/wxc-toast/dist/index",
     "wxc-button": "../../packages/@minui/wxc-button/dist/index",
+    "wxc-panel": "../../packages/@minui/wxc-panel/dist/index",
     "progressBar": "../../component/progressBar/progressBar"
   }
 }

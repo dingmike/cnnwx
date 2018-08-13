@@ -11,7 +11,7 @@ Page({
             setup: '08:30',  // 设置提醒时间
             starts: 1,  //是否已开始打卡
         },
-        style: 'width: 222rpx;background: #ff9300;border-radius: 66rpx;color: #fff;',
+        style: 'width: 222rpx;background: #58b406;border-radius: 66rpx;color: #fff;',
         poem: "",
         current_poem_url: "",
         share: "",

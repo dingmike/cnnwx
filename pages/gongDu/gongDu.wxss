@@ -211,14 +211,14 @@ button::after {
 }
 
 .punchTime-info {
-    font-size: 13px;
-    border: 1px dashed #c1c1c0;
-    width: 100rpx;
-    height: 60rpx;
-    text-align: center;
-    line-height: 60rpx;
-    vertical-align: middle;
-    margin-top: 10rpx;
+    font-size:13px;
+    width:100rpx;
+    height:60rpx;
+    text-align:center;
+    line-height:60rpx;
+    vertical-align:middle;
+    margin-top:22rpx;
+
 }
 
 .enrollment {
@@ -425,4 +425,10 @@ button::after {
     float: right;
     margin-right: 20rpx;
     text-decoration: underline;
+}
+.card-time-box{
+
+}
+.punch-day{
+
 }

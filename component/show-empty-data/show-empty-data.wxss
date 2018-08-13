@@ -12,8 +12,8 @@
   margin-top: 116rpx;
   /*width: 597rpx;*/
   /*height: 467rpx;*/
-  width:252rpx;
-  height:158rpx;
+  width:92rpx;
+  height:86rpx;
   margin-bottom: 60rpx;
 }
 

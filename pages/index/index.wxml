@@ -16,7 +16,7 @@
     </view>
     <view class="main">
         <view class="title">{{learnType}}</view>
-        <wxc-panel border="{{false}}" >
+        <wxc-panel border="{{false}}" margin="{{false}}" >
             <view class="enrollment">
                 <view class="enrollment-nums">
                     <text style="color:#000">{{studyUserNums}}人报名</text>
