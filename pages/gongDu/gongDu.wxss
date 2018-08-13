@@ -212,7 +212,7 @@ button::after {
 
 .punchTime-info {
     font-size:13px;
-    width:100rpx;
+    width:150rpx;
     height:60rpx;
     text-align:center;
     line-height:60rpx;
@@ -263,13 +263,13 @@ button::after {
 
 .introduce-join-pay button {
     width: 90%;
-    border: 1px solid #f4803b;
+    border: 1px solid #58b406;
     height: 80rpx;
     margin-left: 5%;
     margin-top: 100rpx;
     border-radius: 15px 15px 15px 15px;
     color: #fff;
-    background-color: #f4803b;
+    background-color: #58b406;
     font-size: 14px;
     text-align: center;
     line-height: 80rpx;
@@ -427,7 +427,7 @@ button::after {
     text-decoration: underline;
 }
 .card-time-box{
-
+    color: #f77620;
 }
 .punch-day{
 

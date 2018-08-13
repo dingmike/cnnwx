@@ -4,13 +4,13 @@
         <!--<view catchtap="navigateTo" class="read_btn" data-url="../record/record">-->
         <!--<text>我要读诗</text>
         <image class="icon_read" src="https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/Playbutton.png"></image>-->
-        <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000" circular="true">
+       <!-- <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000" circular="true">
             <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
                 <navigator url="{{item.link}}">
                     <image src="{{item.imageUrl}}" background-size="cover"></image>
                 </navigator>
             </swiper-item>
-        </swiper>
+        </swiper>-->
         <!--</view>-->
 
     </view>
@@ -21,19 +21,21 @@
             <!--<image src="{{bgimg}}"></image>-->
         </view>
 
-        <wxc-panel border="{{false}}" wx:if="{{setTimeSty}}" >
+        <wxc-panel border="{{true}}" margin="{{false}}" wx:if="{{setTimeSty}}">
             <view class="punchTime punchTime-set-info content">
                 <view class="punchTime-info">
-                    <text class="punch-day">第<text style="font-size:18px;color:#fff; padding: 4px; margin: 0 4px; background: #58b406">{{single.unlocks}}</text>天</text>
+                    <text class="punch-day">第<text style="border-radius: 4px;font-size:18px;color:#fff; padding: 4px; margin: 0 2px; background: #f77620">{{single.unlocks}}</text>天</text>
                 </view>
                 <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
                     <view class="punchTime-set">
                         <text class="card-time-box">打卡时间：05:00 - 10:00</text>
                         <picker bindchange="bindTimeChange" end="24:00" mode="time" name="setupTime" start="05:00" value="{{single.setupTime}}">
-                            <text style="color:#F77620">设置提醒：{{single.setupTime}}</text>
+                            <text style="border: 1px solid #58b406; border-radius: 4px; background: #58b406; width: 100px;height: 30px; line-height: 30px;padding: 2px 4px; color: #fff;">设置提醒</text>
+                            <text style="font-weight: 400">  {{single.setupTime}}</text>
                         </picker>
                     </view>
                 </form>
+
             </view>
         </wxc-panel>
    <!--     <view class="punchTime" wx:if="{{setTimeSty}}">
@@ -138,7 +140,30 @@
         </view>-->
         <!--活动详情 end-->
         <view class="back"></view>
-        <view class="introduce">
+
+        <wxc-panel border="{{false}}">
+
+          <!--  <view class="introduce">
+                知识点回顾
+            </view>-->
+            <view class="History">
+                <view class="History-text">
+                    <text>点击日期按钮可回看当天内容</text>
+                </view>
+                <form bindsubmit="formSubmit" reportSubmit="true">
+                    <view class="History-icon">
+                        <view bindtap="reviewHistory" class="History-icon-item" data-day="{{item.genusdays}}" wx:for="{{studyNums}}" wx:key="{{item}}">
+                            <button formType="submit" style="background-color:#58b406;" wx:if="{{!test}}">{{item.genusdays}}</button>
+                            <button formType="submit" style="{{single.unlocks<index+1?'background-color:#919191':'background-color:#58b406'}}" wx:else>{{item.genusdays}}</button>
+                        </view>
+                    </view>
+                </form>
+            </view>
+
+
+        </wxc-panel>
+
+       <!-- <view class="introduce">
             *知识回顾
         </view>
         <view class="History">
@@ -148,12 +173,12 @@
             <form bindsubmit="formSubmit" reportSubmit="true">
                 <view class="History-icon">
                     <view bindtap="reviewHistory" class="History-icon-item" data-day="{{item.genusdays}}" wx:for="{{studyNums}}" wx:key="{{item}}">
-                        <button formType="submit" style="background-color:#F4803B;" wx:if="{{!test}}">{{item.genusdays}}</button>
-                        <button formType="submit" style="{{single.unlocks<index+1?'background-color:#919191':'background-color:#F4803B'}}" wx:else>{{item.genusdays}}</button>
+                        <button formType="submit" style="background-color:#58b406;" wx:if="{{!test}}">{{item.genusdays}}</button>
+                        <button formType="submit" style="{{single.unlocks<index+1?'background-color:#919191':'background-color:#58b406'}}" wx:else>{{item.genusdays}}</button>
                     </view>
                 </view>
             </form>
-        </view>
+        </view>-->
         <view class="bottom-contact">
             <button></button>
         </view>
