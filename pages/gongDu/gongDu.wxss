@@ -189,7 +189,7 @@ button::after {
 
 .punchTime {
     border-bottom: 1px solid #edece8;
-    height: 100rpx;
+    height:116rpx;
     width: 90%;
     margin-left: 5%;
 }
@@ -427,6 +427,7 @@ button::after {
     text-decoration: underline;
 }
 .card-time-box{
+    margin-bottom: 4rpx;
     color: #f77620;
 }
 .punch-day{
