@@ -5,11 +5,11 @@
         <image src="{{item.img_url}}" background-size="cover"></image>
       </swiper-item>
     </swiper>
-    <view class="service-policy">
+    <!--<view class="service-policy">
       <view class="item">30天无忧退货</view>
       <view class="item">48小时快速退款</view>
       <view class="item">满88元免邮费</view>
-    </view>
+    </view>-->
     <view class="goods-info">
       <view class="c">
         <text class="name">{{goods.name}}</text>
@@ -159,6 +159,9 @@
   </wxc-toast>
 </scroll-view>
   <view class="bottom-btn">
+    <view class="l l-head" bindtap="goMallPage">
+      <image class="icon" src="/static/images/head_page.png"></image>
+    </view>
     <view class="l l-collect {{ openAttr ? 'back' : ''}}" bindtap="closeAttrOrCollect">
       <image class="icon" src="{{ collectBackImage }}"></image>
     </view>

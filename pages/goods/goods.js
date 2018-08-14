@@ -561,5 +561,11 @@ Page({
         this.setData({
             number: this.data.number + 1
         });
+    },
+    goMallPage(){
+        debugger
+        wx.switchTab({
+            url: '/pages/mall/mall'
+        })
     }
 })

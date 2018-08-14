@@ -28,12 +28,14 @@ Page({
     });
   },
   addressAddOrUpdate (event) {
+    debugger
     console.log(event)
     wx.navigateTo({
       url: '/pages/shopping/addressAdd/addressAdd?id=' + event.currentTarget.dataset.addressId
     });
   },
   selectAddress(event){
+    debugger
     console.log(event.currentTarget.dataset.addressId);
 
     try {
