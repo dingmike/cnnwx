@@ -1,11 +1,39 @@
 <view class="container">
-    <view class="orders">
-        <navigator url="../orderDetail/orderDetail?id={{item.id}}" class="order" wx:for="{{orderList}}" wx:key="{{item.id}}">
+
+
+    <view class="list_nav_area">
+        <view bindtap="gotoAllOrder" class="list_nav {{orderStatus===''?'highlight':''}}" hoverClass="none" url="url">
+            <view class="list_nav_inner">全部</view>
+        </view>
+        <view bindtap="gotoWaitPayOrder" class="list_nav {{orderStatus=='0'?'highlight':''}}" hoverClass="none"
+              url="url">
+            <view class="list_nav_inner">待付款</view>
+        </view>
+        <view bindtap="gotoSellerSendOrder" class="list_nav {{orderStatus=='201'?'highlight':''}}" hoverClass="none"
+              url="url">
+            <view class="list_nav_inner">待发货</view>
+        </view>
+        <view bindtap="gotoBuyerConfirmGoodsOrder" class="list_nav {{orderStatus=='300'?'highlight':''}}"
+              hoverClass="none" url="url">
+            <view class="list_nav_inner">待收货</view>
+        </view>
+        <view bindtap="gotoFinishOrder" class="list_nav {{orderStatus=='402'?'highlight':''}}" hoverClass="none"
+              url="url">
+            <view class="list_nav_inner">已完成</view>
+        </view>
+    </view>
+
+
+    <scroll-view bindscrolltolower="scrollToLowerHandler" class="page_content" lowerThreshold="100" scrollY="true"
+                 style="height:{{listHeight}}px;" wx:if="{{orderList.length>0}}">
+
+        <navigator url="../orderDetail/orderDetail?id={{item.id}}" class="order order_group" wx:for="{{orderList}}"
+                   wx:key="{{item.id}}">
             <view class="h">
                 <view class="l">订单编号：{{item.order_sn}}</view>
                 <view class="r">{{item.order_status_text}}</view>
             </view>
-            <view class="goods" wx:for="{{item.goodsList}}" wx:key="{{gitem.id}}" wx:for-item="gitem">
+            <view class="goods" wx:for="{{item.goodsVos}}" wx:key="{{gitem.id}}" wx:for-item="gitem">
                 <view class="img">
                     <image src="{{gitem.list_pic_url}}"></image>
                 </view>
@@ -18,25 +46,86 @@
             <view class="b">
                 <view class="l">实付：￥{{item.actual_price}}</view>
                 <view class="r">
-                    <button class="btn" data-order-index="{{index}}" data-orderid="{{item.id}}" catchtap="payOrder" wx:if="{{item.handleOption.pay}}">去付款</button>
+                    <button class="btn" data-order-index="{{index}}" data-orderid="{{item.id}}" catchtap="payOrder"
+                            wx:if="{{item.handleOption.pay}}">去付款
+                    </button>
                 </view>
             </view>
         </navigator>
-        <view class="showDataNull" wx:if="{{orderList.length == 0}}">
-            <image class="showImg" src="/static/image/icon/null.png"></image>
+        <!-- <view class="showDataNull" wx:if="{{orderList.length == 0}}">
+             <image class="showImg" src="/static/image/icon/null.png"></image>
+             <view>
+                 <text>还没有订单</text>
+             </view>
+         </view>-->
+        <!--<view class="list_extra_area">
+            <view class="tips_area no_more" wx:if="{{listStatus==3}}">
+                <view class="tips_area_inner">
+                    END
+                </view>
+            </view>
+            <view class="tips_area loading" wx:if="{{listStatus==2}}">
+                <view class="tips_area loading">
+                    <image src="/images/icon16_loading_gray.gif"></image>
+                    正在加载
+                </view>
+            </view>
+        </view>-->
+
+    </scroll-view>
+    <view class="list_extra_area">
+        <view class="showDataNull" wx:if="{{realTotalPages == 0}}">
+            <image class="showImg" src="/static/image/icon/order_null.png"></image>
             <view>
-                <text>还没有订单</text>
+                <text style="color: #9A9A9A">暂无订单</text>
             </view>
         </view>
+        <!--<view class="tips_area loading" wx:if="{{orderList.length == 0&&realTotalPages==1}}">
+            <view class="tips_area loading">
+                <image src="/static/image/icon/icon16_loading_gray.gif"></image>
+                正在加载
+            </view>
+        </view>-->
     </view>
 
-    <view wx:if="{{orderList.length>6}}" class="loadmore">
-      <block wx:if="{{nomore}}">
-        <text>{{nomoreText}}</text>
-      </block>
-      <block wx:else>
-        <text class="iconfont icon-loading loading" space="nbsp"></text>
-        <text> {{loadmoreText}}</text>
-      </block>
+    <!-- <view class="orders">
+         <navigator url="../orderDetail/orderDetail?id={{item.id}}" class="order" wx:for="{{orderList}}" wx:key="{{item.id}}">
+             <view class="h">
+                 <view class="l">订单编号：{{item.order_sn}}</view>
+                 <view class="r">{{item.order_status_text}}</view>
+             </view>
+             <view class="goods" wx:for="{{item.goodsList}}" wx:key="{{gitem.id}}" wx:for-item="gitem">
+                 <view class="img">
+                     <image src="{{gitem.list_pic_url}}"></image>
+                 </view>
+                 <view class="info">
+                     <text class="name">{{gitem.goods_name}}</text>
+                     <text class="number">共{{gitem.number}}件商品</text>
+                 </view>
+                 <view class="status"></view>
+             </view>
+             <view class="b">
+                 <view class="l">实付：￥{{item.actual_price}}</view>
+                 <view class="r">
+                     <button class="btn" data-order-index="{{index}}" data-orderid="{{item.id}}" catchtap="payOrder" wx:if="{{item.handleOption.pay}}">去付款</button>
+                 </view>
+             </view>
+         </navigator>
+         <view class="showDataNull" wx:if="{{orderList.length == 0}}">
+             <image class="showImg" src="/static/image/icon/null.png"></image>
+             <view>
+                 <text>还没有订单</text>
+             </view>
+         </view>
+     </view>-->
+
+    <view wx:if="{{orderList.length>5}}" class="loadmore">
+        <block wx:if="{{nomore}}">
+            <text>{{nomoreText}}</text>
+        </block>
+        <block wx:else>
+            <text class="iconfont icon-loading loading" space="nbsp"></text>
+            <text> {{loadmoreText}}</text>
+        </block>
     </view>
 </view>

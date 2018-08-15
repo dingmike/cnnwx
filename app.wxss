@@ -6,7 +6,8 @@
 .container {
   box-sizing: border-box;
   background-color: #f4f4f4;
-  font-family: PingFangSC-Light,helvetica,'Heiti SC';
+  font-family: Helvetica,sans-serif;
+  /*font-family: PingFangSC-Light,helvetica,'Heiti SC';*/
 }
 
 view,image,text,navigator{
@@ -17,7 +18,8 @@ view,image,text,navigator{
 }
 
 view,text{
-  font-family: PingFangSC-Light,helvetica,'Heiti SC';
+  font-family: Helvetica,sans-serif;
+  /*font-family: PingFangSC-Light,helvetica,'Heiti SC';*/
   font-size: 29rpx;
   color: #333;
 }

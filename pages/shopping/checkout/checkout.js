@@ -15,7 +15,7 @@ Page({
     couponPrice: 0.00,     //优惠券的价格
     orderTotalPrice: 0.00,  //订单总价
     actualPrice: 0.00,     //实际需要支付的总价
-    addressId: null,
+    addressId: 0,
     couponId: 0,
     isBuy: false,
     couponDesc: '',
@@ -84,6 +84,10 @@ Page({
         this.setData({
           addressId: addressId
         });
+      }else{
+          this.setData({
+              addressId: 0
+          });
       }
     } catch (e) {
       // Do something when catch error
@@ -130,7 +134,7 @@ Page({
   },
 
   submitOrder: function () {
-      if (this.data.addressId === null) {
+      if (this.data.addressId === 0) {
           util.showErrorToast('请选择收货地址');
           return false;
       }

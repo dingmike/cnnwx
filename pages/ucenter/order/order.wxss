@@ -31,7 +31,8 @@ page{
 
 .order .h .r{
     float: right;
-    color: #b4282d;
+    color: #cc3500;
+    /*color: #b4282d;*/
     font-size: 24rpx;
 }
 
@@ -78,7 +79,7 @@ page{
 
 .order .goods .status{
     width:105rpx;
-    color: #b4282d;
+    color: #cc3500;
     font-size: 25rpx;
 }
 
@@ -109,7 +110,7 @@ page{
     border-radius: 5rpx;
     font-size: 26rpx;
     color: #fff;
-    background: #b4282d;
+    background: #cc3500;
 }
 
 .loadmore {
@@ -166,6 +167,86 @@ page{
     margin-top: 200rpx;
 }
 .showImg {
-    width: 150rpx;
-    height: 150rpx;
+    width: 46rpx;
+    height: 46rpx;
 }
+
+/*new add*/
+
+.list_nav_area {
+    font-size: 14px;
+    display: flex;
+    color: #9A9A9A;
+    background-color: #FFFFFF;
+    border-top: 1rpx solid #dedede;
+    border-bottom: 1rpx solid #dedede;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.list_nav {
+    flex: 1;
+    text-align: center;
+    height: 42px;
+}
+
+.list_nav_inner {
+    display: inline-block;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    height: 42px;
+    line-height: 42px;
+}
+.list_nav.highlight .list_nav_inner {
+    border-bottom: 3px solid #cc3500;
+    color: #cc3500;
+}
+.page_content {
+    padding-top: 44px;
+}
+/*
+.page_content .order_group:last-child {
+    margin-bottom: 0;
+}*/
+
+.list_extra_area .tips_area {
+    font-size: 14px;
+    text-align: center;
+    color: #D8D8D8;
+    background-color: #F7F7F7;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.list_extra_area .tips_area.no_more {
+    position: relative;
+}
+
+.list_extra_area .tips_area.no_more .tips_area_inner {
+    display: inline-block;
+    padding: 0 30rpx;
+    background-color: #F7F7F7;
+    position: relative;
+}
+
+.list_extra_area .tips_area.no_more::before {
+    content: "";
+    height: 1px;
+    border-bottom: 1rpx solid #D8D8D8;
+    display: block;
+    width: 260rpx;
+    position: absolute;
+    top: 46rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.list_extra_area .tips_area.loading image {
+    width: 28rpx;
+    height: 28rpx;
+    vertical-align: middle;
+    margin-top: -6rpx;
+}
+
