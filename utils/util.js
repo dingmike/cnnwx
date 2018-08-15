@@ -263,8 +263,32 @@ function showSuccessToast(msg) {
         title: msg,
     })
 }
+// 验证手机号
+function validatemobile(mobile) {
+    let mobileLength = mobile.length;
+    if (mobileLength == 0) {
+        showErrorToast('请输入手机号');
+        return false;
+    }
+    let myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+    if (!myreg.test(mobile)) {
+        showErrorToast('手机号有误');
+        return false;
+    }
+    if (mobileLength != 11) {
+       /* wx.showToast({
+            title: '手机号长度有误！',
+            icon: 'success',
+            duration: 1500
+        });*/
+        showErrorToast('手机号长度有误');
+        return false;
+    }
+    return true;
+}
 
 module.exports = {
+    validatemobile,
     formatTime,
     translateTime,
     request,
@@ -273,6 +297,6 @@ module.exports = {
     showSuccessToast,
     checkSession,
     login,
-}
+};
 
 

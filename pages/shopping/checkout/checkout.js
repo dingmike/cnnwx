@@ -72,27 +72,22 @@ Page({
 
   },
   onShow: function () {
-    debugger
     this.getCouponData();
     // 页面显示
     wx.showLoading({
       title: '加载中...',
     })
 
-    
     try {
-      var addressId = wx.getStorageSync('addressId');
+      let addressId = wx.getStorageSync('addressId');
       if (addressId) {
         this.setData({
           addressId: addressId
         });
-      }else if(this.checkedAddress.id!=null){
-          this.setData({
-              addressId: this.checkedAddress.id
-          });
       }
     } catch (e) {
       // Do something when catch error
+      util.showErrorToast('系统错误，请联系管理员');
     }
       this.getCheckoutInfo();
   },
@@ -127,7 +122,7 @@ Page({
    * 选择可用优惠券
    */
   tapCoupon: function () {
-    let that = this
+    let that = this;
   
       wx.navigateTo({
         url: '../selCoupon/selCoupon?buyType=' + that.data.buyType,
@@ -135,26 +130,18 @@ Page({
   },
 
   submitOrder: function () {
-debugger
       if (this.data.addressId === null) {
           util.showErrorToast('请选择收货地址');
           return false;
       }
-
-   /* let addressId = wx.getStorageSync('addressId');
-    if(addressId){
-        if (addressId) {
-            this.setData({
-                addressId: this.checkedAddress.id
-            });
-        }
-    }else if(this.data.addressId === null){
-        util.showErrorToast('请选择收货地址');
-        return false;
-    }*/
+      wx.showLoading({
+          title: 'Loading...',
+      });
     util.request(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId, type: this.data.buyType }, 'POST').then(res => {
+      wx.hideLoading();
       if (res.errno === 0) {
         const orderId = res.data.orderInfo.id;
+        wx.hideLoading();
         pay.payOrder(parseInt(orderId)).then(res => {
           wx.redirectTo({
                 url: '/pages/payResult/payResult?status=1&orderId=' + orderId
