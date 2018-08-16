@@ -206,10 +206,12 @@ page{
 .page_content {
     padding-top: 44px;
 }
-/*
+
+
+
 .page_content .order_group:last-child {
     margin-bottom: 0;
-}*/
+}
 
 .list_extra_area .tips_area {
     font-size: 14px;
@@ -243,7 +245,7 @@ page{
     transform: translateX(-50%);
 }
 
-.list_extra_area .tips_area.loading image {
+.list_extra_area .tips_area.loading-b image {
     width: 28rpx;
     height: 28rpx;
     vertical-align: middle;

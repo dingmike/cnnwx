@@ -24,34 +24,37 @@
     </view>
 
 
-    <scroll-view bindscrolltolower="scrollToLowerHandler" class="page_content" lowerThreshold="100" scrollY="true"
+    <scroll-view bindscrolltolower="scrollToLowerHandler" class="page_content" lowerThreshold="80" scrollY="true"
                  style="height:{{listHeight}}px;" wx:if="{{orderList.length>0}}">
+        <!--<block wx:for="{{orderList}}" wx:for-item="item" wx:key="index">-->
 
-        <navigator url="../orderDetail/orderDetail?id={{item.id}}" class="order order_group" wx:for="{{orderList}}"
-                   wx:key="{{item.id}}">
-            <view class="h">
-                <view class="l">订单编号：{{item.order_sn}}</view>
-                <view class="r">{{item.order_status_text}}</view>
-            </view>
-            <view class="goods" wx:for="{{item.goodsVos}}" wx:key="{{gitem.id}}" wx:for-item="gitem">
-                <view class="img">
-                    <image src="{{gitem.list_pic_url}}"></image>
+            <navigator url="../orderDetail/orderDetail?id={{item.id}}" class="order order_group" wx:for-item="item" wx:for="{{orderList}}"
+                       wx:key="{{item.id}}">
+                <view class="h">
+                    <view class="l">订单编号：{{item.order_sn}}</view>
+                    <view class="r">{{item.order_status_text}}</view>
                 </view>
-                <view class="info">
-                    <text class="name">{{gitem.goods_name}}</text>
-                    <text class="number">共{{gitem.number}}件商品</text>
+                <view class="goods" wx:for="{{item.goodsVos}}" wx:key="{{gitem.id}}" wx:for-item="gitem">
+                    <view class="img">
+                        <image src="{{gitem.list_pic_url}}"></image>
+                    </view>
+                    <view class="info">
+                        <text class="name">{{gitem.goods_name}}</text>
+                        <text class="number">共{{gitem.number}}件商品</text>
+                    </view>
+                    <view class="status"></view>
                 </view>
-                <view class="status"></view>
-            </view>
-            <view class="b">
-                <view class="l">实付：￥{{item.actual_price}}</view>
-                <view class="r">
-                    <button class="btn" data-order-index="{{index}}" data-orderid="{{item.id}}" catchtap="payOrder"
-                            wx:if="{{item.handleOption.pay}}">去付款
-                    </button>
+                <view class="b">
+                    <view class="l">实付：￥{{item.actual_price}}</view>
+                    <view class="r">
+                        <button class="btn" data-order-index="{{index}}" data-orderid="{{item.id}}" catchtap="payOrder"
+                                wx:if="{{item.handleOption.pay}}">去付款
+                        </button>
+                    </view>
                 </view>
-            </view>
-        </navigator>
+            </navigator>
+        <!--</block>-->
+
         <!-- <view class="showDataNull" wx:if="{{orderList.length == 0}}">
              <image class="showImg" src="/static/image/icon/null.png"></image>
              <view>
@@ -72,21 +75,53 @@
             </view>
         </view>-->
 
+
+        <view class="list_extra_area">
+            <view class="tips_area no_more" wx:if="{{listStatus==3}}">
+                <view class="tips_area_inner">
+                    END
+                </view>
+            </view>
+            <view class="tips_area loading-b" wx:if="{{listStatus==2}}">
+                <view class="tips_area loading-b">
+                    <image src="/static/image/icon/icon16_loading_gray.gif"></image>
+                    正在加载
+                </view>
+            </view>
+        </view>
+
     </scroll-view>
-    <view class="list_extra_area">
+    <view class="showDataNull" wx:if="{{realTotalPages == 0}}">
+        <image class="showImg" src="/static/image/icon/order_null.png"></image>
+        <view>
+            <text style="color: #9A9A9A">暂无订单</text>
+        </view>
+    </view>
+    <view class="loading_box" wx:if="{{pageStatus==1}}">
+        <image class="icon_loading" mode="aspectFit" src="/static/image/icon/loadin.png"></image>
+    </view>
+    <view class="error_box" wx:if="{{pageStatus==2}}">
+        <image class="icon_reload" mode="aspectFit" src="/static/image/icon/reload.png"></image>
+        <view class="reload_desc">加载失败</view>
+        <view bindtap="reloadHandler" class="reload_link">重新加载</view>
+    </view>
+
+
+
+    <!--<view class="list_extra_area">
         <view class="showDataNull" wx:if="{{realTotalPages == 0}}">
             <image class="showImg" src="/static/image/icon/order_null.png"></image>
             <view>
                 <text style="color: #9A9A9A">暂无订单</text>
             </view>
         </view>
-        <!--<view class="tips_area loading" wx:if="{{orderList.length == 0&&realTotalPages==1}}">
+        &lt;!&ndash;<view class="tips_area loading" wx:if="{{orderList.length == 0&&realTotalPages==1}}">
             <view class="tips_area loading">
                 <image src="/static/image/icon/icon16_loading_gray.gif"></image>
                 正在加载
             </view>
-        </view>-->
-    </view>
+        </view>&ndash;&gt;
+    </view>-->
 
     <!-- <view class="orders">
          <navigator url="../orderDetail/orderDetail?id={{item.id}}" class="order" wx:for="{{orderList}}" wx:key="{{item.id}}">
@@ -119,7 +154,7 @@
          </view>
      </view>-->
 
-    <view wx:if="{{orderList.length>5}}" class="loadmore">
+    <!--<view wx:if="{{orderList.length>5}}" class="loadmore">
         <block wx:if="{{nomore}}">
             <text>{{nomoreText}}</text>
         </block>
@@ -127,5 +162,5 @@
             <text class="iconfont icon-loading loading" space="nbsp"></text>
             <text> {{loadmoreText}}</text>
         </block>
-    </view>
+    </view>-->
 </view>
