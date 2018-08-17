@@ -78,9 +78,7 @@
 
         <view class="list_extra_area">
             <view class="tips_area no_more" wx:if="{{listStatus==3}}">
-                <view class="tips_area_inner">
                     END
-                </view>
             </view>
             <view class="tips_area loading-b" wx:if="{{listStatus==2}}">
                 <view class="tips_area loading-b">

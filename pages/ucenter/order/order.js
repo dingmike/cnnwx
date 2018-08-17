@@ -17,6 +17,7 @@ Page({
         listHeight: 0,
         pageStatus: 1,
         listStatus: 1,
+        flags: false
     },
     onLoad: function (options) {
         // 页面初始化 options为页面跳转所带来的参数
@@ -38,38 +39,43 @@ Page({
         this.getOrderList();
     },*/
     scrollToLowerHandler() {
-        3 != this.data.listStatus &&  this.getOrderList(true);
+        if(this.data.listStatus !=3&&this.data.flags){
+            this.getOrderList(true)
+        }
     },
     getOrderList(flag){
-        let that = this;
-        that.setData({
-            listStatus: 2
+        // let that = this;
+        this.setData({
+            listStatus: 2,
+            flags: false
         })
-        util.request(api.OrderList, {page: that.data.page, size: that.data.size, orderStatus: that.data.orderStatus}).then(function (res) {
+        util.request(api.OrderList, {page: this.data.page, size: this.data.size, orderStatus: this.data.orderStatus}).then( res=> {
             if (res.errno === 0) {
                 console.log(res.data);
                 if(res.data.totalPages==0){
-                    that.setData({
+                    this.setData({
+                        page: res.data.currentPage + 1,
                         realTotalPages: res.data.totalPages,
                         listHeight: wx.getSystemInfoSync().windowHeight -40 ,
-                        listStatus: res.data.data.length < 5 ? 3 : 1,
+                        listStatus: 3,
                         pageStatus: 0
                     });
 
                 }else{
-                        that.setData({
-                            orderList: that.data.orderList.concat(res.data.data),
+                    this.setData({
+                            orderList: this.data.orderList.concat(res.data.data),
                             page: res.data.currentPage + 1,
                             totalPages: res.data.totalPages,
                             realTotalPages: 1,
                             listHeight: wx.getSystemInfoSync().windowHeight -40 ,
                             listStatus: res.data.data.length < 5 ? 3 : 1,
-                            pageStatus: 0
+                            pageStatus: 0,
+                            flags: true
                         });
                 }
             }else{
                 if(flag){
-                    that.setData({
+                    this.setData({
                         listStatus: 1,
                         pageStatus: 2
                     });
@@ -106,6 +112,7 @@ Page({
         });
         this.getOrderList(true);
     },
+    // 全部
     gotoAllOrder() {
         this.gotoOrderByStatus("");
     },
