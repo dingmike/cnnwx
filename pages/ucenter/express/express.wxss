@@ -21,10 +21,11 @@
 
 .express_info_list {
     color: #9A9A9A;
-    padding: 50rpx 30rpx 50rpx 80rpx;
+    padding: 4rpx 30rpx 50rpx 80rpx;
 }
 
 .express_info_desc {
+    font-size: 25rpx!important;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -36,6 +37,8 @@
 
 .express_info_item {
     margin-bottom: 60rpx;
+    font-size:24rpx;
+    color: #a0a0a0;
     position: relative;
 }
 

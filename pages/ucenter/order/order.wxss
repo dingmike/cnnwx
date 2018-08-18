@@ -217,7 +217,6 @@ page{
     font-size: 14px;
     text-align: center;
     color: #D8D8D8;
-    background-color: #F7F7F7;
     height: 100rpx;
     line-height: 100rpx;
     width:400rpx;

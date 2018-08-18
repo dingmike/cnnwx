@@ -8,6 +8,7 @@ Page({
     },
     onLoad: function(a) {
         let o = n.globalData._expressDetail;
+
         this.setData({
             express: o,
             shipping_name: n.globalData.shipping_name,

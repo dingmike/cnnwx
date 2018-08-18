@@ -65,74 +65,9 @@ Page({
             }
         }
 
-
-
-
-        debugger
-
-
-       /* wx.showLoading({
-            title: "加载中"
-        });*/
-
-        // 获取首页数据
-      /*  var e = this, o = decodeURIComponent(t.scene);
-        console.log(o);
-        var s = this;
-
-        wx.request({
-            url: app.globalData.url + "api/Index/test",
-            success: function(a) {
-                console.log(a.data);
-                e.setData({
-                    test: a.data
-                });
-            }
-        });*/
         this.getIndexData();
         this._onLoad(); // 提前
-       /* wx.getUserInfo({
-            success: function(t) {
-                debugger
-                var e = t.userInfo;
-                console.log(e.nickName);
-                app.globalData.userInfo = e;
-                s.setData({
-                    choiceDataShow: !0,
-                    userInfo: e
-                });
-                var o = wx.getStorageSync("openid");
-                console.log(o.length);
-                o.length < 20 ? (wx.showLoading({
-                    title: "加载中"
-                }),wx.login({
-                    success: function(t) {
-                        console.log(t.code);
-                        console.log("调用登录接口成功");
 
-
-                        wx.request({
-                            url: "https://riyubao.net/code3.php",
-                            data: {
-                                code: t.code
-                            },
-                            success: function(t) {
-                                console.log(t), 200 == t.statusCode && wx.hideLoading(), wx.setStorageSync("openid", t.data.openid);
-                                var e = wx.getStorageSync("openid");
-                                app.globalData.openid = e, wx.hideNavigationBarLoading(), s.setData({
-                                    openid: e
-                                }), s._onLoad();
-                            }
-                        });
-                    },
-                    fail: function(a) {
-                        console.log(a);
-                    }
-                })) : (wx.hideLoading(), s.setData({
-                    openid: o
-                }), app.globalData.openid = o, s._onLoad());
-            }
-        });*/
     },
     _onLoad: function() {
         debugger

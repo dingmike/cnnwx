@@ -54,7 +54,7 @@ page{
 }
 
 .item-c .cost{
-    color: #b4282d;
+    color: #cc3500;
 }
 
 .item-c .btn{
@@ -67,7 +67,7 @@ page{
 }
 
 .item-c .btn.active{
-    background: #b4282d;
+    background: #cc3500;
     color: #fff;
 }
 
@@ -93,7 +93,7 @@ page{
 .order-goods .h .status{
     float: right;
     font-size: 30rpx;
-    color: #b4282d;
+    color: #cc3500;
 }
 
 .order-goods .item{
@@ -245,13 +245,13 @@ page{
 .order-bottom .pay-fee .label{
     display: inline-block;
     width: 140rpx;
-    color: #b4282d;
+    color: #cc3500;
 }
 
 .order-bottom .pay-fee .txt{
     display: inline-block;
     width: 140rpx;
-    color: #b4282d;
+    color: #cc3500;
 }
 
 .express_area {
@@ -280,6 +280,11 @@ page{
 }
 .express_time {
     margin-top: 10rpx;
+    font-size:24rpx!important;
+    color: #7e7e7e;
+}
+.express_addr {
+    font-size: 25rpx!important;
 }
 .icon_more_wrp {
     padding-left: 20rpx;

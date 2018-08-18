@@ -17,7 +17,7 @@
               hoverClass="none" url="url">
             <view class="list_nav_inner">待收货</view>
         </view>
-        <view bindtap="gotoFinishOrder" class="list_nav {{orderStatus=='402'?'highlight':''}}" hoverClass="none"
+        <view bindtap="gotoFinishOrder" class="list_nav {{orderStatus=='301'?'highlight':''}}" hoverClass="none"
               url="url">
             <view class="list_nav_inner">已完成</view>
         </view>
@@ -78,7 +78,7 @@
 
         <view class="list_extra_area">
             <view class="tips_area no_more" wx:if="{{listStatus==3}}">
-                    END
+                没有更多了
             </view>
             <view class="tips_area loading-b" wx:if="{{listStatus==2}}">
                 <view class="tips_area loading-b">

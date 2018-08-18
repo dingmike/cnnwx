@@ -38,22 +38,7 @@
 
             </view>
         </wxc-panel>
-   <!--     <view class="punchTime" wx:if="{{setTimeSty}}">
-            <view class="punchTime-set-info">
-                <view class="punchTime-info">
-                    <text>第<text style="font-size:17px;color:red">{{single.unlocks}}</text>天</text>
-                </view>
-                <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
-                    <view class="punchTime-set">
-                        <text class="card-time-box">打卡时间：05:00 - 10:00</text>
-                        <picker bindchange="bindTimeChange" end="24:00" mode="time" name="setupTime" start="05:00" value="{{single.setupTime}}">
-                            <text style="color:#F77620">设置提醒：{{single.setupTime}}</text>
-                        </picker>
-                    </view>
-                </form>
 
-            </view>
-        </view>-->
 
         <wxc-panel border="{{false}}">
             <view class="enrollment">
@@ -67,16 +52,6 @@
             </view>
 
         </wxc-panel>
-
-       <!-- <view class="enrollment">
-            <view class="enrollment-nums">
-                <text style="color:#000">{{studyUserNums}}人报名</text>
-            </view>
-            <view class="enrollment-images">
-                <image src="{{userInfo.avatarUrl}}" wx:if="{{avaData}}"></image>
-                <image src="{{item.avatar}}" wx:for="{{studyUser}}" wx:key="{{item}}"></image>
-            </view>
-        </view>-->
         <!--支付弹窗 start-->
         <view animation="{{animationData}}" class="signUp" wx:if="{{showModalStatus}}">
             <view class="signUp-title">
@@ -119,26 +94,6 @@
         </wxc-panel>
         <!--活动详情 end-->
 
-
-        <!--活动详情 start-->
-        <!--<view class="introduce-join">
-            <view class="introduce-join-text">
-                <text>【21天阅读达人养成计划】是由@cnn每日更新联合资深英语老师推出的英语阅读练习计划。在这21天中 ，将涉及不同领域的文章，以及常用英语进行罗列练习。在这21天中，每天10分钟，养成阅读英文的习惯。加油！
-                </text>
-            </view>
-            <view class="introduce-explain">
-                <text bindtap="bindExplain">活动详情</text>
-            </view>
-            <form bindsubmit="formSubmit" reportSubmit="true">
-                <view class="introduce-join-btn">
-                    <view bindtap="startStudy" class="introduce-join-pay" data-days="{{single.unlocks}}" data-statu="open">
-                        <button formType="submit">{{joinBtn}}</button>
-                    </view>
-                    <button class="introduce-join-Continue" openType="contact" wx:if="{{contact}}">学习完成</button>
-                </view>
-            </form>
-        </view>-->
-        <!--活动详情 end-->
         <view class="back"></view>
 
         <wxc-panel border="{{false}}">
@@ -163,45 +118,9 @@
 
         </wxc-panel>
 
-       <!-- <view class="introduce">
-            *知识回顾
-        </view>
-        <view class="History">
-            <view class="History-text">
-                <text>*点击日期按钮可回看当天知识点</text>
-            </view>
-            <form bindsubmit="formSubmit" reportSubmit="true">
-                <view class="History-icon">
-                    <view bindtap="reviewHistory" class="History-icon-item" data-day="{{item.genusdays}}" wx:for="{{studyNums}}" wx:key="{{item}}">
-                        <button formType="submit" style="background-color:#58b406;" wx:if="{{!test}}">{{item.genusdays}}</button>
-                        <button formType="submit" style="{{single.unlocks<index+1?'background-color:#919191':'background-color:#58b406'}}" wx:else>{{item.genusdays}}</button>
-                    </view>
-                </view>
-            </form>
-        </view>-->
         <view class="bottom-contact">
             <button></button>
         </view>
-
-
-
-
-        <!-- <view class="poem_wrap">
-             <view class="poem_item" wx:for="{{poem}}">
-                 <view class="author_info">
-                     <image class="author_avatar" src="{{item.headimgurl}}"></image>
-                     <view class="author_name">{{item.nickname}}</view>
-                 </view>
-                 <view catchtap="select_poem" class="poem_info" data-url="{{item.url}}">
-                     <view class="poem_title">{{item.poetry_name}}</view>
-                     <progressBar current_poem_url="{{current_poem_url}}" poem="{{item}}" src="{{item.url}}" width="352"></progressBar>
-                 </view>
-                 <view catchtap="navigateTo" class="go_read" data-url="../poem/poem?type=record&id={{item.id}}">
-                     <image class="icon_mic" src="https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/icon_detail.png"></image>
-                     <view>诗的详情</view>
-                 </view>
-             </view>
-         </view>-->
     </view>
     <button class="index_invite" openType="share"></button>
 </view>

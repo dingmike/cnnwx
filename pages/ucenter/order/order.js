@@ -128,9 +128,9 @@ Page({
     gotoBuyerConfirmGoodsOrder() {
         this.gotoOrderByStatus(300);
     },
-    // 已完成
+    // 暂时用户确认收货就订单已完成 301  如果有退货的就402
     gotoFinishOrder() {
-        this.gotoOrderByStatus(402);
+        this.gotoOrderByStatus(301);
     },
     onReady: function () {
         // 页面渲染完成

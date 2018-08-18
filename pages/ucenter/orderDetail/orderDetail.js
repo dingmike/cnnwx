@@ -24,15 +24,19 @@ Page({
     }).then(function (res) {
       if (res.errno === 0) {
         console.log(res.data);
+          let reverseExpress = res.data.shippingList;
+        if(res.data.shippingList){
+            reverseExpress = reverseExpress.reverse();
+        }
         that.setData({
           orderInfo: res.data.orderInfo,
           orderGoods: res.data.orderGoods,
           handleOption: res.data.handleOption,
-          express: res.data.shippingList
+          express: reverseExpress
         });
           e.globalData.shipping_no = res.data.orderInfo.shipping_no;
           e.globalData.shipping_name = res.data.orderInfo.shipping_name;
-          e.globalData._expressDetail = res.data.shippingList;
+          e.globalData._expressDetail = reverseExpress;
         //that.payTimer();
       }
     });
@@ -166,6 +170,17 @@ Page({
     });*/
 
   },
+    //确认收货
+    confirmOrder(){
+        let orderInfo = this.data.orderInfo;
+        util.request(api.ConfirmOrder, {
+            orderId: orderInfo.id
+        }).then(res => {
+          if(res.errno === 0){
+              util.showSuccessToast(res.data);
+          }
+        })
+    },
   gotoExpress(e) {
     debugger
         wx.navigateTo({
