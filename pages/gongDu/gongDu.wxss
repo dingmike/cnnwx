@@ -118,13 +118,13 @@ page {
 }
 
 .index_invite {
-    background-image: url(https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/index_invite.png);
-    width: 187rpx;
-    height: 77rpx;
-    background-size: 100% 100%;
-    position: fixed;
-    top: 80%;
-    right: 0;
+    background-image: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180822/11435754799e2c.png);
+    width:48rpx;
+    height:48rpx;
+    background-size:100% 100%;
+    position:fixed;
+    top:85%;
+    right:20rpx;
 }
 .enrollment {
     display: flex;

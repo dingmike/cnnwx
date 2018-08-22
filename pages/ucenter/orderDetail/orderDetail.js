@@ -1,7 +1,7 @@
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
 const pay = require('../../../services/pay');
-let e = getApp()
+let e = getApp();
 Page({
   data: {
     orderId: 0,

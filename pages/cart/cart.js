@@ -172,12 +172,12 @@ Page({
 
   },
   toIndexPage: function () {
-   /* wx.switchTab({
+    wx.switchTab({
       url: "/pages/mall/mall"
-    });*/
-      wx.navigateTo({
+    });
+     /* wx.navigateTo({
           url: '/pages/mall/mall'
-      })
+      })*/
   },
   updateCart: function (productId, goodsId, number, id) {
     let that = this;
