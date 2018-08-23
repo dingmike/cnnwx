@@ -183,7 +183,6 @@ page {
     height: 70rpx;
     float: right;
 }
-
 .next {
     position: absolute;
     bottom: 20rpx;

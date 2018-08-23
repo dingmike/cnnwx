@@ -3,6 +3,7 @@
         <text wx:if="{{detailIndex<3}}">今日共读重难点学习：{{detailIndex+1}}/{{oraleDetail.length-2}}</text>
         <text wx:if="{{detailIndex>2}}">今日共读练习题：{{detailIndex+1-3}}/{{oraleDetail.length-3}}</text>
     </view>
+
     <view class="today-content" wx:if="{{yuyinData}}">
         <view class="top">
             <view class="today-content-sound">

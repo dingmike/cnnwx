@@ -35,7 +35,6 @@ Page({
         var s = this;
         this.getOraleDetail(o);
         // this.getOraleDetailOld(o);
-
     },
     getOraleDetailOld(o){
         wx.request({
