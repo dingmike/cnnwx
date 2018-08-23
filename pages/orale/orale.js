@@ -7,31 +7,13 @@ var t = getApp(), o = wx.getBackgroundAudioManager(), e = require("../../utils/d
 
 Page({
     data: {
-        isPlayingMusic: !1,
+        isPlayingMusic: false,
         dqTime: "0:00"
     },
     onLoad: function(a) {
         wx.showNavigationBarLoading();
         var o = t.globalData.days, e = t.globalData.type;
-        this.getOraleContent(o, e);
         this.getContent(o, e);
-    },
-    getOraleContent: function(a, o) {
-        var e = this;
-        wx.request({
-            url: t.globalData.url + "api/orale/getOraleContent",
-            data: {
-                days: a,
-                type: o
-            },
-            success: function(a) {
-              /*  var o = a.data;
-                o.oralesound = o.oralesound.replace(/\\/g, "/"), o.extendsound = o.extendsound.replace(/\\/g, "/"),
-                wx.hideLoading(), t.globalData.oraleCountent = o, e.setData({
-                    oraleContent: o
-                }), e.playVoice();*/
-            }
-        });
     },
     getContent(a, o){
         var e = this;
@@ -123,7 +105,7 @@ Page({
     },
     onShow: function() {
         this.setData({
-            isPlayingMusic: !1
+            isPlayingMusic: false
         });
         t.globalData.days, t.globalData.type;
         console.log("onshow"), console.log(o.paused), this.playVoice();

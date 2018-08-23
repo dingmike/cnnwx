@@ -148,12 +148,7 @@ page {
     margin-right: 10rpx;
 }
 
-
-
 /**/
-
-
-
 .logoimg image {
     width: 100%;
     height: 300rpx;

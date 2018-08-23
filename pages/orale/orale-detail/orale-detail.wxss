@@ -162,7 +162,7 @@ page {
 }
 
 .soundRecording-play {
-    border: 1px solid #ea7d11;
+    /*border: 1px solid #ea7d11;*/
     border-radius: 50%;
     height: 120rpx;
     width: 120rpx;
@@ -301,6 +301,6 @@ page {
     height: 150rpx;
     position: absolute;
     width: 100%;
-    background-color: #faa20c;
+    background-color: #8bc34a;
     bottom: 0rpx;
 }

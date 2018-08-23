@@ -25,6 +25,7 @@
         </scroll-view>
     </view>
     <view bindtap="continueStudy" class="classbtn">
-        <image src="/static/image/read.png"></image>
+        <!--<image src="/static/image/read.png"></image>-->
+        继续学习
     </view>
 </view>
