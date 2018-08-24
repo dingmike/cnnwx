@@ -12,11 +12,12 @@ const api = require('../config/api.js');
 function loginByWeixin(userInfo) {
 
   let code = null;
-  return new Promise(function (resolve, reject) {
-    return util.login().then((res) => {
+  return new Promise( (resolve, reject) => {
+    return util.login().then(res => {
+      debugger
       code = res.code;
       return userInfo;
-    }).then((userInfo) => {
+    }).then(userInfo => {
       //登录远程服务器
       util.request(api.AuthLoginByWeixin, { code: code, userInfo: userInfo }, 'POST').then(res => {
         if (res.errno === 0) {

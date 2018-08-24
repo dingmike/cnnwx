@@ -217,12 +217,11 @@ function checkSession() {
  */
 function login() {
     return new Promise(function (resolve, reject) {
-
+debugger
         wx.login({
             success: function (res) {
                 if (res.code) {
                     //登录远程服务器
-                    console.log(res)
                     resolve(res);
                 } else {
                     reject(res);
