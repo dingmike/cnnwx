@@ -80,7 +80,7 @@
       <view class="item no-border item-bottom">
         <navigator url="url" class="a">
           <text class="icon kefu"></text>
-          <text class="txt">联系客服</text>
+          <text class="txt">联系我们</text>
         </navigator>
       </view>
     </button>

@@ -70,7 +70,7 @@
           "pagePath": "pages/mall/mall",
           "iconPath": "static/images/ic_menu_choice_nor.png",
           "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
-          "text": "商城"
+          "text": "小卖部"
         },
         {
           "pagePath": "pages/catalog/catalog",

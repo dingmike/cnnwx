@@ -160,8 +160,9 @@ function request(url, data = {}, method = "GET") {
 
                     if (res.data.errno == 401) {
                         //需要登录后才可以操作
-
+debugger
                         wx.removeStorageSync("userInfo");
+                        wx.removeStorageSync("openid");
                         wx.removeStorageSync("token");
                         wx.navigateTo({
                             url: '/pages/firstAuth/firstAuth'
@@ -217,7 +218,6 @@ function checkSession() {
  */
 function login() {
     return new Promise(function (resolve, reject) {
-debugger
         wx.login({
             success: function (res) {
                 if (res.code) {
@@ -236,7 +236,6 @@ debugger
 
 // 普通用户是否登录
 function redirect(url) {
-    debugger
     //判断页面是否需要登录 暂时不适用
    /* if (checkSession()) {
         wx.redirectTo({

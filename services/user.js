@@ -14,7 +14,6 @@ function loginByWeixin(userInfo) {
   let code = null;
   return new Promise( (resolve, reject) => {
     return util.login().then(res => {
-      debugger
       code = res.code;
       return userInfo;
     }).then(userInfo => {
@@ -43,12 +42,11 @@ function loginByWeixin(userInfo) {
  * 判断用户是否登录
  */
 function checkLogin() {
-  debugger
   return new Promise(function (resolve, reject) {
     if (wx.getStorageSync('userInfo') && wx.getStorageSync('token')) {
-debugger
+
       util.checkSession().then(() => {
-  debugger
+
         resolve(true);
       }).catch(() => {
         reject(false);

@@ -51,7 +51,7 @@
         </view>-->
     </view>
     <view class="partner">
-        <image class="tencent-cooperation" mode="widthFix" src="https://image.seecsee.com/mallBackgroungimage.png"></image>
+        <!--<image class="tencent-cooperation" mode="widthFix" src="https://image.seecsee.com/mallBackgroungimage.png"></image>-->
         <!--<view mode="widthFix" class="tencent-cooperation">肤色科技</view>-->
     </view>
     <button class="index_invite" openType="share"></button>

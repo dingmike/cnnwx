@@ -8,10 +8,11 @@ const api = require('../config/api.js');
 /**
  * 判断用户是否登录后支付 普通商品支付
  */
-function payOrder(orderId) {
+function payOrder(orderId,repay) {
     return new Promise(function (resolve, reject) {
         util.request(api.PayPrepayId, {
-            orderId: orderId
+            orderId: orderId,
+            repay: repay==1?1:0
         }).then((res) => {
             console.log(res)
             if (res.errno === 0) {

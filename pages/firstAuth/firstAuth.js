@@ -68,7 +68,6 @@ Page({
 
     },
     onLoad: function(e) {
-        debugger
         // 页面渲染完成
        /* if(app.globalData.userInfo){
             wx.redirectTo({
@@ -106,6 +105,7 @@ Page({
                 app.globalData.userInfo = res.data.userInfo;
                 wx.setStorageSync('userInfo', res.data.userInfo);
                 wx.setStorageSync("openid",res.data.userInfo.weixin_openid);
+                wx.setStorageSync("token",res.data.token);
                 app.globalData.openid = res.data.userInfo.weixin_openid;
                 app.globalData.token = res.data.token;
                 setTimeout(function(){
@@ -113,27 +113,25 @@ Page({
                         url: "/pages/gongDu/gongDu"
                     });*/
                     wx.navigateBack({ changed: true });
-                },1500)
 
+                },1500)
             }).catch((err) => {
                 console.log(err)
             });
         } else {
-
-
-            this.setData({ldata: false});
+            // this.setData({ldata: false});
             //用户按了拒绝按钮
             wx.showModal({
                 title: '用户未授权',
                 content: '您点击了拒绝授权,将无法正常显示个人信息,点击确定重新获取授权。',
                 success:  (res) => {
-                    debugger
+
                     if (res.confirm) {
-                        this.setData({
+                       /* this.setData({
                             showModal: true,
                             showModalStatus: true,
 
-                        })
+                        })*/
 
                        /* wx.openSetting({
                             success: (res) => {
@@ -156,13 +154,13 @@ Page({
                             }
                         })*/
                     }else{
-                        debugger
-                        this.setData({
+
+                       /* this.setData({
                             showModal: false,
                             ldata: true,
                             showModalStatus: false,
 
-                        })
+                        })*/
                     }
                 }
             });

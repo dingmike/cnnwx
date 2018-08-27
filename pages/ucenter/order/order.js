@@ -85,8 +85,9 @@ Page({
     },
     payOrder(e){
         let orderId = e.target.dataset.orderid;
+        let repay = 1;// 再吃发起支付标志
         // let that = this;
-        pay.payOrder(parseInt(orderId)).then(res => {
+        pay.payOrder(parseInt(orderId), repay).then(res => {
             wx.redirectTo({
                 url: '/pages/payResult/payResult?status=1&orderId=' + orderId
             });
