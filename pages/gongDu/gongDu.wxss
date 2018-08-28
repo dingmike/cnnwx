@@ -334,7 +334,7 @@ button::after {
 }
 
 .signUp {
-    border: 1px solid #F4803B;
+    border: 1px solid #58b406;
     border-radius: 10rpx 10rpx 10rpx 10rpx;
     width: 80%;
     margin-left: 10%;
@@ -348,7 +348,7 @@ button::after {
 
 .signUp-title {
     height: 80rpx;
-    background-color: #F4803B;
+    background-color: #58b406;
     font-size: 15px;
     color: #fff;
     text-align: center;

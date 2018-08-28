@@ -1,4 +1,4 @@
-var t = getApp(), a = wx.getBackgroundAudioManager(), e = wx.createInnerAudioContext(), o = wx.getRecorderManager();
+let t = getApp(), a = wx.getBackgroundAudioManager(), e = wx.createInnerAudioContext(), o = wx.getRecorderManager();
 const util = require('../../../utils/util.js');
 const api = require('../../../config/api.js');
 Page({
@@ -54,10 +54,7 @@ Page({
     getOraleDetail(days){
         // type 学习类型 days学习第几天
         util.request(api.GetOraleDetail, {days: days, type: 1, uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
-            debugger
-            console.log(res);
             let o = res.data;
-
             for(let e=0; e<o.length; e++){
                 if(o[e].oralesound){
                     o[e].oralesound = o[e].oralesound.replace(/\\/g, "/");
@@ -86,7 +83,7 @@ Page({
         })
     },
     getOverview: function(a) {
-        var e = this;
+        let e = this;
         wx.request({
             url: t.globalData.url + "api/orale/getOverview",
             data: {
@@ -103,14 +100,13 @@ Page({
         var e = a.detail.formId, o = t.globalData.openid, s = t.globalData.type, i = t.globalData.userInfo;
         let unlocks =   t.globalData.single.unlocks;
         util.request(api.SetCardById, {type: 1, uid: wx.getStorageSync('openid'),formId: e},  'POST').then( res =>{
-debugger
             if (res.data){
                 wx.redirectTo({
                     url: "/pages/signres/signres"
                 });
             } else {
 
-                var a = "今日打卡成功！";
+                let a = "今日打卡成功！";
                 res.data || (a = "今日已经打过卡！", wx.showModal({
                     title: "提示",
                     content: a,
@@ -126,7 +122,6 @@ debugger
         })
     },
     formSubmit2: function(a) {
-        debugger;
         console.log(a);
         var e = a.detail.formId, o = t.globalData.openid, s = t.globalData.type, i = t.globalData.userInfo;
         console.log(o);
@@ -143,7 +138,7 @@ debugger
                 if (console.log(t), t.data) wx.redirectTo({
                     url: "/pages/signres/signres"
                 }); else {
-                    var a = "今日打卡成功！";
+                    let a = "今日打卡成功！";
                     t.data || (a = "今日已经打过卡！", wx.showModal({
                         title: "提示",
                         content: a,
@@ -205,7 +200,6 @@ debugger
         });
     },
     Recordingend: function() {
-        debugger
         var t = this;
         console.log("录音结束"), o.stop(), this.setData({
             playing: !1
@@ -252,7 +246,6 @@ debugger
         });
     },
     getStorage: function() {
-        debugger
         var t = this.data.oid, a = this.data.detailIndex, e = this.data.oraleDetail;
         this.getBackStatus(), this.setData({
             startPlay: !1,
@@ -269,7 +262,6 @@ debugger
             nextSty: !1,
             completeSty: !1
         });
-        debugger
         var o = this.data.type + "voice" + t + a;
         console.log(o);
         var s = wx.getStorageSync(o);

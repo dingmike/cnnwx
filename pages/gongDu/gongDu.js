@@ -203,6 +203,12 @@ Page({
         }
     },
     sendPay () {
+
+        // test
+     /*   wx.reLaunch({
+            url: "/pages/submitInfo/submitInfo?orderId=" +  this.data.orderSn
+        });*/
+
         let t = wx.getStorageSync("openid"), e = this.data.type, o = this;
         wx.showLoading({
             title: "加载中"
@@ -213,13 +219,28 @@ Page({
                 console.log("生成订单成功");
                 o.data.orderSn= res.data.orderSn;
                 pay.gongDuPayOrder(res.data.orderSn).then(ress => {
-                    console.log("支付成功"), "requestPayment:ok" == ress.errMsg && wx.showToast({
+
+                    if("requestPayment:ok" == ress.errMsg){
+                        wx.showToast({
+                            title: "支付成功"
+                        });
+                        o.setData({
+                            showModalStatus: false
+                        });
+                        o.updateSuccess();
+                        wx.hideLoading();
+                        wx.reLaunch({
+                            url: "/pages/submitInfo/submitInfo?orderId=" +  o.data.orderSn
+                        });
+                    }
+
+                   /* "requestPayment:ok" == ress.errMsg && wx.showToast({
                         title: "支付成功"
                     }), o.setData({
                         showModalStatus: false
                     }),o.updateSuccess(), wx.hideLoading(), wx.reLaunch({
                         url: "/pages/submitInfo/submitInfo?orderId=" +  o.data.orderSn
-                    });
+                    });*/
 
                     //o.updateSucces(); // 暂时用来查询微信支付成功
                 }).catch(ress => {

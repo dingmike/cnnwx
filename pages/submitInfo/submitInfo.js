@@ -3,21 +3,25 @@ const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 Page({
     data: {
-        userInfo: {}
+        userInfo: {},
+        phone:'',
+        weixin:'',
+        formIdArray: []
+
     },
     onLoad: function(n) {},
-    formSubmit: function(o) {
-        var e = n.globalData.userInfo;
-        console.log(e);
-        var a = new Object();
+    submitInfo: function(o) {
+        this.saveFormId(o);
+        let e = n.globalData.userInfo;
+        let a = new Object();
         o.detail.value.phone, o.detail.value.weixin, e.nickName;
-        var t = wx.getStorageSync("openid");
-
-        util.request(api.UserSubmitPhone, {uid: t,mobile:o.detail.value.phone, wechatId: o.detail.value.weixin}, 'POST').then(res => {
+        let t = wx.getStorageSync("openid");
+        let formIds = this.data.formIdArray.join(',');
+        util.request(api.UserSubmitPhone, {uid: t,mobile:this.data.phone, wechatId: this.data.weixin, formIds:formIds}, 'POST').then(res => {
 
             if(res.errno == 0){
                 wx.reLaunch({
-                    url: "/pages/gongDu/gongDu"
+                    url: "/pages/index/index"
                 });
             }else{
                 wx.showToast({
@@ -26,8 +30,6 @@ Page({
                 });
             }
         })
-
-
         /*wx.request({
             url: n.globalData.url + "Formapi/addUserForm",
             data: {
@@ -53,6 +55,19 @@ Page({
                 });
             }
         }), console.log(a);*/
+    },
+    saveFormId: function (v) {
+        this.data.formIdArray.push(v.detail.formId);
+      /*  if (v.detail.formId != 'the formId is a mock one') {
+            this.data.formIdArray.push(v.detail.formId);
+        }*/
+
+    },
+    inputAccount: function (v) {
+        this.data.account = v.detail.value
+    },
+    inputPsw: function (v) {
+        this.data.password = v.detail.value
     },
     onReady: function() {},
     onShow: function() {

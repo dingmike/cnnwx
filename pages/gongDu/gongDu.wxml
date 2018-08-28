@@ -61,14 +61,14 @@
                 <radio checked="checked" class="info-radio"></radio>
                 <view class="info-text">
                     <text class="info-title">约定模式</text>
-                    <text bindtap="bindExplain" class="info-info" decode="true" space="true">我已悉知活动详情，立即加入口语练习计划！</text>
+                    <text bindtap="bindExplain" class="info-info" decode="true" space="true">我已悉知活动详情，立即加入练习计划！</text>
                 </view>
             </view>
             <view style="width:90%;font-size:12px">
                 <text bindtap="bindExplain" style="text-decoration: underline;  color: #f77620; float: right;margin-top:20rpx;">了解活动详情</text>
             </view>
             <view bindtap="sendPay" class="signUp-submit">
-                <text>提交</text>
+                <text style="color: #ffffff">提交</text>
             </view>
         </view>
         <!--支付弹窗 end-->
@@ -96,7 +96,7 @@
 
         <view class="back"></view>
 
-        <wxc-panel border="{{false}}">
+        <wxc-panel border="{{false}}" wx:if="{{single.startStatus==1}}">
 
           <!--  <view class="introduce">
                 知识点回顾

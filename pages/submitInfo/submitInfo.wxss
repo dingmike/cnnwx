@@ -8,7 +8,7 @@
 .row {
     display: flex;
     align-items: center;
-    margin-top: 50rpx;
+    margin-top: 10rpx;
 }
 
 .row text {
@@ -17,32 +17,44 @@
 }
 
 .row input {
-    font-size: 0.7rem;
-    flex-grow: 4;
-    border: 1px solid #09c;
-    display: inline-block;
-    border-radius: 0.3rem;
-    box-shadow: 0 0 0.15rem #aaa;
-    padding: 0.3rem;
-    margin-right: 30rpx;
+    flex-grow:6;
+    border:1px solid #09c;
+    border-radius:6rpx;
+    box-shadow:0 0 10rpx #aaa;
+    padding:10rpx;
 }
 
 .row button {
-    padding: 0 2rem;
+    /*padding: 0 16rpx;*/
 }
 
 .headImg {
-    background-color: #f10c5a;
-    height: 300rpx;
+    background-color: #58b406;
+    height: 280rpx;
     width: 100%;
     text-align: center;
     flex-direction: column;
     color: #fff;
-    font-size: 14px;
+    font-size: 14rpx;
 }
 
 .headImg image {
     width: 150rpx;
     height: 150rpx;
     margin-top: 70rpx;
+    border-radius:50%;
+}
+
+.form_class {
+    width: 74%;
+}
+.form_button {
+    background-color:transparent;
+    padding:10rpx 8rpx;
+    /*margin-top:20rpx;*/
+    text-align:center;
+}
+
+.form_button::after {
+    border: 0rpx;
 }
