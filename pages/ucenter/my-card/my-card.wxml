@@ -15,7 +15,7 @@
         <view class="card-content">
             <view class="card-items" wx:for="{{showData}}" wx:key="item.id">
                 <image src="{{item.reasonable?'/static/image/card.png':'/static/image/card2.png'}}"></image>
-                <text class="card-text">{{item.reasonable?'打卡成功！\n':'已打卡\n'}} <text style="{{item.reasonable?'color:#888888':'color:red'}};font-size:12px;">{{item.cardTime}} {{item.learnType}} {{item.reasonable?'':'\n没有在规定打卡时间内打卡'}}</text>
+                <text style="color:#d38a7e;" class="card-text">{{item.reasonable?'打卡成功！\n':'已打卡\n'}} <text style="{{item.reasonable?'color:#888888':'color:red'}};font-size:12px;">{{item.cardTime}} {{item.learnType}} {{item.reasonable?'':'\n没有在规定打卡时间内打卡'}}</text>
                 </text>
             </view>
         </view>

@@ -8,14 +8,13 @@ page {
 }
 
 .classbtn {
-    position: absolute;
-    bottom: 0px;
+    position: fixed;
+    bottom: 0;
     height: 100rpx;
     width: 100%;
-    background-color: #FEA201;
+    background-color: #58b406;
     color: #fff;
     text-align: center;
-    font-family: 微软雅黑;
     font-size: 15px;
     line-height: 100rpx;
 }
@@ -27,7 +26,6 @@ page {
     height: 85%;
     position: absolute;
     border-radius: 5px 5px 5px 5px;
-    top: 50rpx;
     vertical-align: middle;
 }
 
@@ -39,14 +37,14 @@ page {
 }
 
 .text-height {
-    height: 72%;
-    padding-bottom: 20rpx;
-    line-height: 2;
+    height:55%;
+    padding-bottom:100rpx;
+    line-height:2;
 }
 
-.top {
+/*.top {
     height: 28%;
-}
+}*/
 
 .today-content-sound {
     border: 1px solid #c0c0bf;
@@ -98,4 +96,13 @@ page {
     margin-top: 20rpx;
     padding-bottom: 20rpx;
     color: black;
+}
+
+/*new add*/
+.video-content{
+
+}
+.video-cell{
+    width:100%;
+    height: 200px;
 }

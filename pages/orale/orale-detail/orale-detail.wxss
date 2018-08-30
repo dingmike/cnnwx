@@ -11,7 +11,7 @@ page {
 .today-content {
     width: 90%;
     margin-left: 5%;
-    height: 40%;
+    /*height: 40%;*/
     padding-top: 25rpx;
     border-radius: 20px 20px 20px 20px;
     color: black;

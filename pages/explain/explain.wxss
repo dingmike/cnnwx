@@ -8,7 +8,7 @@
 
 .classbtn {
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
     height: 100rpx;
     width: 100%;
     background-color: #58b406;
@@ -22,4 +22,8 @@
 .container image {
     width: 100%;
     margin-top: auto;
+}
+.explain-content{
+    width: 86%;
+    margin: 0 auto;
 }

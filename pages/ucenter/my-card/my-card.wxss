@@ -27,19 +27,19 @@
 }
 
 .card-items image {
-    width: 70rpx;
-    height: 70rpx;
+    width:48rpx;
+    height:48rpx;
     margin: auto 20rpx;
 }
 
 .card-items {
-    border-bottom: 1px solid darkgoldenrod;
-    width: 94%;
-    font-size: 14px;
-    color: #d3ac7d;
-    margin-left: 3%;
-    display: flex;
-    flex-direction: row;
+    border-bottom:1px solid #ccc;
+    width:100%;
+    font-size:14px;
+    color:#d3ac7d;
+    display:flex;
+    flex-direction:row;
+
 }
 
 .card-text {

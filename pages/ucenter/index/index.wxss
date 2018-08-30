@@ -209,3 +209,71 @@ page{
   line-height: normal;
   display: inline;
 }
+
+
+/*new add*/
+
+.cellView {
+    height: 100rpx;
+    border-bottom: 2rpx solid #f4f4f4;
+    background-color: #fff;
+}
+
+.cellView .cell {
+    padding: 30rpx;
+}
+
+.cellView .cell image {
+    margin-right: 10rpx;
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.cellView .cell text {
+    font-size: 28rpx;
+    line-height: 32rpx;
+    letter-spacing: 2rpx;
+    color: #545454;
+    margin-right: 10rpx;
+    display: -webkit-box;
+}
+
+.cellView .cell .arrow {
+    position: relative;
+}
+
+.cellView .cell .arrow:after {
+    content: ' ';
+    height: 12rpx;
+    width: 12rpx;
+    border-width: 4rpx 4rpx 0 0;
+    border-color: #c8c8cd;
+    border-style: solid;
+    transform: matrix(.71,.71,-0.71,.71,0,0);
+    top: -4rpx;
+    position: absolute;
+    top: 50%;
+    margin-top: -8rpx;
+    right: 4rpx;
+}
+
+.contact {
+    line-height: 25px;
+    border: 0;
+    text-align: left;
+    background-color: #fff;
+}
+
+.contact::after {
+    content: none;
+}
+.box-flex-1 {
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+.item-flex {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}

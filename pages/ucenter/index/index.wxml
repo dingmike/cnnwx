@@ -7,7 +7,7 @@
   <view style="height:20rpx;background: #eee;width:100%;"></view>
   <view class="my-item" style='background:none;display:flex;flex-direction:column;height:auto;'></view>
   
-  <view class="user-menu">
+<!--  <view class="user-menu">
 
     <view class="item">
       <navigator url="/pages/ucenter/my-card/my-card" class="a">
@@ -27,12 +27,12 @@
         <text class="txt">优惠券</text>
       </navigator>
     </view>
-<!--    <view class="item no-border">
+&lt;!&ndash;    <view class="item no-border">
       <navigator url="url" class="a">
         <text class="icon gift"></text>
         <text class="txt">礼品卡</text>
       </navigator>
-    </view>-->
+    </view>&ndash;&gt;
     <view class="item">
       <navigator url="/pages/ucenter/collect/collect" class="a">
         <text class="icon collect"></text>
@@ -45,24 +45,24 @@
         <text class="txt">我的足迹</text>
       </navigator>
     </view>
-   <!-- <view class="item no-border">
+   &lt;!&ndash; <view class="item no-border">
       <navigator url="url" class="a">
         <text class="icon kefu"></text>
         <text class="txt">会员福利</text>
       </navigator>
-    </view>-->
+    </view>&ndash;&gt;
     <view class="item no-border">
       <navigator url="../address/address" class="a">
         <text class="icon address"></text>
         <text class="txt">地址管理</text>
       </navigator>
     </view>
-   <!-- <view class="item">
+   &lt;!&ndash; <view class="item">
       <navigator url="url" class="a">
         <text class="icon security"></text>
         <text class="txt">账号安全</text>
       </navigator>
-    </view>-->
+    </view>&ndash;&gt;
 
     <view class="item item-bottom">
       <navigator url="url" class="a">
@@ -84,13 +84,32 @@
         </navigator>
       </view>
     </button>
-    <!--<view class="item item-bottom" v-if="hasMobile != ''">
+    &lt;!&ndash;<view class="item item-bottom" v-if="hasMobile != ''">
       <navigator url="/pages/auth/mobile/mobile" class="a">
         <text class="icon phone"></text>
         <text class="txt">绑定手机</text>
       </navigator>
-    </view>-->
-  </view>
+    </view>&ndash;&gt;
+  </view>-->
 
+  <!--new style-->
+  <view class="cellView bottom">
+    <navigator url="/pages/ucenter/my-card/my-card" class="cell item-flex item-justify-center" hoverClass="none">
+      <image src="/static/image/icon/card_icon.png"></image>
+      <view class="box-flex-1">
+        <text>打卡记录</text>
+      </view>
+      <view class="arrow"></view>
+    </navigator>
+  </view>
+  <view class="cellView bottom">
+    <button class="cell item-flex item-justify-center contact" hoverClass="none" open-type="contact">
+      <image src="/static/image/icon/kefu_icon.png"></image>
+      <view class="box-flex-1">
+        <text>反馈留言</text>
+      </view>
+      <view class="arrow"></view>
+    </button>
+  </view>
   <!--<view class="logout" bindtap="exitLogin">退出登录</view>-->
 </view>

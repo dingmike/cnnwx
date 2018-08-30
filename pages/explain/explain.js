@@ -1,9 +1,9 @@
 Page({
     data: {},
     onLoad: function(n) {
-        wx.showLoading({
+        /*wx.showLoading({
             title: "加载中"
-        });
+        });*/
     },
     imgLoad: function(n) {
         console.log(n), wx.hideLoading();

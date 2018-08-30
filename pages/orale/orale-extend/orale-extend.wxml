@@ -6,7 +6,7 @@
 </text>
                 <text style="font-size:13px;">扩展内容</text>
             </view>
-            <view class="today-content-sound">
+           <!-- <view class="today-content-sound">
                 <view class="today-sound-control">
                     <image bindtap="startPlay" src="{{isPlayingMusic?'/static/images/stop.png':'/static/images/start.png'}}"></image>
                 </view>
@@ -16,18 +16,23 @@
                 <view class="today-sound-time">
                     <text>-{{dqTime}}</text>
                 </view>
-            </view>
+            </view>-->
+
+
+        </view>
+        <view class="video-content">
+            <video class="video-cell" id="myVideo" src="http://www.listeningexpress.com/cnn10/cnn10%202018-08-30.mp4" binderror="videoErrorCallback" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
         </view>
         <scroll-view class="text-height" scrollY="true">
             <view class="today-content-jp">
-                <text>{{oraleContent.extendsen}}</text>
+                <text>{{oraleContent.extendSen}}</text>
             </view>
             <view class="today-content-ch">
-                <text>{{oraleContent.extendword}}</text>
+                <text>{{oraleContent.extendWord}}</text>
             </view>
         </scroll-view>
     </view>
     <view bindtap="continueStudy" class="classbtn">
-        <text>回到首页</text>
+        <text style="color: #fff">回到首页</text>
     </view>
 </view>

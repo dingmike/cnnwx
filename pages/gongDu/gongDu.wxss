@@ -418,13 +418,10 @@ button::after {
     font-size: 14px;
     margin-top: 30rpx;
     float: right;
-    margin-right: 20rpx;
+    /*margin-right: 20rpx;*/
     text-decoration: underline;
 }
 .card-time-box{
     margin-bottom: 4rpx;
     color: #f77620;
-}
-.punch-day{
-
 }

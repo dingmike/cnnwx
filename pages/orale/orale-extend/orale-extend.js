@@ -1,4 +1,4 @@
-var a = getApp(), t = wx.getBackgroundAudioManager(), i = require("../../../utils/util.js");
+var a = getApp(), t = wx.getBackgroundAudioManager(), i = require("../../../utils/dakaUtil.js");
 
 Page({
     data: {
@@ -38,7 +38,6 @@ Page({
             isPlayingMusic: !1
         })) : (console.log(t.src), t.src || (t.src = n.oralesound), t.play(), t.title = n.title, 
         t.onPlay(function() {
-            console.log("音乐进度变化");
             var n = setInterval(function() {
                 var o = t.duration;
                 o && 0 != o && a.setData({
@@ -69,7 +68,7 @@ Page({
     onShow: function() {
         this.setData({
             isPlayingMusic: !1
-        }), console.log("页面显示");
+        })
     },
     onHide: function() {
         wx.stopBackgroundAudio();

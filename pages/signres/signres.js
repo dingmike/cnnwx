@@ -30,7 +30,7 @@ Page({
             wx.hideNavigationBarLoading();
         })
     },
-    getParameter: function() {
+   /* getParameter: function() {
         var t = e.globalData.openid, a = e.globalData.type, n = this;
         wx.request({
             url: e.globalData.url + "api/User/getCardNums",
@@ -42,11 +42,9 @@ Page({
                 n.canvas(t.data.length, a), wx.hideNavigationBarLoading();
             }
         });
-    },
+    },*/
     canvas: function(a, n) {
-        debugger
         var o = e.globalData.userInfo;
-        console.log(o), console.log(e.globalData.coimg);
         e.globalData.single;
         var i = e.globalData.oraleCountent, s = this;
         if (t.setFillStyle("white"), t.fillRect(0, 0, this.data.phoneWidth, this.data.phoneHeight), 
@@ -59,12 +57,11 @@ Page({
                 200 === e.statusCode && (t.drawImage(e.tempFilePath, 10, .88 * s.data.phoneHeight, 50, 50), 
                 t.draw());
             }
-        }), t.setFontSize(12), t.setFillStyle("black"), t.setFontSize(12), t.fillText("已坚持学习" + n + a + "天", .2 * this.data.phoneWidth, .9 * this.data.phoneHeight), 
-        i.keynums.length > 19) {
+        }), t.setFontSize(12), t.setFillStyle("black"), t.setFontSize(12), t.fillText("已坚持学习" + n + (a+1) + "天", .2 * this.data.phoneWidth, .9 * this.data.phoneHeight)) {
             t.setFontSize(12);
             var l = i.keynums.substr(0, 19), h = i.keynums.substr(19, i.keynums.length);
             t.fillText(l, .2 * this.data.phoneWidth, .95 * this.data.phoneHeight), t.fillText(h, .2 * this.data.phoneWidth, .95 * this.data.phoneHeight + 15);
-        } else t.setFontSize(13), t.fillText(i.keynums, .2 * this.data.phoneWidth, .95 * this.data.phoneHeight);
+        } else t.setFontSize(13), t.fillText('加油！', .2 * this.data.phoneWidth, .95 * this.data.phoneHeight);
     },
     shareImg: function() {
         wx.canvasToTempFilePath({
@@ -85,7 +82,6 @@ Page({
         });
     },
     returnIndex: function() {
-        console.log("回到首页");
         wx.reLaunch({
             url: "../index/index"
         });

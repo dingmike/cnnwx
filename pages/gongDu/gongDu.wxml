@@ -55,7 +55,7 @@
         <!--支付弹窗 start-->
         <view animation="{{animationData}}" class="signUp" wx:if="{{showModalStatus}}">
             <view class="signUp-title">
-                <text style="color:#58b406;">报名参加</text>
+                <text style="color:#fff;">报名参加</text>
             </view>
             <view class="signUp-info">
                 <radio checked="checked" class="info-radio"></radio>
@@ -76,7 +76,8 @@
         <wxc-panel border="{{false}}">
             <view class="introduce-join">
                 <view class="introduce-join-text">
-                    <text>【21天阅读达人养成计划】是由@cnn每日更新联合资深英语老师推出的英语阅读练习计划。在这21天中 ，将涉及不同领域的文章，以及常用英语进行罗列练习。在这21天中，每天10分钟，养成阅读英文的习惯。加油！
+                    <text>【21天英语学习达人养成计划】是由@cnn每日更新推出的英语学习计划。在这21天中，
+                        将涉及不同领域的英语学习资料，以及常用英语进行罗列练习。在这21天中，每天10分钟，养成英文学习的好习惯。加油！
                     </text>
                 </view>
                 <view class="introduce-explain">
