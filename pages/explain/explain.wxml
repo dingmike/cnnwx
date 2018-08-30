@@ -1,7 +1,27 @@
 <view class="container">
-    <image bindload="imgLoad" lazyLoad="true" mode="widthFix" src="https://riyubao.net/oralproject/public/datas/item/1.jpg"></image>
+   <!-- <image bindload="imgLoad" lazyLoad="true" mode="widthFix" src="https://riyubao.net/oralproject/public/datas/item/1.jpg"></image>
     <image bindload="imgLoad" lazyLoad="true" mode="widthFix" src="https://riyubao.net/oralproject/public/datas/item/2.png"></image>
-    <image bindload="imgLoad" lazyLoad="true" mode="widthFix" src="https://riyubao.net/oralproject/public/datas/item/3.png"></image>
+    <image bindload="imgLoad" lazyLoad="true" mode="widthFix" src="https://riyubao.net/oralproject/public/datas/item/3.png"></image>-->
+    <text>
+        21天效应--在行为心理学中，人们把一个人的新习惯或理念的形成并得以巩固至少需要21天的现象，称之为21天效应。
+        这是说，一个人的动作、或想法，如果重复21天就会变成一个习惯性的动作或想法。用在我们学习英语也是一个道理，坚持21天养成一个好的学习习惯。
+    </text>
+    <text>
+        21天英语学习达人养成计划，旨在帮助大家利用碎片时间，每天十几分钟，养成良好的英语学习习惯。学习计划中的材料涉及视频音频文字，
+        实现了看，听，读，答，以及在线打卡的学习方式，还可以加入社群共读共练，结识英语爱好者。
+    </text>
+    <text>
+        学习计划默认采取约定模式，在21天内，连续20天每天在约定时间内完成学习任务打卡，21天后约定金额全额返还，偷懒不学习或未在规定时间内打卡者不予返还。
+    </text>
+
+    <text>
+        每天规定打卡时间为：北京时间 5:00AM-10:00AM
+        约定模式：每天在规定时间内打卡成功，连续20天即可返还
+    </text>
+<text>
+    在约定模式下，连续坚持20天完成学习打卡任务的小伙伴，可以有机会获得精美礼品，每月底抽奖一次。
+    请关注微信公众号：英文能力，并留意微信通知，你的打卡早晚，学习时长，都将决定您最后的获奖几率。
+</text>
 </view>
 <view bindtap="continueStudy" class="classbtn">
     <text>开始学习</text>

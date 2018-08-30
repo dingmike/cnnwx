@@ -11,10 +11,9 @@
     bottom: 0px;
     height: 100rpx;
     width: 100%;
-    background-color: red;
+    background-color: #58b406;
     color: #fff;
     text-align: center;
-    font-family: 微软雅黑;
     font-size: 15px;
     line-height: 100rpx;
     opacity: 0.6;

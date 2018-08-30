@@ -393,7 +393,7 @@ button::after {
     width: 90%;
     margin-left: 5%;
     border-radius: 30rpx 30rpx 30rpx 30rpx;
-    background-color: #F4803B;
+    background-color: #58b406;
     margin-top: 20rpx;
     font-size: 16px;
     color: #fff;
