@@ -126,7 +126,7 @@ page {
     height:49rpx;
     background-size:100% 100%;
     position:fixed;
-    top:85%;
+    top:47%;
     right:20rpx;
 }
 .enrollment {

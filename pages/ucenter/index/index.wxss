@@ -12,10 +12,10 @@ page{
 .userinfo {
 	display: flex;
 	flex-direction: column;
-	padding: 50rpx 0;
+    padding:40rpx 0;
 	align-items: center;
 	background: #333;
-  width: 750rpx;
+    width: 750rpx;
 }
 
 .userinfo-avatar {
