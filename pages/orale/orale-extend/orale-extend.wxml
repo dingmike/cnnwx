@@ -17,11 +17,9 @@
                     <text>-{{dqTime}}</text>
                 </view>
             </view>-->
-
-
         </view>
         <view class="video-content">
-            <video class="video-cell" id="myVideo" src="http://www.listeningexpress.com/cnn10/cnn10%202018-08-30.mp4" binderror="videoErrorCallback" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+            <video class="video-cell" id="myVideo" src="{{oraleContent.extendsound}}" binderror="videoErrorCallback" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
         </view>
         <scroll-view class="text-height" scrollY="true">
             <view class="today-content-jp">

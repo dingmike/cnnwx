@@ -3,20 +3,24 @@ var a = getApp(), t = wx.getBackgroundAudioManager(), i = require("../../../util
 Page({
     data: {
         isPlayingMusic: !1,
-        dqTime: "0:00"
+        dqTime: "0:00",
+        danmuList:['Welcome！']
     },
     onLoad: function(a) {
-        wx.showNavigationBarLoading(), this.getOraleData();
+        wx.showNavigationBarLoading();
+        this.getOraleData();
     },
     getOraleData: function() {
         var t = a.globalData.oraleCountent;
         this.setData({
             oraleContent: t
-        }), this.playVoice();
+        });
+        this.playVoice();
     },
     playVoice: function() {
-        var a = this, n = this.data.oraleContent;
-        console.log(n.extendsound), t.src = n.extendsound, t.title = "扩展内容", t.onPlay(function() {
+        var a = this;
+        n = this.data.oraleContent;
+        t.src = n.extendsound, t.title = "扩展内容", t.onPlay(function() {
             wx.hideNavigationBarLoading(), t.pause();
             var n = setInterval(function() {
                 var o = t.duration;

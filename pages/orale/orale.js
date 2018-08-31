@@ -18,7 +18,6 @@ Page({
     getContent(a, o){
         var e = this;
         util.request(api.GetGongduContent, {days: a, type: 1, uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
-            debugger
             var o = res.data;
             o.oralesound = o.oraleSound.replace(/\\/g, "/");
             o.extendsound = o.extendSound.replace(/\\/g, "/");
@@ -31,9 +30,10 @@ Page({
         })
     },
     playVoice: function() {
-        var a = this, t = this.data.oraleContent;
-        console.log(t), console.log("neir"), t && (o.src = t.oralesound, o.stop(), o.src = t.oralesound,
-        console.log(o.src), o.title = t.title, o.onPlay(function() {
+        var a = this;
+        t = this.data.oraleContent;
+        t && (o.src = t.oralesound, o.stop(), o.src = t.oralesound,
+        o.title = t.title, o.onPlay(function() {
             wx.hideNavigationBarLoading(), o.pause();
             var t = setInterval(function() {
                 var n = o.duration;
