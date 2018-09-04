@@ -4,7 +4,7 @@
             <view class="today-content-title">
                 <text>{{oraleContent.title}}
                 </text>
-                <text style="font-size:13px;">全部内容</text>
+                <!--<text style="font-size:13px;">全部内容</text>-->
             </view>
             <view class="today-content-sound">
                 <view class="today-sound-control">

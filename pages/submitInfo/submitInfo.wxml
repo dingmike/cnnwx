@@ -10,7 +10,7 @@
             <text>手 机 号：</text>
             <form bindsubmit="saveFormId" report-submit="{{true}}" class='form_class'>
                 <button formType="submit" class='form_button' style="text-align: left;font-size: 26rpx">
-                    <input name="phone" type="number" bindinput='inputAccount' placeholder-style="color:#bbbbbb" placeholder=''></input>
+                    <input name="phone" type="number" bindinput='inputMobile' placeholder-style="color:#bbbbbb" placeholder=''>
                 </button>
             </form>
             <!--<input name="phone" placeholder="请输入手机号" type="number"></input>-->
@@ -19,7 +19,7 @@
             <text>微 信 号：</text>
             <form bindsubmit="saveFormId" report-submit="{{true}}" class='form_class'>
                 <button formType="submit" class='form_button' style="text-align: left; font-size: 26rpx">
-                    <input name="weixin" type="text" bindinput='inputPsw' placeholder-style="color:#bbbbbb" placeholder=''></input>
+                    <input name="weixin" type="text" bindinput='inputWechatId' placeholder-style="color:#bbbbbb" placeholder=''>
                 </button>
             </form>
             <!--<input name="weixin" placeholder="请输入微信号" type="text"></input>-->

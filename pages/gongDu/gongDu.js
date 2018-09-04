@@ -103,7 +103,6 @@ Page({
                 for(let i=1; i<=res.data.genusdays; i++){
                     studyNums.push({genusdays: i})
                 }
-                console.log(studyNums)
                 this.setData({
                     studyNums: studyNums
                 });
@@ -229,9 +228,12 @@ Page({
                         });
                         o.updateSuccess();
                         wx.hideLoading();
-                        wx.reLaunch({
-                            url: "/pages/submitInfo/submitInfo?orderId=" +  o.data.orderSn
-                        });
+
+                        setTimeout(function() {
+                            wx.reLaunch({
+                                url: "/pages/submitInfo/submitInfo?orderId=" +  o.data.orderSn
+                            })
+                        }, 400);
                     }
 
                    /* "requestPayment:ok" == ress.errMsg && wx.showToast({

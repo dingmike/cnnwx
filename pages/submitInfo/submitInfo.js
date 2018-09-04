@@ -4,8 +4,8 @@ const api = require('../../config/api.js');
 Page({
     data: {
         userInfo: {},
-        phone:'',
-        weixin:'',
+        mobile:'',
+        wechatId:'',
         formIdArray: []
 
     },
@@ -17,12 +17,14 @@ Page({
         o.detail.value.phone, o.detail.value.weixin, e.nickName;
         let t = wx.getStorageSync("openid");
         let formIds = this.data.formIdArray.join(',');
-        util.request(api.UserSubmitPhone, {uid: t,mobile:this.data.phone, wechatId: this.data.weixin, formIds:formIds}, 'POST').then(res => {
+        util.request(api.UserSubmitPhone, {uid: t,mobile:this.data.mobile, wechatId: this.data.wechatId, formIds:formIds}, 'POST').then(res => {
 
             if(res.errno == 0){
-                wx.reLaunch({
-                    url: "/pages/index/index"
-                });
+                setTimeout(function() {
+                    wx.reLaunch({
+                        url: "/pages/index/index"
+                    })
+                }, 400);
             }else{
                 wx.showToast({
                     title: "绑定失败！",
@@ -63,11 +65,11 @@ Page({
         }*/
 
     },
-    inputAccount: function (v) {
-        this.data.account = v.detail.value
+    inputMobile: function (v) {
+        this.data.mobile = v.detail.value
     },
-    inputPsw: function (v) {
-        this.data.password = v.detail.value
+    inputWechatId: function (v) {
+        this.data.wechatId = v.detail.value
     },
     onReady: function() {},
     onShow: function() {
