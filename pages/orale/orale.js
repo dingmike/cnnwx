@@ -3,7 +3,8 @@ function a(a) {
 }
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
-var t = getApp(), o = wx.getBackgroundAudioManager(), e = require("../../utils/dakaUtil.js");
+let t = getApp();
+let o = wx.getBackgroundAudioManager(), e = require("../../utils/dakaUtil.js");
 
 Page({
     data: {
@@ -31,9 +32,9 @@ Page({
     },
     playVoice: function() {
         var a = this;
-        t = this.data.oraleContent;
-        t && (o.src = t.oralesound, o.stop(), o.src = t.oralesound,
-        o.title = t.title, o.onPlay(function() {
+        var tContent = this.data.oraleContent;
+        tContent && (o.src = tContent.oralesound, o.stop(), o.src = tContent.oralesound,
+        o.title = tContent.title, o.onPlay(function() {
             wx.hideNavigationBarLoading(), o.pause();
             var t = setInterval(function() {
                 var n = o.duration;
@@ -41,7 +42,7 @@ Page({
                     audioMax: n,
                     dqTime: e.formatSeconds(n)
                 }), clearInterval(t));
-            }, 1e3);
+            }, 1000);
         }));
     },
     sliderchange: function(a) {

@@ -1,6 +1,6 @@
-var NewApiRootUrl = 'http://localhost:8080/api/';
+// var NewApiRootUrl = 'http://localhost:8080/api/';
 // var NewApiRootUrl = 'http://cnnfront.tunnel.qydev.com/api/';
-// let NewApiRootUrl = 'https://api.fecstec.com/platform-admin-1.0.0/api/';
+let NewApiRootUrl = 'https://api.fecstec.com/platform-admin-1.0.0/api/';
 
 module.exports = {
     CnnIndexUrl: NewApiRootUrl + 'index/cnnIndex', // cnn首页数据接口

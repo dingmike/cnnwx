@@ -18,8 +18,7 @@ Page({
         this.playVoice();
     },
     playVoice: function() {
-        var a = this;
-        n = this.data.oraleContent;
+        var a = this,n = this.data.oraleContent;
         t.src = n.extendsound, t.title = "扩展内容", t.onPlay(function() {
             wx.hideNavigationBarLoading(), t.pause();
             var n = setInterval(function() {
@@ -28,7 +27,7 @@ Page({
                     audioMax: o,
                     dqTime: i.formatSeconds(o)
                 }), clearInterval(n));
-            }, 1e3);
+            }, 1000);
         });
     },
     sliderchange: function(a) {
