@@ -6,11 +6,6 @@ const user = require('../../services/user.js');
 const app = getApp();
 Page({
     data: {
-        single: {
-            unlocks: 10, //已经阅读打卡的天数
-            setup: '08:30',  // 设置提醒时间
-            starts: 1,  //是否已开始打卡
-        },
         style: 'width: 222rpx;background: #58b406;border-radius: 66rpx;color: #fff;',
         poem: "",
         current_poem_url: "",
@@ -22,7 +17,7 @@ Page({
         learnType: '',
         setTimeSty: true,
         payStatus: true,
-        showModalStatus: !1,
+        showModalStatus: false,
         cardM: function(a, t, e) {
             return t in a ? Object.defineProperty(a, t, {
                 value: e,
@@ -45,7 +40,6 @@ Page({
             path: "pages/index/index?uid=" + this.data.uid
         }
     },
-
     onLoad(t) {
         wx.showNavigationBarLoading();
         if (app.globalData.userInfo && app.globalData.userInfo != '') {
@@ -77,27 +71,6 @@ Page({
         this.setData({
             openid: e,
             bgimg: app.globalData.bgimg
-        });
-        // t.getStudyUser();
-    },
-    getStudyUser: function() {
-        var t = this, e = this.data.type, o = app.globalData.openid;
-        wx.request({
-            url: app.globalData.url + "api/index/getNewStudyUser",
-            data: {
-                type: e,
-                openid: o
-            },
-            success: function(a) {
-                var e = a.data.data, o = a.data.status;
-                o > 200 ? (o = 200, t.setData({
-                    studyUser: e,
-                    studyUserNums: o + "+"
-                })) : t.setData({
-                    studyUser: e,
-                    studyUserNums: o
-                });
-            }
         });
     },
     takePartIn(e){

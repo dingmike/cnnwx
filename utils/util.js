@@ -160,11 +160,13 @@ function request(url, data = {}, method = "GET") {
 
                     if (res.data.errno == 401) {
                         //需要登录后才可以操作
-debugger
                         wx.removeStorageSync("userInfo");
                         wx.removeStorageSync("openid");
                         wx.removeStorageSync("token");
-                        wx.navigateTo({
+                   /*     wx.navigateTo({
+                            url: '/pages/firstAuth/firstAuth'
+                        });*/
+                        wx.redirectTo({
                             url: '/pages/firstAuth/firstAuth'
                         });
 
@@ -200,7 +202,6 @@ debugger
  * 检查微信会话是否过期
  */
 function checkSession() {
-    debugger
     return new Promise(function (resolve, reject) {
         wx.checkSession({
             success: function () {

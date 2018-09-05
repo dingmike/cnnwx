@@ -92,7 +92,6 @@ Page({
         });
     },*/
     bindGetUserInfo(e) {
-        debugger
         this.setData({
             userData: e.detail
         })
@@ -108,13 +107,13 @@ Page({
                 wx.setStorageSync("token",res.data.token);
                 app.globalData.openid = res.data.userInfo.weixin_openid;
                 app.globalData.token = res.data.token;
-                setTimeout(function(){
-                    /*wx.redirectTo({
+               /* setTimeout(function(){
+                    /!*wx.redirectTo({
                         url: "/pages/gongDu/gongDu"
-                    });*/
+                    });*!/
                     wx.navigateBack({ changed: true });
-
-                },1500)
+                },500)*/
+                wx.navigateBack({ changed: true });
             }).catch((err) => {
                 console.log(err)
             });

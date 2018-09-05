@@ -23,7 +23,7 @@
         <wxc-panel border="{{true}}" margin="{{false}}" wx:if="{{setTimeSty}}">
             <view class="punchTime punchTime-set-info content">
                 <view class="punchTime-info">
-                    <text class="punch-day">第<text style=" width: 60px;border-radius: 4px;font-size:18px;color:#fff; padding: 4px; margin: 0 2px; background: #f77620">{{single.unlocks}}</text>天</text>
+                    <text class="punch-day">第<text style=" display: inline-block; width: 28px;border-radius: 4px;font-size:18px;color:#fff; padding: 0 4px; margin: 0 2px; background: #f77620">{{single.unlocks}}</text>天</text>
                 </view>
                 <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
                     <view class="punchTime-set">

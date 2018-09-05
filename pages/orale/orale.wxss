@@ -50,7 +50,7 @@ page {
 }
 
 .top {
-    height: 28%;
+    height: 25%;
 }
 
 .today-content-sound {

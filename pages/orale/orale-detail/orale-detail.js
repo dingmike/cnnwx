@@ -21,18 +21,18 @@ Page({
         completeSty: !1
     },
     onLoad: function(a) {
-        wx.showNavigationBarLoading(), console.log(t.globalData.type), this.setData({
+        wx.showNavigationBarLoading();
+        this.setData({
             type: t.globalData.type
         });
         var e = t.globalData.userInfo.avatar;
-        console.log(e), this.setData({
+        this.setData({
             avatarUrl: e
         });
         var o = a.oid;
         this.setData({
             oid: o
-        }), this.getOverview(o);
-        var s = this;
+        });
         this.getOraleDetail(o);
     },
     getOraleDetail(days){
@@ -51,23 +51,9 @@ Page({
 
         })
     },
-    getOverview: function(a) {
-        let e = this;
-        wx.request({
-            url: t.globalData.url + "api/orale/getOverview",
-            data: {
-                id: a
-            },
-            success: function(t) {
-                e.setData({
-                    Overvier: t.data
-                });
-            }
-        });
-    },
     formSubmit(a){
         var e = a.detail.formId, o = t.globalData.openid, s = t.globalData.type, i = t.globalData.userInfo;
-        let unlocks =   t.globalData.single.unlocks;
+        let unlocks = t.globalData.single.unlocks;
         util.request(api.SetCardById, {type: 1, uid: wx.getStorageSync('openid'),formId: e},  'POST').then( res =>{
             if (res.data){
                 wx.redirectTo({

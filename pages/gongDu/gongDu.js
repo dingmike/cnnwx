@@ -7,9 +7,9 @@ const app = getApp();
 Page({
     data: {
         single: {
-            unlocks: 10, //已经阅读打卡的天数
-            setupTime: '08:30',  // 设置提醒时间
-            startStatus: 1,  //是否已开始打卡
+            unlocks: 0, //已经阅读打卡的天数
+            setupTime: '07:30',  // 设置提醒时间
+            startStatus: 0,  //是否已开始打卡
             miss:0,
         },
         test:true,
@@ -21,17 +21,17 @@ Page({
         joinBtn: "继续学习",
         setTimeSty: true,
         payStatus: true,
-        showModalStatus: !1,
+        showModalStatus: false,
         learnTypeId: 1,
         orderSn: '',
         cardM: function(a, t, e) {
             return t in a ? Object.defineProperty(a, t, {
                 value: e,
-                enumerable: !0,
-                configurable: !0,
-                writable: !0
+                enumerable: true,
+                configurable: true,
+                writable: true
             }) : a[t] = e, a;
-        }({}, "reasonable", !1)
+        }({}, "reasonable", false)
     },
 
     showToast() {
@@ -48,18 +48,12 @@ Page({
     },
 
     onLoad(t) {
-
-        // 获取首页数据
-      /*  this.getIndexData();
-        var o = decodeURIComponent(t.scene);
-        this._onLoad(); // 提前*/
-    },
-    _onLoad: function() {
         var t = this;
+        // 获取首页数据
+        this.getIndexData();
         this.data.type = app.globalData.type;
         wx.showNavigationBarLoading();
         var e = app.globalData.openid;
-        console.log(e);
         this.setData({
             openid: e,
             bgimg: app.globalData.bgimg
@@ -77,6 +71,7 @@ Page({
             });
         }
     },
+
     getOneCard(){
         var t = new Date(), e = this.data.openid, s = t.getMonth() + 1, n = t.getDate(), y = t.getFullYear();
         // type learn type id 判断今日是否打过卡
@@ -332,9 +327,8 @@ Page({
         wx.setNavigationBarTitle({
             title: t + "练习"
         });
-        this.getIndexData();
-        var o = decodeURIComponent(t.scene);
-        this._onLoad(); // 提前
+       // this.getIndexData();
+        // var o = decodeURIComponent(t.scene);
     },
     onReady: function () {
         // 页面渲染完成

@@ -202,7 +202,7 @@ page {
     height: 70rpx;
     background-color: #fff;
     right: 20rpx;
-    background-image: url('https://riyubao.net/oralproject/public/datas/complete.png');
+    background-image: url('http://pc5e9xq7v.bkt.clouddn.com//1/20180905/160730963ce3d7.png');
     background-size: 100% 100%;
 }
 
