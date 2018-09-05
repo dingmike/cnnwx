@@ -2,9 +2,8 @@
     <view class="today-content">
         <view class="top">
             <view class="today-content-title">
-                <text>{{oraleContent.title}}
-</text>
-                <text style="font-size:13px;">扩展内容</text>
+                <text>{{oraleContent.title}}</text>
+                <text style="font-size:13px; line-height:24px;">扩展内容</text>
             </view>
            <!-- <view class="today-content-sound">
                 <view class="today-sound-control">
