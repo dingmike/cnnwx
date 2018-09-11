@@ -5,32 +5,31 @@
     </view>
 
     <view class="today-content" wx:if="{{yuyinData}}">
-       <!-- <view class="top">
-            <view class="today-content-sound">
-                <view class="today-sound-control">
-                    <image bindtap="startPlay" src="{{isPlayingMusic?'/static/image/stop.png':'/static/image/start.png'}}"></image>
-                </view>
-                <view class="today-sound-process">
-                    <slider activeColor="#FEC868" bindchange="sliderchange" max="{{audioMax}}" min="0" value="{{currentPosition}}"></slider>
-                </view>
-            </view>
-        </view>-->
+        <!-- <view class="top">
+             <view class="today-content-sound">
+                 <view class="today-sound-control">
+                     <image bindtap="startPlay" src="{{isPlayingMusic?'/static/image/stop.png':'/static/image/start.png'}}"></image>
+                 </view>
+                 <view class="today-sound-process">
+                     <slider activeColor="#FEC868" bindchange="sliderchange" max="{{audioMax}}" min="0" value="{{currentPosition}}"></slider>
+                 </view>
+             </view>
+         </view>-->
         <scroll-view class="bottoms" scrollY="true">
             <view class="content-text-jp">
                 <text>{{oraleDetail[detailIndex].oraleitem}}</text>
             </view>
         </scroll-view>
     </view>
+
     <scroll-view class="keyWord" scrollY="true" wx:if="{{yuyinData}}">
         <view class="keyWord-item">
-            <text>重点词汇：
-
-{{oraleDetail[detailIndex].keyword}}</text>
+            <text>{{oraleDetail[detailIndex].keyword}}</text>
         </view>
     </scroll-view>
     <block wx:if="{{!datiData}}">
         <view class="interactive-text" wx:if="{{!voiceCon}}">
-            <text>长按底部录音按钮口语练习</text>
+            <text>长按底部录音按钮练习口语</text>
         </view>
     </block>
     <block wx:if="{{yuyinData}}">

@@ -3,22 +3,22 @@
         <view class="top">
             <view class="today-content-title">
                 <text>{{oraleContent.title}}</text>
-                <text style="font-size:13px; line-height:24px;">扩展内容</text>
+                <text style="font-size:13px; color: orange;">(扩展内容)</text>
             </view>
-           <!-- <view class="today-content-sound">
-                <view class="today-sound-control">
-                    <image bindtap="startPlay" src="{{isPlayingMusic?'/static/images/stop.png':'/static/images/start.png'}}"></image>
-                </view>
-                <view class="today-sound-process">
-                    <slider activeColor="#FEC868" backgroundColor="#DCDCDC" bindchange="sliderchange" max="{{audioMax}}" min="0" value="{{currentPosition}}"></slider>
-                </view>
-                <view class="today-sound-time">
-                    <text>-{{dqTime}}</text>
-                </view>
-            </view>-->
+            <!-- <view class="today-content-sound">
+                 <view class="today-sound-control">
+                     <image bindtap="startPlay" src="{{isPlayingMusic?'/static/images/stop.png':'/static/images/start.png'}}"></image>
+                 </view>
+                 <view class="today-sound-process">
+                     <slider activeColor="#FEC868" backgroundColor="#DCDCDC" bindchange="sliderchange" max="{{audioMax}}" min="0" value="{{currentPosition}}"></slider>
+                 </view>
+                 <view class="today-sound-time">
+                     <text>-{{dqTime}}</text>
+                 </view>
+             </view>-->
         </view>
         <view class="video-content">
-            <video class="video-cell" id="myVideo" src="{{oraleContent.extendsound}}" binderror="videoErrorCallback" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+            <video class="video-cell" custom-cache="{{false}}" id="myVideo" src="{{oraleContent.extendsound}}" binderror="videoErrorCallback" controls></video>
         </view>
         <scroll-view class="text-height" scrollY="true">
             <view class="today-content-jp">

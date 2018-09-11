@@ -1,78 +1,147 @@
-
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
+// import Card from '../../palette/image-example';
 
 let t = wx.createCanvasContext("myCanvas");
 let e = getApp();
 Page({
-    data: {},
-    onLoad: function(t) {
-        var e = wx.getSystemInfoSync();
-        console.log(e), console.log("结果页"), wx.showNavigationBarLoading();
-        var a = this, n = .9 * e.windowWidth, o = .85 * e.windowHeight;
-        console.log(n), console.log(o), a.setData({
+    // imagePath: '',
+    data: {
+        template: {},
+        avatorUrl: '',
+        imagePath: ''
+    },
+    onImgOK(e) {
+        this.data.imagePath = e.detail.path;
+        // console.log(e);
+    },
+
+    shareImg() {
+        wx.saveImageToPhotosAlbum({
+            filePath: this.data.imagePath,
+            success: function (t) {
+                wx.showToast({
+                    title: "已保存到相册"
+                });
+            }
+        });
+    },
+    onLoad: function (t) {
+
+        var eData = wx.getSystemInfoSync();
+        wx.showNavigationBarLoading();
+        // var a = this, n = .9 * e.windowWidth, o = .85 * e.windowHeight;
+        var a = this, n = eData.windowWidth, o = .85 * eData.windowHeight;
+        a.setData({
             phoneWidth: n,
             phoneHeight: o
         });
-        // a.getParameter();
-        a.getCardNum();
+        wx.downloadFile({
+            url: e.globalData.userInfo.avatar,
+            success: function (res) {
+                if (200 === res.statusCode) {
+                    a.setData({
+                        avatorUrl: res.tempFilePath
+                    })
+                    // a.data.avatorUrl = e.tempFilePath;
+                    a.getCardNum();
+
+                }
+            }
+        })
+
+        /* wx.downloadFile({
+         url: e.globalData.userInfo.avatar,
+         success: function (res) {
+         if (200 === res.statusCode) {
+         a.setData({
+         avatorUrl: res.tempFilePath
+         })
+         // a.data.avatorUrl = e.tempFilePath;
+         debugger
+         a.getCardNum();
+         }
+         }
+         })*/
     },
-    extendRead: function() {
+    extendRead: function () {
         wx.reLaunch({
             url: "../orale/orale-extend/orale-extend"
         });
     },
     getCardNum(){
         var openid = e.globalData.openid, a = e.globalData.type;
-        util.request(api.GetCardNums, {uid: wx.getStorageSync('openid'), type: 1,}, 'POST').then( res =>{
-            debugger
-            this.canvas(res.data.length, a);
+        let aThis = this;
+        util.request(api.GetCardNums, {uid: wx.getStorageSync('openid'), type: 1,}, 'POST').then(res => {
             wx.hideNavigationBarLoading();
+            // this.canvas(res.data.length, a);
+            var totalDay = res.data.length;
+            aThis.setData({
+                template: {
+                    width: aThis.data.phoneWidth * 2 + 'rpx',
+                    height: aThis.data.phoneHeight * 2 + 'rpx',
+                    background: '/static/image/logos/123.jpg',
+                    views: [
+                        /* {
+                         type: 'image',
+                         url: '/static/image/logos/123.jpg',
+                         css: {
+                         width: aThis.data.phoneWidth * 2 + 'rpx',
+                         height: aThis.data.phoneHeight * 2 + 'rpx',
+                         left: '0rpx',
+                         bottom: '0rpx',
+                         },
+                         },*/
+                        {
+                            type: 'image',
+                            url: '/static/image/icon/code.jpg',
+                            css: {
+                                borderWidth: '2rpx',
+                                borderColor: '#000',
+                                width: '240rpx',
+                                height: '240rpx',
+                                right: '50rpx',
+                                bottom: '40rpx',
+                            },
+                        },
+                        {
+                            type: 'image',
+                            // url: aThis.data.avatorUrl,
+                            url: e.globalData.userInfo.avatar,
+                            css: {
+                                width: '100rpx',
+                                height: '100rpx',
+                                left: '20rpx',
+                                top: .78 * aThis.data.phoneHeight * 2 + 'rpx',
+                            },
+                        },
+                        //"已坚持学习" + n + (a+1) + "天", .2 * this.data.phoneWidth, .9 * this.data.phoneHeight
+                        {
+                            type: 'text',
+                            text: "我已坚持" + a +'并且成功打卡'+ (totalDay + 1) + "天啦！",
+                            css: [{
+                                left: '140rpx',
+                                width: '280rpx',
+                                top: .78 * aThis.data.phoneHeight * 2 + 'rpx',
+                                color: '#fff',
+                                fontSize: '24rpx',
+                                lineHeight: '30rpx'
+                            }]
+                        }
+                    ],
+                }
+            });
+
         })
     },
-   /* getParameter: function() {
-        var t = e.globalData.openid, a = e.globalData.type, n = this;
-        wx.request({
-            url: e.globalData.url + "api/User/getCardNums",
-            data: {
-                uid: t,
-                type: a
-            },
-            success: function(t) {
-                n.canvas(t.data.length, a), wx.hideNavigationBarLoading();
-            }
-        });
-    },*/
-    canvas: function(a, n) {
-        var o = e.globalData.userInfo;
-        e.globalData.single;
-        var i = e.globalData.oraleCountent, s = this;
-        if (t.setFillStyle("white"), t.fillRect(0, 0, this.data.phoneWidth, this.data.phoneHeight), 
-        // t.drawImage(i.sceneimg, 0, 0, this.data.phoneWidth, .8 * this.data.phoneHeight),
-        t.drawImage('/static/image/logos/1-3.jpg', 0, 0, this.data.phoneWidth, .8 * this.data.phoneHeight),
-        t.drawImage("/static/image/icon/code.jpg", this.data.phoneWidth - 100, .7 * this.data.phoneHeight, 80, 80),
-        wx.downloadFile({
-            url: o.avatar,
-            success: function(e) {
-                200 === e.statusCode && (t.drawImage(e.tempFilePath, 10, .88 * s.data.phoneHeight, 50, 50), 
-                t.draw());
-            }
-        }), t.setFontSize(12), t.setFillStyle("black"), t.setFontSize(12), t.fillText("已坚持学习" + n + (a+1) + "天", .2 * this.data.phoneWidth, .9 * this.data.phoneHeight)) {
-            t.setFontSize(12);
-            var l = i.keynums.substr(0, 19), h = i.keynums.substr(19, i.keynums.length);
-            t.fillText(l, .2 * this.data.phoneWidth, .95 * this.data.phoneHeight), t.fillText(h, .2 * this.data.phoneWidth, .95 * this.data.phoneHeight + 15);
-        } else t.setFontSize(13), t.fillText('加油！', .2 * this.data.phoneWidth, .95 * this.data.phoneHeight);
-    },
-    shareImg: function() {
+    shareImgOld: function () {
         wx.canvasToTempFilePath({
             fileType: "png",
             canvasId: "myCanvas",
-            success: function(t) {
-                console.log(t.tempFilePath);
+            success: function (t) {
                 wx.saveImageToPhotosAlbum({
                     filePath: t.tempFilePath,
-                    success: function(t) {
-                        console.log(t);
+                    success: function (t) {
                         wx.showToast({
                             title: "已保存到相册"
                         });
@@ -81,16 +150,44 @@ Page({
             }
         });
     },
-    returnIndex: function() {
+    returnIndex: function () {
         wx.reLaunch({
             url: "../index/index"
         });
     },
-    onReady: function() {},
-    onShow: function() {},
-    onHide: function() {},
-    onUnload: function() {},
-    onPullDownRefresh: function() {},
-    onReachBottom: function() {},
-    onShareAppMessage: function() {}
+    onReady: function () {
+
+    },
+    onShow: function () {
+
+    },
+    onHide: function () {
+    },
+    onUnload: function () {
+    },
+    onPullDownRefresh: function () {
+        wx.stopPullDownRefresh()
+    },
+    onReachBottom: function () {
+    },
+    onShareAppMessage: function () {
+        var self = this;
+        return{
+            title: '英文能力',
+            desc: '一起来学英语！',
+            path: 'pages/index/index',
+            imageUrl: self.data.imagePath,
+            success(res){
+                wx.showShareMenu({
+                    withShareTicket: true
+                })
+            },
+            fail(res){
+
+            },
+            complete(){
+
+            }
+        }
+    }
 });

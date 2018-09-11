@@ -22,7 +22,6 @@ Page({
     getCardRecord2(){
         let n = e.globalData.openid, r = this;
         util.request(api.GetCardRecord, {uid: wx.getStorageSync('openid'), type: 1,}, 'POST').then( res =>{
-            debugger
             let nd = res.data;
             if(nd){
                 for (var a = 0; a < nd.length; a++) nd[a].cardTime = util.translateTime("Y-m-d H:i:s", nd[a].cardTime);
@@ -64,8 +63,6 @@ Page({
         }); this.processingData();
     },
     processingData() {
-debugger
-
         let r = new Object();
         if(this.data.cardData){
             for (var t = this.data.cardData, e = this.data.choiceYear, n = this.data.choiceMonth, a = 0, u = 0; u < t.length; u++)
@@ -83,7 +80,6 @@ debugger
                 showDatasNull: true
             })
         }
-
     },
     onReady: function() {},
     onShow: function() {},

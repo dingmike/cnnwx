@@ -170,10 +170,10 @@ Page({
             showModal: false,
             showModalStatus: false
         })
-        debugger
+
         wx.getUserInfo({
             success:  (res)=> {
-                debugger
+
                 if( typeResponse.detail.authSetting["scope.userInfo"]){
                     user.loginByWeixin(res).then(res => {
                         this.setData({
@@ -184,7 +184,7 @@ Page({
                         wx.setStorageSync("openid",res.data.userInfo.weixin_openid);
                         app.globalData.openid = res.data.userInfo.weixin_openid;
                         app.globalData.token = res.data.token;
-                        debugger
+
                         setTimeout(function(){
                             /*wx.redirectTo({
                                 url: "/pages/gongDu/gongDu"

@@ -33,36 +33,36 @@ Page({
             }
         })
         /*wx.request({
-            url: n.globalData.url + "Formapi/addUserForm",
-            data: {
-                phone: a.phone,
-                weixin: a.weixin,
-                nickname: a.nickName,
-                uid: n.globalData.openid
-            },
-            success: function(n) {
-                console.log(n), n.data && wx.showToast({
-                    title: "提交成功",
-                    success: function() {
-                        wx.reLaunch({
-                            url: "/pages/index/index"
-                        });
-                    }
-                });
-            },
-            fail: function() {
-                wx.showToast({
-                    title: "提交失败",
-                    icon: "none"
-                });
-            }
-        }), console.log(a);*/
+         url: n.globalData.url + "Formapi/addUserForm",
+         data: {
+         phone: a.phone,
+         weixin: a.weixin,
+         nickname: a.nickName,
+         uid: n.globalData.openid
+         },
+         success: function(n) {
+         console.log(n), n.data && wx.showToast({
+         title: "提交成功",
+         success: function() {
+         wx.reLaunch({
+         url: "/pages/index/index"
+         });
+         }
+         });
+         },
+         fail: function() {
+         wx.showToast({
+         title: "提交失败",
+         icon: "none"
+         });
+         }
+         }), console.log(a);*/
     },
     saveFormId: function (v) {
         this.data.formIdArray.push(v.detail.formId);
-      /*  if (v.detail.formId != 'the formId is a mock one') {
-            this.data.formIdArray.push(v.detail.formId);
-        }*/
+        /*  if (v.detail.formId != 'the formId is a mock one') {
+         this.data.formIdArray.push(v.detail.formId);
+         }*/
 
     },
     inputMobile: function (v) {

@@ -232,7 +232,7 @@ page {
 .dati-option {
     width: 100%;
     font-size: 15px;
-    padding: 10rpx;
+    padding: 14rpx;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -253,7 +253,7 @@ page {
     width: 90%;
     margin-left: 5%;
     font-size: 14px;
-    height: 25%;
+    height:30%;
     background-color: #eee;
     color: black;
     margin: 20rpx auto;

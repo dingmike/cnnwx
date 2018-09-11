@@ -170,6 +170,8 @@ function request(url, data = {}, method = "GET") {
                             url: '/pages/firstAuth/firstAuth'
                         });
 
+
+
                         /*wx.showModal({
                             title: '',
                             content: '请先登录',
@@ -205,6 +207,7 @@ function checkSession() {
     return new Promise(function (resolve, reject) {
         wx.checkSession({
             success: function () {
+                debugger
                 resolve(true);
             },
             fail: function () {
@@ -238,7 +241,7 @@ function login() {
 // 普通用户是否登录
 function redirect(url) {
     //判断页面是否需要登录 暂时不适用
-   /* if (checkSession()) {
+    if (checkSession()) {
         wx.redirectTo({
             url: '/pages/firstAuth/firstAuth'
         });
@@ -247,7 +250,7 @@ function redirect(url) {
         wx.navigateTo({
             url: url
         });
-    }*/
+    }
 }
 
 function showErrorToast(msg) {

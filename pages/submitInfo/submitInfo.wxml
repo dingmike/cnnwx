@@ -6,29 +6,29 @@
 </view>
 <view class="container">
     <!--<form bindsubmit="formSubmit">-->
-        <view class="row">
-            <text>手 机 号：</text>
-            <form bindsubmit="saveFormId" report-submit="{{true}}" class='form_class'>
-                <button formType="submit" class='form_button' style="text-align: left;font-size: 26rpx">
-                    <input name="phone" type="number" bindinput='inputMobile' placeholder-style="color:#bbbbbb" placeholder=''/>
-                </button>
-            </form>
-            <!--<input name="phone" placeholder="请输入手机号" type="number"></input>-->
-        </view>
-        <view class="row">
-            <text>微 信 号：</text>
-            <form bindsubmit="saveFormId" report-submit="{{true}}" class='form_class'>
-                <button formType="submit" class='form_button' style="text-align: left; font-size: 26rpx">
-                    <input name="weixin" type="text" bindinput='inputWechatId' placeholder-style="color:#bbbbbb" placeholder=''/>
-                </button>
-            </form>
-            <!--<input name="weixin" placeholder="请输入微信号" type="text"></input>-->
-        </view>
-        <view class="row" style="display:block;">
-            <form bindsubmit="submitInfo" report-submit="{{true}}">
-                <button formType="submit" type="primary" size="default" style="font-size: 32rpx;">提交信息</button>
-            </form>
-            <!--<button formType="submit" type="primary">提交信息</button>-->
-        </view>
+    <view class="row">
+        <text>手 机 号：</text>
+        <form bindsubmit="saveFormId" report-submit="{{true}}" class='form_class'>
+            <button formType="submit" class='form_button' style="text-align: left;font-size: 26rpx">
+                <input name="phone" type="number" bindinput='inputMobile' placeholder-style="color:#bbbbbb" placeholder=''/>
+            </button>
+        </form>
+        <!--<input name="phone" placeholder="请输入手机号" type="number"></input>-->
+    </view>
+    <view class="row">
+        <text>微 信 号：</text>
+        <form bindsubmit="saveFormId" report-submit="{{true}}" class='form_class'>
+            <button formType="submit" class='form_button' style="text-align: left; font-size: 26rpx">
+                <input name="weixin" type="text" bindinput='inputWechatId' placeholder-style="color:#bbbbbb" placeholder=''/>
+            </button>
+        </form>
+        <!--<input name="weixin" placeholder="请输入微信号" type="text"></input>-->
+    </view>
+    <view class="row" style="display:block;">
+        <form bindsubmit="submitInfo" report-submit="{{true}}">
+            <button formType="submit" type="primary" size="default" style="font-size: 32rpx;">提交信息</button>
+        </form>
+        <!--<button formType="submit" type="primary">提交信息</button>-->
+    </view>
     <!--</form>-->
 </view>

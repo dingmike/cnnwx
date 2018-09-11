@@ -4,21 +4,21 @@ const api = require('../../../config/api.js');
 Page({
     data: {
         detailIndex: 0,
-        previousSty: !1,
-        nextSty: !0,
-        playing: !1,
-        isPlayingMusic: !1,
-        yuyinData: !0,
-        voiceCon: !1,
+        previousSty: false,
+        nextSty: true,
+        playing: false,
+        isPlayingMusic: false,
+        yuyinData: true,
+        voiceCon: false,
         recordTime: 0,
-        startPlay: !1,
+        startPlay: false,
         playingUi: {
             play: "/static/image/recorder.png",
             playing: "/static/image/recorder.gif",
             playbtn: "/static/image/start.png",
             playingbtn: "/static/image/stop.png"
         },
-        completeSty: !1
+        completeSty: false
     },
     onLoad: function(a) {
         wx.showNavigationBarLoading();
@@ -48,19 +48,18 @@ Page({
                 oraleDetail: o
             });
             this.getStorage();
-
+            wx.hideNavigationBarLoading();
         })
     },
     formSubmit(a){
         var e = a.detail.formId, o = t.globalData.openid, s = t.globalData.type, i = t.globalData.userInfo;
         let unlocks = t.globalData.single.unlocks;
-        util.request(api.SetCardById, {type: 1, uid: wx.getStorageSync('openid'),formId: e},  'POST').then( res =>{
+        util.request(api.SetCardById, {type: 1, uid: wx.getStorageSync('openid'), formId: e},  'POST').then( res =>{
             if (res.data){
                 wx.redirectTo({
                     url: "/pages/signres/signres"
                 });
             } else {
-
                 let a = "今日打卡成功！";
                 res.data || (a = "今日已经打过卡！", wx.showModal({
                     title: "提示",
@@ -78,6 +77,9 @@ Page({
     },
     completeTap: function() {
         console.log("完成练习");
+    },
+    Recordinterrupt(){
+
     },
     nextOrale: function() {
         wx.stopBackgroundAudio();
@@ -137,7 +139,7 @@ Page({
                     l && wx.removeSavedFile({
                         filePath: l[0],
                         complete: function(t) {
-                           console.log("结果");
+                            console.log("结果");
                         }
                     });
                     var c = [ e, o ];
@@ -147,7 +149,7 @@ Page({
                 }
             });
         }), wx.hideToast(), o.onError(function(t) {
-             wx.getSetting({
+            wx.getSetting({
                 success: function(t) {
                     t.authSetting["scope.record"] ? console.log("未知错误") : wx.showModal({
                         title: "提示",
@@ -224,8 +226,8 @@ Page({
     },
     getBackStatus: function() {
         var t = this.data.oraleDetail, e = this.data.detailIndex, o = this;
-        console.log(t[e].oralesound), t[e].oralesound && (a.src = t[e].oralesound, a.stop(),
-        a.src = t[e].oralesound, a.title = "今日重点", a.onPlay(function() {
+        t[e].oralesound && (a.src = t[e].oralesound, a.stop(),
+            a.src = t[e].oralesound, a.title = "今日重点", a.onPlay(function() {
             wx.hideNavigationBarLoading(), a.pause();
             var t = setInterval(function() {
                 var e = a.duration;
@@ -296,7 +298,7 @@ Page({
             cuo3: true
         }), 4 == a[e].copt && this.setData({
             cuo4: true
-        }), 1 == o && this.optcs1(o), 2 == o && this.optcs2(o), 3 == o && this.optcs3(o), 
+        }), 1 == o && this.optcs1(o), 2 == o && this.optcs2(o), 3 == o && this.optcs3(o),
         4 == o && this.optcs4(o), 4 == e && this.setData({
             completeSty: true,
             nextSty: false

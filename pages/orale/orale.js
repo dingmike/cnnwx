@@ -34,7 +34,7 @@ Page({
         var a = this;
         var tContent = this.data.oraleContent;
         tContent && (o.src = tContent.oralesound, o.stop(), o.src = tContent.oralesound,
-        o.title = tContent.title, o.onPlay(function() {
+            o.title = tContent.title, o.onPlay(function() {
             wx.hideNavigationBarLoading(), o.pause();
             var t = setInterval(function() {
                 var n = o.duration;
@@ -55,28 +55,28 @@ Page({
         this.data.isPlayingMusic ? (o.pause(), this.setData({
             isPlayingMusic: !1
         })) : (console.log(o.src), o.src || (o.src = n.oralesound), o.play(), o.title = n.title,
-        o.onPlay(function() {
-            console.log("音乐进度变化");
-            setInterval(function() {
-                var n = o.duration;
-                n && 0 != n && t.setData({
-                    audioMax: n,
-                    dqTime: e.formatSeconds(n)
-                });
-                var i = o.duration, s = o.currentTime;
-                t.setData({
-                    currentPosition: s
-                }), console.log(Math.round(t.data.currentPosition));
-                var l = Math.round(i - s), r = a(l);
-                console.log(r), 1 == l || 0 == l ? (t.setData({
-                    isPlayingMusic: !1,
-                    dqTime: e.formatSeconds(i),
-                    currentPosition: 0
-                }), o.stop()) : t.setData({
-                    dqTime: r
-                });
-            }, 1e3);
-        }), this.setData({
+            o.onPlay(function() {
+                console.log("音乐进度变化");
+                setInterval(function() {
+                    var n = o.duration;
+                    n && 0 != n && t.setData({
+                        audioMax: n,
+                        dqTime: e.formatSeconds(n)
+                    });
+                    var i = o.duration, s = o.currentTime;
+                    t.setData({
+                        currentPosition: s
+                    }), console.log(Math.round(t.data.currentPosition));
+                    var l = Math.round(i - s), r = a(l);
+                    console.log(r), 1 == l || 0 == l ? (t.setData({
+                        isPlayingMusic: !1,
+                        dqTime: e.formatSeconds(i),
+                        currentPosition: 0
+                    }), o.stop()) : t.setData({
+                        dqTime: r
+                    });
+                }, 1e3);
+            }), this.setData({
             isPlayingMusic: !0
         }));
     },
@@ -101,7 +101,7 @@ Page({
     continueStudy: function() {
         var a = this.data.oraleContent;
         wx.navigateTo({
-            url: "./orale-detail/orale-detail?oid=" + a.id
+            url: "./orale-detail/orale-detail?oid=" + a.genusDays
         });
     },
     onShow: function() {
@@ -109,7 +109,7 @@ Page({
             isPlayingMusic: false
         });
         t.globalData.days, t.globalData.type;
-        console.log("onshow"), console.log(o.paused), this.playVoice();
+        // this.playVoice();
     },
     onHide: function() {
         wx.stopBackgroundAudio();
