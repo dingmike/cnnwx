@@ -80,18 +80,19 @@ Page({
                 template: {
                     width: aThis.data.phoneWidth * 2 + 'rpx',
                     height: aThis.data.phoneHeight * 2 + 'rpx',
-                    background: '/static/image/logos/123.jpg',
+                    // background: '/static/image/logos/123.jpg',
+                    background: e.globalData.bgimg,
                     views: [
-                        /* {
-                         type: 'image',
-                         url: '/static/image/logos/123.jpg',
-                         css: {
-                         width: aThis.data.phoneWidth * 2 + 'rpx',
-                         height: aThis.data.phoneHeight * 2 + 'rpx',
-                         left: '0rpx',
-                         bottom: '0rpx',
-                         },
-                         },*/
+                       /* {
+                            type: 'image',
+                            url: '/static/image/logos/123.jpg',
+                            css: {
+                                width: aThis.data.phoneWidth * 2 + 'rpx',
+                                height: aThis.data.phoneHeight * 2 + 'rpx',
+                                left: '0rpx',
+                                bottom: '0rpx',
+                            },
+                        },*/
                         {
                             type: 'image',
                             url: '/static/image/icon/code.jpg',
@@ -100,7 +101,7 @@ Page({
                                 borderColor: '#000',
                                 width: '240rpx',
                                 height: '240rpx',
-                                right: '50rpx',
+                                right: '64rpx',
                                 bottom: '40rpx',
                             },
                         },
@@ -178,9 +179,9 @@ Page({
             path: 'pages/index/index',
             imageUrl: self.data.imagePath,
             success(res){
-                wx.showShareMenu({
-                    withShareTicket: true
-                })
+              wx.showShareMenu({
+                  withShareTicket: true
+              })
             },
             fail(res){
 

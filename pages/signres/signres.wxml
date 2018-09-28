@@ -1,7 +1,5 @@
 <view class="container">
     <view class="Achievementsimg">
-        <!--<canvas canvas-id="myCanvas" class="myCanvas" style="width: {{phoneWidth}}px; height: {{phoneHeight}}px;"></canvas>-->
-
         <painter palette="{{template}}" bind:imgOK="onImgOK" />
     </view>
     <view class="Achievementsbtn">

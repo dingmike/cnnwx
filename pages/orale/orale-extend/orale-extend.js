@@ -19,7 +19,7 @@ Page({
     },
     playVoice: function() {
         var a = this,n = this.data.oraleContent;
-        t.src = n.extendsound, t.title = "扩展内容", t.onPlay(function() {
+        t.src = n.extendSound, t.title = "扩展内容", t.onPlay(function() {
             wx.hideNavigationBarLoading(), t.pause();
             var n = setInterval(function() {
                 var o = t.duration;
@@ -39,27 +39,27 @@ Page({
         var a = this, n = this.data.oraleContent;
         this.data.isPlayingMusic ? (t.pause(), this.setData({
             isPlayingMusic: !1
-        })) : (console.log(t.src), t.src || (t.src = n.oralesound), t.play(), t.title = n.title,
-            t.onPlay(function() {
-                var n = setInterval(function() {
-                    var o = t.duration;
-                    o && 0 != o && a.setData({
-                        audioMax: o
-                    });
-                    var e = t.duration, s = t.currentTime;
-                    a.setData({
-                        currentPosition: s
-                    });
-                    var r = Math.round(e - s), u = Math.floor(r / 60) + ":" + (r % 60 / 100).toFixed(2).slice(-2);
-                    console.log(r), t.paused && clearInterval(n), 1 == r || 0 == r ? (a.setData({
-                        isPlayingMusic: !1,
-                        dqTime: i.formatSeconds(e),
-                        currentPosition: 0
-                    }), t.stop()) : a.setData({
-                        dqTime: u
-                    });
-                }, 1e3);
-            }), this.setData({
+        })) : (console.log(t.src), t.src || (t.src = n.oralesound), t.play(), t.title = n.title, 
+        t.onPlay(function() {
+            var n = setInterval(function() {
+                var o = t.duration;
+                o && 0 != o && a.setData({
+                    audioMax: o
+                });
+                var e = t.duration, s = t.currentTime;
+                a.setData({
+                    currentPosition: s
+                });
+                var r = Math.round(e - s), u = Math.floor(r / 60) + ":" + (r % 60 / 100).toFixed(2).slice(-2);
+                console.log(r), t.paused && clearInterval(n), 1 == r || 0 == r ? (a.setData({
+                    isPlayingMusic: !1,
+                    dqTime: i.formatSeconds(e),
+                    currentPosition: 0
+                }), t.stop()) : a.setData({
+                    dqTime: u
+                });
+            }, 1e3);
+        }), this.setData({
             isPlayingMusic: !0
         }));
     },

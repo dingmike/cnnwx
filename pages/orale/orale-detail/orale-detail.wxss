@@ -19,11 +19,13 @@ page {
 }
 
 .dati-content {
-    width: 90%;
-    margin: 40rpx auto;
-    padding: 30rpx;
-    background-color: #eee;
-    color: black;
+    width:90%;
+    font-size:14px;
+    height:78%;
+    background-color:#eee;
+    color:black;
+    margin:10px auto;
+    padding:9px;
 }
 
 .today-sound {
@@ -38,7 +40,7 @@ page {
     color: #202020;
     font-size: 14px;
     padding-bottom: 10rpx;
-    line-height:26px;
+    line-height:24px;
 }
 
 .top {
@@ -224,9 +226,10 @@ page {
 }
 
 .dati-title {
-    width: 100%;
-    font-weight: bold;
-    margin-bottom: 25rpx;
+    width:100%;
+    font-weight:bold;
+    margin-bottom:20rpx;
+    line-height:22px;
 }
 
 .dati-option {
@@ -244,19 +247,20 @@ page {
 }
 
 .dati-jiexi {
-    font-size: 15px;
-    color: black;
-    margin-top: 35rpx;
+    font-size:14px;
+    color:black;
+    margin-top:28rpx;
+    line-height:24px;
 }
 
 .keyWord {
     width: 90%;
     margin-left: 5%;
     font-size: 14px;
-    height:30%;
+    height:32%;
     background-color: #eee;
     color: black;
-    margin: 20rpx auto;
+    margin: 22rpx auto;
 }
 
 .fenge-line {

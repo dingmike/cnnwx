@@ -184,7 +184,7 @@ button::after {
 
 .punchTime {
     border-bottom: 1px solid #edece8;
-    height:116rpx;
+    height:136rpx;
     width: 90%;
     margin-left: 5%;
 }
@@ -201,8 +201,7 @@ button::after {
     flex-direction: column;
     font-size: 13px;
     vertical-align: middle;
-    padding-top: 10rpx;
-    padding-bottom: 10rpx;
+    padding-top:16rpx;
 }
 
 .punchTime-info {
@@ -212,14 +211,13 @@ button::after {
     text-align:center;
     line-height:60rpx;
     vertical-align:middle;
-    margin-top:22rpx;
-
+    padding:18px 0;
 }
 
 .enrollment {
     display: flex;
     flex-direction: column;
-    height:164rpx;
+    height:162rpx;
     border-bottom: 1px solid #edece8;
     width: 90%;
     margin-left: 5%;
@@ -245,7 +243,7 @@ button::after {
 }
 
 .introduce-join-text {
-    padding-top: 20rpx;
+    padding-top: 22px;
     font-size: 14px;
     color: #4d4d4d;
     line-height: 1.5;
@@ -257,18 +255,19 @@ button::after {
 }
 
 .introduce-join-pay button {
-    width: 90%;
-    border: 1px solid #58b406;
-    height: 80rpx;
-    margin-left: 5%;
-    margin-top: 100rpx;
-    border-radius: 15px 15px 15px 15px;
-    color: #fff;
-    background-color: #58b406;
-    font-size: 14px;
-    text-align: center;
-    line-height: 80rpx;
-    margin-bottom: 30rpx;
+    width:90%;
+    border:1px solid #58b406;
+    height:80rpx;
+    /*margin-left:5%;*/
+    margin-top:86rpx;
+    border-radius:15px 15px 15px 15px;
+    color:#fff;
+    background-color:#58b406;
+    font-size:14px;
+    text-align:center;
+    line-height:80rpx;
+    margin-bottom:30rpx;
+
 }
 
 .introduce-join-Continue {
@@ -277,7 +276,7 @@ button::after {
     margin-left: 5%;
     border-radius: 15px 15px 15px 15px;
     color: #fff;
-    background-color: #f4803b;
+    background-color: #58b406;
     font-size: 15px;
     text-align: center;
     line-height: 80rpx;
@@ -286,7 +285,6 @@ button::after {
 
 .back {
     background-color: #edece8;
-    height: 40rpx;
 }
 
 .introduce {
@@ -416,10 +414,8 @@ button::after {
 .introduce-explain {
     color: #f77620;
     font-size: 14px;
-    margin-top: 30rpx;
+    margin-top:20rpx;
     float: right;
-    /*margin-right: 20rpx;*/
-    text-decoration: underline;
 }
 .card-time-box{
     margin-bottom: 4rpx;

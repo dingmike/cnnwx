@@ -42,7 +42,7 @@ Page({
             }
         });*/
         var data = new Object();
-        util.request(api.IndexUrlNewGoods).then(function (res) {
+        /*util.request(api.IndexUrlNewGoods).then(function (res) {
             if (res.errno === 0) {
                 data.newGoods= res.data.newGoodsList
                 that.setData(data);
@@ -65,14 +65,14 @@ Page({
                 data.brand = res.data.brandList
                 that.setData(data);
             }
-        });
+        });*/
         util.request(api.IndexUrlCategory).then(function (res) {
             if (res.errno === 0) {
                 data.floorGoods = res.data.categoryList
                 that.setData(data);
             }
         });
-        util.request(api.IndexUrlBanner).then(function (res) {
+       /* util.request(api.IndexUrlBanner).then(function (res) {
 
             if (res.errno === 0) {
                 data.banner = res.data.banner
@@ -84,7 +84,7 @@ Page({
                 data.channel = res.data.channel
                 that.setData(data);
             }
-        });
+        });*/
     },
     onLoad: function (options) {
         this.getIndexData();

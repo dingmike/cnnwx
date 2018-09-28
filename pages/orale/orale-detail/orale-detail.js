@@ -52,16 +52,42 @@ Page({
         })
     },
     formSubmit(a){
+        wx.showNavigationBarLoading();
         var e = a.detail.formId, o = t.globalData.openid, s = t.globalData.type, i = t.globalData.userInfo;
         let unlocks = t.globalData.single.unlocks;
         util.request(api.SetCardById, {type: 1, uid: wx.getStorageSync('openid'), formId: e},  'POST').then( res =>{
-            if (res.data){
-                wx.redirectTo({
-                    url: "/pages/signres/signres"
-                });
-            } else {
+                wx.hideNavigationBarLoading();
                 let a = "今日打卡成功！";
-                res.data || (a = "今日已经打过卡！", wx.showModal({
+                if(res.data===0){
+                    (a = "今日已经打过卡！", wx.showModal({
+                        title: "提示",
+                        content: a,
+                        showCancel: false,
+                        success: function(t) {
+                            t.confirm && wx.redirectTo({
+                                url: "/pages/signres/signres"
+                            });
+                        }
+                    }));
+                }else if(res.data===21){
+                    (a = "您已完成"+t.globalData.type+'!', wx.showModal({
+                        title: "提示",
+                        content: a,
+                        showCancel: false,
+                        confirmText:'查看记录',
+                        success: function(t) {
+                            t.confirm && wx.redirectTo({
+                                url: "/pages/ucenter/my-card/my-card"
+                            });
+                        }
+                    }));
+                }else{
+                    wx.redirectTo({
+                        url: "/pages/signres/signres"
+                    });
+                }
+
+               /* res.data || (a = "今日已经打过卡！", wx.showModal({
                     title: "提示",
                     content: a,
                     showCancel: false,
@@ -70,8 +96,8 @@ Page({
                             url: "/pages/signres/signres"
                         });
                     }
-                }));
-            }
+                }));*/
+
 
         })
     },
@@ -139,7 +165,7 @@ Page({
                     l && wx.removeSavedFile({
                         filePath: l[0],
                         complete: function(t) {
-                            console.log("结果");
+                           console.log("结果");
                         }
                     });
                     var c = [ e, o ];
@@ -149,7 +175,7 @@ Page({
                 }
             });
         }), wx.hideToast(), o.onError(function(t) {
-            wx.getSetting({
+             wx.getSetting({
                 success: function(t) {
                     t.authSetting["scope.record"] ? console.log("未知错误") : wx.showModal({
                         title: "提示",
@@ -171,7 +197,8 @@ Page({
     },
     getStorage: function() {
         var t = this.data.oid, a = this.data.detailIndex, e = this.data.oraleDetail;
-        this.getBackStatus(), this.setData({
+        // this.getBackStatus(); // 暂时不需要音频
+        this.setData({
             startPlay: false,
             isPlayingMusic: false,
             selectedAns: false
@@ -227,7 +254,7 @@ Page({
     getBackStatus: function() {
         var t = this.data.oraleDetail, e = this.data.detailIndex, o = this;
         t[e].oralesound && (a.src = t[e].oralesound, a.stop(),
-            a.src = t[e].oralesound, a.title = "今日重点", a.onPlay(function() {
+        a.src = t[e].oralesound, a.title = "今日重点", a.onPlay(function() {
             wx.hideNavigationBarLoading(), a.pause();
             var t = setInterval(function() {
                 var e = a.duration;
@@ -298,7 +325,7 @@ Page({
             cuo3: true
         }), 4 == a[e].copt && this.setData({
             cuo4: true
-        }), 1 == o && this.optcs1(o), 2 == o && this.optcs2(o), 3 == o && this.optcs3(o),
+        }), 1 == o && this.optcs1(o), 2 == o && this.optcs2(o), 3 == o && this.optcs3(o), 
         4 == o && this.optcs4(o), 4 == e && this.setData({
             completeSty: true,
             nextSty: false

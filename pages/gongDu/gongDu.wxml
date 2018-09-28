@@ -15,11 +15,9 @@
     </view>
     <view class="main">
         <!--<view class="title">阅读打卡</view>-->
-
         <view class="logoimg">
             <!--<image src="{{bgimg}}"></image>-->
         </view>
-
         <wxc-panel border="{{true}}" margin="{{false}}" wx:if="{{setTimeSty}}">
             <view class="punchTime punchTime-set-info content">
                 <view class="punchTime-info">
@@ -38,18 +36,16 @@
             </view>
         </wxc-panel>
 
-
         <wxc-panel border="{{false}}">
             <view class="enrollment">
                 <view class="enrollment-nums">
                     <text style="color:#000">{{studyUserNums}}人报名</text>
                 </view>
                 <view class="enrollment-images">
-                    <image src="{{userInfo.avatarUrl}}" wx:if="{{avaData}}"></image>
-                    <image src="{{item.avatar}}" wx:for="{{studyUser}}" wx:key="{{item}}"></image>
+                    <image src="{{userInfo.avatar}}" wx:if="{{avaData}}"></image>
+                    <image src="{{item.avatar}}" wx:if="{{userInfo.avatar!=item.avatar}}" wx:for="{{studyUser}}" wx:key="{{item}}"></image>
                 </view>
             </view>
-
         </wxc-panel>
         <!--支付弹窗 start-->
         <view animation="{{animationData}}" class="signUp" wx:if="{{showModalStatus}}">
@@ -60,7 +56,7 @@
                 <radio checked="checked" class="info-radio"></radio>
                 <view class="info-text">
                     <text class="info-title">约定模式</text>
-                    <text bindtap="bindExplain" class="info-info" decode="true" space="true">我已悉知活动详情，立即加入养成计划！</text>
+                    <text bindtap="bindExplain" class="info-info" decode="true" space="true">我已知晓活动详情，立即加入养成计划！</text>
                 </view>
             </view>
             <view style="width:90%;font-size:12px">
@@ -74,15 +70,15 @@
         <!--活动详情 start-->
         <wxc-panel border="{{false}}">
             <view class="introduce-join">
-                <view class="introduce-join-text">
-                    <text>【21天英语学习达人养成计划】是由@cnn每日更新推出的英语学习计划。在这21天中，
-                        将涉及不同领域的英语学习资料，以及常用英语进行罗列练习。在这21天中，每天10分钟，养成英文学习的好习惯。加油！
+                <view class="introduce-join-text" bindtap="bindExplain">
+                    <text>【21天英语学习达人养成计划】是由微信公众号(cnn每日更新)推出的英语学习计划。在这21天中，
+                        将涉及不同领域的英语学习资料包括听力训练，口语跟读练习，词汇记忆和语法理解，以及视频拓展训练。在这21天中，每天坚持10分钟，养成英语学习好习惯，提高英文能力！
                     </text>
                 </view>
                 <view class="introduce-explain">
-                    <text bindtap="bindExplain">活动详情</text>
+                    <text bindtap="bindExplain" style="font-size:14px;color:#f77620;">了解活动详情</text>
                 </view>
-                <form bindsubmit="formSubmit" reportSubmit="true">
+                <form>
                     <view class="introduce-join-btn">
                         <view bindtap="startStudy" class="introduce-join-pay" data-days="{{single.unlocks}}" data-statu="open">
                             <button formType="submit">{{joinBtn}}</button>
@@ -94,16 +90,10 @@
         </wxc-panel>
         <!--活动详情 end-->
 
-        <view class="back"></view>
-
         <wxc-panel border="{{false}}" wx:if="{{single.startStatus==1}}">
-
-          <!--  <view class="introduce">
-                知识点回顾
-            </view>-->
             <view class="History">
                 <view class="History-text">
-                    <text>点击日期按钮可回看当天内容</text>
+                    <text style="font-size:14px;">点击按钮可回看当日内容</text>
                 </view>
                 <form bindsubmit="formSubmit" reportSubmit="true">
                     <view class="History-icon">
@@ -114,10 +104,7 @@
                     </view>
                 </form>
             </view>
-
-
         </wxc-panel>
-
         <view class="bottom-contact">
             <button></button>
         </view>

@@ -17,6 +17,7 @@ Page({
         current_poem_url: "",
         share: "",
         uid: "",
+        avaData: false,
         banner: [],
         joinBtn: "继续学习",
         setTimeSty: true,
@@ -47,36 +48,42 @@ Page({
         }
     },
 
-    onLoad(t) {
-        var t = this;
+    onLoad() {
+        // 判断是否登录
+      /*  user.checkLogin().then(res => {
+            //已经登录
+            return
+        }).catch((err) => {
+            // 未登录
+            wx.navigateTo({
+                url: "/pages/firstAuth/firstAuth"
+            })
+        });*/
+
         // 获取首页数据
         this.getIndexData();
         this.data.type = app.globalData.type;
         wx.showNavigationBarLoading();
         var e = app.globalData.openid;
         this.setData({
-            openid: e,
-            bgimg: app.globalData.bgimg
+            openid: e
         });
-        t.getLearnInfo();
-        t.addUser();
-
-        t.getLastDay();
-
-        t.getOneCard();
-
+        this.getLearnInfo();
+        // t.addUser();
+        this.getLastDay();
+        this.getOneCard();
         if(new Date().getHours() >= 10 ){
             this.setData({
                 joinBtn: "您已经错过规定打卡时间 点击学习"
             });
         }
+
     },
 
     getOneCard(){
         var t = new Date(), e = this.data.openid, s = t.getMonth() + 1, n = t.getDate(), y = t.getFullYear();
         // type learn type id 判断今日是否打过卡
         util.request(api.GetOneCard, {uid: wx.getStorageSync('openid'), type: 1, day: n, month: s, year: y}, 'POST').then( res =>{
-
                 if(res.data){
                     this.setData({
                         cardM: res.data
@@ -84,15 +91,13 @@ Page({
                     this.setData({
                         joinBtn: "今日已打卡 点击回顾"
                     });
-                    this.addUser();
                 }
-
         })
     },
     getLearnInfo() {
         util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+            wx.hideNavigationBarLoading();
             if (res.errno === 0&&res.data) {
-                wx.hideNavigationBarLoading()
                 wx.hideLoading();
                 let studyNums = [];
                 for(let i=1; i<=res.data.genusdays; i++){
@@ -101,17 +106,20 @@ Page({
                 this.setData({
                     studyNums: studyNums
                 });
+
                 app.globalData.single = res.data;
                 this.setData({
                     single: res.data,
-                    Contents: !0
+                    Contents: true
                 });
 
                 if(res.data.startStatus == 1){ // 已支付开始学习
-
+                    this.setData({
+                        avaData: true,
+                        userInfo: res.data
+                    })
 
                 }else{ // 没支付
-                    wx.hideNavigationBarLoading();
                     this.setData({
                         contact: false,
                         joinBtn: '马上加入学习',
@@ -122,15 +130,14 @@ Page({
 
                 if(21 == res.data.unlocks){
                     this.setData({
-                        contact: !0
+                        contact: true
                     });
-                    wx.hideNavigationBarLoading();
+
                 }else{
 
                 }
 
             }else{
-                wx.hideNavigationBarLoading();
                 let mockData = {
                     "id": "",
                     "learnTypeId": 0,
@@ -161,25 +168,14 @@ Page({
                     Contents: !0
                 });
             }
+
         });
     },
     getLastDay(){
         let t = this, e = this.data.openid;
     },
-    getLastDay2: function() {
-        let t = this, e = this.data.openid;
-        wx.request({
-            url: app.globalData.url + "api/user/getLastDay",
-            data: {
-                uid: e
-            },
-            success: function(a) {
-                a.data && t.addUser();
-            }
-        });
-    },
     addUser: function() {
-        wx.showNavigationBarLoading();
+      //  wx.showNavigationBarLoading();
     },
     startStudy: function(t) {
         let e = this.data.single, o = (this.data.openid, this), s = this.data.type,
@@ -197,17 +193,10 @@ Page({
         }
     },
     sendPay () {
-
-        // test
-     /*   wx.reLaunch({
-            url: "/pages/submitInfo/submitInfo?orderId=" +  this.data.orderSn
-        });*/
-
         let t = wx.getStorageSync("openid"), e = this.data.type, o = this;
         wx.showLoading({
             title: "加载中"
         });
-
         util.request(api.GongduOrderSubmit, {uid: t, learnTypeId: o.data.learnTypeId}, 'POST').then(res => {
             if (res.errno === 0) {
                 console.log("生成订单成功");
@@ -223,21 +212,7 @@ Page({
                         });
                         o.updateSuccess();
                         wx.hideLoading();
-
-                        setTimeout(function() {
-                            wx.reLaunch({
-                                url: "/pages/submitInfo/submitInfo?orderId=" +  o.data.orderSn
-                            })
-                        }, 400);
                     }
-
-                   /* "requestPayment:ok" == ress.errMsg && wx.showToast({
-                        title: "支付成功"
-                    }), o.setData({
-                        showModalStatus: false
-                    }),o.updateSuccess(), wx.hideLoading(), wx.reLaunch({
-                        url: "/pages/submitInfo/submitInfo?orderId=" +  o.data.orderSn
-                    });*/
 
                     //o.updateSucces(); // 暂时用来查询微信支付成功
                 }).catch(ress => {
@@ -259,6 +234,11 @@ Page({
     // 暂时使用查看是否支付成功
     updateSuccess() {
         util.request(api.OrderGongDuQuery, { orderId: this.data.orderSn}).then(res => {
+            if(res.errno==0){
+                wx.reLaunch({
+                    url: "/pages/submitInfo/submitInfo"
+                })
+            }
         })
     },
     reviewHistory: function(t) {
@@ -323,12 +303,9 @@ Page({
         });
     },
     onShow: function() {
-        var t = app.globalData.type;
-        wx.setNavigationBarTitle({
-            title: t + "练习"
-        });
-       // this.getIndexData();
-        // var o = decodeURIComponent(t.scene);
+
+
+
     },
     onReady: function () {
         // 页面渲染完成
@@ -350,7 +327,8 @@ Page({
                     banner: res.data.banner,
                     learnTypeId: res.data.userLearnList[0].learnTypeId
                 });*/
-
+                    // 计划详情图文
+                    app.globalData.detailImg = res.data.learnFilePics;
                 let e = res.data.userLearnList, o = res.data.userListTotal;
                 o > 200 ? (o = 200, that.setData({
                     banner: res.data.banner,
@@ -365,11 +343,8 @@ Page({
                     learnTypeId: res.data.userLearnList[0].learnTypeId,
                     studyUserNums: o
                 });
-
-
             }
         });
-
     },
     navigateTo: function(t) {
         wx.navigateTo(t);
@@ -382,4 +357,4 @@ Page({
     formSubmit(){
         // 提交formID
     }
-})
+});

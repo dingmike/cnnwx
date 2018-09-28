@@ -1,12 +1,17 @@
+const app = getApp();
 Page({
     data: {},
     onLoad: function(n) {
-        /*wx.showLoading({
+        wx.showLoading({
             title: "加载中"
-        });*/
+        });
+        this.setData({
+            detailImgList: app.globalData.detailImg
+        });
     },
     imgLoad: function(n) {
-        console.log(n), wx.hideLoading();
+        debugger
+        wx.hideLoading();
     },
     continueStudy: function() {
         wx.navigateBack({

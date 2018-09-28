@@ -12,7 +12,7 @@
 .getinfo>button {
     width: 50%;
     margin: 30rpx auto 10rpx;
-    background-color:orange;
+    background-color:  #58b406;
     color:#fff;
 
 }

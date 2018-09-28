@@ -1,5 +1,5 @@
 function a(a) {
-    return [ parseInt(a / 60 % 60), parseInt(a % 60) ].join(":").replace(/\b(\d)\b/g, "0$1");
+    return [parseInt(a / 60 % 60), parseInt(a % 60)].join(":").replace(/\b(\d)\b/g, "0$1");
 }
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
@@ -9,109 +9,98 @@ let o = wx.getBackgroundAudioManager(), e = require("../../utils/dakaUtil.js");
 Page({
     data: {
         isPlayingMusic: false,
-        dqTime: "0:00"
+        src: '',
+        isOpen: false,//播放开关
+        starttime: '00:00', //正在播放时长
     },
-    onLoad: function(a) {
+    onLoad: function (a) {
+        //new add
+        this.audioCtx = wx.createAudioContext('myAudio');
+        //---------
         wx.showNavigationBarLoading();
         var o = t.globalData.days, e = t.globalData.type;
         this.getContent(o, e);
     },
     getContent(a, o){
         var e = this;
-        util.request(api.GetGongduContent, {days: a, type: 1, uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+        util.request(api.GetGongduContent, {days: a, type: 1, uid: wx.getStorageSync('openid')}, 'POST').then(res => {
+            wx.hideNavigationBarLoading();
             var o = res.data;
-            o.oralesound = o.oraleSound.replace(/\\/g, "/");
-            o.extendsound = o.extendSound.replace(/\\/g, "/");
-            wx.hideLoading();
+            o.oraleSound = o.oraleSound.replace(/\\/g, "/");
+            o.extendSound = o.extendSound.replace(/\\/g, "/");
             t.globalData.oraleCountent = o;
+            t.globalData.bgimg = o.scenceImg;
             e.setData({
-                oraleContent: o
+                oraleContent: o,
+                src: o.oraleSound
             });
-            e.playVoice();
         })
     },
-    playVoice: function() {
-        var a = this;
-        var tContent = this.data.oraleContent;
-        tContent && (o.src = tContent.oralesound, o.stop(), o.src = tContent.oralesound,
-            o.title = tContent.title, o.onPlay(function() {
-            wx.hideNavigationBarLoading(), o.pause();
-            var t = setInterval(function() {
-                var n = o.duration;
-                n && 0 != n && (a.setData({
-                    audioMax: n,
-                    dqTime: e.formatSeconds(n)
-                }), clearInterval(t));
-            }, 1000);
-        }));
-    },
-    sliderchange: function(a) {
-        wx.seekBackgroundAudio({
-            position: a.detail.value
-        });
-    },
-    startPlay: function() {
-        var t = this, n = this.data.oraleContent;
-        this.data.isPlayingMusic ? (o.pause(), this.setData({
-            isPlayingMusic: !1
-        })) : (console.log(o.src), o.src || (o.src = n.oralesound), o.play(), o.title = n.title,
-            o.onPlay(function() {
-                console.log("音乐进度变化");
-                setInterval(function() {
-                    var n = o.duration;
-                    n && 0 != n && t.setData({
-                        audioMax: n,
-                        dqTime: e.formatSeconds(n)
-                    });
-                    var i = o.duration, s = o.currentTime;
-                    t.setData({
-                        currentPosition: s
-                    }), console.log(Math.round(t.data.currentPosition));
-                    var l = Math.round(i - s), r = a(l);
-                    console.log(r), 1 == l || 0 == l ? (t.setData({
-                        isPlayingMusic: !1,
-                        dqTime: e.formatSeconds(i),
-                        currentPosition: 0
-                    }), o.stop()) : t.setData({
-                        dqTime: r
-                    });
-                }, 1e3);
-            }), this.setData({
-            isPlayingMusic: !0
-        }));
-    },
-    getAudioStatus: function() {
-        var a = this;
-        setTimeout(function() {
-            wx.getBackgroundAudioPlayerState({
-                success: function(t) {
-                    t.status, t.dataUrl, t.currentPosition;
-                    var o = e.formatSeconds(t.duration);
-                    console.log("-" + o);
-                    a.setData({
-                        Totalschedule: o
-                    });
-                },
-                fail: function(a) {
-                    console.log(a);
-                }
-            });
-        }, 1e3);
-    },
-    continueStudy: function() {
+    continueStudy: function () {
         var a = this.data.oraleContent;
         wx.navigateTo({
             url: "./orale-detail/orale-detail?oid=" + a.genusDays
         });
     },
-    onShow: function() {
+    onShow: function () {
         this.setData({
             isPlayingMusic: false
         });
         t.globalData.days, t.globalData.type;
-        // this.playVoice();
     },
-    onHide: function() {
-        wx.stopBackgroundAudio();
+    onHide: function () {
+        this.audioPause();
+    },
+
+//    news add
+//开始播放
+    audioPlay: function () {
+        this.audioCtx.play();
+        this.setData({
+            isOpen: true
+        })
+    },
+
+//暂停播放
+    audioPause: function () {
+        this.audioCtx.pause();
+        this.setData({
+            isOpen: false
+        })
+    },
+//拖动进度条
+    sliderChange(e) {
+        var offset = parseInt(e.detail.value);
+        this.audioCtx.seek(offset);
+    },
+//监听播放时长
+    updata(e) {
+        // console.log(e)
+        var that = this;
+        var offset = parseInt(offset * 100 / duration);
+        var duration = e.detail.duration; //总时长
+        var offset = e.detail.currentTime; //当前播放时长
+        var currentTime = parseInt(e.detail.currentTime);
+        var min = "0" + parseInt(currentTime / 60);
+        var max = parseInt(e.detail.duration);
+        var sec = currentTime % 60;
+        if (sec < 10) {
+            sec = "0" + sec;
+        };
+        var starttime = min + ':' + sec;
+        /* 00:00 */
+        that.setData({
+            offset: currentTime,
+            starttime: starttime,
+            max: max
+        })
+//判断音频播放结束
+        if (offset >= duration) {
+            that.setData({
+                starttime: '00:00', //正在播放时长
+                isOpen: false,
+                offset: 0
+            })
+        }
     }
 });

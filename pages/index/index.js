@@ -11,6 +11,7 @@ Page({
         current_poem_url: "",
         share: "",
         uid: "",
+        avaData: false,
         userInfo: '',
         banner: [],
         joinBtn: "继续学习",
@@ -79,10 +80,10 @@ Page({
         });
     },
     onShow: function() {
-        var t = app.globalData.type;
+        /*var t = app.globalData.type;
         wx.setNavigationBarTitle({
             title: t + "练习"
-        });
+        });*/
     },
     onReady: function () {
         // 页面渲染完成
@@ -99,7 +100,7 @@ Page({
         // learnTypeId  学习类型ID
         util.request(api.CnnIndexUrl, {learnTypeId: 1}).then(function (res) {
             if (res.errno === 0) {
-
+                res.data.learnFilePics
                 let e = res.data.userLearnList, o = res.data.userListTotal;
                 o > 200 ? (o = 200, that.setData({
                     banner: res.data.banner,
@@ -123,5 +124,24 @@ Page({
         this.setData({
             current_poem_url: t.currentTarget.dataset.url
         });
-    }
+    },
+/*    onShareAppMessage () {
+        return{
+            title: '英文能力',
+            desc: '一起来学英语！',
+            path: 'pages/index/index',
+            imageUrl: this.data.imagePath,
+            success(res){
+                wx.showShareMenu({
+                    withShareTicket: true
+                })
+            },
+            fail(res){
+
+            },
+            complete(){
+
+            }
+        }
+    }*/
 })
