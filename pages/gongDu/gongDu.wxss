@@ -186,7 +186,7 @@ button::after {
     border-bottom: 1px solid #edece8;
     height:136rpx;
     width: 90%;
-    margin-left: 5%;
+    margin-left:3%;
 }
 
 .punchTime-set-info {

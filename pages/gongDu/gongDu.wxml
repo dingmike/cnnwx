@@ -89,7 +89,6 @@
             </view>
         </wxc-panel>
         <!--活动详情 end-->
-
         <wxc-panel border="{{false}}" wx:if="{{single.startStatus==1}}">
             <view class="History">
                 <view class="History-text">

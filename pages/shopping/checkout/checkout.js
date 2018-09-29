@@ -17,6 +17,7 @@ Page({
     actualPrice: 0.00,     //实际需要支付的总价
     addressId: 0,
     couponId: 0,
+      intergrals: 0,// 总积分
     isBuy: false,
     couponDesc: '',
     couponCode: '',
@@ -24,7 +25,7 @@ Page({
   },
   onLoad: function (options) {
 
-    console.log(options.isBuy)
+    console.log(options.isBuy);
     // 页面初始化 options为页面跳转所带来的参数
     if (options.isBuy!=null) {
       this.data.isBuy = options.isBuy
@@ -32,7 +33,8 @@ Page({
     this.data.buyType = this.data.isBuy?'buy':'cart';
     //每次重新加载界面，清空数据
     app.globalData.userCoupon = 'NO_USE_COUPON';
-    app.globalData.courseCouponCode = {}
+    app.globalData.courseCouponCode = {};
+    this.getUserIntergrals();
   },
   
   getCheckoutInfo: function () {
@@ -67,6 +69,9 @@ Page({
       url: '/pages/shopping/addressAdd/addressAdd',
     })
   },
+    onChangeNumber (e) {
+        console.log(e.detail);
+    },
   onReady: function () {
     // 页面渲染完成
 
@@ -132,7 +137,14 @@ Page({
         url: '../selCoupon/selCoupon?buyType=' + that.data.buyType,
       })
   },
-
+    getUserIntergrals(){
+        util.request(api.UserIntergralInfo, { uid: wx.getStorageSync("openid") }, 'POST').then(res => {
+          debugger
+            this.setData({
+                intergrals: res.data.intergrals
+            })
+        })
+    },
   submitOrder: function () {
       if (this.data.addressId === 0) {
           util.showErrorToast('请选择收货地址');

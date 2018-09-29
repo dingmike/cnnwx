@@ -15,6 +15,8 @@ module.exports = {
     GetOneCard: NewApiRootUrl + 'gongdu/getOneCard', //每天打卡
     SetRemindTime: NewApiRootUrl + 'gongdu/setRemindTime', //设置提醒时间 /api/gdOrder
     GongduOrderSubmit: NewApiRootUrl + 'gdOrder/submit', // 生成共读订单
+
+    UserIntergralInfo: NewApiRootUrl + 'user/getUserIntergralInfo', // 获取积分余额信息
     UserSubmitPhone: NewApiRootUrl + 'user/submitPhone', // 绑定微信和手机号
 
 
@@ -26,6 +28,7 @@ module.exports = {
     IndexUrlCategory: NewApiRootUrl + 'index/category', //首页数据接口IndexUrlChannel
     IndexUrlBanner: NewApiRootUrl + 'index/banner', //首页数据接口IndexUrlChannel
     IndexUrlChannel: NewApiRootUrl + 'index/channel', //首页数据接口IndexUrlChannel
+
 
     CatalogList: NewApiRootUrl + 'catalog/index',  //分类目录全部分类数据接口
     CatalogCurrent: NewApiRootUrl + 'catalog/current',  //分类目录当前分类数据接口
@@ -54,6 +57,9 @@ module.exports = {
     CartChecked: NewApiRootUrl + 'cart/checked', // 选择或取消选择商品
     CartGoodsCount: NewApiRootUrl + 'cart/goodscount', // 获取购物车商品件数
     CartCheckout: NewApiRootUrl + 'cart/checkout', // 下单前信息确认
+
+
+
 
     BuyCheckout: NewApiRootUrl + 'buy/checkout', // 下单前信息确认
 

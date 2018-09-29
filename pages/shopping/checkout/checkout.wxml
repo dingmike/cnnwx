@@ -60,6 +60,25 @@
                 <text class="txt">-￥{{couponPrice}}</text>
             </view>
         </view>
+
+        <view class="order-item no-border">
+            <view class="l">
+                <text class="name">打卡积分</text>
+            </view>
+            <view class="r">
+                <text class="txt">可用积分：{{intergrals}}</text>
+
+            </view>
+        </view>
+
+        <view class="order-item no-border">
+            <view class="l">
+                <text class="name">使用积分</text>
+            </view>
+            <view class="r" style="padding-left:82px; ">
+                <wxc-counter number="0" max="{{intergrals}}" min="1" color="#333" bind:changenumber="onChangeNumber"></wxc-counter>
+            </view>
+        </view>
     </view>
 
     <view class="goods-items">

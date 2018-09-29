@@ -69,9 +69,8 @@ Page({
             openid: e
         });
         this.getLearnInfo();
-        // t.addUser();
         this.getLastDay();
-        this.getOneCard();
+        // this.getOneCard();
         if(new Date().getHours() >= 10 ){
             this.setData({
                 joinBtn: "您已经错过规定打卡时间 点击学习"
@@ -80,10 +79,12 @@ Page({
 
     },
 
-    getOneCard(){
+    getOneCard(unlocks){
+
         var t = new Date(), e = this.data.openid, s = t.getMonth() + 1, n = t.getDate(), y = t.getFullYear();
         // type learn type id 判断今日是否打过卡
         util.request(api.GetOneCard, {uid: wx.getStorageSync('openid'), type: 1, day: n, month: s, year: y}, 'POST').then( res =>{
+            debugger
                 if(res.data){
                     this.setData({
                         cardM: res.data
@@ -91,6 +92,12 @@ Page({
                     this.setData({
                         joinBtn: "今日已打卡 点击回顾"
                     });
+                    debugger
+                    if(unlocks==16){
+                        this.setData({
+                            contact: true
+                        });
+                    }
                 }
         })
     },
@@ -128,13 +135,11 @@ Page({
 
                 }
 
-                if(21 == res.data.unlocks){
-                    this.setData({
-                        contact: true
-                    });
+                if(16 == res.data.unlocks){
+                    this.getOneCard(res.data.unlocks);
 
                 }else{
-
+                    this.getOneCard();
                 }
 
             }else{
@@ -174,9 +179,6 @@ Page({
     getLastDay(){
         let t = this, e = this.data.openid;
     },
-    addUser: function() {
-      //  wx.showNavigationBarLoading();
-    },
     startStudy: function(t) {
         let e = this.data.single, o = (this.data.openid, this), s = this.data.type,
             n = t.currentTarget.dataset.days;// 打卡unlock day 该打第几天的卡n
@@ -194,9 +196,9 @@ Page({
     },
     sendPay () {
         let t = wx.getStorageSync("openid"), e = this.data.type, o = this;
-        wx.showLoading({
+       /* wx.showLoading({
             title: "加载中"
-        });
+        });*/
         util.request(api.GongduOrderSubmit, {uid: t, learnTypeId: o.data.learnTypeId}, 'POST').then(res => {
             if (res.errno === 0) {
                 console.log("生成订单成功");
@@ -211,7 +213,7 @@ Page({
                             showModalStatus: false
                         });
                         o.updateSuccess();
-                        wx.hideLoading();
+                        // wx.hideLoading();
                     }
 
                     //o.updateSucces(); // 暂时用来查询微信支付成功
@@ -222,12 +224,12 @@ Page({
                     o.setData({
                         showModalStatus: false
                     });
-                    wx.hideLoading();
+                    // wx.hideLoading();
                 });
 
             } else {
                 util.showErrorToast('下单失败,请重试');
-                wx.hideLoading();
+                // wx.hideLoading();
             }
         });
     },
