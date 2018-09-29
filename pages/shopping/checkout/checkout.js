@@ -70,6 +70,9 @@ Page({
     })
   },
     onChangeNumber (e) {
+    this.setData({
+
+    })
         console.log(e.detail);
     },
   onReady: function () {
