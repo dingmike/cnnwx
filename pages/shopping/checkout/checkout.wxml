@@ -63,10 +63,10 @@
 
         <view class="order-item no-border">
             <view class="l">
-                <text class="name">打卡积分</text>
+                <text class="name">可用积分</text>
             </view>
             <view class="r">
-                <text class="txt">可用积分：{{intergrals}}</text>
+                <text class="txt">{{intergrals}}</text>
 
             </view>
         </view>
@@ -76,7 +76,7 @@
                 <text class="name">使用积分</text>
             </view>
             <view class="r" style="padding-left:82px; ">
-                <wxc-counter number="0" max="{{intergrals}}" min="1" color="#333" bind:changenumber="onChangeNumber"></wxc-counter>
+                <wxc-counter number="0" max="{{canUserIntergralsTotal}}" min="0" color="#b4282d" bind:changenumber="onChangeNumber"></wxc-counter>
             </view>
         </view>
     </view>

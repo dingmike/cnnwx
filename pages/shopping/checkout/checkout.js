@@ -18,6 +18,8 @@ Page({
     addressId: 0,
     couponId: 0,
       intergrals: 0,// 总积分
+      canUserIntergralsTotal: 0,// 该商品可以使用的总积分
+      realUserIntergrals:0,
     isBuy: false,
     couponDesc: '',
     couponCode: '',
@@ -53,7 +55,8 @@ Page({
           couponPrice: res.data.couponPrice,
           freightPrice: res.data.freightPrice,
           goodsTotalPrice: res.data.goodsTotalPrice,
-          orderTotalPrice: res.data.orderTotalPrice
+          orderTotalPrice: res.data.orderTotalPrice,
+          canUserIntergralsTotal: Math.ceil(res.data.orderTotalPrice*0.1) //可使用积分为总价的10%
         });
       }
       wx.hideLoading();
@@ -70,10 +73,38 @@ Page({
     })
   },
     onChangeNumber (e) {
-    this.setData({
-
-    })
         console.log(e.detail);
+    console.log(e.detail.number)
+        if(e.detail.number===this.data.canUserIntergralsTotal){
+            wx.showModal({
+                title: '',
+                content: '该订单使用积分上限为'+this.data.canUserIntergralsTotal+'！',
+                showCancel: false,
+                confirmText: '好的',
+                success: function (res) {
+                    if (res.confirm) {
+                        console.log('用户点击确定')
+                    }
+                }
+            })
+        }
+
+        let actualTotalPrice, canUserIntergrals;
+
+        if(e.detail.type==='add'){
+            actualTotalPrice = this.data.actualPrice-1;
+            canUserIntergrals = this.data.intergrals-1;
+        }else{
+            actualTotalPrice = this.data.actualPrice+1;
+            canUserIntergrals = this.data.intergrals+1;
+        }
+
+    this.setData({
+        actualPrice: actualTotalPrice,
+        intergrals: canUserIntergrals,
+        realUserIntergrals: e.detail.number
+    })
+
     },
   onReady: function () {
     // 页面渲染完成
@@ -135,14 +166,12 @@ Page({
    */
   tapCoupon: function () {
     let that = this;
-  
       wx.navigateTo({
         url: '../selCoupon/selCoupon?buyType=' + that.data.buyType,
       })
   },
     getUserIntergrals(){
         util.request(api.UserIntergralInfo, { uid: wx.getStorageSync("openid") }, 'POST').then(res => {
-          debugger
             this.setData({
                 intergrals: res.data.intergrals
             })
@@ -156,7 +185,7 @@ Page({
       wx.showLoading({
           title: 'Loading...',
       });
-    util.request(api.OrderSubmit, { addressId: this.data.addressId, couponId: this.data.couponId, type: this.data.buyType }, 'POST').then(res => {
+    util.request(api.OrderSubmit, { addressId: this.data.addressId, intergrals:this.data.realUserIntergrals, couponId: this.data.couponId, type: this.data.buyType }, 'POST').then(res => {
       wx.hideLoading();
       if (res.errno === 0) {
         const orderId = res.data.orderInfo.id;
