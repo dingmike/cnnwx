@@ -103,10 +103,37 @@
     </navigator>
   </view>
   <view class="cellView bottom">
+    <navigator url="/pages/ucenter/order/order" class="cell item-flex item-justify-center" hoverClass="none">
+      <image src="/static/image/icon/order_icon.png"></image>
+      <view class="box-flex-1">
+        <text>我的订单</text>
+      </view>
+      <view class="arrow"></view>
+    </navigator>
+  </view>
+  <view class="cellView bottom">
+    <navigator url="/pages/ucenter/collect/collect" class="cell item-flex item-justify-center" hoverClass="none">
+      <image src="/static/image/icon/collect_icon.png"></image>
+      <view class="box-flex-1">
+        <text>我的收藏</text>
+      </view>
+      <view class="arrow"></view>
+    </navigator>
+  </view>
+  <view class="cellView bottom">
+    <navigator url="../address/address" class="cell item-flex item-justify-center" hoverClass="none">
+      <image src="/static/image/icon/address_icon.png"></image>
+      <view class="box-flex-1">
+        <text>地址管理</text>
+      </view>
+      <view class="arrow"></view>
+    </navigator>
+  </view>
+  <view class="cellView bottom">
     <button class="cell item-flex item-justify-center contact" hoverClass="none" open-type="contact">
       <image src="/static/image/icon/kefu_icon.png"></image>
       <view class="box-flex-1">
-        <text>反馈留言</text>
+        <text>反馈留言加群</text>
       </view>
       <view class="arrow"></view>
     </button>

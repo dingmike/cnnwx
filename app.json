@@ -57,7 +57,7 @@
     "tabBar": {
       "backgroundColor": "#fafafa",
       "borderStyle": "white",
-      "selectedColor": "#b4282d",
+      "selectedColor": "#fec500",
       "color": "#666",
       "list": [
         {
@@ -71,18 +71,6 @@
           "iconPath": "static/images/ic_menu_choice_nor.png",
           "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
           "text": "小卖部"
-        },
-        {
-          "pagePath": "pages/catalog/catalog",
-          "iconPath": "static/images/ic_menu_sort_nor.png",
-          "selectedIconPath": "static/images/ic_menu_sort_pressed.png",
-          "text": "分类"
-        },
-        {
-          "pagePath": "pages/cart/cart",
-          "iconPath": "static/images/ic_menu_shoping_nor.png",
-          "selectedIconPath": "static/images/ic_menu_shoping_pressed.png",
-          "text": "购物车"
         },
         {
           "pagePath": "pages/ucenter/index/index",
