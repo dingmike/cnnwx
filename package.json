@@ -13,6 +13,7 @@
     "@minui/wxc-dialog": "^1.0.9",
     "@minui/wxc-icon": "^1.0.9",
     "@minui/wxc-panel": "^1.0.1",
+    "@minui/wxc-popup": "^1.0.9",
     "@minui/wxc-toast": "^1.0.9"
   }
 }
