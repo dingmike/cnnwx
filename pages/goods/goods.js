@@ -348,6 +348,9 @@ Page({
 
     },
     onShow: function () {
+        wx.setNavigationBarTitle({
+            title: "爱学习小店"
+        });
         // 页面显示 返回后页面不刷新，也需要数据，需要刷新的操作写在onshow，，不需要刷新的操作写在onload
         let that = this;
         this.getGoodsInfo();
