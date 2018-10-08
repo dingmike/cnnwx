@@ -19,14 +19,16 @@ page{
 }
 
 .userinfo-avatar {
-	width: 160rpx;
-	height: 160rpx;
-	margin: 20rpx;
-	border-radius: 50%;
+    display:block;
+    margin:34rpx auto;
+    width:160rpx;
+    height:160rpx;
+    border-radius:50%;
+    text-align:center;
 }
 
 .userinfo-nickname {
-  margin-top: 20rpx;
+  /*margin-top: 20rpx;*/
   color: #FFF;
 }
 .profile-info{
@@ -276,4 +278,42 @@ page{
     display: flex;
     -webkit-box-align: center;
     align-items: center;
+}
+
+/*new add*/
+
+/*.head-container{
+    display: flex; display: -webkit-flex; flex-direction: row ;justify-content: center;
+}*/
+.main-head-avator{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row ;
+    justify-content: center;
+}
+.wrap {
+    display: block;
+    height: 300rpx;
+    background: #696969;
+}
+.item {
+    font-size: 20rpx;
+    height:300rpx;
+}
+.side {
+    width:256rpx;
+    text-align: center;
+    background: #333;
+    flex-grow: 0;
+}
+.main {
+    background: #333;
+    flex-grow: 1;
+    text-align: left;
+}
+.main .intergral-box{
+    width:auto;
+    padding: 0 40rpx;
+    color: #fff;
+    line-height: 300rpx;
 }

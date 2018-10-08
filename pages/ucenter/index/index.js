@@ -6,7 +6,8 @@ var app = getApp();
 Page({
     data: {
         userInfo: {},
-        hasMobile: ''
+        hasMobile: '',
+        intergrals: 'loading...'
     },
     onLoad: function (options) {
         //util.redirect("pages/ucenter/index/index");
@@ -25,7 +26,7 @@ Page({
         console.log(app.globalData)
     },
     onReady: function () {
-
+        this.userIntergralInfo();
     },
     onShow: function () {
         wx.setNavigationBarTitle({
@@ -51,6 +52,16 @@ Page({
     },
     onUnload: function () {
         // 页面关闭
+    },
+    userIntergralInfo(){
+        util.request(api.UserIntergralInfo, {uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+            if(res.errno===0){
+                this.setData({
+                    intergrals:res.data.intergrals
+                })
+            }
+
+        })
     },
     bindGetUserInfo(e) {
       let userInfo = wx.getStorageSync('userInfo');

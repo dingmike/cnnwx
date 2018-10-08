@@ -1,11 +1,37 @@
+
+
+
 <view class="container">
-  <button class="userinfo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+  <!--<button class="userinfo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
 
 		<image wx:if="{{userInfo && userInfo.avatar}}" class="userinfo-avatar" src="{{ userInfo.avatar }}" background-size="cover"></image>
 		<text class="userinfo-nickname">{{ userInfo.nickname }}</text>
-  </button>
-  <view style="height:20rpx;background: #eee;width:100%;"></view>
-  <view class="my-item" style='background:none;display:flex;flex-direction:column;height:auto;'></view>
+  </button>-->
+
+<!--  <view>
+    <image wx:if="{{userInfo && userInfo.avatar}}" class="userinfo-avatar" src="{{ userInfo.avatar }}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{ userInfo.nickname }}</text>
+  </view>-->
+
+
+  <view class="main-head-avator">
+
+    <view class="item side">
+      <image wx:if="{{userInfo && userInfo.avatar}}" class="userinfo-avatar" src="{{ userInfo.avatar }}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{ userInfo.nickname }}</text>
+    </view>
+
+
+    <view class="item main">
+      <view class="intergral-box">积分：<text style="color: orange; font-size: 40rpx;">{{intergrals}}</text></view>
+    </view>
+
+
+  </view>
+
+
+<!--  <view style="height:20rpx;background: #eee;width:100%;"></view>
+  <view class="my-item" style='background:none;display:flex;flex-direction:column;height:auto;'></view>-->
   
 <!--  <view class="user-menu">
 
