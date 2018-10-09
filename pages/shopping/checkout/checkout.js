@@ -73,8 +73,6 @@ Page({
     })
   },
     onChangeNumber (e) {
-        console.log(e.detail);
-    console.log(e.detail.number)
         if(e.detail.number===this.data.canUserIntergralsTotal){
             wx.showModal({
                 title: '',
