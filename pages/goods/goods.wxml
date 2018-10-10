@@ -126,21 +126,11 @@
       <view class="spec-item" wx:for="{{specificationList}}" wx:key="{{item.specification_id}}">
         <view class="name">{{item.name}}</view>
         <view class="values">
-          <!--<view class="value {{vitem.checked ? 'selected' : ''}}" bindtap="clickSkuValue" wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="{{vitem.id}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</view>-->
-
-
-         <!-- <view class="button-small-wrap">
-            <wxc-button size="small" type="beauty" value="small"></wxc-button>
-          </view>-->
           <view class="button-small-wrap">
-            <!--<wxc-button  wx:for="{{item.valueList}}" wx:for-item="vitem" wx:key="{{vitem.id}}" plain="{{true}}" class="value {{vitem.checked ? 'selected' : ''}}" bindclick="clickSkuValue" size="small" disabled="true"  value="{{type}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}" >{{vitem.value}}</wxc-button>-->
-
             <button class="sku-btn" wx:for="{{item.valueList}}" type="{{vitem.checked ? 'warn' : 'default'}}" wx:for-item="vitem" wx:key="{{vitem.id}}" plain="{{true}}"  bindtap="clickSkuValue" size="mini" disabled="{{vitem.disabled}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</button>
           </view>
-
         </view>
       </view>
-
       <view class="number-item">
         <view class="name">数量</view>
         <view class="selnum">

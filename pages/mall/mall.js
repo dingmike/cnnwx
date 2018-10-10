@@ -16,8 +16,8 @@ Page({
     },
     onShareAppMessage: function () {
         return {
-            title: 'NideShop',
-            desc: 'FecsTec English',
+            title: '爱学习小店',
+            desc: '英文能力',
             path: '/pages/mall/mall'
         }
     },
