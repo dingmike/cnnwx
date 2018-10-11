@@ -59,16 +59,18 @@ Page({
                 url: "/pages/firstAuth/firstAuth"
             })
         });*/
-
+        wx.showNavigationBarLoading();
+        // 获取个人信息
+        this.getLearnInfo();
         // 获取首页数据
         this.getIndexData();
         this.data.type = app.globalData.type;
-        wx.showNavigationBarLoading();
+
         var e = app.globalData.openid;
         this.setData({
             openid: e
         });
-        this.getLearnInfo();
+
         this.getLastDay();
         // this.getOneCard();
         if(new Date().getHours() >= 10 ){
@@ -84,7 +86,7 @@ Page({
         var t = new Date(), e = this.data.openid, s = t.getMonth() + 1, n = t.getDate(), y = t.getFullYear();
         // type learn type id 判断今日是否打过卡
         util.request(api.GetOneCard, {uid: wx.getStorageSync('openid'), type: 1, day: n, month: s, year: y}, 'POST').then( res =>{
-            debugger
+
                 if(res.data){
                     this.setData({
                         cardM: res.data

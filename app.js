@@ -14,7 +14,6 @@ App({
          });*/
         //获取用户的登录信息
         user.checkLogin().then(res => {
-            console.log('app login')
             this.globalData.userInfo = wx.getStorageSync('userInfo');
             this.globalData.token = wx.getStorageSync('token');
             //由于这里是网络请求，可能会在 Page.onLoad 之后才返回
@@ -30,7 +29,7 @@ App({
     },
 
     globalData: {
-        url: "https://riyubao.net/oralproject/public/index.php/",
+        url: "",
         //new
         openid: "",
         type: "21天英语学习达人养成计划",

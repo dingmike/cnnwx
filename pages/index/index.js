@@ -59,7 +59,8 @@ Page({
             }
         }
 
-        this.getIndexData();
+        this.getIndexData(1);
+        this.getIndexData(0);
         this._onLoad(); // 提前
 
     },
@@ -94,15 +95,50 @@ Page({
     onUnload: function () {
         // 页面关闭
     },
-    getIndexData: function() {
+    getIndexData: function(learnTypeId) {
 
         let that = this;
-        // learnTypeId  学习类型ID
-        util.request(api.CnnIndexUrl, {learnTypeId: 1}).then(function (res) {
+        // learnTypeId  学习类型ID // 默认learnTypeId:1
+        util.request(api.CnnIndexUrl, {learnTypeId: learnTypeId}).then(function (res) {
             if (res.errno === 0) {
-                res.data.learnFilePics
                 let e = res.data.userLearnList, o = res.data.userListTotal;
-                o > 200 ? (o = 200, that.setData({
+
+                if(o>200){
+                    o = 200;
+                    if(learnTypeId===1){
+                        that.setData({
+                            banner: res.data.banner,
+                            learnType: e[0].learnType,
+                            studyUser: e,
+                            studyUserNums: o + "+"
+                        })
+                    }else{// learnType=0
+                        that.setData({
+                            learnType2: e[0].learnType,
+                            studyUser2: e,
+                            studyUserNums2: o + "+"
+                        })
+                    }
+
+                }else{
+                    if(learnTypeId===1){
+                        that.setData({
+                            learnType: e[0].learnType,
+                            banner: res.data.banner,
+                            studyUser: e,
+                            studyUserNums: o
+                        });
+                    }else{ // learnType=0
+                        that.setData({
+                            learnType2: e[0].learnType,
+                            studyUser2: e,
+                            studyUserNums2: o
+                        });
+                    }
+
+                }
+
+                /*o > 200 ? (o = 200, that.setData({
                     banner: res.data.banner,
                     learnType: e[0].learnType,
                     studyUser: e,
@@ -112,11 +148,13 @@ Page({
                     banner: res.data.banner,
                     studyUser: e,
                     studyUserNums: o
-                });
+                });*/
                 wx.hideNavigationBarLoading();
             }
         });
     },
+
+
    /* navigateTo: function(t) {
         wx.navigateTo(t);
     },*/

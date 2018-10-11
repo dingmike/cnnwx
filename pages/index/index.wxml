@@ -10,15 +10,35 @@
             </swiper>
     </view>
     <view class="main">
-        <view class="title">{{learnType}}</view>
+        <view>
+            <view class="title">{{learnType}}</view>
+            <wxc-panel border="{{false}}" margin="{{false}}" >
+                <view class="enrollment">
+                    <view class="enrollment-nums">
+                        <text style="color:#000">{{studyUserNums}}人报名</text>
+                    </view>
+                    <view class="enrollment-images">
+                        <image src="{{userInfo.avatarUrl}}" wx:if="{{avaData}}"></image>
+                        <image src="{{item.avatar}}" wx:for="{{studyUser}}" wx:key="{{item.id}}"></image>
+                    </view>
+                </view>
+                <view class="button-small-wrap">
+                    <wxc-cc class="part-in-btn" style="background-color:#fff;">
+                        <wxc-button btnStyle="{{style}}" bindtap="takePartIn">立即参与 <wxc-icon color="#fff" type="arrow-right"></wxc-icon></wxc-button>
+                    </wxc-cc>
+                </view>
+            </wxc-panel>
+        </view>
+<!--new  day read panel-->
+        <view class="title">{{learnType2}}</view>
         <wxc-panel border="{{false}}" margin="{{false}}" >
             <view class="enrollment">
                 <view class="enrollment-nums">
-                    <text style="color:#000">{{studyUserNums}}人报名</text>
+                    <text style="color:#000">{{studyUserNums2}}人报名</text>
                 </view>
                 <view class="enrollment-images">
-                    <image src="{{userInfo.avatarUrl}}" wx:if="{{avaData}}"></image>
-                    <image src="{{item.avatar}}" wx:for="{{studyUser}}" wx:key="{{item.id}}"></image>
+                    <image src="{{userInfo2.avatarUrl}}" wx:if="{{avaData}}"></image>
+                    <image src="{{item.avatar}}" wx:for="{{studyUser2}}" wx:key="{{item.id}}"></image>
                 </view>
             </view>
             <view class="button-small-wrap">
