@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/firstAuth/firstAuth",
     "pages/gongDu/gongDu",
+    "pages/dayReadList/dayReadList",
     "pages/explain/explain",
     "pages/orale/orale",
     "pages/signres/signres",

@@ -1,5 +1,5 @@
-// var NewApiRootUrl = 'http://localhost:8080/api/';
-var NewApiRootUrl = 'http://cnnfront.tunnel.qydev.com/api/';
+var NewApiRootUrl = 'http://localhost:8080/api/';
+// var NewApiRootUrl = 'http://cnnfront.tunnel.qydev.com/api/';
 // let NewApiRootUrl = 'https://api.fecstec.com/platform-admin-1.0.0/api/';
 
 module.exports = {
@@ -14,6 +14,9 @@ module.exports = {
     SetCardById: NewApiRootUrl + 'gongdu/setCardById', //每天打卡
     GetOneCard: NewApiRootUrl + 'gongdu/getOneCard', //每天打卡
     SetRemindTime: NewApiRootUrl + 'gongdu/setRemindTime', //设置提醒时间 /api/gdOrder
+    GetReadNewsByUserId: NewApiRootUrl + '/gongdu/getReadNewsByUserId', // 获取用户阅读的文章
+
+
     GongduOrderSubmit: NewApiRootUrl + 'gdOrder/submit', // 生成共读订单
 
     UserIntergralInfo: NewApiRootUrl + 'user/getUserIntergralInfo', // 获取积分余额信息
@@ -110,5 +113,9 @@ module.exports = {
     OrderSuccess: NewApiRootUrl + 'order/updateSuccess',
     /*newscnn learning api*/
     // ReadRecord: NewApiRootUrl + 'newscnn/recordList'   // 用户阅读列表
+
+
+
+
 
 };

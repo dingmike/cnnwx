@@ -1,0 +1,12 @@
+<view capture-catch:touchmove="cancelmove" class="com_tools">
+    <view animation="{{animationData}}" bindtap="ani_show" class="com_tools_text"></view>
+    <view animation="{{animationDatawrap}}" class="com_tools_slider">
+        <button animation="{{animationData1}}" class="com_tools_slider_cell com_tools_slider_cell_3" openType="contact"></button>
+        <navigator animation="{{animationData2}}" appId="{{appAD.appId}}" class="com_tools_slider_cell com_tools_slider_cell_4" extraData="{{appAD.extra}}" openType="navigate" path="{{appAD.path}}" target="miniProgram" version="{{appAD.version}}"></navigator>
+        <button animation="{{animationData3}}" class="com_tools_slider_cell com_tools_slider_cell_1" openType="share"></button>
+        <view animation="{{animationData4}}" class="com_tools_slider_cell com_tools_slider_cell_2">
+            <slot></slot>
+        </view>
+        <view bindtap="ani_hide" class="com_tools_slider_cell com_tools_slider_cell_5"></view>
+    </view>
+</view>

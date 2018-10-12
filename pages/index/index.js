@@ -80,6 +80,11 @@ Page({
             url: "/pages/gongDu/gongDu"
         });
     },
+    takePartIn2(e){
+        wx.navigateTo({
+            url: "/pages/dayReadList/dayReadList"
+        });
+    },
     onShow: function() {
         /*var t = app.globalData.type;
         wx.setNavigationBarTitle({

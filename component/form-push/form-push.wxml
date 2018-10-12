@@ -1,0 +1,5 @@
+<form reportSubmit bindsubmit="_handleFormPush" class="_push_wrap">
+    <button class="_push_button" formType="submit">
+        <slot></slot>
+    </button>
+</form>

@@ -1,4 +1,9 @@
-var t = require("./../../utils/util"), e = require("./../../utils/share"), a = getApp();
+// var t = require("./../../utils/util");
+const util = require('../../utils/util.js');
+const api = require('../../config/api.js');
+const user = require('../../services/user.js');
+const pay = require('../../services/pay');
+var e = require("./../../utils/share"), a = getApp();
 
 Page({
     data: {
@@ -10,21 +15,15 @@ Page({
         showbg: !1,
         canIUse: wx.canIUse("button.open-type.getUserInfo")
     },
-    detailPage: function(t) {
-        wx.navigateTo({
-            url: "../detail/detail?pageId=" + t.currentTarget.dataset.value
-        });
-    },
-    push: function(t) {
-        a.push.add(t);
-    },
+
     onLoad: function() {
         e.save(), wx.showShareMenu({
             withShareTicket: !0
         });
         var a = this;
+        a.getNewsList();
         wx.request({
-            url: t.host + "duenglish/list?t=chinaplus_cri_news",
+            url: util.host + "duenglish/list?t=chinaplus_cri_news",
             data: {},
             header: {
                 "content-type": "application/json"
@@ -35,7 +34,7 @@ Page({
                 });
             }
         }), wx.request({
-            url: t.host + "motto_en",
+            url: util.host + "motto_en",
             data: {},
             header: {
                 "content-type": "application/json"
@@ -46,6 +45,95 @@ Page({
                 });
             }
         });
+    },
+    getLearnInfo() {
+        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+            wx.hideNavigationBarLoading();
+            if (res.errno === 0&&res.data) {
+                wx.hideLoading();
+                let studyNums = [];
+                for(let i=1; i<=res.data.genusdays; i++){
+                    studyNums.push({genusdays: i})
+                }
+                this.setData({
+                    studyNums: studyNums
+                });
+
+                app.globalData.single = res.data;
+                this.setData({
+                    single: res.data,
+                    Contents: true
+                });
+
+                if(res.data.startStatus == 1){ // 已支付开始学习
+                    this.setData({
+                        avaData: true,
+                        userInfo: res.data
+                    })
+
+                }else{ // 没支付
+                    this.setData({
+                        contact: false,
+                        joinBtn: '马上加入学习',
+                        setTimeSty: false
+                    });
+
+                }
+
+                if(16 == res.data.unlocks){
+                    this.getOneCard(res.data.unlocks);
+
+                }else{
+                    this.getOneCard();
+                }
+
+            }else{
+                let mockData = {
+                    "id": "",
+                    "learnTypeId": 0,
+                    "userid": 0,
+                    "unlocks": 0,
+                    "formId": "",
+                    "miss": 0,
+                    "startStatus": 0,
+                    "setupTime": "",
+                    "addTime": "",
+                    "updateTime": "",
+                    "userName": "",
+                    "avatar": "",
+                    "nickname": "",
+                    "learnType": "",
+                    "genusdays": 21
+                };
+                let studyNums = [];
+                for(let i=1; i<=mockData.genusdays; i++){
+                    studyNums.push({genusdays: i})
+                }
+                this.setData({
+                    studyNums: studyNums,
+                    contact: false,
+                    joinBtn: '马上加入学习',
+                    setTimeSty: false,
+                    single: mockData,
+                    Contents: !0
+                });
+            }
+
+        });
+    },
+    getNewsList(){
+
+        util.request(api.GetReadNewsByUserId, {uid: wx.getStorageSync('openid')}).then( res =>{
+            debugger
+        })
+    },
+    detailPage: function(t) {
+        wx.navigateTo({
+            url: "../dayReadDetail/dayReadDetail?pageId=" + t.currentTarget.dataset.value
+        });
+    },
+    push: function(t) {
+        a.push.add(t);
     },
     getUserInfo: function(t) {
         try {

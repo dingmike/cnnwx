@@ -94,7 +94,6 @@ Page({
                     this.setData({
                         joinBtn: "今日已打卡 点击回顾"
                     });
-                    debugger
                     if(unlocks==16){
                         this.setData({
                             contact: true

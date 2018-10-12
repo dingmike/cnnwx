@@ -2,6 +2,12 @@ var util = require('./utils/util.js');
 var api = require('./config/api.js');
 var user = require('./services/user.js');
 
+var ePush = function(e) {
+    return e && e.__esModule ? e : {
+        default: e
+    };
+}(require("./lib/push"))
+
 App({
     onLaunch: function () {
         /* wx.getSetting({
@@ -50,5 +56,25 @@ App({
         token: '',
         userCoupon: 'NO_USE_COUPON',//默认不适用优惠券
         courseCouponCode: {},//购买课程的时候优惠券信息
-    }
+    },
+    push: new ePush.default({
+        appId: "",
+        secretId: "4d311689884e04c38a83c07eeb711adb",
+        templateId: "SdD4f6ZGVL71-BqQi8-a64htTEdFe3jwZBPufv2FsNQ",
+        page: "pages/index/index",
+        data: {
+            keyword1: {
+                value: "英文能力"
+            },
+            keyword2: {
+                value: "6:00-9:00"
+            },
+            keyword3: {
+                value: "学习是自己得事"
+            },
+            keyword4: {
+                value: "建议每日至少完成两篇英文文章的阅读"
+            }
+        }
+    })
 })

@@ -1,6 +1,6 @@
 {
     "usingComponents": {
-        "form-push": "../../components/form-push/form-push",
-        "tools": "../../components/btn-tools/btn-tools"
+        "form-push": "../../component/form-push/form-push",
+        "tools": "../../component/btn-tools/btn-tools"
     }
 }

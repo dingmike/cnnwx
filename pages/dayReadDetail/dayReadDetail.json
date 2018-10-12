@@ -1,6 +1,6 @@
 {
     "usingComponents": {
-        "form-push": "../../components/form-push/form-push",
-        "xm-ad": "../../components/xmAD/xmAD"
+        "form-push": "../../component/form-push/form-push",
+        "xm-ad": "../../component/xmAD/xmAD"
     }
 }
