@@ -1,14 +1,19 @@
 /**
+ *
+ * htmlParser改造自: https://github.com/blowsie/Pure-JavaScript-HTML5-Parser
+ *
  * author: Di (微信小程序开发工程师)
  * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
  *               垂直微信小程序开发交流社区
- * 
+ *
  * github地址: https://github.com/icindy/wxParse
- * 
+ *
  * for: 微信小程序富文本解析
  * detail : http://weappdev.com/t/wxparse-alpha0-1-html-markdown/184
  */
 // Regular Expressions for parsing tags and attributes
+/* eslint-disable */
+
 var startTag = /^<([-A-Za-z0-9_]+)((?:\s+[a-zA-Z_:][-a-zA-Z0-9_:.]*(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/,
 	endTag = /^<\/([-A-Za-z0-9_]+)[^>]*>/,
 	attr = /([a-zA-Z_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))?/g;
@@ -78,8 +83,13 @@ function HTMLParser(html, handler) {
 
 			if (chars) {
 				index = html.indexOf("<");
-
-				var text = index < 0 ? html : html.substring(0, index);
+				var text = ''
+				while (index === 0) {
+                                  text += "<";
+                                  html = html.substring(1);
+                                  index = html.indexOf("<");
+				}
+				text += index < 0 ? html : html.substring(0, index);
 				html = index < 0 ? "" : html.substring(index);
 
 				if (handler.chars)
@@ -155,11 +165,12 @@ function HTMLParser(html, handler) {
 			var pos = 0;
 
 		// Find the closest opened tag of the same type
-		else
+		else {
+			tagName = tagName.toLowerCase();
 			for (var pos = stack.length - 1; pos >= 0; pos--)
 				if (stack[pos] == tagName)
 					break;
-
+		}
 		if (pos >= 0) {
 			// Close all the open elements, up the stack
 			for (var i = stack.length - 1; i >= pos; i--)
@@ -171,6 +182,7 @@ function HTMLParser(html, handler) {
 		}
 	}
 };
+
 
 function makeMap(str) {
 	var obj = {}, items = str.split(",");

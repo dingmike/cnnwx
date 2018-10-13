@@ -1,5 +1,5 @@
 var app = getApp();
-var WxParse = require('../../lib/wxParse/wxParse.js');
+// var WxParse = require('../../lib/wxParse/wxParse.js');
 var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
 
@@ -68,7 +68,7 @@ Page({
                     });
                 }
                 that.data.new_goods = JSON.parse(JSON.stringify(that.data.goods));
-                WxParse.wxParse('goodsDetail', 'html', res.data.info.goods_desc, that);
+                // WxParse.wxParse('goodsDetail', 'html', res.data.info.goods_desc, that);
 
                 that.getGoodsRelated();
 

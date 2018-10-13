@@ -1,4 +1,7 @@
-var a = require("./../../utils/util"), t = getApp();
+var a = require("./../../utils/util");
+const util = require('../../utils/util.js');
+const api = require('../../config/api.js');
+var t = getApp();
 // var i = require("../../utils/xmadx_sdk.min.js").xmad(i).xmPage;
 
 Page({
@@ -41,22 +44,59 @@ Page({
     },
     onLoad: function(t) {
         var i = this;
+        i.getNewsDetail(t);
+       /* util.request(api.GetNewsById, {pageId: t.pageId},'POST').then( res =>{
+            var t = [], s = [],content=[];
+            res.data.addTime = util.tsFormatTime(res.data.addTime,'Y-M-D');
+            WxParse.wxParse('newsHtmlDetail', 'html', res.data.newsDetail, i);
+            WxParse.wxParse('chineseDetail', 'html', res.data.chinese, i);
+            content.push(res.data);
+            content.map(function(a, i) {
+                t.push(!1), s.push(!1);
+            });
+            i.setData({
+                pageDetail: content,
+                transList: t,
+                voiceList: s
+            });
+        })*/
         wx.request({
-            url: a.host + "duenglish/detail?aid=" + t.pageId,
+            url: a.host + "duenglish/detail?aid=194979",
             data: {},
             header: {
                 "content-type": "application/json"
             },
             success: function(a) {
-                var t = [], s = [];
-                a.data.content.map(function(a, i) {
-                    t.push(!1), s.push(!1);
-                }), i.setData({
-                    pageDetail: a.data,
-                    transList: t,
-                    voiceList: s
-                });
+                console.log(a)
             }
         });
+    },
+    getNewsDetail(t){
+        var i =this;
+        util.request(api.GetNewsById, {pageId: t.pageId},'POST').then( res =>{
+            var t = [], s = [],content=[];
+            debugger
+            res.data.addTime = util.tsFormatTime(res.data.addTime,'Y-M-D');
+
+
+            content.push(res.data);
+            content.map(function(a, i) {
+                t.push(!1), s.push(!1);
+            });
+            i.setData({
+                pageDetail: content,
+                transList: t,
+                voiceList: s
+            });
+            // WxParse.wxParse('newsHtmlDetail', 'html', res.data.newsDetail, i,5);
+            // WxParse.wxParse('chineseDetail', 'html', res.data.chinese, i);
+        })
+    },
+    longTap(){
+        wx.showToast({
+            title: '继续加油！',
+            duration: 800,
+            mask:false
+        })
     }
 });

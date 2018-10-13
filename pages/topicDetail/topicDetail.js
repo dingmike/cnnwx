@@ -1,5 +1,5 @@
 var app = getApp();
-var WxParse = require('../../lib/wxParse/wxParse.js');
+// var WxParse = require('../../lib/wxParse/wxParse.js');
 var util = require('../../utils/util.js');
 var api = require('../../config/api.js');
 
@@ -25,7 +25,7 @@ Page({
           topic: res.data,
         });
 
-        WxParse.wxParse('topicDetail', 'html', res.data.content, that);
+        // WxParse.wxParse('topicDetail', 'html', res.data.content, that);
       }
     });
 

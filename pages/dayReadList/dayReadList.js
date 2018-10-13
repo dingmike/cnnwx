@@ -12,15 +12,32 @@ Page({
         slogan: {},
         edata: "",
         userInfo: {},
+        scrollTop: 0,
+        scrollHeight: 0,
+        page: 1,
+        size: 10,
+        loadmoreText: '正在加载更多数据',
+        nomoreText: '全部加载完成',
+        nomore: false,
+        totalPages: 1,
+        cnnNewsList:[],
         showbg: !1,
         canIUse: wx.canIUse("button.open-type.getUserInfo")
     },
 
     onLoad: function() {
+
         e.save(), wx.showShareMenu({
             withShareTicket: !0
         });
         var a = this;
+        wx.getSystemInfo({
+            success: function (res) {
+                a.setData({
+                    scrollHeight: res.windowHeight
+                });
+            }
+        });
         a.getNewsList();
         wx.request({
             url: util.host + "duenglish/list?t=chinaplus_cri_news",
@@ -122,10 +139,28 @@ Page({
         });
     },
     getNewsList(){
+        var that = this;
+        if (that.data.totalPages <= that.data.page-1) {
+            that.setData({
+                nomore: true
+            })
+            return;
+        }
+        util.request(api.GetReadNewsByUserId, {uid: wx.getStorageSync('openid'),page: that.data.page, size: that.data.size}).then( res =>{
+            that.setData({
+                cnnNewsList: that.data.cnnNewsList.concat(res.data.data),
+                page: res.data.currentPage+1,
+                totalPages: res.data.totalPages
+            })
 
-        util.request(api.GetReadNewsByUserId, {uid: wx.getStorageSync('openid')}).then( res =>{
-            debugger
         })
+    },
+    /**
+     * 页面上拉触底事件的处理函数
+     */
+    onReachBottom: function () {
+        console.log("下一页")
+        this.getNewsList()
     },
     detailPage: function(t) {
         wx.navigateTo({

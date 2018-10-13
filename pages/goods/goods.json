@@ -5,6 +5,7 @@
     "wxc-icon": "../../packages/@minui/wxc-icon/dist/index",
     "wxc-cc": "../../packages/@minui/wxc-cc/dist/index",
     "wxc-panel": "../../packages/@minui/wxc-panel/dist/index",
-    "progressBar": "../../component/progressBar/progressBar"
+    "progressBar": "../../component/progressBar/progressBar",
+    "rich-parse": "../../component/rich-parse/rich-parse"
   }
 }

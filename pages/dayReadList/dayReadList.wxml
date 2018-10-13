@@ -1,9 +1,9 @@
-<view class="spbg">
+<!--<view class="spbg">
     <block wx:if="{{showSlogan}}">
         <view class="slogan">{{slogan.english}}</view>
         <view class="slogan2">{{slogan.chinese}}</view>
     </block>
-</view>
+</view>-->
 <tools bind:hideBg="cancelcanvaspic" class="toolswrap">
     <button bindgetuserinfo="getUserInfo" class="toolssign" openType="getUserInfo" wx:if="{{!showbg}}"></button>
     <button bindtap="savecanvaspic" class="toolssave" wx:else></button>
@@ -12,7 +12,7 @@
 <view capture-catch:touchmove="cancelmove" class="canswrap" style="display:{{showbg?'block':'none'}}">
     <canvas canvasId="sharepage" class="sharepage" style="border-radius: 20px;width:{{canvasWidth}}px; height:{{canvasHeight}}px;"></canvas>
 </view>
-<view class="wrap">
+<!--<view class="wrap">
     <view class="main">
         <view class="section" wx:for="{{newsList}}" wx:key="{{item.category}}">
             <view class="category">
@@ -33,6 +33,49 @@
                     </view>
                 </form-push>
             </view>
+        </view>
+    </view>
+</view>-->
+
+
+<view class="wrap">
+    <view class="main">
+        <view class="section">
+            <view class="category">
+                <text class="category-title">去打卡</text>
+            </view>
+            <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}};">
+
+                <view bindtap="detailPage" data-value="{{item.newsid}}" wx:for="{{cnnNewsList}}" wx:for-item="item" wx:key="{{item.id}}">
+                    <form-push bindformpush="push">
+                        <view class="news-item {{index!=cnnNewsList.length-1?'news-item-border':''}}">
+                            <view class="item-left">
+                                <view class="title">{{item.title}}</view>
+                                <view class="descript">{{item.descript}}</view>
+                            </view>
+                            <view class="item-right">
+                                <view class="item-right-img">
+                                    <image class="item-right-img-inner" mode="aspectFill" src="{{item.imageUrl}}"></image>
+                                </view>
+                            </view>
+                        </view>
+                    </form-push>
+                </view>
+
+
+
+                <view wx:if="{{cnnNewsList.length>4}}" class="loadmore">
+                    <block wx:if="{{nomore}}">
+                        <text>{{nomoreText}}</text>
+                    </block>
+                    <block wx:else>
+                        <text class="iconfont icon-loading loading" space="nbsp"></text>
+                        <text> {{loadmoreText}}</text>
+                    </block>
+                </view>
+
+            </scroll-view>
+
         </view>
     </view>
 </view>

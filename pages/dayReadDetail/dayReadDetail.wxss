@@ -1,8 +1,30 @@
+
 .detail {
     padding: 20rpx 30rpx 10rpx 30rpx;
     align-items: center;
     border-bottom: 0.5rpx solid #efefef;
     color: #333;
+}
+
+
+.detailWxparse{
+    width: 750rpx;
+    padding:0 20rpx;
+    height: auto;
+    overflow: hidden;
+}
+.detailWxparse-chinese{
+    width: 750rpx;
+    padding:0 20rpx;
+    background-color: #cccccc;
+    border: 1px solid #ccc;
+    height: auto;
+    overflow: hidden;
+}
+
+.detail image{
+    width: 750rpx;
+    display: block;
 }
 
 .detail-audio {
@@ -73,35 +95,31 @@
 }
 
 .detail-translate-wrap {
-    position: absolute;
-    top: 14rpx;
-    left: 5%;
+    position:fixed;
+    top:21rpx;
+    right:5%;
 }
 
 .detail-translate {
-    border:1rpx solid #6666FF;
+    border:1rpx solid #58b406;
     border-radius:6px;
     padding:10rpx 12rpx;
     font-size:20rpx;
-    color:#6666FF;
-    height:40rpx;
     line-height:20rpx;
 
 }
 
 .detail-voice-wrap {
-    position: absolute;
-    top: 14rpx;
-    left: 13%;
+    position:fixed;
+    top:21rpx;
+    right:13%;
 }
 
 .detail-voice {
-    border: 1rpx solid #6666FF;
+    border: 1rpx solid #58b406;
     border-radius: 10rpx;
     padding: 10rpx 12rpx;
     font-size: 20rpx;
-    color: #6666FF;
-    height: 40rpx;
     line-height: 20rpx;
 }
 

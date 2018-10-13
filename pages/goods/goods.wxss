@@ -599,7 +599,7 @@
     text-align: center;
     color: #fff;
 }
-@import "../../lib/wxParse/wxParse.wxss";
+/*@import "../../lib/wxParse/wxParse.wxss";*/
 
 .attr-pop{
     width: 100%;
