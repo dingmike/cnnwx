@@ -163,7 +163,7 @@
   text-align: center;
   line-height: 30rpx;
   font-size: 30rpx;
-  color: #b4282d;
+  color: #f48f18;
 }
 
 .a-popular {
@@ -268,7 +268,7 @@
 
 .a-topic .b .np .price {
   margin-left: 20.8rpx;
-  color: #b4282d;
+  color: #f48f18;
 }
 
 .a-topic .b .desc {
@@ -330,15 +330,15 @@
 }
 
 .good-grid .item .name {
-  display: block;
-  width: 365.625rpx;
-  padding: 0 20rpx;
-  overflow: hidden;
-  height: 36rpx;
-  margin: 11.5rpx 0 22rpx 0;
-  text-align: center;
-  font-size: 30rpx;
-  color: #333;
+  display:block;
+  width:365.625rpx;
+  padding:0 20rpx;
+  overflow:hidden;
+  height:36rpx;
+  margin:11.5rpx 0 22rpx 0;
+  text-align:center;
+  font-size:26rpx;
+  color:#333;
 }
 
 .good-grid .item .price {
@@ -347,7 +347,7 @@
   height: 30rpx;
   text-align: center;
   font-size: 30rpx;
-  color: #b4282d;
+  color: #f48f18;
 }
 
 .good-grid .more-item{
@@ -373,7 +373,7 @@
 }
 
 .good-grid .more-a .icon{
-  margin: 60rpx auto 0 auto;
-  width: 70rpx;
-  height: 70rpx;
+  margin: 50rpx auto 0 auto;
+  width: 60rpx;
+  height: 60rpx;
 }

@@ -1,5 +1,5 @@
 .container{
-    background: #f9f9f9;
+    background: #fff;
 }
 .cate-nav{
     position: fixed;
@@ -34,8 +34,8 @@
 }
 
 .cate-nav .item.active .name{
-    color: #cc0466;
-    border-bottom: 2px solid #cc0466;
+    color: #f48f18;
+    border-bottom: 2px solid #f48f18;
 }
 .cate-item{
     margin-top: 94rpx;
@@ -95,15 +95,15 @@
 }
 
 .cate-item .item .name{
-  display: block;
-  width: 365.625rpx;
-  height: 35rpx;
-  margin: 11.5rpx 0 22rpx 0;
-  text-align: center;
-  overflow: hidden;
-  padding: 0 20rpx;
-  font-size: 30rpx;
-  color: #333;
+    display:block;
+    width:365.625rpx;
+    height:36rpx;
+    margin:11.5rpx 0 22rpx 0;
+    text-align:center;
+    overflow:hidden;
+    padding:0 20rpx;
+    font-size:26rpx;
+    color:#333;
 }
 
 .cate-item .item .price{
@@ -112,7 +112,7 @@
   height: 30rpx;
   text-align: center;
   font-size: 30rpx;
-  color: #b4282d;
+  color: #f48f18;
 }
 
 .loadmore {

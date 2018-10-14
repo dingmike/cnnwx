@@ -9,17 +9,16 @@
 
 .detailWxparse{
     width: 750rpx;
-    padding:0 20rpx;
+    padding: 20rpx;
     height: auto;
     overflow: hidden;
 }
 .detailWxparse-chinese{
-    width: 750rpx;
-    padding:0 20rpx;
-    background-color: #cccccc;
-    border: 1px solid #ccc;
-    height: auto;
-    overflow: hidden;
+    width:750rpx;
+    padding:20rpx;
+    /*border:10px solid #ccc;*/
+    height:auto;
+    overflow:hidden;
 }
 
 .detail image{
@@ -57,7 +56,9 @@
     font-size: 32rpx;
     color: #666;
 }
-
+.stop-word{
+    color: #ff3206 !important;
+}
 .detail-text {
     text-indent: 16%;
     width: 90%;
@@ -135,4 +136,11 @@
     line-height: 34rpx;
     background: #efefef;
     margin-bottom: 24rpx;
+}
+.chinese-title{
+    text-align: center;
+}
+.chinese-title-word{
+    font-weight: 400;
+    color: #ce252a!important;
 }

@@ -15,11 +15,11 @@
         <text class="name">{{goods.name}}</text>
         <text class="desc">{{goods.goods_brief}}</text>
         <text class="price">￥{{goods.retail_price}}</text>
-        <view class="brand" wx:if="{{brand.name}}">
+        <!--<view class="brand" wx:if="{{brand.name}}">
           <navigator url="../brandDetail/brandDetail?id={{brand.id}}">
             <text>{{brand.name}}</text>
           </navigator>
-        </view>
+        </view>-->
       </view>
     </view>
     <view class="section-nav section-attr" bindtap="switchAttrPop">
@@ -129,7 +129,7 @@
         <view class="name">{{item.name}}</view>
         <view class="values">
           <view class="button-small-wrap">
-            <button class="sku-btn" wx:for="{{item.valueList}}" type="{{vitem.checked ? 'warn' : 'default'}}" wx:for-item="vitem" wx:key="{{vitem.id}}" plain="{{true}}"  bindtap="clickSkuValue" size="mini" disabled="{{vitem.disabled}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</button>
+            <button class="skubtn" wx:for="{{item.valueList}}" type="{{vitem.checked ? 'warn' : 'default'}}" wx:for-item="vitem" wx:key="{{vitem.id}}" plain="{{true}}"  bindtap="clickSkuValue" size="mini" disabled="{{vitem.disabled}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</button>
           </view>
         </view>
       </view>

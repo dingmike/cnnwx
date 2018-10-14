@@ -22,7 +22,10 @@ Page({
         totalPages: 1,
         cnnNewsList:[],
         showbg: !1,
-        canIUse: wx.canIUse("button.open-type.getUserInfo")
+        canIUse: wx.canIUse("button.open-type.getUserInfo"),
+        btnDisabled: true,
+        btnText: '去阅读打卡',
+        style: 'width: 222rpx;background: #58b406;border-radius: 66rpx;color: #fff;',
     },
 
     onLoad: function() {

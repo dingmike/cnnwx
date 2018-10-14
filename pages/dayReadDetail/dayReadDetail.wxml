@@ -23,7 +23,7 @@
                         <!--<view class="detail-text">{{item.descript}}</view>-->
 
 
-                        <view class="detailWxparse">
+                        <view class="detailWxparse" wx:if="{{!transList[index]}}">
                             <!--<rich-parse content="{{ item.newsDetail }}" type="html"/>-->
                             <rich-text nodes="{{ item.newsDetail }}" longtap="longTap"></rich-text>
                         </view>
@@ -31,19 +31,19 @@
                         <!--<view class="detail-chinese" wx:if="{{transList[index]}}">{{item.chinese}}</view>-->
 
                         <view class="detailWxparse-chinese" wx:if="{{transList[index]}}">
-                            <text>译文：</text>
+                            <view class="chinese-title"><text class="chinese-title-word">参考译文</text></view>
                             <!--<rich-parse content="{{ item.chinese }}" type="html"/>-->
                                 <rich-text nodes="{{ item.chinese }}"></rich-text>
                         </view>
 
                         <form-push bindformpush="onTap" class="detail-translate-wrap" data-value="{{index}}" wx:if="{{isShow}}">
                             <view class="detail-translate" data-value="{{index}}" wx:if="{{isShow}}">
-                                <text style="color: #58b406">{{transList[index]?'原':'译'}}</text>
+                                <text class="{{transList[index]?'stop-word':''}}" style="color: #58b406">{{transList[index]?'原':'译'}}</text>
                             </view>
                         </form-push>
                         <form-push bindformpush="onTapVoice" class="detail-voice-wrap" data-value="{{index}}" wx:if="{{isShowAudio}}">
                             <view class="detail-voice" data-value="{{index}}" wx:if="{{isShowAudio}}">
-                                <text style="color: #58b406;">{{voiceList[index]?'停':'播'}}</text>
+                                <text class="{{voiceList[index]?'stop-word':''}}" style="color: #58b406;">{{voiceList[index]?'停':'播'}}</text>
                             </view>
                         </form-push>
                         <audio author="{{'xdooi'}}" bindended="voiceEnd" class="detail-newaudio" data-value="{{index}}" id="viode{{index}}" name="{{item.title}}" poster="" src="{{item.voiceUrl}}" wx:if="{{voiceList[index]}}"></audio>

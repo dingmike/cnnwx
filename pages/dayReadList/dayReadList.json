@@ -1,6 +1,11 @@
 {
     "usingComponents": {
         "form-push": "../../component/form-push/form-push",
-        "tools": "../../component/btn-tools/btn-tools"
+        "tools": "../../component/btn-tools/btn-tools",
+        "wxc-toast": "../../packages/@minui/wxc-toast/dist/index",
+        "wxc-button": "../../packages/@minui/wxc-button/dist/index",
+        "wxc-icon": "../../packages/@minui/wxc-icon/dist/index",
+        "wxc-cc": "../../packages/@minui/wxc-cc/dist/index",
+        "wxc-panel": "../../packages/@minui/wxc-panel/dist/index"
     }
 }

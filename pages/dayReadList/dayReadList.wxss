@@ -188,3 +188,29 @@ button.toolssave {
 .icon-pull-down:before { content: "\e996"; }
 
 .icon-loading:before { content: "\e9ac"; }
+
+.category .btn {
+    border-radius:30rpx;
+    font-size:30rpx;
+    float:left;
+    position:fixed;
+    z-index:400;
+    top:0;
+}
+
+.category .btn::after {
+    border: none;
+}
+
+.category .btn[disabled] {
+    background: #DADADA;
+    color: #fff;
+    box-shadow: none;
+}
+.category-article-title{
+    text-align:center;
+    height:48rpx;
+    line-height:48rpx;
+    margin-top:20rpx;
+
+}
