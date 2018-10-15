@@ -214,3 +214,9 @@ button.toolssave {
     margin-top:20rpx;
 
 }
+.detail-published {
+    padding-top: 20rpx;
+    font-size: 20rpx;
+    color: #999;
+    text-align: left;
+}

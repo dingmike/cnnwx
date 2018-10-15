@@ -129,7 +129,7 @@
         <view class="name">{{item.name}}</view>
         <view class="values">
           <view class="button-small-wrap">
-            <button class="skubtn" wx:for="{{item.valueList}}" type="{{vitem.checked ? 'warn' : 'default'}}" wx:for-item="vitem" wx:key="{{vitem.id}}" plain="{{true}}"  bindtap="clickSkuValue" size="mini" disabled="{{vitem.disabled}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</button>
+            <button class="sku-btn" wx:for="{{item.valueList}}" type="{{vitem.checked ? 'warn' : 'default'}}" wx:for-item="vitem" wx:key="{{vitem.id}}" plain="{{true}}"  bindtap="clickSkuValue" size="mini" disabled="{{vitem.disabled}}" data-value-id="{{vitem.id}}" data-name-id="{{vitem.specification_id}}">{{vitem.value}}</button>
           </view>
         </view>
       </view>

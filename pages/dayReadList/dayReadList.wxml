@@ -48,7 +48,7 @@
                     <wxc-button btnStyle="{{style}}" bindtap="goReadToday">{{btnText}} <wxc-icon color="#fff" type="arrow-right"></wxc-icon></wxc-button>
                 </wxc-cc>
             </view>
-            <view class="category-article-title"><text>已学习打卡文章</text></view>
+            <view class="category-article-title"><text>已打卡文章</text></view>
             <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}};">
 
                 <view bindtap="detailPage" data-value="{{item.newsid}}" wx:for="{{cnnNewsList}}" wx:for-item="item" wx:key="{{item.id}}">
@@ -57,6 +57,7 @@
                             <view class="item-left">
                                 <view class="title">{{item.title}}</view>
                                 <view class="descript">{{item.descript}}</view>
+                                <view class="detail-published">{{item.addTime}}</view>
                             </view>
                             <view class="item-right">
                                 <view class="item-right-img">
