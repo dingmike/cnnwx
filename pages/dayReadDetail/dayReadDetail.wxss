@@ -57,7 +57,8 @@
     color: #666;
 }
 .stop-word{
-    color: #ff3206 !important;
+    color: #fff !important;
+    background-color: #58b406;
 }
 .detail-text {
     text-indent: 16%;
@@ -102,14 +103,22 @@
 }
 
 .detail-translate {
+    padding:10rpx 12rpx;
     border:1rpx solid #58b406;
     border-radius:6px;
-    padding:10rpx 12rpx;
     font-size:20rpx;
     line-height:20rpx;
 
 }
+.detail-translate-bk {
+    padding:10rpx 12rpx;
+    border:1rpx solid #58b406;
+    border-radius:6px;
+    font-size:20rpx;
+    line-height:20rpx;
+    background:#58b406 ;
 
+}
 .detail-voice-wrap {
     position:fixed;
     top:21rpx;
@@ -117,11 +126,20 @@
 }
 
 .detail-voice {
+    padding: 10rpx 12rpx;
     border: 1rpx solid #58b406;
     border-radius: 10rpx;
-    padding: 10rpx 12rpx;
     font-size: 20rpx;
     line-height: 20rpx;
+}
+
+.detail-voice-bk{
+    padding: 10rpx 12rpx;
+    border: 1rpx solid #58b406;
+    border-radius: 10rpx;
+    font-size: 20rpx;
+    line-height: 20rpx;
+    background:#58b406 ;
 }
 
 .detail-chinese {
@@ -143,4 +161,27 @@
 .chinese-title-word{
     font-weight: 400;
     color: #ce252a!important;
+}
+.popup-content{
+    width: 400rpx;
+    height: 400rpx;
+    background: #FFFFFF;
+    border-radius: 12rpx;
+    text-align: center;
+}
+.popup-content .popup-icon{
+    margin-top:26rpx;
+}
+
+.popup-content .popup-word{
+    width:300rpx;
+    margin:0 auto;
+    padding:26rpx 0 0 0;
+}
+.popup-content .popup-tips{
+    width:300rpx;
+    margin:0 auto;
+    color: #7e7e7e !important;
+    font-size:28rpx;
+    padding:20rpx 0;
 }

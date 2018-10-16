@@ -37,10 +37,13 @@ Page({
         });
     },
     voiceEnd: function(a) {
+
+        debugger
         var t = this;
-        t.setData({
+       /* t.setData({
             voiceList: t.data.transList
-        });
+        });*/
+       t.showPopup();
     },
     onLoad: function(t) {
         var i = this;
@@ -98,5 +101,13 @@ Page({
             duration: 800,
             mask:false
         })
+    },
+    showPopup() {
+        let popupComponent = this.selectComponent('.J_Popup');
+        popupComponent && popupComponent.show();
+    },
+    hidePopup() {
+        let popupComponent = this.selectComponent('.J_Popup');
+        popupComponent && popupComponent.hide();
     }
 });
