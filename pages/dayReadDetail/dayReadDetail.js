@@ -3,7 +3,6 @@ const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 var t = getApp();
 // var i = require("../../utils/xmadx_sdk.min.js").xmad(i).xmPage;
-
 Page({
     data: {
         pageDetail: [],
