@@ -10,6 +10,7 @@ Page({
         voiceList: [],
         isShow: !0,
         isShowAudio: !0,
+        newsId:'',
         xmad: {
             adData: {},
             ad: {
@@ -75,9 +76,11 @@ Page({
     },
     getNewsDetail(t){
         var i =this;
+        i.setData({
+            newsId: t.pageId
+        });
         util.request(api.GetNewsById, {pageId: t.pageId},'POST').then( res =>{
             var t = [], s = [],content=[];
-            debugger
             res.data.addTime = util.tsFormatTime(res.data.addTime,'Y-M-D');
 
 
@@ -108,5 +111,10 @@ Page({
     hidePopup() {
         let popupComponent = this.selectComponent('.J_Popup');
         popupComponent && popupComponent.hide();
+    },
+    setNewsCard(){
+        util.request(api.SetNewsCard, {newsId: this.data.newsId},'POST').then( res =>{
+            debugger
+        })
     }
 });

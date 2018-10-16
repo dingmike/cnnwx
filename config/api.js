@@ -16,6 +16,7 @@ module.exports = {
     SetRemindTime: NewApiRootUrl + 'gongdu/setRemindTime', //设置提醒时间 /api/gdOrder
     GetReadNewsByUserId: NewApiRootUrl + '/gongdu/getReadNewsByUserId', // 获取用户阅读的文章
     GetNewsById: NewApiRootUrl + '/gongdu/getNewsById', // 获取用户阅读的文章
+    SetNewsCard: NewApiRootUrl + '/gongdu/setNewsCard', // 用户打卡阅读的文章
 
 
     GongduOrderSubmit: NewApiRootUrl + 'gdOrder/submit', // 生成共读订单
