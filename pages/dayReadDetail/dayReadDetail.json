@@ -2,6 +2,7 @@
     "usingComponents": {
         "wxc-popup": "../../packages/@minui/wxc-popup/dist/index",
         "form-push": "../../component/form-push/form-push",
+        "rich-parse": "../../component/rich-parse/rich-parse",
         "xm-ad": "../../component/xmAD/xmAD"
     }
 

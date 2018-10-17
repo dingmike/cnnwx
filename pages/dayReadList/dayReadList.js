@@ -150,6 +150,9 @@ Page({
             return;
         }
         util.request(api.GetReadNewsByUserId, {uid: wx.getStorageSync('openid'),page: that.data.page, size: that.data.size}).then( res =>{
+            res.data.data.map((obj,index,array)=>{
+                 obj.addTime=util.tsFormatTime(obj.addTime,'Y-M-D');
+            })
             that.setData({
                 cnnNewsList: that.data.cnnNewsList.concat(res.data.data),
                 page: res.data.currentPage+1,
@@ -167,7 +170,7 @@ Page({
     },
     detailPage: function(t) {
         wx.navigateTo({
-            url: "../dayReadDetail/dayReadDetail?pageId=" + t.currentTarget.dataset.value
+            url: "../dayReadDetail/dayReadDetail?listPage=1&pageId=" + t.currentTarget.dataset.value
         });
     },
     push: function(t) {
@@ -214,6 +217,12 @@ Page({
     cancelcanvaspic: function() {
         this.setData({
             showbg: !1
+        });
+    },
+    //去阅读当天的打卡内容
+    goReadToday(){
+        wx.navigateTo({
+            url: "../dayReadDetail/dayReadDetail?listPage=0"
         });
     }
 });

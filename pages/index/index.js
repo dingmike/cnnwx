@@ -58,18 +58,14 @@ Page({
                 }
             }
         }
-
         this.getIndexData(1);
         this.getIndexData(0);
         this._onLoad(); // 提前
 
     },
     _onLoad: function() {
-        var t = this;
         this.data.type = app.globalData.type;
-
         var e = app.globalData.openid;
-        console.log(e);
         this.setData({
             openid: e,
             bgimg: app.globalData.bgimg

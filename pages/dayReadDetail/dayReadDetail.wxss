@@ -166,27 +166,29 @@
     color: #ce252a!important;
 }
 .popup-content{
-    width: 400rpx;
-    height: 400rpx;
+    width:500rpx;
+    height:450rpx;
     background: #FFFFFF;
     border-radius: 12rpx;
     text-align: center;
 }
 .popup-content .popup-icon{
-    margin-top:26rpx;
+    margin-top:30rpx;
 }
 
 .popup-content .popup-word{
-    width:300rpx;
+    width:346rpx;
     margin:0 auto;
     padding:26rpx 0 0 0;
+    text-align: left;
 }
 .popup-content .popup-tips{
-    width:300rpx;
+    width:346rpx;
     margin:0 auto;
     color: #7e7e7e !important;
-    font-size:28rpx;
+    font-size:26rpx;
     padding:20rpx 0;
+    text-align: left;
 }
 
 .bottom-btn{
@@ -221,4 +223,14 @@
     color: #fff;
     border-top: 1px solid #f4f4f4;
     border-bottom: 1px solid #f4f4f4;
+}
+.card-btn-on{
+    display: block;
+    margin-top:32rpx;
+}
+.card-btn-off{
+    display: none!important;
+}
+.detailWxparse .wxparse-content img{
+    width: 100%;
 }

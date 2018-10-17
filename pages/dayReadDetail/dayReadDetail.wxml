@@ -1,5 +1,4 @@
 <view class="spbg"></view>
-
 <view class="wrap">
     <view class="main">
         <view class="section">
@@ -9,11 +8,9 @@
             </view>
             <button bindtap="showPopup">居中，有动画</button>
             <view class="detail-content">
-
                <!-- <view class="detailWxparse">
                     <rich-parse content="{{ pageDetail[0].newsDetail }}" type="html"/>
                 </view>-->
-
                 <view wx:for="{{pageDetail}}" wx:key="{{index}}">
                     <view class="detail-media" wx:if="{{item.type=='mp3'}}">
                         <audio controls loop author="{{'chinaplus'}}" class="detail-audio" id="myAudio" name="{{pageDetail.title}}" poster="{{'http://wx.qlogo.cn/mmopen/Q3auHgzwzM6JWica2Nkz0iaz4DF6EGqica4BbSFgqznjiaeU8TbC8fLfhDKoibPdKg4OmZATtfACtlib3G4v6WFMzpdGvjNF9BtiaS1CX4NbWPUHP4/64'}}" src="{{item.voiceUrl}}"></audio>
@@ -21,21 +18,16 @@
 
                     <view class="detail-trans" wx:elif="{{pageDetail.length>0}}">
                         <!--<view class="detail-text">{{item.descript}}</view>-->
-
-
                         <view class="detailWxparse" wx:if="{{!transList[index]}}">
-                            <!--<rich-parse content="{{ item.newsDetail }}" type="html"/>-->
-                            <rich-text nodes="{{ item.newsDetail }}" longtap="longTap"></rich-text>
+                            <rich-parse content="{{ item.newsDetail }}" type="html"/>
+                            <!--<rich-text class="wxparse-content" nodes="{{ item.newsDetail }}" longtap="longTap"></rich-text>-->
                         </view>
-
                         <!--<view class="detail-chinese" wx:if="{{transList[index]}}">{{item.chinese}}</view>-->
-
                         <view class="detailWxparse-chinese" wx:if="{{transList[index]}}">
                             <view class="chinese-title"><text class="chinese-title-word">参考译文</text></view>
-                            <!--<rich-parse content="{{ item.chinese }}" type="html"/>-->
-                                <rich-text nodes="{{ item.chinese }}"></rich-text>
+                            <rich-parse content="{{ item.chinese }}" type="html"/>
+                                <!--<rich-text nodes="{{ item.chinese }}"></rich-text>-->
                         </view>
-
                         <form-push bindformpush="onTap" class="detail-translate-wrap" data-value="{{index}}" wx:if="{{isShow}}">
                             <view class="{{transList[index]?'detail-translate-bk':'detail-translate'}}" data-value="{{index}}" wx:if="{{isShow}}">
                                 <text class="{{transList[index]?'stop-word':''}}" style="color: #58b406">{{transList[index]?'原':'译'}}</text>
@@ -57,11 +49,9 @@
         </view>
     </view>
 
-
-    <view class="{{showSetCardBtn?'bottom-btn-show':'bottom-btn'}}">
+    <view class="{{showSetCardBtn&&listPage===0?'bottom-btn-show':'bottom-btn'}}">
         <view class="c" bindtap='showNewsCard'>打卡得积分</view>
     </view>
-
 
     <wxc-popup class="J_Popup" animation-mode="center" align="center">
         <view class="popup-content">
@@ -70,9 +60,9 @@
                 确定认真学习了这篇文章吗？
             </view>
             <view class="popup-tips">
-               坚持学习了才有意义哦!
+                {{showCardBtn?'坚持学习才有意义!':'认真听完听力、阅读完文章才能打卡的!'}}
             </view>
-                <button size="mini" type="primary">打 卡</button>
+                <button size="mini" class="{{showCardBtn?'card-btn-on':'card-btn-off'}}" disabled="{{listPage!==0}}" bindtap='setNewsCard' type="primary">打 卡</button>
         </view>
     </wxc-popup>
 </view>
