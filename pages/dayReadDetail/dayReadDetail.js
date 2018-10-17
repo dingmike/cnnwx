@@ -172,7 +172,7 @@ Page({
         var that =this;
         that.setData({
             useTime: Date.parse(new Date())-that.data.startTime
-        })
+        });
         util.request(api.SetNewsCard, {newsId: that.data.newsId, useTime: that.data.useTime/1000, learnTypeId:0},'POST').then( res =>{
             if(res.data===1){
                 wx.showModal({
