@@ -11,6 +11,7 @@ Page({
         isShow: !0,
         isShowAudio: !0,
         newsId:'',
+        showSetCardBtn: true,
         xmad: {
             adData: {},
             ad: {
@@ -40,10 +41,10 @@ Page({
 
         debugger
         var t = this;
-       /* t.setData({
-            voiceList: t.data.transList
-        });*/
-       t.showPopup();
+        t.setData({
+            showSetCardBtn: !0
+        });
+       // t.showPopup();
     },
     onLoad: function(t) {
         var i = this;
@@ -111,6 +112,9 @@ Page({
     hidePopup() {
         let popupComponent = this.selectComponent('.J_Popup');
         popupComponent && popupComponent.hide();
+    },
+    showNewsCard(){
+      this.showPopup();
     },
     setNewsCard(){
         util.request(api.SetNewsCard, {newsId: this.data.newsId},'POST').then( res =>{

@@ -1,4 +1,7 @@
 
+.main{
+    padding-bottom: 90rpx;
+}
 .detail {
     padding: 20rpx 30rpx 10rpx 30rpx;
     align-items: center;
@@ -184,4 +187,38 @@
     color: #7e7e7e !important;
     font-size:28rpx;
     padding:20rpx 0;
+}
+
+.bottom-btn{
+    position: fixed;
+    left:0;
+    bottom:0;
+    z-index: 10;
+    width: 750rpx;
+    height: 100rpx;
+    display: none;
+    background: #fff;
+}
+
+.bottom-btn-show{
+    position: fixed;
+    left:0;
+    bottom:0;
+    z-index: 10;
+    width: 750rpx;
+    height: 100rpx;
+    display: flex;
+    background: #fff;
+}
+
+.bottom-btn .c,.bottom-btn-show .c{
+    float: left;
+    height: 100rpx;
+    line-height: 96rpx;
+    flex: 1;
+    text-align: center;
+    background: #f48f18;
+    color: #fff;
+    border-top: 1px solid #f4f4f4;
+    border-bottom: 1px solid #f4f4f4;
 }

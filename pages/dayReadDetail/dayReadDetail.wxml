@@ -7,7 +7,7 @@
                 <text class="detail-title">{{pageDetail[0].title}}</text>
                 <view class="detail-published">{{pageDetail[0].addTime}}</view>
             </view>
-
+            <button bindtap="showPopup">居中，有动画</button>
             <view class="detail-content">
 
                <!-- <view class="detailWxparse">
@@ -56,7 +56,12 @@
             </view>
         </view>
     </view>
-    <button bindtap="showPopup">居中，有动画</button>
+
+
+    <view class="{{showSetCardBtn?'bottom-btn-show':'bottom-btn'}}">
+        <view class="c" bindtap='showNewsCard'>打卡得积分</view>
+    </view>
+
 
     <wxc-popup class="J_Popup" animation-mode="center" align="center">
         <view class="popup-content">
