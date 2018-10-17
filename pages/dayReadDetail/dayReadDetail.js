@@ -182,7 +182,7 @@ Page({
                     confirmText: '去换东西',
                     success:function (res) {
                         if(res.confirm){
-                            wx.switchTab({
+                            wx.reLaunch({
                                 url: "pages/mall/mall"
                             });
                         }
