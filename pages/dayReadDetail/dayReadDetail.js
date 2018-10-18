@@ -181,8 +181,8 @@ Page({
                     confirmText: '去换东西',
                     success:function (res) {
                         if(res.confirm){
-                            wx.reLaunch({
-                                url: "pages/mall/mall"
+                            wx.switchTab({
+                                url: "/pages/mall/mall"
                             });
                         }
                     }
