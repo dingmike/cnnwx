@@ -77,7 +77,6 @@ Page({
             //当天打卡文章
             i.getTodayNews(t);
         }
-
        /* util.request(api.GetNewsById, {pageId: t.pageId},'POST').then( res =>{
             var t = [], s = [],content=[];
             res.data.addTime = util.tsFormatTime(res.data.addTime,'Y-M-D');
