@@ -150,14 +150,17 @@ Page({
             return;
         }
         util.request(api.GetReadNewsByUserId, {uid: wx.getStorageSync('openid'),page: that.data.page, size: that.data.size}).then( res =>{
-            res.data.data.map((obj,index,array)=>{
-                 obj.addTime=util.tsFormatTime(obj.addTime,'Y-M-D');
-            })
-            that.setData({
-                cnnNewsList: that.data.cnnNewsList.concat(res.data.data),
-                page: res.data.currentPage+1,
-                totalPages: res.data.totalPages
-            })
+            if(res.errno===0&&res.data){
+                res.data.data.map((obj,index,array)=>{
+                    obj.addTime=util.tsFormatTime(obj.addTime,'Y-M-D');
+                })
+                that.setData({
+                    cnnNewsList: that.data.cnnNewsList.concat(res.data.data),
+                    page: res.data.currentPage+1,
+                    totalPages: res.data.totalPages
+                })
+            }
+
 
         })
     },

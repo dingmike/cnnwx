@@ -14,7 +14,7 @@
 }
 
 .com_tools_text {
-    background: #6666FF url('https://dev.xdooi.com/images/add.png') no-repeat center center;
+    background: #58b406 url('https://dev.xdooi.com/images/add.png') no-repeat center center;
     background-size: 70%;
     width: 70rpx;
     height: 70rpx;
@@ -34,7 +34,7 @@
     width: 70rpx;
     height: 70rpx;
     border-radius: 10rpx;
-    background: #6666FF;
+    background: #58b406;
     transform: scale(0,0);
 }
 
@@ -42,7 +42,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    background: #6666FF;
+    background: #58b406;
     width: 70rpx;
     height: 70rpx;
     font-size: 24rpx;
@@ -56,29 +56,29 @@
 }
 
 .com_tools_slider_cell_1 {
-    background: #6666FF url('https://dev.xdooi.com/images/friends.png') no-repeat center center;
+    background: #58b406 url('https://dev.xdooi.com/images/friends.png') no-repeat center center;
     background-size: 70%;
     z-index: 997;
 }
 
 .com_tools_slider_cell_2 {
-    background: #6666FF;
+    background: #58b406;
     z-index: 996;
 }
 
 .com_tools_slider_cell_3 {
-    background: #6666FF url('https://dev.xdooi.com/images/feedback.png') no-repeat center center;
+    background: #58b406 url('https://dev.xdooi.com/images/feedback.png') no-repeat center center;
     background-size: 70%;
     z-index: 999;
 }
 
 .com_tools_slider_cell_4 {
-    background: #6666FF url('https://dev.xdooi.com/images/search.png') no-repeat center center;
+    background: #58b406 url('https://dev.xdooi.com/images/search.png') no-repeat center center;
     background-size: 70%;
     z-index: 998;
 }
 
 .com_tools_slider_cell_5 {
-    background: #6666FF url('https://dev.xdooi.com/images/close.png') no-repeat center center;
+    background: #58b406 url('https://dev.xdooi.com/images/close.png') no-repeat center center;
     background-size: 70%;
 }

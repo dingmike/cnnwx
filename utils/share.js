@@ -36,7 +36,7 @@ var e = getApp(), t = function(e) {
     var h = f.measureText("天");
     f.fillText("天", g - 20 - h.width, .45 * c + 40), f.restore(), f.save();
     var d = " " + wx.getStorageSync("dknum") + " ";
-    f.font = "bold 26px helvetica", f.fillStyle = "#6666FF";
+    f.font = "bold 26px helvetica", f.fillStyle = "#58b406";
     var w = f.measureText(d);
     f.fillText(d, g - 20 - w.width - h.width, .45 * c + 43), f.restore(), f.save();
     f.font = "16px helvetica", f.fillStyle = "#666";
@@ -62,7 +62,7 @@ var e = getApp(), t = function(e) {
     for (var M = g - 44, D = 0, F = 0, C = 0; C < u.length; C++) (F += f.measureText(u[C]).width) > M && (f.fillText(u.substring(D, C), 20, .45 * c + 100 + y), 
     y += 23, F = 0, D = C), C == u.length - 1 && f.fillText(u.substring(D, C + 1), 20, .45 * c + 100 + y);
     f.restore();
-    var U = .55 * c - 100 - y, j = "每日du英语:学习是自己的事!";
+    var U = .55 * c - 100 - y, j = "每日英语阅读:学习是为了自己!";
     f.save(), f.font = "12px helvetica", f.fillStyle = "#999", U > 60 && U < 90 ? (f.fillText(j, 20, c - 38), 
     f.moveTo(20, c - 32), f.lineTo(20 + f.measureText(j).width, c - 32)) : U > 90 ? (f.fillText(j, 20, c - 48), 
     f.moveTo(20, c - 42), f.lineTo(20 + f.measureText(j).width, c - 42)) : U < 30 || (f.fillText(j, 20, c - 18), 

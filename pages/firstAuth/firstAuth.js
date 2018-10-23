@@ -107,7 +107,8 @@ Page({
                 wx.setStorageSync("token",res.data.token);
                 app.globalData.openid = res.data.userInfo.weixin_openid;
                 app.globalData.token = res.data.token;
-                wx.navigateBack({ changed: true });
+                debugger
+                wx.navigateBack({ delta: 1 });
             }).catch((err) => {
                 console.log(err)
             });

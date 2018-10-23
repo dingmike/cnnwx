@@ -41,21 +41,21 @@ Component({
         },
         ani_show: function() {
             var t = this, a = wx.createAnimation({
-                duration: 300,
+                duration: 100,
                 timingFunction: "ease"
             });
             this.animation = a, a.scale(0, 0).step(), this.setData({
                 animationData: a.export()
             });
             var i = wx.createAnimation({
-                duration: 300,
+                duration: 100,
                 timingFunction: "ease"
             });
             this.animationwrap = i, i.scale(1, 1).step(), this.setData({
                 animationDatawrap: i.export()
             });
             var n = wx.createAnimation({
-                duration: 300,
+                duration: 100,
                 timingFunction: "ease"
             });
             this.animation1 = n, n.translate(-45, 0).step().translate(-90, 0).step().translate(-135, 0).step().translate(-180, 0).step(), 
@@ -63,9 +63,9 @@ Component({
                 t.setData({
                     animationData1: n.export()
                 });
-            }, 300);
+            }, 100);
             var e = wx.createAnimation({
-                duration: 300,
+                duration: 100,
                 timingFunction: "ease"
             });
             this.animation2 = e, e.translate(-45, 0).step().translate(-90, 0).step().translate(-135, 0).step(), 
@@ -73,25 +73,25 @@ Component({
                 t.setData({
                     animationData2: e.export()
                 });
-            }, 600);
+            }, 200);
             var s = wx.createAnimation({
-                duration: 300,
+                duration: 100,
                 timingFunction: "ease"
             });
             this.animation3 = s, s.translate(-45, 0).step().translate(-90, 0).step(), setTimeout(function() {
                 t.setData({
                     animationData3: s.export()
                 });
-            }, 900);
+            }, 400);
             var o = wx.createAnimation({
-                duration: 300,
+                duration: 100,
                 timingFunction: "ease"
             });
             this.animation4 = o, o.translate(-45, 0).step(), setTimeout(function() {
                 t.setData({
                     animationData4: o.export()
                 });
-            }, 1200);
+            }, 600);
         },
         ani_hide: function() {
             var t = this;
@@ -105,15 +105,15 @@ Component({
                     t.setData({
                         animationData2: t.animation2.export()
                     });
-                }, 300), this.animation3.translate(-45, 0).step().translate(0, 0).step(), setTimeout(function() {
+                }, 100), this.animation3.translate(-45, 0).step().translate(0, 0).step(), setTimeout(function() {
                     t.setData({
                         animationData3: t.animation3.export()
                     });
-                }, 600), this.animation4.translate(0, 0).step(), setTimeout(function() {
+                }, 200), this.animation4.translate(0, 0).step(), setTimeout(function() {
                     t.setData({
                         animationData4: t.animation4.export()
                     });
-                }, 900), this.animationwrap.scale(0, 0).step(), this.animation.scale(1, 1).step(), 
+                }, 400), this.animationwrap.scale(0, 0).step(), this.animation.scale(1, 1).step(),
                 setTimeout(function() {
                     t.setData({
                         animationData: t.animation.export(),
@@ -122,7 +122,7 @@ Component({
                     });
                     var a = {}, i = {};
                     t.triggerEvent("hideBg", a, i);
-                }, 1200);
+                }, 600);
             }
         }
     }

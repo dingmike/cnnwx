@@ -10,9 +10,10 @@
             </swiper>
     </view>
     <view class="main">
-        <view>
-            <view class="title">{{learnType}}</view>
-            <wxc-panel border="{{false}}" margin="{{false}}" >
+
+
+            <wxc-panel border="{{true}}" margin="{{true}}" >
+                <view class="title">{{learnType}}</view>
                 <view class="enrollment">
                     <view class="enrollment-nums">
                         <text style="color:#000">{{studyUserNums}}人报名</text>
@@ -28,10 +29,11 @@
                     </wxc-cc>
                 </view>
             </wxc-panel>
-        </view>
+
 <!--new  day read panel-->
-        <view class="title">{{learnType2}}</view>
-        <wxc-panel border="{{false}}" margin="{{false}}" >
+
+        <wxc-panel border="{{true}}" margin="{{true}}" >
+            <view class="title">{{learnType2}}</view>
             <view class="enrollment">
                 <view class="enrollment-nums">
                     <text style="color:#000">{{studyUserNums2}}人报名</text>

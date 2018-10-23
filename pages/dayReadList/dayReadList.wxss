@@ -1,5 +1,5 @@
 button.toolssign {
-    background: #6666FF url('https://dev.xdooi.com/images/unfavourite.png') no-repeat center center;
+    background: #58b406 url('https://dev.xdooi.com/images/unfavourite.png') no-repeat center center;
     background-size: 70%;
     width: 100%;
     height: 70rpx;
@@ -12,7 +12,7 @@ button.toolssign {
 }
 
 button.toolssave {
-    background: #6666FF url('https://dev.xdooi.com/images/ablum.png') no-repeat center center;
+    background: #58b406 url('https://dev.xdooi.com/images/ablum.png') no-repeat center center;
     background-size: 70%;
     width: 100%;
     height: 70rpx;

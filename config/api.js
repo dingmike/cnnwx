@@ -1,9 +1,11 @@
-var NewApiRootUrl = 'http://localhost:8080/api/';
-// var NewApiRootUrl = 'http://cnnfront.tunnel.qydev.com/api/';
+// var NewApiRootUrl = 'http://localhost:8080/api/';
+var NewApiRootUrl = 'http://cnnfront.tunnel.qydev.com/api/';
 // let NewApiRootUrl = 'https://api.fecstec.com/platform-admin-1.0.0/api/';
 
 module.exports = {
     CnnIndexUrl: NewApiRootUrl + 'index/cnnIndex', // cnn首页数据接口
+    CnnIndexTypeTwo: NewApiRootUrl + 'index/cnnIndexTypeTwo', // cnn首页数据接口类型2
+
     IndexUrl: NewApiRootUrl + 'index/index', //商城首页数据接口
     UpdateUserInfo: NewApiRootUrl + 'user/updateUserInfo', //更新微信用户信息
     GetLearnInfo: NewApiRootUrl + 'user/getLearnInfo', //更新微信用户学习信息 @params uid

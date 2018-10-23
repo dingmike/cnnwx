@@ -321,17 +321,15 @@ Page({
     },
     // 获取信息
     getIndexData: function() {
-
         let that = this;
         util.request(api.CnnIndexUrl).then(res =>{
-
             if (res.errno === 0) {
                 /*that.setData({
                     banner: res.data.banner,
                     learnTypeId: res.data.userLearnList[0].learnTypeId
                 });*/
                     // 计划详情图文
-                    app.globalData.detailImg = res.data.learnFilePics;
+                app.globalData.detailImg = res.data.learnFilePics;
                 let e = res.data.userLearnList, o = res.data.userListTotal;
                 o > 200 ? (o = 200, that.setData({
                     banner: res.data.banner,

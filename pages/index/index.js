@@ -16,6 +16,7 @@ Page({
         banner: [],
         joinBtn: "继续学习",
         learnType: '',
+        learnType2: '',
         setTimeSty: true,
         payStatus: true,
         showModalStatus: false,
@@ -59,9 +60,8 @@ Page({
             }
         }
         this.getIndexData(1);
-        this.getIndexData(0);
+        this.getCnnIndexTypeTwo(0);
         this._onLoad(); // 提前
-
     },
     _onLoad: function() {
         this.data.type = app.globalData.type;
@@ -97,7 +97,6 @@ Page({
         // 页面关闭
     },
     getIndexData: function(learnTypeId) {
-
         let that = this;
         // learnTypeId  学习类型ID // 默认learnTypeId:1
         util.request(api.CnnIndexUrl, {learnTypeId: learnTypeId}).then(function (res) {
@@ -106,55 +105,51 @@ Page({
 
                 if(o>200){
                     o = 200;
-                    if(learnTypeId===1){
-                        that.setData({
-                            banner: res.data.banner,
-                            learnType: e[0].learnType,
-                            studyUser: e,
-                            studyUserNums: o + "+"
-                        })
-                    }else{// learnType=0
-                        that.setData({
-                            learnType2: e[0].learnType,
-                            studyUser2: e,
-                            studyUserNums2: o + "+"
-                        })
-                    }
+                    that.setData({
+                        banner: res.data.banner,
+                        learnType: e[0].learnType,
+                        studyUser: e,
+                        studyUserNums: o + "+"
+                    })
 
                 }else{
-                    if(learnTypeId===1){
-                        that.setData({
-                            learnType: e[0].learnType,
-                            banner: res.data.banner,
-                            studyUser: e,
-                            studyUserNums: o
-                        });
-                    }else{ // learnType=0
-                        that.setData({
-                            learnType2: e[0].learnType,
-                            studyUser2: e,
-                            studyUserNums2: o
-                        });
-                    }
-
+                    that.setData({
+                        learnType: e[0].learnType,
+                        banner: res.data.banner,
+                        studyUser: e,
+                        studyUserNums: o
+                    });
                 }
-
-                /*o > 200 ? (o = 200, that.setData({
-                    banner: res.data.banner,
-                    learnType: e[0].learnType,
-                    studyUser: e,
-                    studyUserNums: o + "+"
-                })) : that.setData({
-                    learnType: e[0].learnType,
-                    banner: res.data.banner,
-                    studyUser: e,
-                    studyUserNums: o
-                });*/
                 wx.hideNavigationBarLoading();
             }
         });
     },
+    getCnnIndexTypeTwo: function(learnTypeId) {
+        let that = this;
+        // learnTypeId  学习类型ID // 默认learnTypeId:1
+        util.request(api.CnnIndexTypeTwo, {learnTypeId: learnTypeId}).then(function (res) {
+            if (res.errno === 0) {
+                let e = res.data.userLearnList, o = res.data.userListTotal;
 
+                if(o>200){
+                    o = 200;
+                    that.setData({
+                        learnType2: e[0].learnType,
+                        studyUser2: e,
+                        studyUserNums2: o + "+"
+                    })
+
+                }else{
+                    that.setData({
+                        learnType2: e[0].learnType,
+                        studyUser2: e,
+                        studyUserNums2: o
+                    });
+                }
+                wx.hideNavigationBarLoading();
+            }
+        });
+    },
 
    /* navigateTo: function(t) {
         wx.navigateTo(t);
@@ -183,4 +178,4 @@ Page({
             }
         }
     }*/
-})
+});

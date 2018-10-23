@@ -1,18 +1,4 @@
-
-
-
 <view class="container">
-  <!--<button class="userinfo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
-
-		<image wx:if="{{userInfo && userInfo.avatar}}" class="userinfo-avatar" src="{{ userInfo.avatar }}" background-size="cover"></image>
-		<text class="userinfo-nickname">{{ userInfo.nickname }}</text>
-  </button>-->
-
-<!--  <view>
-    <image wx:if="{{userInfo && userInfo.avatar}}" class="userinfo-avatar" src="{{ userInfo.avatar }}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{ userInfo.nickname }}</text>
-  </view>-->
-
 
   <view class="main-head-avator">
 

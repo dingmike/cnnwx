@@ -48,7 +48,7 @@ Page({
   },
   bindIsDefault(){
     let address = this.data.address;
-    address.is_default = !address.is_default;
+    address.is_default = !address.is_default===true?1:0;
     this.setData({
       address: address
     });
