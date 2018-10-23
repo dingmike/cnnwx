@@ -4,6 +4,7 @@
     "pages/firstAuth/firstAuth",
     "pages/gongDu/gongDu",
     "pages/dayReadList/dayReadList",
+    "pages/dayReadDetail/dayReadDetail",
     "pages/explain/explain",
     "pages/orale/orale",
     "pages/signres/signres",
