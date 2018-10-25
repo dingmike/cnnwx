@@ -50,6 +50,7 @@ Page({
           checkedGoodsList: res.data.checkedGoodsList,
           checkedAddress: res.data.checkedAddress,
           actualPrice: res.data.actualPrice,
+          addressId: res.data.checkedAddress.id,
           // checkedCoupon: res.data.checkedCoupon,
           // couponList: res.data.couponList,
           couponPrice: res.data.couponPrice,
@@ -176,6 +177,7 @@ Page({
         })
     },
   submitOrder: function () {
+        debugger
       if (this.data.addressId === 0) {
           util.showErrorToast('请选择收货地址');
           return false;
