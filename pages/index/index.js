@@ -1,7 +1,7 @@
 const util = require('../../utils/util.js');
 const api = require('../../config/api.js');
 const user = require('../../services/user.js');
-
+const pay = require('../../services/pay');
 //获取应用实例
 const app = getApp();
 Page({
@@ -14,7 +14,7 @@ Page({
         avaData: false,
         userInfo: '',
         banner: [],
-        joinBtn: "继续学习",
+        joinBtn: "立即参与",
         learnType: '',
         learnType2: '',
         setTimeSty: true,
@@ -31,7 +31,7 @@ Page({
     },
 
     showToast() {
-        let $toast = this.selectComponent(".J_toast")
+        let $toast = this.selectComponent(".J_toast");
         $toast && $toast.show()
     },
     onShareAppMessage: function () {
@@ -60,7 +60,8 @@ Page({
             }
         }
         this.getIndexData(1);
-        this.getCnnIndexTypeTwo(0);
+        this.getCnnIndexTypeTwo(0); //learnTypeId=0
+        this.getLearnInfo();
         this._onLoad(); // 提前
     },
     _onLoad: function() {
@@ -77,10 +78,127 @@ Page({
         });
     },
     takePartIn2(e){
-        wx.navigateTo({
-            url: "/pages/dayReadList/dayReadList"
+        userInfo.startStatus
+        if(userInfo.startStatus==1){
+            wx.navigateTo({
+                url: "/pages/dayReadList/dayReadList"
+            });
+        }else{
+
+        }
+
+    },
+    getLearnInfo() {
+        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid'), learnTypeId:1}, 'POST').then( res =>{
+            wx.hideNavigationBarLoading();
+            if (res.errno === 0&&res.data) {
+                wx.hideLoading();
+                if(res.data.startStatus == 1){ // 已支付开始学习
+                    this.setData({
+                        avaData: true,
+                        userInfo: res.data
+                    })
+
+                }else{ // 没支付
+                    this.setData({
+                        joinBtn: '马上加入学习',
+                    });
+                }
+
+            }else{
+                this.setData({
+                    joinBtn: '立即参与',
+                });
+            }
+
         });
     },
+    powerDrawer: function(a) {
+        this.util(a);
+    },
+    powerDrawer2: function(a) {
+        var t = a.currentTarget.dataset.statu;
+        this.util(t);
+    },
+    util: function(a) {
+        var t = wx.createAnimation({
+            duration: 200,
+            timingFunction: "linear",
+            delay: 0
+        });
+        this.animation = t, t.opacity(0).rotateX(-100).step(), this.setData({
+            animationData: t.export()
+        }), setTimeout(function() {
+            t.opacity(1).rotateX(0).step(), this.setData({
+                animationData: t
+            }), "close" == a && this.setData({
+                showModalStatus: !1
+            });
+        }.bind(this), 200), "open" == a && this.setData({
+            showModalStatus: !0
+        });
+    },
+    sendPay () {
+        let t = wx.getStorageSync("openid"), e = this.data.type, o = this;
+        /* wx.showLoading({
+         title: "加载中"
+         });*/
+        util.request(api.GongduOrderSubmit, {uid: t, learnTypeId: 0}, 'POST').then(res => {
+            if (res.errno === 0) {
+                console.log("生成订单成功");
+                o.data.orderSn= res.data.orderSn;
+                pay.gongDuPayOrder(res.data.orderSn).then(ress => {
+
+                    if("requestPayment:ok" == ress.errMsg){
+                        wx.showToast({
+                            title: "支付成功"
+                        });
+                        o.setData({
+                            showModalStatus: false
+                        });
+                        o.updateSuccess();
+                        // wx.hideLoading();
+                    }
+
+                    //o.updateSucces(); // 暂时用来查询微信支付成功
+                }).catch(ress => {
+                    console.log("支付失败或取消支付");
+                    console.log(ress);
+                    wx.hideLoading();
+                    o.setData({
+                        showModalStatus: false
+                    });
+                    // wx.hideLoading();
+                });
+
+            } else {
+                util.showErrorToast('下单失败,请重试');
+                // wx.hideLoading();
+            }
+        });
+    },
+    // 暂时使用查看是否支付成功
+    updateSuccess() {
+        util.request(api.OrderGongDuQuery, { orderId: this.data.orderSn}).then(res => {
+            if(res.errno==0){
+                wx.reLaunch({
+                    url: "/pages/submitInfo/submitInfo"
+                })
+            }
+        })
+    },
+
+
+
+
+
+
+
+
+
+
+
+
     onShow: function() {
         /*var t = app.globalData.type;
         wx.setNavigationBarTitle({

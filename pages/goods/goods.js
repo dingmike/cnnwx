@@ -95,7 +95,7 @@ Page({
 
         //判断是否可以点击
 
-        //TODO 性能优化，可在wx:for中添加index，可以直接获取点击的属性名和属性值，不用循环
+        //TODO0 性能优化，可在wx:for中添加index，可以直接获取点击的属性名和属性值，不用循环
         let _specificationList = this.data.specificationList;
         let _goods = this.data.goods;
         for (let i = 0; i < _specificationList.length; i++) {

@@ -45,12 +45,34 @@
             </view>
             <view class="button-small-wrap">
                 <wxc-cc class="part-in-btn" style="background-color:#fff;">
-                    <wxc-button btnStyle="{{style}}" bindtap="takePartIn2">立即参与 <wxc-icon color="#fff" type="arrow-right"></wxc-icon></wxc-button>
+                    <wxc-button btnStyle="{{style}}" bindtap="takePartIn2">{{joinBtn}} <wxc-icon color="#fff" type="arrow-right"></wxc-icon></wxc-button>
                 </wxc-cc>
             </view>
         </wxc-panel>
         <!--<ad unit-id="adunit-a7d99fd7f13756b2"></ad>-->
     </view>
+
+
+    <!--支付弹窗 start-->
+    <view animation="{{animationData}}" class="signUp" wx:if="{{showModalStatus}}">
+        <view class="signUp-title">
+            <text style="color:#fff;">报名参加</text>
+        </view>
+        <view class="signUp-info">
+            <radio checked="checked" class="info-radio"></radio>
+            <view class="info-text">
+                <text class="info-title">约定模式</text>
+                <text bindtap="bindExplain" class="info-info" decode="true" space="true">我已知晓活动详情，立即加入养成计划！</text>
+            </view>
+        </view>
+        <view style="width:90%;font-size:12px">
+            <text bindtap="bindExplain" style="text-decoration: underline;  color: #58b406; float: right;margin-top:20rpx;">了解活动详情</text>
+        </view>
+        <view bindtap="sendPay" class="signUp-submit">
+            <text style="color: #ffffff">提交</text>
+        </view>
+    </view>
+    <!--支付弹窗 end-->
     <view class="partner">
         <!--<image class="tencent-cooperation" mode="widthFix" src=""></image>-->
         <!--<view mode="widthFix" class="tencent-cooperation">科技</view>-->

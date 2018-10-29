@@ -103,7 +103,7 @@ Page({
         })
     },
     getLearnInfo() {
-        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid'), learnTypeId:1}, 'POST').then( res =>{
             wx.hideNavigationBarLoading();
             if (res.errno === 0&&res.data) {
                 wx.hideLoading();
