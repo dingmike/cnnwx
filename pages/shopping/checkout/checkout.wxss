@@ -52,11 +52,11 @@ page{
     width: 62rpx;
     height: 33rpx;
     border-radius: 5rpx;
-    border: 1px solid #b4282d;
+    border: 1px solid #58b406;
     font-size: 20.5rpx;
     text-align: center;
     line-height: 29rpx;
-    color: #b4282d;
+    color: #58b406;
 }
 
 .address-box .m{
@@ -279,7 +279,7 @@ page{
     flex: 1;
     height: 100rpx;
     line-height: 100rpx;
-    color: #b4282d;
+    color: #f48f18;
     background: #fff;
     font-size: 33rpx;
     padding-left: 31.25rpx;
@@ -290,8 +290,8 @@ page{
 .order-total .r{
     width: 233rpx;
     height: 100rpx;
-    background: #b4282d;
-    border: 1px solid #b4282d;
+    background: #f48f18;
+    border: 1px solid #f48f18;
     line-height: 100rpx;
     text-align: center;
     color: #fff;

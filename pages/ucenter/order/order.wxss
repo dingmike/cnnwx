@@ -31,7 +31,7 @@ page{
 
 .order .h .r{
     float: right;
-    color: #cc3500;
+    color: #f48f18;
     /*color: #b4282d;*/
     font-size: 24rpx;
 }
@@ -79,7 +79,7 @@ page{
 
 .order .goods .status{
     width:105rpx;
-    color: #cc3500;
+    color: #f48f18;
     font-size: 25rpx;
 }
 
@@ -110,7 +110,7 @@ page{
     border-radius: 5rpx;
     font-size: 26rpx;
     color: #fff;
-    background: #cc3500;
+    background: #f48f18;
 }
 
 .loadmore {
@@ -200,8 +200,8 @@ page{
     line-height: 42px;
 }
 .list_nav.highlight .list_nav_inner {
-    border-bottom: 3px solid #cc3500;
-    color: #cc3500;
+    border-bottom: 3px solid #f48f18;
+    color: #f48f18;
 }
 .page_content {
     padding-top: 44px;

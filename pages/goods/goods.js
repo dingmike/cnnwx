@@ -427,35 +427,57 @@ Page({
             url: '/pages/cart/cart',
         });
     },
-
     /**
      * 直接购买
      */
     buyGoods: function () {
         let that = this;
-        if (this.data.openAttr == false) {
+        if (this.data.openAttr === false) {
             //打开规格选择窗口
             this.setData({
                 openAttr: !this.data.openAttr,
                 collectBackImage: "/static/images/detail_back.png"
             });
         } else {
-
             //提示选择完整规格
             if (!this.isCheckedAllSpec()) {
+                wx.showToast({
+                    title: '请选择完整规格',
+                    image: '/static/images/icon_error.png',
+                    success:function (res) {
+                            debugger
+                    },
+                    duration: 2000
+                })
                 return false;
             }
-
             //根据选中的规格，判断是否有对应的sku信息
             let checkedProduct = this.getCheckedProductItem(this.getCheckedSpecKey());
             if (!checkedProduct || checkedProduct.length <= 0) {
                 //找不到对应的product信息，提示没有库存
+                wx.showToast({
+                    title: '该规格商品已下架!',
+                    icon: 'none',
+                    success:function (res) {
+                        return false;
+                    },
+                    duration: 2000
+                })
                 return false;
             }
 
             //验证库存
-            if (checkedProduct.goods_number < this.data.number) {
+            if (checkedProduct[0].goods_number < this.data.number) {
                 //找不到对应的product信息，提示没有库存
+                wx.showToast({
+                    title: '没有库存了~',
+                    // icon: 'none',
+                    image: '/static/images/icon_error.png',
+                    success:function (res) {
+
+                    },
+                    duration: 2000
+                })
                 return false;
             }
 
@@ -483,7 +505,6 @@ Page({
                     }
 
                 });
-
         }
     },
 
@@ -492,7 +513,7 @@ Page({
      */
     addToCart: function () {
         let that = this;
-        if (this.data.openAttr == false) {
+        if (this.data.openAttr === false) {
             //打开规格选择窗口
             this.setData({
                 openAttr: !this.data.openAttr,
@@ -566,7 +587,6 @@ Page({
         });
     },
     goMallPage(){
-        debugger
         wx.switchTab({
             url: '/pages/mall/mall'
         })

@@ -12,7 +12,7 @@ Page({
         isShowAudio: !0,
         newsId:'',
         listPage:0,
-        showSetCardBtn: true,
+        showSetCardBtn: false, // 显示下部打卡按钮听完才显示
         showCardBtn: true, // 打卡按钮
         useTime: 0,
         startTime:'',

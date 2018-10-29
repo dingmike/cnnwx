@@ -67,7 +67,7 @@ page{
 }
 
 .item-c .btn.active{
-    background: #cc3500;
+    background: #f48f18;
     color: #fff;
 }
 
