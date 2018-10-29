@@ -23,7 +23,7 @@ Page({
         setTimeSty: true,
         payStatus: true,
         showModalStatus: false,
-        learnTypeId: 1,
+        learnTypeId: app.globalData.learnTypeId1,
         orderSn: '',
         cardM: function(a, t, e) {
             return t in a ? Object.defineProperty(a, t, {
@@ -103,7 +103,7 @@ Page({
         })
     },
     getLearnInfo() {
-        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid'), learnTypeId:1}, 'POST').then( res =>{
+        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid'), learnTypeId: app.globalData.learnTypeId1}, 'POST').then( res =>{
             wx.hideNavigationBarLoading();
             if (res.errno === 0&&res.data) {
                 wx.hideLoading();
@@ -306,7 +306,6 @@ Page({
         });
     },
     onShow: function() {
-
 
 
     },

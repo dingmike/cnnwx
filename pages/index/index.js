@@ -13,6 +13,7 @@ Page({
         uid: "",
         avaData: false,
         userInfo: '',
+        userInfo2:'',
         banner: [],
         joinBtn: "立即参与",
         learnType: '',
@@ -60,8 +61,8 @@ Page({
             }
         }
         this.getIndexData(1);
-        this.getCnnIndexTypeTwo(0); //learnTypeId=0
-        this.getLearnInfo();
+        this.getCnnIndexTypeTwo(2); //learnTypeId=0
+
         this._onLoad(); // 提前
     },
     _onLoad: function() {
@@ -78,27 +79,43 @@ Page({
         });
     },
     takePartIn2(e){
-        userInfo.startStatus
-        if(userInfo.startStatus==1){
+        debugger
+        //未授权登录用户去read页面授权登录
+        if(!wx.getStorageSync('openid')){
             wx.navigateTo({
                 url: "/pages/dayReadList/dayReadList"
             });
         }else{
+        //授权用户去判断是否支付有权限阅读
+                if(this.data.userInfo2.startStatus==1){
+                    wx.navigateTo({
+                        url: "/pages/dayReadList/dayReadList"
+                    });
+                }else{
+//去支付
+                    this.setData({
+                        showModalStatus: !0
+                    });
+                }
+
+
 
         }
 
+        // userInfo.startStatus
+
     },
     getLearnInfo() {
-        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid'), learnTypeId:1}, 'POST').then( res =>{
+        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid'), learnTypeId: app.globalData.learnTypeId2}, 'POST').then( res =>{
             wx.hideNavigationBarLoading();
             if (res.errno === 0&&res.data) {
+                debugger
                 wx.hideLoading();
                 if(res.data.startStatus == 1){ // 已支付开始学习
                     this.setData({
-                        avaData: true,
-                        userInfo: res.data
+                        avaData2: false,
+                        userInfo2: res.data
                     })
-
                 }else{ // 没支付
                     this.setData({
                         joinBtn: '马上加入学习',
@@ -113,37 +130,12 @@ Page({
 
         });
     },
-    powerDrawer: function(a) {
-        this.util(a);
-    },
-    powerDrawer2: function(a) {
-        var t = a.currentTarget.dataset.statu;
-        this.util(t);
-    },
-    util: function(a) {
-        var t = wx.createAnimation({
-            duration: 200,
-            timingFunction: "linear",
-            delay: 0
-        });
-        this.animation = t, t.opacity(0).rotateX(-100).step(), this.setData({
-            animationData: t.export()
-        }), setTimeout(function() {
-            t.opacity(1).rotateX(0).step(), this.setData({
-                animationData: t
-            }), "close" == a && this.setData({
-                showModalStatus: !1
-            });
-        }.bind(this), 200), "open" == a && this.setData({
-            showModalStatus: !0
-        });
-    },
     sendPay () {
         let t = wx.getStorageSync("openid"), e = this.data.type, o = this;
         /* wx.showLoading({
          title: "加载中"
          });*/
-        util.request(api.GongduOrderSubmit, {uid: t, learnTypeId: 0}, 'POST').then(res => {
+        util.request(api.GongduOrderSubmit, {uid: t, learnTypeId: app.globalData.learnTypeId2}, 'POST').then(res => {
             if (res.errno === 0) {
                 console.log("生成订单成功");
                 o.data.orderSn= res.data.orderSn;
@@ -204,6 +196,10 @@ Page({
         wx.setNavigationBarTitle({
             title: t + "练习"
         });*/
+        // 授权后才能获取用户个人信息
+        if(wx.getStorageSync('openid')){
+            this.getLearnInfo();
+        }
     },
     onReady: function () {
         // 页面渲染完成

@@ -172,7 +172,7 @@ Page({
         that.setData({
             useTime: Date.parse(new Date())-that.data.startTime
         });
-        util.request(api.SetNewsCard, {newsId: that.data.newsId, useTime: that.data.useTime/1000, learnTypeId:0},'POST').then( res =>{
+        util.request(api.SetNewsCard, {newsId: that.data.newsId, useTime: that.data.useTime/1000, learnTypeId:app.globalData.learnTypeId2},'POST').then( res =>{
             if(res.data===1){
                 wx.showModal({
                     title: '打卡成功',

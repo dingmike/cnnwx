@@ -39,7 +39,7 @@
                     <text style="color:#000">{{studyUserNums2}}人报名</text>
                 </view>
                 <view class="enrollment-images">
-                    <image src="{{userInfo2.avatarUrl}}" wx:if="{{avaData}}"></image>
+                    <!--<image src="{{userInfo2.avatarUrl}}" wx:if="{{avaData2}}"></image>-->
                     <image src="{{item.avatar}}" wx:for="{{studyUser2}}" wx:key="{{item.id}}"></image>
                 </view>
             </view>

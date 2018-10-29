@@ -1,6 +1,7 @@
 let t = getApp(), a = wx.getBackgroundAudioManager(), e = wx.createInnerAudioContext(), o = wx.getRecorderManager();
 const util = require('../../../utils/util.js');
 const api = require('../../../config/api.js');
+const app = getApp();
 Page({
     data: {
         detailIndex: 0,
@@ -55,7 +56,7 @@ Page({
         wx.showNavigationBarLoading();
         var e = a.detail.formId, o = t.globalData.openid, s = t.globalData.type, i = t.globalData.userInfo;
         let unlocks = t.globalData.single.unlocks;
-        util.request(api.SetCardById, {type: 1, uid: wx.getStorageSync('openid'), formId: e},  'POST').then( res =>{
+        util.request(api.SetCardById, {type: app.globalData.learnTypeId1, uid: wx.getStorageSync('openid'), formId: e},  'POST').then( res =>{
                 wx.hideNavigationBarLoading();
                 let a = "今日打卡成功！";
                 if(res.data===0){

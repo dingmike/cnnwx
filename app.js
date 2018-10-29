@@ -38,6 +38,8 @@ App({
         url: "",
         //new
         openid: "",
+        learnTypeId1: 1,  // 21天阅读计划
+        learnTypeId2: 2,// 每日阅读计划
         type: "21天英语学习达人养成计划",
         img: "/images/item/ly.png",
         bgimg: "/static/image/logos/123.jpg",
