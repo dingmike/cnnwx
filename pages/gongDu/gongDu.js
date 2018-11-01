@@ -146,7 +146,7 @@ Page({
             }else{
                 let mockData = {
                     "id": "",
-                    "learnTypeId": 0,
+                    "learnTypeId": 1,
                     "userid": 0,
                     "unlocks": 0,
                     "formId": "",
@@ -321,7 +321,7 @@ Page({
     // 获取信息
     getIndexData: function() {
         let that = this;
-        util.request(api.CnnIndexUrl).then(res =>{
+        util.request(api.CnnIndexUrl, {learnTypeId: app.globalData.learnTypeId1}).then(res =>{
             if (res.errno === 0) {
                 /*that.setData({
                     banner: res.data.banner,

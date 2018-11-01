@@ -17,7 +17,7 @@ Page({
         o.detail.value.phone, o.detail.value.weixin, e.nickName;
         let openId = wx.getStorageSync("openid");
         let formIds = this.data.formIdArray.join(',');
-        util.request(api.UserSubmitPhone, {uid: openId,learnTypeId: app.globalData.learnTypeId1, mobile:this.data.mobile, wechatId: this.data.wechatId, formIds:formIds}, 'POST').then(res => {
+        util.request(api.UserSubmitPhone, {uid: openId,learnTypeId: n.globalData.learnTypeId1, mobile:this.data.mobile, wechatId: this.data.wechatId, formIds:formIds}, 'POST').then(res => {
 
             if(res.errno == 0){
                 setTimeout(function() {
