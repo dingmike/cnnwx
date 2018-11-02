@@ -11,7 +11,8 @@ Page({
         isShow: !0,
         isShowAudio: !0,
         newsId:'',
-        listPage:0,
+        listPage: 0,
+        haveReadedOver: false,
         showSetCardBtn: false, // 显示下部打卡按钮听完才显示
         showCardBtn: true, // 打卡按钮
         useTime: 0,
@@ -46,7 +47,7 @@ Page({
     voiceEnd: function(a) {
         debugger
         var t = this;
-        if(t.data.listPage==1){
+        if(t.data.listPage==0){
             t.setData({
                 showSetCardBtn: !0,
                 showCardBtn: !0
@@ -70,6 +71,7 @@ Page({
     onLoad: function(t) {
         debugger
         var i = this;
+        //listPage=0的时候是今日打卡文章，1的时候是列表文章详情
         if(t.listPage==1){
             //列表文章查看
             i.getNewsDetail(t);
@@ -77,50 +79,49 @@ Page({
             //当天打卡文章
             i.getTodayNews(t);
         }
-       /* util.request(api.GetNewsById, {pageId: t.pageId},'POST').then( res =>{
-            var t = [], s = [],content=[];
-            res.data.addTime = util.tsFormatTime(res.data.addTime,'Y-M-D');
-            WxParse.wxParse('newsHtmlDetail', 'html', res.data.newsDetail, i);
-            WxParse.wxParse('chineseDetail', 'html', res.data.chinese, i);
-            content.push(res.data);
-            content.map(function(a, i) {
-                t.push(!1), s.push(!1);
-            });
-            i.setData({
-                pageDetail: content,
-                transList: t,
-                voiceList: s
-            });
-        })*/
-        wx.request({
-            url: a.host + "duenglish/detail?aid=194979",
-            data: {},
-            header: {
-                "content-type": "application/json"
-            },
-            success: function(a) {
-                console.log(a)
+    },
+    sureHaveReaded(res){
+        let that=this;
+        util.request(api.HaveReaded, {uid: wx.getStorageSync('openid'),id: res.data.id},'POST').then( res =>{
+            if(res.data==1){
+                //已阅读过了
+                that.setData({
+                    haveReadedOver: true
+                })
+            }else{
+                that.setData({
+                    haveReadedOver: false
+                })
+
+
+
+
+
             }
-        });
+        })
     },
     getTodayNews(t){
         // GetTodayNews
         var i =this;
         util.request(api.GetTodayNews).then( res =>{
-            var t = [], s = [],content=[];
-            res.data.addTime = util.tsFormatTime(res.data.addTime,'Y-M-D');
-            // res.data.newsDetail =  res.data.newsDetail.replace('/\<img/g', '<img style="width:100%;height:auto;display:block" ');
-            // res.data.chinese =  res.data.chinese.replace('/\<img/g' , '<img style="width:100%;height:auto;display:block" ');
-            content.push(res.data);
-            content.map(function(a, i) {
-                t.push(!1), s.push(!1);
-            });
-            i.setData({
-                pageDetail: content,
-                transList: t,
-                voiceList: s,
-                newsId: res.data.id
-            });
+
+
+            // i.sureHaveReaded(res);
+
+                var t = [], s = [],content=[];
+                res.data.addTime = util.tsFormatTime(res.data.addTime,'Y-M-D');
+                // res.data.newsDetail =  res.data.newsDetail.replace('/\<img/g', '<img style="width:100%;height:auto;display:block" ');
+                // res.data.chinese =  res.data.chinese.replace('/\<img/g' , '<img style="width:100%;height:auto;display:block" ');
+                content.push(res.data);
+                content.map(function(a, i) {
+                    t.push(!1), s.push(!1);
+                });
+                i.setData({
+                    pageDetail: content,
+                    transList: t,
+                    voiceList: s,
+                    newsId: res.data.id
+                });
             // WxParse.wxParse('newsHtmlDetail', 'html', res.data.newsDetail, i,5);
             // WxParse.wxParse('chineseDetail', 'html', res.data.chinese, i);
         })
@@ -172,11 +173,11 @@ Page({
         that.setData({
             useTime: Date.parse(new Date())-that.data.startTime
         });
-        util.request(api.SetNewsCard, {newsId: that.data.newsId, useTime: that.data.useTime/1000, learnTypeId:app.globalData.learnTypeId2},'POST').then( res =>{
+        util.request(api.SetNewsCard, {newsId: that.data.newsId, useTime: that.data.useTime/1000, learnTypeId: t.globalData.learnTypeId2}, 'POST').then( res =>{
             if(res.data===1){
                 wx.showModal({
                     title: '打卡成功',
-                    content: '学习用时'+that.data.useTime/1000/60+'分钟,获得1积分',
+                    content: '学习用时'+(that.data.useTime/1000/60).toFixed(2)+'分钟,获得1积分',
                     showCancel: false,
                     confirmText: '去换东西',
                     success:function (res) {

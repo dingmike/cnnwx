@@ -4,14 +4,14 @@
         <view class="slogan2">{{slogan.chinese}}</view>
     </block>
 </view>-->
-<tools bind:hideBg="cancelcanvaspic" class="toolswrap">
+<!--<tools bind:hideBg="cancelcanvaspic" class="toolswrap">
     <button bindgetuserinfo="getUserInfo" class="toolssign" openType="getUserInfo" wx:if="{{!showbg}}"></button>
     <button bindtap="savecanvaspic" class="toolssave" wx:else></button>
-</tools>
-<view class="sharebg" style="display:{{showbg?'block':'none'}}"></view>
-<view capture-catch:touchmove="cancelmove" class="canswrap" style="display:{{showbg?'block':'none'}}">
+</tools>-->
+<!--<view class="sharebg" style="display:{{showbg?'block':'none'}}"></view>-->
+<!--<view capture-catch:touchmove="cancelmove" class="canswrap" style="display:{{showbg?'block':'none'}}">
     <canvas canvasId="sharepage" class="sharepage" style="border-radius: 20px;width:{{canvasWidth}}px; height:{{canvasHeight}}px;"></canvas>
-</view>
+</view>-->
 <!--<view class="wrap">
     <view class="main">
         <view class="section" wx:for="{{newsList}}" wx:key="{{item.category}}">
@@ -48,7 +48,7 @@
                     <wxc-button btnStyle="{{style}}" bindtap="goReadToday">{{btnText}} <wxc-icon color="#fff" type="arrow-right"></wxc-icon></wxc-button>
                 </wxc-cc>
             </view>
-            <view class="category-article-title"><text>已打卡文章</text></view>
+            <view class="category-article-title"><text>{{listTitle}}</text></view>
             <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}};">
 
                 <view bindtap="detailPage" data-value="{{item.newsid}}" wx:for="{{cnnNewsList}}" wx:for-item="item" wx:key="{{item.id}}">

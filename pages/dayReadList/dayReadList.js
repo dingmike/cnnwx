@@ -18,6 +18,7 @@ Page({
         size: 10,
         loadmoreText: '正在加载更多数据',
         nomoreText: '全部加载完成',
+        listTitle:'正在加载...',//已打卡文章
         nomore: false,
         totalPages: 1,
         cnnNewsList:[],
@@ -29,10 +30,6 @@ Page({
     },
 
     onLoad: function() {
-
-        e.save(), wx.showShareMenu({
-            withShareTicket: !0
-        });
         var a = this;
         wx.getSystemInfo({
             success: function (res) {
@@ -42,126 +39,33 @@ Page({
             }
         });
         a.getNewsList();
-        wx.request({
-            url: util.host + "duenglish/list?t=chinaplus_cri_news",
-            data: {},
-            header: {
-                "content-type": "application/json"
-            },
-            success: function(t) {
-                a.setData({
-                    newsList: t.data
-                });
-            }
-        }), wx.request({
-            url: util.host + "motto_en",
-            data: {},
-            header: {
-                "content-type": "application/json"
-            },
-            success: function(t) {
-                a.setData({
-                    slogan: t.data
-                });
-            }
-        });
-    },
-    getLearnInfo() {
-        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
-            wx.hideNavigationBarLoading();
-            if (res.errno === 0&&res.data) {
-                wx.hideLoading();
-                let studyNums = [];
-                for(let i=1; i<=res.data.genusdays; i++){
-                    studyNums.push({genusdays: i})
-                }
-                this.setData({
-                    studyNums: studyNums
-                });
-
-                app.globalData.single = res.data;
-                this.setData({
-                    single: res.data,
-                    Contents: true
-                });
-
-                if(res.data.startStatus == 1){ // 已支付开始学习
-                    this.setData({
-                        avaData: true,
-                        userInfo: res.data
-                    })
-
-                }else{ // 没支付
-                    this.setData({
-                        contact: false,
-                        joinBtn: '马上加入学习',
-                        setTimeSty: false
-                    });
-
-                }
-
-                if(16 == res.data.unlocks){
-                    this.getOneCard(res.data.unlocks);
-
-                }else{
-                    this.getOneCard();
-                }
-
-            }else{
-                let mockData = {
-                    "id": "",
-                    "learnTypeId": 0,
-                    "userid": 0,
-                    "unlocks": 0,
-                    "formId": "",
-                    "miss": 0,
-                    "startStatus": 0,
-                    "setupTime": "",
-                    "addTime": "",
-                    "updateTime": "",
-                    "userName": "",
-                    "avatar": "",
-                    "nickname": "",
-                    "learnType": "",
-                    "genusdays": 21
-                };
-                let studyNums = [];
-                for(let i=1; i<=mockData.genusdays; i++){
-                    studyNums.push({genusdays: i})
-                }
-                this.setData({
-                    studyNums: studyNums,
-                    contact: false,
-                    joinBtn: '马上加入学习',
-                    setTimeSty: false,
-                    single: mockData,
-                    Contents: !0
-                });
-            }
-
-        });
     },
     getNewsList(){
-        var that = this;
+        let that = this;
         if (that.data.totalPages <= that.data.page-1) {
             that.setData({
                 nomore: true
-            })
+            });
             return;
         }
         util.request(api.GetReadNewsByUserId, {uid: wx.getStorageSync('openid'),page: that.data.page, size: that.data.size}).then( res =>{
             if(res.errno===0&&res.data){
-                res.data.data.map((obj,index,array)=>{
-                    obj.addTime=util.tsFormatTime(obj.addTime,'Y-M-D');
-                })
-                that.setData({
-                    cnnNewsList: that.data.cnnNewsList.concat(res.data.data),
-                    page: res.data.currentPage+1,
-                    totalPages: res.data.totalPages
-                })
+                if(res.data.data.length!==0){
+                    res.data.data.map((obj,index,array)=>{
+                        obj.addTime=util.tsFormatTime(obj.addTime,'Y-M-D');
+                    })
+                    that.setData({
+                        listTitle:'已打卡文章',
+                        cnnNewsList: that.data.cnnNewsList.concat(res.data.data),
+                        page: res.data.currentPage+1,
+                        totalPages: res.data.totalPages
+                    })
+                }else{
+                    that.setData({
+                        listTitle:'还没有学习过的文章'
+                    })
+                }
             }
-
-
         })
     },
     /**
@@ -190,40 +94,11 @@ Page({
             wx.hideLoading();
         }
     },
-    cancelmove: function(t) {
-        console.log(t);
-    },
-    savecanvaspic: function() {
-        var t = this;
-        wx.showLoading({
-            title: "制作中"
-        }), wx.canvasToTempFilePath({
-            canvasId: "sharepage",
-            success: function(e) {
-                wx.hideLoading(), wx.showLoading({
-                    title: "保存中"
-                }), wx.saveImageToPhotosAlbum({
-                    filePath: e.tempFilePath,
-                    success: function(e) {
-                        wx.hideLoading(), wx.showToast({
-                            title: "已保存到相册",
-                            icon: "success",
-                            duration: 2e3
-                        }), t.setData({
-                            showbg: !1
-                        });
-                    }
-                });
-            }
-        });
-    },
-    cancelcanvaspic: function() {
-        this.setData({
-            showbg: !1
-        });
-    },
     //去阅读当天的打卡内容
     goReadToday(){
+
+
+
         wx.navigateTo({
             url: "../dayReadDetail/dayReadDetail?listPage=0"
         });

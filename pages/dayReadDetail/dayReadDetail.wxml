@@ -62,7 +62,7 @@
             <view class="popup-tips">
                 {{showCardBtn?'坚持学习才有意义!':'认真听完听力、阅读完文章才能打卡的!'}}
             </view>
-                <button size="mini" class="{{showCardBtn?'card-btn-on':'card-btn-off'}}" disabled="{{listPage!==0}}" bindtap='setNewsCard' type="primary">打 卡</button>
+                <button size="mini" class="{{showCardBtn?'card-btn-on':'card-btn-off'}}" disabled="{{listPage!=0}}" bindtap='setNewsCard' type="primary">打 卡</button>
         </view>
     </wxc-popup>
 </view>

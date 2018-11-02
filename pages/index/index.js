@@ -92,37 +92,48 @@ Page({
                         url: "/pages/dayReadList/dayReadList"
                     });
                 }else{
-//去支付
-                    this.setData({
+//去请求加入接口
+                    /*this.setData({
                         showModalStatus: !0
-                    });
+                    });*/
+                    this.enterLearnClass();
                 }
-
-
-
         }
-
-        // userInfo.startStatus
-
+    },
+    enterLearnClass(){
+        util.request(api.EnterLearnClass, {uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
+            if(res.errno == 0){
+                wx.navigateTo({
+                    url: "/pages/dayReadList/dayReadList"
+                });
+            }else{
+                wx.showToast({
+                    title: "参加失败！",
+                    icon: "none"
+                });
+            }
+        })
     },
     getLearnInfo() {
         util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid'), learnTypeId: app.globalData.learnTypeId2}, 'POST').then( res =>{
             wx.hideNavigationBarLoading();
+            debugger
             if (res.errno === 0&&res.data) {
                 debugger
                 wx.hideLoading();
-                if(res.data.startStatus == 1){ // 已支付开始学习
+                if(res.data.startStatus == 1){ // 已开始学习
                     this.setData({
                         avaData2: false,
-                        userInfo2: res.data
+                        userInfo2: res.data,
+                        joinBtn: '打卡学习'
                     })
-                }else{ // 没支付
+                }else{ // 没参加
                     this.setData({
-                        joinBtn: '马上加入学习',
+                        joinBtn: '立即参与',
                     });
                 }
 
-            }else{
+            }else{// 没参加
                 this.setData({
                     joinBtn: '立即参与',
                 });
@@ -130,67 +141,6 @@ Page({
 
         });
     },
-    sendPay () {
-        let t = wx.getStorageSync("openid"), e = this.data.type, o = this;
-        /* wx.showLoading({
-         title: "加载中"
-         });*/
-        util.request(api.GongduOrderSubmit, {uid: t, learnTypeId: app.globalData.learnTypeId2}, 'POST').then(res => {
-            if (res.errno === 0) {
-                console.log("生成订单成功");
-                o.data.orderSn= res.data.orderSn;
-                pay.gongDuPayOrder(res.data.orderSn).then(ress => {
-
-                    if("requestPayment:ok" == ress.errMsg){
-                        wx.showToast({
-                            title: "支付成功"
-                        });
-                        o.setData({
-                            showModalStatus: false
-                        });
-                        o.updateSuccess();
-                        // wx.hideLoading();
-                    }
-
-                    //o.updateSucces(); // 暂时用来查询微信支付成功
-                }).catch(ress => {
-                    console.log("支付失败或取消支付");
-                    console.log(ress);
-                    wx.hideLoading();
-                    o.setData({
-                        showModalStatus: false
-                    });
-                    // wx.hideLoading();
-                });
-
-            } else {
-                util.showErrorToast('下单失败,请重试');
-                // wx.hideLoading();
-            }
-        });
-    },
-    // 暂时使用查看是否支付成功
-    updateSuccess() {
-        util.request(api.OrderGongDuQuery, { orderId: this.data.orderSn}).then(res => {
-            if(res.errno==0){
-                wx.reLaunch({
-                    url: "/pages/submitInfo/submitInfo"
-                })
-            }
-        })
-    },
-
-
-
-
-
-
-
-
-
-
-
-
     onShow: function() {
         /*var t = app.globalData.type;
         wx.setNavigationBarTitle({

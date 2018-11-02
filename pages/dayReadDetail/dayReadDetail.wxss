@@ -90,7 +90,7 @@
 
 .detail-published {
     padding-top: 20rpx;
-    font-size: 20rpx;
+    font-size:24rpx;
     color: #999;
     text-align: right;
 }
@@ -101,47 +101,47 @@
 
 .detail-translate-wrap {
     position:fixed;
-    top:21rpx;
-    right:5%;
+    top:9rpx;
+    right:4%;
 }
 
 .detail-translate {
-    padding:10rpx 12rpx;
+    padding: 20rpx 22rpx;
     border:1rpx solid #58b406;
-    border-radius:6px;
-    font-size:20rpx;
-    line-height:20rpx;
+    border-radius:20rpx;
+    font-size: 34rpx!important;
+    line-height:34rpx;
 
 }
 .detail-translate-bk {
-    padding:10rpx 12rpx;
+    padding: 20rpx 22rpx;
     border:1rpx solid #58b406;
-    border-radius:6px;
-    font-size:20rpx;
-    line-height:20rpx;
+    border-radius:20rpx;
+    font-size:34rpx;
+    line-height: 34rpx;
     background:#58b406 ;
 
 }
 .detail-voice-wrap {
     position:fixed;
-    top:21rpx;
-    right:13%;
+    top:10rpx;
+    right:16%;
 }
 
 .detail-voice {
-    padding: 10rpx 12rpx;
+    padding: 20rpx 22rpx;
     border: 1rpx solid #58b406;
-    border-radius: 10rpx;
-    font-size: 20rpx;
-    line-height: 20rpx;
+    border-radius: 20rpx;
+    font-size: 34rpx!important;
+    line-height: 34rpx;
 }
 
 .detail-voice-bk{
-    padding: 10rpx 12rpx;
+    padding: 20rpx 22rpx;
     border: 1rpx solid #58b406;
-    border-radius: 10rpx;
-    font-size: 20rpx;
-    line-height: 20rpx;
+    border-radius: 20rpx;
+    font-size: 34rpx!important;
+    line-height: 34rpx;
     background:#58b406 ;
 }
 

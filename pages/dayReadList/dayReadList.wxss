@@ -115,8 +115,8 @@ button.toolssave {
 }
 
 .descript {
-    font-size: 22rpx;
-    line-height: 34rpx;
+    font-size:28rpx;
+    line-height: 30rpx;
     color: #999;
     width: 100%;
     word-break: break-all;

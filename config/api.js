@@ -20,6 +20,7 @@ module.exports = {
     GetNewsById: NewApiRootUrl + '/gongdu/getNewsById', // 获取用户阅读的文章
     SetNewsCard: NewApiRootUrl + '/gongdu/setNewsCard', // 用户打卡阅读的文章
     GetTodayNews: NewApiRootUrl + '/gongdu/getTodayNews', // 当天打卡阅读的文章
+    HaveReaded: NewApiRootUrl + '/gongdu/haveReaded', // 当天是否已打过卡了
 
 
     GongduOrderSubmit: NewApiRootUrl + 'gdOrder/submit', // 生成共读订单
@@ -36,6 +37,7 @@ module.exports = {
     IndexUrlCategory: NewApiRootUrl + 'index/category', //首页数据接口IndexUrlChannel
     IndexUrlBanner: NewApiRootUrl + 'index/banner', //首页数据接口IndexUrlChannel
     IndexUrlChannel: NewApiRootUrl + 'index/channel', //首页数据接口IndexUrlChannel
+    EnterLearnClass: NewApiRootUrl + 'index/enterLearnClass', //参加每日阅读计划
 
 
     CatalogList: NewApiRootUrl + 'catalog/index',  //分类目录全部分类数据接口
