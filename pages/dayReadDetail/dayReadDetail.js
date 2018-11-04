@@ -33,7 +33,6 @@ Page({
         });
     },
     onTapVoice: function(a) {
-        debugger
         t.push.add(a);
         var i = this, s = a.currentTarget.dataset.value, e = [];
         i.data.voiceList.map(function(a, t) {
@@ -45,7 +44,6 @@ Page({
         });
     },
     voiceEnd: function(a) {
-        debugger
         var t = this;
         if(t.data.listPage==0){
             t.setData({
@@ -63,13 +61,11 @@ Page({
     },
     onReady () {
         // 页面渲染完成
-        // var timestamp = Date.parse(new Date());
         this.setData({
             startTime: Date.parse(new Date())
         })
     },
     onLoad: function(t) {
-        debugger
         var i = this;
         //listPage=0的时候是今日打卡文章，1的时候是列表文章详情
         if(t.listPage==1){
@@ -80,39 +76,27 @@ Page({
             i.getTodayNews(t);
         }
     },
-    sureHaveReaded(res){
-        let that=this;
-        util.request(api.HaveReaded, {uid: wx.getStorageSync('openid'),id: res.data.id},'POST').then( res =>{
-            if(res.data==1){
-                //已阅读过了
-                that.setData({
-                    haveReadedOver: true
-                })
-            }else{
-                that.setData({
-                    haveReadedOver: false
-                })
-
-
-
-
-
-            }
-        })
-    },
     getTodayNews(t){
-        // GetTodayNews
         var i =this;
         util.request(api.GetTodayNews).then( res =>{
-
-
-            // i.sureHaveReaded(res);
-
+            if(res.data.haveReaded==1){
+                wx.showModal({
+                    title: '提示',
+                    content: '今天已经打过卡了',
+                    showCancel: false,
+                    confirmText: '返回',
+                    complete () {
+                        wx.navigateBack({
+                                        delta: 1
+                                    })
+                    }
+                })
+            }else{
                 var t = [], s = [],content=[];
-                res.data.addTime = util.tsFormatTime(res.data.addTime,'Y-M-D');
+                res.data.todayNews.addTime = util.tsFormatTime(res.data.todayNews.addTime,'Y-M-D');
                 // res.data.newsDetail =  res.data.newsDetail.replace('/\<img/g', '<img style="width:100%;height:auto;display:block" ');
                 // res.data.chinese =  res.data.chinese.replace('/\<img/g' , '<img style="width:100%;height:auto;display:block" ');
-                content.push(res.data);
+                content.push(res.data.todayNews);
                 content.map(function(a, i) {
                     t.push(!1), s.push(!1);
                 });
@@ -120,10 +104,13 @@ Page({
                     pageDetail: content,
                     transList: t,
                     voiceList: s,
-                    newsId: res.data.id
+                    newsId: res.data.todayNews.id
                 });
-            // WxParse.wxParse('newsHtmlDetail', 'html', res.data.newsDetail, i,5);
-            // WxParse.wxParse('chineseDetail', 'html', res.data.chinese, i);
+                // WxParse.wxParse('newsHtmlDetail', 'html', res.data.newsDetail, i,5);
+                // WxParse.wxParse('chineseDetail', 'html', res.data.chinese, i);
+            }
+
+
         })
     },
     getNewsDetail(t){
