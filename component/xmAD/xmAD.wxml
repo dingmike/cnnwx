@@ -4,7 +4,7 @@
             <view style="{{adData[adID].style.content}}">
                 <image bindtap="clickAd" data-id="{{adID}}" id="image" src="{{adData[adID].imgurl}}" style="{{adData[adID].style.img}}"></image>
                 <image bindtap="close" data-closeid="{{adID}}" src="http://www.xmadx.com/sdk/ad_sdk_clone.png" style="{{adData[adID].style.close}}"></image>
-                <text style="{{adData[adID].style.icon}}">小盟广告</text>
+                <text style="{{adData[adID].style.icon}}">newscnn广告</text>
                 <navigator appId="{{adData[adID].appid[1]}}" bindtap="clickAd" data-id="{{adID}}" path="{{adData[adID].pageurl}}" style="{{adData[adID].style.nav}}" target="miniProgram" wx:if="{{adData[adID].at===3}}"></navigator>
             </view>
         </view>
@@ -18,7 +18,7 @@
     <view class="{{adID}}" data-type="1" wx:if="{{adData[adID].ct===1}}">
         <view style="{{adData[adID].style.wrap}}" wx:if="{{adData[adID].hasshow}}">
             <image bindtap="clickAd" data-id="{{adID}}" id="image" src="{{adData[adID].imgurl}}" style="{{adData[adID].style.img}}"></image>
-            <text style="{{adData[adID].style.icon}}">小盟广告</text>
+            <text style="{{adData[adID].style.icon}}">newscnn广告</text>
             <navigator appId="{{adData[adID].appid[1]}}" bindtap="clickAd" data-id="{{adID}}" path="{{adData[adID].pageurl}}" style="{{adData[adID].style.nav}}" target="miniProgram" wx:if="{{adData[adID].at===3}}"></navigator>
         </view>
     </view>

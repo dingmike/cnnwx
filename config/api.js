@@ -22,6 +22,8 @@ module.exports = {
     GetTodayNews: NewApiRootUrl + '/gongdu/getTodayNews', // 当天打卡阅读的文章
     HaveReaded: NewApiRootUrl + '/gongdu/haveReaded', // 当天是否已打过卡了
 
+    AddFormId: NewApiRootUrl + '/gongdu/addFormId', // 添加formID
+
 
     GongduOrderSubmit: NewApiRootUrl + 'gdOrder/submit', // 生成共读订单
 
