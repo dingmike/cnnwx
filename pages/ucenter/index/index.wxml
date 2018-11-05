@@ -109,7 +109,7 @@
     <navigator url="/pages/ucenter/my-card/my-card" class="cell item-flex item-justify-center" hoverClass="none">
       <image src="/static/image/icon/card_icon.png"></image>
       <view class="box-flex-1">
-        <text>打卡记录</text>
+        <text>21天打卡记录</text>
       </view>
       <view class="arrow"></view>
     </navigator>
