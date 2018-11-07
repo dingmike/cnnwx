@@ -42,9 +42,6 @@
                     </view>
                     <view class="detail-text" wx:else></view>
                 </view>
-                <view class="xm_banner" style="width:100%">
-                    <xm-ad adData="{{xmad.adData}}" bindclick="appoIntView" bindclose="xmadClose" class="xm_component" data-id="{{xmad.ad.banner}}"></xm-ad>
-                </view>
             </view>
         </view>
     </view>
@@ -56,11 +53,9 @@
     <wxc-popup class="J_Popup" animation-mode="center" align="center">
         <view class="popup-content">
             <icon class="popup-icon" type="success" size="40" color="green"/>
-            <view class="popup-word">
-                确定认真学习了这篇文章吗？
-            </view>
+            <view class="popup-word">确定认真学习了这篇文章吗？</view>
             <view class="popup-tips">
-                {{showCardBtn?'坚持学习才有意义!':'认真听完听力、阅读完文章才能打卡的!'}}
+                {{showCardBtn?'坚持学习,加油!':'认真听完听力、阅读完文章才能打卡的!'}}
             </view>
                 <button size="mini" class="{{showCardBtn?'card-btn-on':'card-btn-off'}}" disabled="{{listPage!=0}}" bindtap='setNewsCard' type="primary">打 卡</button>
         </view>

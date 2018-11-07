@@ -183,11 +183,9 @@ function request(url, data = {}, method = "GET") {
                 'X-Nideshop-Token': wx.getStorageSync('token')
             },
             success: function (res) {
-                debugger
                 console.log("success");
                 if (res.statusCode == 200) {
                     // resolve(res.data);
-                    debugger
                     if (res.data.errno == 401) {
                         //需要登录后才可以操作
                         wx.removeStorageSync("userInfo");
@@ -311,8 +309,7 @@ module.exports = {
     showErrorToast,
     showSuccessToast,
     checkSession,
-    login,
-    host: "https://api.xdooi.com/"
+    login
 };
 
 

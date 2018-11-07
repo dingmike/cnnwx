@@ -16,13 +16,13 @@ module.exports = {
     SetCardById: NewApiRootUrl + 'gongdu/setCardById', //每天打卡
     GetOneCard: NewApiRootUrl + 'gongdu/getOneCard', //每天打卡
     SetRemindTime: NewApiRootUrl + 'gongdu/setRemindTime', //设置提醒时间 /api/gdOrder
-    GetReadNewsByUserId: NewApiRootUrl + '/gongdu/getReadNewsByUserId', // 获取用户阅读的文章
-    GetNewsById: NewApiRootUrl + '/gongdu/getNewsById', // 获取用户阅读的文章
-    SetNewsCard: NewApiRootUrl + '/gongdu/setNewsCard', // 用户打卡阅读的文章
-    GetTodayNews: NewApiRootUrl + '/gongdu/getTodayNews', // 当天打卡阅读的文章
-    HaveReaded: NewApiRootUrl + '/gongdu/haveReaded', // 当天是否已打过卡了
+    GetReadNewsByUserId: NewApiRootUrl + 'gongdu/getReadNewsByUserId', // 获取用户阅读的文章
+    GetNewsById: NewApiRootUrl + 'gongdu/getNewsById', // 获取用户阅读的文章
+    SetNewsCard: NewApiRootUrl + 'gongdu/setNewsCard', // 用户打卡阅读的文章
+    GetTodayNews: NewApiRootUrl + 'gongdu/getTodayNews', // 当天打卡阅读的文章
+    HaveReaded: NewApiRootUrl + 'gongdu/haveReaded', // 当天是否已打过卡了
 
-    AddFormId: NewApiRootUrl + '/gongdu/addFormId', // 添加formID
+    AddFormId: NewApiRootUrl + 'gongdu/addFormId', // 添加formID
 
 
     GongduOrderSubmit: NewApiRootUrl + 'gdOrder/submit', // 生成共读订单

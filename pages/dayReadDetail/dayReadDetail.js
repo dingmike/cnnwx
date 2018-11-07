@@ -10,42 +10,36 @@ Page({
         voiceList: [],
         isShow: !0,
         isShowAudio: !0,
-        newsId:'',
+        newsId: '',
         listPage: 0,
         haveReadedOver: false,
         showSetCardBtn: false, // 显示下部打卡按钮听完才显示
         showCardBtn: true, // 打卡按钮
         useTime: 0,
-        startTime:'',
-        endTime:'',
-        xmad: {
-            adData: {},
-            ad: {
-                banner: "xm72ed4c216f8411f542714b3d048d58"
-            }
-        }
+        startTime: '',
+        endTime: ''
     },
-    onTap: function(a) {
-        t.push.add(a);
+    onTap: function (a) {
         var i = this, s = a.currentTarget.dataset.value, e = i.data.transList;
         e[s] = !i.data.transList[s], i.setData({
             transList: e
         });
-    },
-    onTapVoice: function(a) {
         t.push.add(a);
+    },
+    onTapVoice: function (a) {
         var i = this, s = a.currentTarget.dataset.value, e = [];
-        i.data.voiceList.map(function(a, t) {
+        i.data.voiceList.map(function (a, t) {
             s == t ? e.push(!i.data.voiceList[t]) : e.push(!1);
         });
         var n = "viode" + s, d = wx.createAudioContext(n);
         e[s] ? d.play() : d.pause(), i.setData({
             voiceList: e
         });
+        t.push.add(a);
     },
-    voiceEnd: function(a) {
+    voiceEnd: function (a) {
         var t = this;
-        if(t.data.listPage==0){
+        if (t.data.listPage == 0) {
             t.setData({
                 showSetCardBtn: !0,
                 showCardBtn: !0
@@ -57,7 +51,7 @@ Page({
         t.setData({
             voiceList: [false]
         });
-       // t.showPopup();
+        // t.showPopup();
     },
     onReady () {
         // 页面渲染完成
@@ -65,21 +59,21 @@ Page({
             startTime: Date.parse(new Date())
         })
     },
-    onLoad: function(t) {
+    onLoad: function (t) {
         var i = this;
         //listPage=0的时候是今日打卡文章，1的时候是列表文章详情
-        if(t.listPage==1){
+        if (t.listPage == 1) {
             //列表文章查看
             i.getNewsDetail(t);
-        }else{
+        } else {
             //当天打卡文章
             i.getTodayNews(t);
         }
     },
     getTodayNews(t){
-        var i =this;
-        util.request(api.GetTodayNews).then( res =>{
-            if(res.data.haveReaded==1){
+        var i = this;
+        util.request(api.GetTodayNews).then(res => {
+            if (res.data.haveReaded >= 1) {
                 wx.showModal({
                     title: '提示',
                     content: '今天已经打过卡了',
@@ -87,17 +81,17 @@ Page({
                     confirmText: '返回',
                     complete () {
                         wx.navigateBack({
-                                        delta: 1
-                                    })
+                            delta: 1
+                        })
                     }
                 })
-            }else{
-                var t = [], s = [],content=[];
-                res.data.todayNews.addTime = util.tsFormatTime(res.data.todayNews.addTime,'Y-M-D');
+            } else {
+                var t = [], s = [], content = [];
+                res.data.todayNews.addTime = util.tsFormatTime(res.data.todayNews.addTime, 'Y-M-D');
                 // res.data.newsDetail =  res.data.newsDetail.replace('/\<img/g', '<img style="width:100%;height:auto;display:block" ');
                 // res.data.chinese =  res.data.chinese.replace('/\<img/g' , '<img style="width:100%;height:auto;display:block" ');
                 content.push(res.data.todayNews);
-                content.map(function(a, i) {
+                content.map(function (a, i) {
                     t.push(!1), s.push(!1);
                 });
                 i.setData({
@@ -110,22 +104,19 @@ Page({
                 // WxParse.wxParse('chineseDetail', 'html', res.data.chinese, i);
             }
 
-
         })
     },
     getNewsDetail(t){
-        var i =this;
+        var i = this;
         i.setData({
             newsId: t.pageId,
             listPage: t.listPage
         });
-        util.request(api.GetNewsById, {pageId: t.pageId},'POST').then( res =>{
-            var t = [], s = [],content=[];
-            res.data.addTime = util.tsFormatTime(res.data.addTime,'Y-M-D');
-
-
+        util.request(api.GetNewsById, {pageId: t.pageId}, 'POST').then(res => {
+            var t = [], s = [], content = [];
+            res.data.addTime = util.tsFormatTime(res.data.addTime, 'Y-M-D');
             content.push(res.data);
-            content.map(function(a, i) {
+            content.map(function (a, i) {
                 t.push(!1), s.push(!1);
             });
             i.setData({
@@ -141,7 +132,7 @@ Page({
         wx.showToast({
             title: '继续加油！',
             duration: 800,
-            mask:false
+            mask: false
         })
     },
     showPopup() {
@@ -153,25 +144,37 @@ Page({
         popupComponent && popupComponent.hide();
     },
     showNewsCard(){
-      this.showPopup();
+        this.showPopup();
     },
     setNewsCard(){
-        var that =this;
+        var that = this;
         that.setData({
-            useTime: Date.parse(new Date())-that.data.startTime
+            useTime: Date.parse(new Date()) - that.data.startTime
         });
-        util.request(api.SetNewsCard, {newsId: that.data.newsId, useTime: that.data.useTime/1000, learnTypeId: t.globalData.learnTypeId2}, 'POST').then( res =>{
-            if(res.data===1){
+        util.request(api.SetNewsCard, {
+            newsId: that.data.newsId,
+            useTime: that.data.useTime / 1000,
+            learnTypeId: t.globalData.learnTypeId2
+        }, 'POST').then(res => {
+            if (res.data === 1) {
+                that.setData({
+                    showSetCardBtn: false
+                });
                 wx.showModal({
                     title: '打卡成功',
-                    content: '学习用时'+(that.data.useTime/1000/60).toFixed(2)+'分钟,获得1积分',
-                    showCancel: false,
+                    content: '学习用时' + (that.data.useTime / 1000 / 60).toFixed(2) + '分钟,获得1积分',
+                    showCancel: true,
+                    cancelText: '返回',
                     confirmText: '去换东西',
-                    success:function (res) {
-                        if(res.confirm){
+                    success: function (res) {
+                        if (res.confirm) {
                             wx.switchTab({
                                 url: "/pages/mall/mall"
                             });
+                        } else if (res.cancel) {
+                            wx.navigateBack({
+                                delta: 1
+                            })
                         }
                     }
                 });

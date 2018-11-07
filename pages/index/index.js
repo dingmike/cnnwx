@@ -13,7 +13,7 @@ Page({
         uid: "",
         avaData: false,
         userInfo: '',
-        userInfo2:'',
+        userInfo2: '',
         banner: [],
         joinBtn: "立即参与",
         learnType: '',
@@ -21,7 +21,7 @@ Page({
         setTimeSty: true,
         payStatus: true,
         showModalStatus: false,
-        cardM: function(a, t, e) {
+        cardM: function (a, t, e) {
             return t in a ? Object.defineProperty(a, t, {
                 value: e,
                 enumerable: !0,
@@ -55,7 +55,7 @@ Page({
             app.employIdCallback = info => {
                 if (info != '') {
                     this.setData({
-                       userInfo: info
+                        userInfo: info
                     });
                 }
             }
@@ -65,7 +65,7 @@ Page({
 
         this._onLoad(); // 提前
     },
-    _onLoad: function() {
+    _onLoad: function () {
         this.data.type = app.globalData.type;
         var e = app.globalData.openid;
         this.setData({
@@ -79,34 +79,33 @@ Page({
         });
     },
     takePartIn2(e){
-        debugger
         //未授权登录用户去read页面授权登录
-        if(!wx.getStorageSync('openid')){
+        if (!wx.getStorageSync('openid')) {
             wx.navigateTo({
                 url: "/pages/dayReadList/dayReadList"
             });
-        }else{
-        //授权用户去判断是否支付有权限阅读
-                if(this.data.userInfo2.startStatus==1){
-                    wx.navigateTo({
-                        url: "/pages/dayReadList/dayReadList"
-                    });
-                }else{
-//去请求加入接口
-                    /*this.setData({
-                        showModalStatus: !0
-                    });*/
-                    this.enterLearnClass();
-                }
-        }
-    },
-    enterLearnClass(){
-        util.request(api.EnterLearnClass, {uid: wx.getStorageSync('openid')}, 'POST').then( res =>{
-            if(res.errno == 0){
+        } else {
+            //授权用户去判断是否支付有权限阅读
+            if (this.data.userInfo2.startStatus == 1) {
                 wx.navigateTo({
                     url: "/pages/dayReadList/dayReadList"
                 });
-            }else{
+            } else {
+//去请求加入接口
+                /*this.setData({
+                 showModalStatus: !0
+                 });*/
+                this.enterLearnClass();
+            }
+        }
+    },
+    enterLearnClass(){
+        util.request(api.EnterLearnClass, {uid: wx.getStorageSync('openid')}, 'POST').then(res => {
+            if (res.errno == 0) {
+                wx.navigateTo({
+                    url: "/pages/dayReadList/dayReadList"
+                });
+            } else {
                 wx.showToast({
                     title: "参加失败！",
                     icon: "none"
@@ -115,25 +114,26 @@ Page({
         })
     },
     getLearnInfo() {
-        util.request(api.GetLearnInfo, {uid: wx.getStorageSync('openid'), learnTypeId: app.globalData.learnTypeId2}, 'POST').then( res =>{
+        util.request(api.GetLearnInfo, {
+            uid: wx.getStorageSync('openid'),
+            learnTypeId: app.globalData.learnTypeId2
+        }, 'POST').then(res => {
             wx.hideNavigationBarLoading();
-            debugger
-            if (res.errno === 0&&res.data) {
-                debugger
+            if (res.errno === 0 && res.data) {
                 wx.hideLoading();
-                if(res.data.startStatus == 1){ // 已开始学习
+                if (res.data.startStatus == 1) { // 已开始学习
                     this.setData({
                         avaData2: false,
                         userInfo2: res.data,
                         joinBtn: '打卡学习'
                     })
-                }else{ // 没参加
+                } else { // 没参加
                     this.setData({
                         joinBtn: '立即参与',
                     });
                 }
 
-            }else{// 没参加
+            } else {// 没参加
                 this.setData({
                     joinBtn: '立即参与',
                 });
@@ -141,13 +141,13 @@ Page({
 
         });
     },
-    onShow: function() {
+    onShow: function () {
         /*var t = app.globalData.type;
-        wx.setNavigationBarTitle({
-            title: t + "练习"
-        });*/
+         wx.setNavigationBarTitle({
+         title: t + "练习"
+         });*/
         // 授权后才能获取用户个人信息
-        if(wx.getStorageSync('openid')){
+        if (wx.getStorageSync('openid')) {
             this.getLearnInfo();
         }
     },
@@ -160,14 +160,14 @@ Page({
     onUnload: function () {
         // 页面关闭
     },
-    getIndexData: function(learnTypeId) {
+    getIndexData: function (learnTypeId) {
         let that = this;
         // learnTypeId  学习类型ID // 默认learnTypeId:1
         util.request(api.CnnIndexUrl, {learnTypeId: learnTypeId}).then(function (res) {
             if (res.errno === 0) {
                 let e = res.data.userLearnList, o = res.data.userListTotal;
 
-                if(o>200){
+                if (o > 200) {
                     o = 200;
                     that.setData({
                         banner: res.data.banner,
@@ -176,7 +176,7 @@ Page({
                         studyUserNums: o + "+"
                     })
 
-                }else{
+                } else {
                     that.setData({
                         learnType: e[0].learnType,
                         banner: res.data.banner,
@@ -188,14 +188,14 @@ Page({
             }
         });
     },
-    getCnnIndexTypeTwo: function(learnTypeId) {
+    getCnnIndexTypeTwo: function (learnTypeId) {
         let that = this;
         // learnTypeId  学习类型ID // 默认learnTypeId:1
         util.request(api.CnnIndexTypeTwo, {learnTypeId: learnTypeId}).then(function (res) {
             if (res.errno === 0) {
                 let e = res.data.userLearnList, o = res.data.userListTotal;
 
-                if(o>200){
+                if (o > 200) {
                     o = 200;
                     that.setData({
                         learnType2: e[0].learnType,
@@ -203,7 +203,7 @@ Page({
                         studyUserNums2: o + "+"
                     })
 
-                }else{
+                } else {
                     that.setData({
                         learnType2: e[0].learnType,
                         studyUser2: e,
@@ -214,32 +214,23 @@ Page({
             }
         });
     },
+    /*    onShareAppMessage () {
+     return{
+     title: '英文能力',
+     desc: '一起来学英语！',
+     path: 'pages/index/index',
+     imageUrl: this.data.imagePath,
+     success(res){
+     wx.showShareMenu({
+     withShareTicket: true
+     })
+     },
+     fail(res){
 
-   /* navigateTo: function(t) {
-        wx.navigateTo(t);
-    },*/
-    select_poem: function(t) {
-        this.setData({
-            current_poem_url: t.currentTarget.dataset.url
-        });
-    },
-/*    onShareAppMessage () {
-        return{
-            title: '英文能力',
-            desc: '一起来学英语！',
-            path: 'pages/index/index',
-            imageUrl: this.data.imagePath,
-            success(res){
-                wx.showShareMenu({
-                    withShareTicket: true
-                })
-            },
-            fail(res){
+     },
+     complete(){
 
-            },
-            complete(){
-
-            }
-        }
-    }*/
+     }
+     }
+     }*/
 });
