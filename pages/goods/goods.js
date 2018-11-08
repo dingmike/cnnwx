@@ -44,7 +44,6 @@ Page({
                         sort_order: 5
                     })
                 }
-
                 that.setData({
                     goods: res.data.info,
                     gallery: res.data.gallery,
@@ -57,7 +56,6 @@ Page({
                     productList: res.data.productList,
                     userHasCollect: res.data.userHasCollect
                 });
-
                 if (res.data.userHasCollect == 1) {
                     that.setData({
                         'collectBackImage': that.data.hasCollectImage
@@ -69,12 +67,9 @@ Page({
                 }
                 that.data.new_goods = JSON.parse(JSON.stringify(that.data.goods));
                 // WxParse.wxParse('goodsDetail', 'html', res.data.info.goods_desc, that);
-
                 that.getGoodsRelated();
-
             }
         });
-
     },
     getGoodsRelated: function () {
         let that = this;
@@ -85,16 +80,12 @@ Page({
                 });
             }
         });
-
     },
     clickSkuValue: function (event) {
-
         let that = this;
         let specNameId = event.currentTarget.dataset.nameId;
         let specValueId = event.currentTarget.dataset.valueId;
-
         //判断是否可以点击
-
         //TODO0 性能优化，可在wx:for中添加index，可以直接获取点击的属性名和属性值，不用循环
         let _specificationList = this.data.specificationList;
         let _goods = this.data.goods;
@@ -108,9 +99,7 @@ Page({
                             //根据已选的值，计算其它值的状态
                             // this.setSpecValueStatus();
                         } else {
-
                             _specificationList[i].valueList[j].checked = true;
-
                             // 规格图片
                             if (_specificationList[i].valueList[j].pic_url) {
                                 this.setData({
@@ -158,20 +147,22 @@ Page({
         let _productList = this.data.productList;
 
         let lastSpecArr = [];
-        for(let i=0; i<_productList.length;  i++){
+        for (let i = 0; i < _productList.length; i++) {
             let specArr = _productList[i].goods_specification_ids.split('_');
-            for(let n=0;n<specArr.length;  n++){
-                if(specValueId == specArr[n]){
-                   specArr = specArr.filter((val)=>{return val!=specValueId});
-                   lastSpecArr = lastSpecArr.concat(specArr);
+            for (let n = 0; n < specArr.length; n++) {
+                if (specValueId == specArr[n]) {
+                    specArr = specArr.filter((val) => {
+                        return val != specValueId
+                    });
+                    lastSpecArr = lastSpecArr.concat(specArr);
                 }
             }
 
         }
-        lastSpecArr=lastSpecArr.distinct();
-        for(let i=0; i< _specificationList.length; i++){
-            if(specNameId != _specificationList[i].specification_id){
-                for(let m=0; m<_specificationList[i].valueList.length; m++){
+        lastSpecArr = lastSpecArr.distinct();
+        for (let i = 0; i < _specificationList.length; i++) {
+            if (specNameId != _specificationList[i].specification_id) {
+                for (let m = 0; m < _specificationList[i].valueList.length; m++) {
                     for (let n = 0; n < lastSpecArr.length; n++) {
                         if (lastSpecArr[n] == _specificationList[i].valueList[m].id) {
                             _specificationList[i].valueList[m]['disabled'] = false;
@@ -229,8 +220,6 @@ Page({
                 }, 1500);
             }
         })
-
-
     },
     //判断规格是否选择完整
     isCheckedAllSpec: function () {
@@ -250,8 +239,8 @@ Page({
     // 清空规格选中参数
     clearOutSku(){
         let _specificationList = this.data.specificationList;
-        _specificationList.map((obj, index, array)=>{
-            obj.valueList.map((o, indexx, arr)=>{
+        _specificationList.map((obj, index, array) => {
+            obj.valueList.map((o, indexx, arr) => {
                 o.disabled = false;
             })
         })
@@ -275,9 +264,9 @@ Page({
         let _productList = this.data.productList;
         let _goods = this.data.goods;
         let _retail_price = '';
-        for (let i = 0; i<_productList.length; i++){
+        for (let i = 0; i < _productList.length; i++) {
             let goods_specification_idsArr = _productList[i].goods_specification_ids.split('_');
-            if(goods_specification_idsArr.sort().toString()===chosedSpec.sort().toString()){
+            if (goods_specification_idsArr.sort().toString() === chosedSpec.sort().toString()) {
                 _retail_price = _productList[i].retail_price;
             }
         }
@@ -287,12 +276,12 @@ Page({
         if (checkedValue.length > 0) {
             this.setData({
                 checkedSpecText: checkedValue.join('　'),
-                goods:_goods
+                goods: _goods
             });
         } else {
             this.clearOutSku();
             let _specificationList = this.data.specificationList;
-            let _new_goods =  this.data.new_goods;
+            let _new_goods = this.data.new_goods;
             this.setData({
                 checkedSpecText: '请选择规格数量',
                 goods: _new_goods,
@@ -444,8 +433,8 @@ Page({
                 wx.showToast({
                     title: '请选择完整规格',
                     image: '/static/images/icon_error.png',
-                    success:function (res) {
-                            debugger
+                    success: function (res) {
+
                     },
                     duration: 2000
                 })
@@ -458,7 +447,7 @@ Page({
                 wx.showToast({
                     title: '该规格商品已下架!',
                     icon: 'none',
-                    success:function (res) {
+                    success: function (res) {
                         return false;
                     },
                     duration: 2000
@@ -473,14 +462,13 @@ Page({
                     title: '没有库存了~',
                     // icon: 'none',
                     image: '/static/images/icon_error.png',
-                    success:function (res) {
+                    success: function (res) {
 
                     },
                     duration: 2000
                 })
                 return false;
             }
-
             // 直接购买商品
             util.request(api.BuyAdd, {
                 goodsId: this.data.goods.id,

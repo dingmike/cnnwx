@@ -1,63 +1,13 @@
-<view class="main">
-    <view class="getinfo" wx:if="{{!userInfo}}">
-        <view class="infowarn">点击下方登录方可正常使用</view>
-        <!--<button bindgetuserinfo="getuserauth" openType="getUserInfo">登录</button>-->
-        <button bindgetuserinfo="bindGetUserInfo" open-type="getUserInfo">登录</button>
-        <!--<button wx:else openType="openSetting" bindopensetting='reAuthUser'>open setting</button>-->
-        <!--<button class="userinfo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
-            <image wx:if="{{userInfo && userInfo.avatarUrl}}" class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"></image>
-            <text class="userinfo-nickname">{{ userInfo.nickName }}</text>
-        </button>-->
+<view wx:if="{{canIUse}}">
+    <view class='header'>
+        <image src='/static/images/wx_login.png'></image>
     </view>
-    <view wx:else>
-        <view class="avatar">
-            <image src="{{userInfo.avatarUrl}}"></image>
-        </view>
-        <view style="text-align:center;">{{userInfo.nickName}}</view>
+    <view class='content'>
+        <view>申请获取以下权限</view>
+        <text>获得你的公开信息(昵称，头像等)</text>
     </view>
-
-<!--弹出层 start-->
-   <!-- <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-
-    <view class="modalDlg" wx:if="{{showModal}}">
-        <image src="/figures/logo-smile.png"/>
-        <text>欢迎来到模态对话框~</text>
-        <button bindtap="go">点我可以关掉对话框</button>
-    </view>-->
-
-    <!--使用animation属性指定需要执行的动画-->
-    <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
-
-        <!--drawer content-->
-        <view class="drawer_title">去授权</view>
-        <view class="drawer_content">
-           <!-- <view class="top grid">
-                <label class="title col-0">标题</label>
-                <input class="input_base input_h30 col-1" name="rName" value="可自行定义内容"></input>
-            </view>
-            <view class="top grid">
-                <label class="title col-0">标题</label>
-                <input class="input_base input_h30 col-1" name="mobile" value="110"></input>
-            </view>
-            <view class="top grid">
-                <label class="title col-0">标题</label>
-                <input class="input_base input_h30 col-1" name="phone" value="拒绝伸手党"></input>
-            </view>
-            <view class="top grid">
-                <label class="title col-0">标题</label>
-                <input class="input_base input_h30 col-1" name="Email" value="仅供学习使用"></input>
-            </view>
-            <view class="top bottom grid">
-                <label class="title col-0">备注</label>
-                <input class="input_base input_h30 col-1" name="bz"></input>
-            </view>-->
-            <view class="top grid">
-                <button openType="openSetting" bindopensetting='reAuthUser'>确定</button>
-            </view>
-        </view>
-        <!--<view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</view>-->
-    </view>
-    <view class="drawer_screen" wx:if="{{showModalStatus}}"></view>
-    <!--弹出层 end-->
-
+    <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+        授权登录
+    </button>
 </view>
+<view wx:else>请升级微信版本</view>

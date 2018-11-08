@@ -57,7 +57,7 @@ Page({
           freightPrice: res.data.freightPrice,
           goodsTotalPrice: res.data.goodsTotalPrice,
           orderTotalPrice: res.data.orderTotalPrice,
-          canUserIntergralsTotal: Math.ceil(res.data.orderTotalPrice*0.1) //可使用积分为总价的10%
+          canUserIntergralsTotal: Math.ceil(res.data.orderTotalPrice*0.2) //可使用积分为总价的20%
         });
       }
       wx.hideLoading();
@@ -176,8 +176,7 @@ Page({
             })
         })
     },
-  submitOrder: function () {
-        debugger
+  submitOrder() {
       if (this.data.addressId === 0) {
           util.showErrorToast('请选择收货地址');
           return false;
