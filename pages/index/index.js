@@ -107,7 +107,7 @@ Page({
                 });
             } else {
                 wx.showToast({
-                    title: "参加失败！",
+                    title: res.errmsg,
                     icon: "none"
                 });
             }
