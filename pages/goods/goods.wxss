@@ -642,15 +642,15 @@
 }
 
 .attr-pop .p{
-    font-size: 33rpx;
-    color: #333;
+    font-size: 32rpx;
+    color: #f48f18;
     height:40rpx;
     line-height:40rpx;
     margin-bottom: 10rpx;
 }
 
 .attr-pop .a{
-    font-size: 29rpx;
+    font-size:24rpx;
     color: #333;
     height: 40rpx;
     line-height: 40rpx;
