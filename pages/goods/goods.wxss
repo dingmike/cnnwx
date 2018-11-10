@@ -628,8 +628,8 @@
 
 .attr-pop .img{
     float: left;
-    height: 177rpx;
-    width: 177rpx;
+    height:166rpx;
+    width:166rpx;
     background: #f4f4f4;
     margin-right: 31.25rpx;
 }
