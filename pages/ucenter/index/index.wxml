@@ -9,7 +9,7 @@
 
 
     <view class="item main">
-      <view class="intergral-box">积分：<text style="color: orange; font-size: 40rpx;">{{intergrals}}</text></view>
+      <view class="intergral-box">能力券：<text style="color: orange; font-size: 40rpx;">{{intergrals}}</text> 张</view>
     </view>
 
 

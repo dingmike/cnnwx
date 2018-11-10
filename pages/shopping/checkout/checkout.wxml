@@ -63,7 +63,7 @@
 
         <view class="order-item no-border">
             <view class="l">
-                <text class="name">可用积分</text>
+                <text class="name">可用能力券</text>
             </view>
             <view class="r">
                 <text class="txt">{{intergrals}}</text>
@@ -73,12 +73,23 @@
 
         <view class="order-item no-border">
             <view class="l">
-                <text class="name">使用积分</text>
+                <text class="name">使用能力券</text>
             </view>
             <view class="r" style="padding-left:82px; ">
                 <wxc-counter number="0" max="{{canUserIntergralsTotal}}" min="0" color="#b4282d" bind:changenumber="onChangeNumber"></wxc-counter>
             </view>
         </view>
+
+      <!--  <view class="order-item no-border">
+            <view class="l">
+                <text class="name">使用能力券</text>
+            </view>
+            <view class="r" style="padding-left:82px; ">
+                <wxc-input type="number" mode="normal" right="{{true}}" placeholder=""></wxc-input>
+            </view>
+        </view>-->
+
+
     </view>
 
     <view class="goods-items">
