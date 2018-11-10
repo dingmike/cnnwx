@@ -1,6 +1,6 @@
 <scroll-view class="container" scroll-y="true">
   <view wx:if="{{!openAttr}}">
-    <swiper class="goodsimgs" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+    <swiper class="goodsimgs" indicatorDots="true" autoplay="true" interval="5000" duration="500">
       <swiper-item wx:for="{{gallery}}" wx:key="{{item.id}}">
         <image src="{{item.img_url}}" background-size="cover"></image>
       </swiper-item>
@@ -61,19 +61,30 @@
       </view>
     </view>
     <view class="goods-attr">
-      <view class="t">商品参数</view>
-      <view class="l">
-        <view class="item" wx:for="{{attribute}}" wx:key="{{item.name}}">
-          <text class="left">{{item.name}}</text>
-          <text class="right">{{item.value}}</text>
+      <!--<view class="t">商品参数</view>-->
+      <view class="detail_box_title">商品参数</view>
+
+        <view class="l" wx:if="{{attribute.length>0}}">
+          <view class="item" wx:for="{{attribute}}" wx:key="{{item.name}}">
+            <text class="left">{{item.name}}</text>
+            <text class="right">{{item.value}}</text>
+          </view>
         </view>
+      <view class="empty_area" wx:else>
+        暂无内容
       </view>
     </view>
 
     <view class="detail">
+      <view class="detail_box_title">商品详情</view>
    <!--   <import src="../../lib/wxParse/wxParse.wxml" />
       <template is="wxParse" data="{{wxParseData:goodsDetail.nodes}}" />-->
-      <rich-parse content="{{ goods.goods_desc }}" type="html"/>
+      <view wx:if="{{goods.goods_desc}}">
+        <rich-parse content="{{ goods.goods_desc }}" type="html"/>
+      </view>
+      <view class="empty_area" wx:if="{{!goods.goods_desc}}">
+        暂无内容
+      </view>
       <!--<rich-text nodes="{{ goods.goods_desc }}"/>-->
     </view>
 

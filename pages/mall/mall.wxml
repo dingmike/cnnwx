@@ -103,7 +103,7 @@
     </view>
   </view>-->
 
-  <view class="good-grid" wx:for="{{floorGoods}}" wx:key="{{item.id}}">
+<!--  <view class="good-grid" wx:for="{{floorGoods}}" wx:key="{{item.id}}">
     <view class="h">
       <view>
         <text>{{item.name}}</text>
@@ -126,6 +126,26 @@
           </navigator>
       </view>
     </view>
-  </view>
+  </view>-->
 
+  <view class="good-grid" wx:for="{{floorGoods}}" wx:key="{{item.id}}">
+  <view class="shop_module_floor">
+    <navigator class="shop_module_hd" url="/pages/category/category?id={{item.id}}">
+      <text class="shop_module_floor_title">{{item.name}}</text>
+      <icon class="icon_arrow" type=""></icon>
+    </navigator>
+    <view class="shop_module_bd">
+      <view class="good_list">
+        <view class="good_item" wx:for="{{item.goodsList}}" wx:for-item="product" wx:key="id">
+          <navigator url="../goods/goods?id={{product.id}}">
+            <image src="{{product.list_pic_url}}"></image>
+            <view class="title">{{product.name}}</view>
+            <text class="price">¥ {{product.retail_price}}</text>
+            <text class="sub_price">可使用能力券</text>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>
 </view>
