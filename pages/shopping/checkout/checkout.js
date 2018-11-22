@@ -67,7 +67,7 @@ Page({
           freightPrice: res.data.freightPrice,
           goodsTotalPrice: res.data.goodsTotalPrice,
           orderTotalPrice: res.data.orderTotalPrice,
-          canUserIntergralsTotal: Math.ceil(res.data.orderTotalPrice*that.data.deduction) //默认可使用积分为总价的10%
+          canUserIntergralsTotal: Math.floor(res.data.orderTotalPrice*that.data.deduction) //默认可使用能力券为总价的10%後臺可設置 向下舍入
         });
       }
       wx.hideLoading();
@@ -209,7 +209,7 @@ Page({
           });
         });
       } else {
-        util.showErrorToast('下单失败');
+        util.showErrorToast(res.errmsg);
       }
     });
   }

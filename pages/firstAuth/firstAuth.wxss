@@ -8,8 +8,8 @@
 }
 
 .header image {
-    width:170rpx;
-    height:150rpx;
+    width:154rpx;
+    height:134rpx;
 }
 
 .content {

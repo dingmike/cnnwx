@@ -21,8 +21,8 @@ page{
 .userinfo-avatar {
     display:block;
     margin:34rpx auto;
-    width:160rpx;
-    height:160rpx;
+    width:156rpx;
+    height:156rpx;
     border-radius:50%;
     text-align:center;
 }

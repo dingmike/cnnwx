@@ -28,6 +28,9 @@ Page({
         if(res.data.shippingList){
             reverseExpress = reverseExpress.reverse();
         }
+        if(!reverseExpress){
+            reverseExpress=[];
+        }
         that.setData({
           orderInfo: res.data.orderInfo,
           orderGoods: res.data.orderGoods,
@@ -184,7 +187,6 @@ Page({
         })
     },
   gotoExpress(e) {
-    debugger
         wx.navigateTo({
             url: "/pages/ucenter/express/express"
         });

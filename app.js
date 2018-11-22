@@ -61,8 +61,8 @@ App({
     },
     push: new ePush.default({
         appId: "",
-        secretId: "4d311689884e04c38a83c07eeb711adb",
-        templateId: "SdD4f6ZGVL71-BqQi8-a64htTEdFe3jwZBPufv2FsNQ",
+        secretId: "4d311689884e04c38a83c07eeb7",
+        templateId: "SdD4f6ZGVL71-BqQi8-a64htTEdFe3jwZBPufv2Fs",
         page: "pages/index/index",
         data: {
             keyword1: {

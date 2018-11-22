@@ -139,7 +139,7 @@
         <view class="good_item" wx:for="{{item.goodsList}}" wx:for-item="product" wx:key="id">
           <navigator url="../goods/goods?id={{product.id}}">
             <image src="{{product.list_pic_url}}"></image>
-            <view class="title">{{product.name}}</view>
+            <text class="title">{{product.name}}</text>
             <text class="price">¥ {{product.retail_price}}</text>
             <text class="sub_price">可使用能力券</text>
           </navigator>

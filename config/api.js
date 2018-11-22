@@ -26,14 +26,10 @@ module.exports = {
 
     Deduction: NewApiRootUrl + 'gongdu/deduction', // 能力券抵扣率
 
-
-
     GongduOrderSubmit: NewApiRootUrl + 'gdOrder/submit', // 生成共读订单
 
     UserIntergralInfo: NewApiRootUrl + 'user/getUserIntergralInfo', // 获取积分余额信息
     UserSubmitPhone: NewApiRootUrl + 'user/submitPhone', // 绑定微信和手机号
-
-
 
     IndexUrlNewGoods: NewApiRootUrl + 'index/newGoods', //新产品
     IndexUrlHotGoods: NewApiRootUrl + 'index/hotGoods', //首页数据接口
@@ -47,9 +43,6 @@ module.exports = {
 
     CatalogList: NewApiRootUrl + 'catalog/index',  //分类目录全部分类数据接口
     CatalogCurrent: NewApiRootUrl + 'catalog/current',  //分类目录当前分类数据接口
-
-
-
 
     AuthLoginByWeixin: NewApiRootUrl + 'auth/login_by_weixin', //微信登录
 
@@ -72,8 +65,6 @@ module.exports = {
     CartChecked: NewApiRootUrl + 'cart/checked', // 选择或取消选择商品
     CartGoodsCount: NewApiRootUrl + 'cart/goodscount', // 获取购物车商品件数
     CartCheckout: NewApiRootUrl + 'cart/checkout', // 下单前信息确认
-
-
 
 
     BuyCheckout: NewApiRootUrl + 'buy/checkout', // 下单前信息确认
@@ -125,9 +116,4 @@ module.exports = {
     OrderSuccess: NewApiRootUrl + 'order/updateSuccess',
     /*newscnn learning api*/
     // ReadRecord: NewApiRootUrl + 'newscnn/recordList'   // 用户阅读列表
-
-
-
-
-
 };

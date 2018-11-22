@@ -20,25 +20,19 @@ Page({
 
     },
     onShow: function () {
-
-        debugger
         let that=this;
         user.checkLogin().then(res => {
             //已经登录
-            debugger
             if(res){
                 that.userIntergralInfo();
                 return
             }
-
         }).catch((err) => {
             // 未登录
             wx.navigateTo({
                 url: "/pages/firstAuth/firstAuth"
             })
         });
-
-
         wx.setNavigationBarTitle({
             title: "我的"
         });
