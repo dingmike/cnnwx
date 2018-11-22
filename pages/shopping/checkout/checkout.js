@@ -23,7 +23,8 @@ Page({
     isBuy: false,
     couponDesc: '',
     couponCode: '',
-    buyType: ''
+    buyType: '',
+    deduction:0.1 // 默认抵扣率
   },
   onLoad: function (options) {
 
@@ -37,8 +38,17 @@ Page({
     app.globalData.userCoupon = 'NO_USE_COUPON';
     app.globalData.courseCouponCode = {};
     this.getUserIntergrals();
+    this.getDeduction();
   },
-  
+  getDeduction:function () {
+      let that = this;
+      util.request(api.Deduction).then(function (res) {
+          console.log(res.data)
+          that.setData({
+              deduction: res.data
+          })
+      })
+  },
   getCheckoutInfo: function () {
     let that = this;
     var url = api.CartCheckout;
@@ -57,7 +67,7 @@ Page({
           freightPrice: res.data.freightPrice,
           goodsTotalPrice: res.data.goodsTotalPrice,
           orderTotalPrice: res.data.orderTotalPrice,
-          canUserIntergralsTotal: Math.ceil(res.data.orderTotalPrice*0.2) //可使用积分为总价的20%
+          canUserIntergralsTotal: Math.ceil(res.data.orderTotalPrice*that.data.deduction) //默认可使用积分为总价的10%
         });
       }
       wx.hideLoading();
@@ -77,7 +87,7 @@ Page({
         if(e.detail.number===this.data.canUserIntergralsTotal){
             wx.showModal({
                 title: '',
-                content: '该订单使用积分上限为'+this.data.canUserIntergralsTotal+'！',
+                content: '该订单能力券最多使用 '+this.data.canUserIntergralsTotal+' 张！',
                 showCancel: false,
                 confirmText: '好的',
                 success: function (res) {

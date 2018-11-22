@@ -47,7 +47,7 @@
     </view>
 
     <view class="{{showSetCardBtn&&listPage===0?'bottom-btn-show':'bottom-btn'}}">
-        <view class="c" bindtap='showNewsCard'>打卡得积分</view>
+        <view class="c" bindtap='showNewsCard'>打卡得能力券</view>
     </view>
 
     <wxc-popup class="J_Popup" animation-mode="center" align="center">

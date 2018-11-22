@@ -24,6 +24,9 @@ module.exports = {
 
     AddFormId: NewApiRootUrl + 'gongdu/addFormId', // 添加formID
 
+    Deduction: NewApiRootUrl + 'gongdu/deduction', // 能力券抵扣率
+
+
 
     GongduOrderSubmit: NewApiRootUrl + 'gdOrder/submit', // 生成共读订单
 

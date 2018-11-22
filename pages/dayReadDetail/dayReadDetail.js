@@ -73,6 +73,7 @@ Page({
     getTodayNews(t){
         var i = this;
         util.request(api.GetTodayNews).then(res => {
+
             if (res.data.haveReaded >= 1) {
                 wx.showModal({
                     title: '提示',
@@ -85,7 +86,19 @@ Page({
                         })
                     }
                 })
-            } else {
+            } else if(res.data.haveReaded<0) {
+                wx.showModal({
+                    title: '提示',
+                    content: '文章还未就绪，请稍后！',
+                    showCancel: false,
+                    confirmText: '返回',
+                    complete () {
+                        wx.navigateBack({
+                            delta: 1
+                        })
+                    }
+                })
+            }else{
                 var t = [], s = [], content = [];
                 res.data.todayNews.addTime = util.tsFormatTime(res.data.todayNews.addTime, 'Y-M-D');
                 // res.data.newsDetail =  res.data.newsDetail.replace('/\<img/g', '<img style="width:100%;height:auto;display:block" ');
@@ -156,28 +169,50 @@ Page({
             useTime: that.data.useTime / 1000,
             learnTypeId: t.globalData.learnTypeId2
         }, 'POST').then(res => {
-            if (res.data === 1) {
+            if (res.data.status === 1) {
                 that.setData({
                     showSetCardBtn: false
                 });
-                wx.showModal({
-                    title: '打卡成功',
-                    content: '学习用时' + (that.data.useTime / 1000 / 60).toFixed(2) + '分钟,获得1积分',
-                    showCancel: true,
-                    cancelText: '返回',
-                    confirmText: '去换东西',
-                    success: function (res) {
-                        if (res.confirm) {
-                            wx.switchTab({
-                                url: "/pages/mall/mall"
-                            });
-                        } else if (res.cancel) {
-                            wx.navigateBack({
-                                delta: 1
-                            })
+                if(res.data.intergrals){
+                    wx.showModal({
+                        title: '打卡成功',
+                        content: '学习用时' + (that.data.useTime / 1000 / 60).toFixed(2) + '分钟,获得'+res.data.intergrals+'张能力券',
+                        showCancel: true,
+                        cancelText: '返回',
+                        confirmText: '去换东西',
+                        success: function (res) {
+                            if (res.confirm) {
+                                wx.switchTab({
+                                    url: "/pages/mall/mall"
+                                });
+                            } else if (res.cancel) {
+                                wx.navigateBack({
+                                    delta: 1
+                                })
+                            }
                         }
-                    }
-                });
+                    });
+                }else{
+                    wx.showModal({
+                        title: '打卡成功',
+                        content: '学习用时' + (that.data.useTime / 1000 / 60).toFixed(2) + '分钟,学习不认真，没有券！',
+                        showCancel: true,
+                        cancelText: '返回',
+                        confirmText: '去换东西',
+                        success: function (res) {
+                            if (res.confirm) {
+                                wx.switchTab({
+                                    url: "/pages/mall/mall"
+                                });
+                            } else if (res.cancel) {
+                                wx.navigateBack({
+                                    delta: 1
+                                })
+                            }
+                        }
+                    });
+                }
+
             }
         })
     }
