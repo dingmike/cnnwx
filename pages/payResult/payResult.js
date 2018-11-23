@@ -14,7 +14,7 @@ Page({
       orderId: options.orderId || 24,
       status: options.status
     })
-    this.updateSuccess()
+    // this.updateSuccess()
   },
   onReady: function () {
 

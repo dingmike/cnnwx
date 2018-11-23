@@ -10,7 +10,6 @@ Page({
         });
     },
     imgLoad: function(n) {
-        debugger
         wx.hideLoading();
     },
     continueStudy: function() {

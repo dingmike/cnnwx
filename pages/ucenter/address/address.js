@@ -28,7 +28,6 @@ Page({
     });
   },
   addressAddOrUpdate (event) {
-    debugger
     console.log(event)
     wx.navigateTo({
       url: '/pages/ucenter/addressAdd/addressAdd?id=' + event.currentTarget.dataset.addressId

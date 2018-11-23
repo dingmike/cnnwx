@@ -6,7 +6,7 @@
                 <text class="detail-title">{{pageDetail[0].title}}</text>
                 <view class="detail-published">{{pageDetail[0].addTime}}</view>
             </view>
-            <button bindtap="showPopup">居中，有动画</button>
+            <!--<button bindtap="showPopup">居中，有动画</button>-->
             <view class="detail-content">
                <!-- <view class="detailWxparse">
                     <rich-parse content="{{ pageDetail[0].newsDetail }}" type="html"/>

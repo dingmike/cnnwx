@@ -247,7 +247,6 @@ Page({
             if (res.errno === 0) {
                 that.setData({
                     regionList: res.data.map(item => {
-
                         //标记已选择的
                         if (regionType == item.type && that.data.selectRegionList[regionType - 1].id == item.id) {
                             item.selected = true;
@@ -315,7 +314,6 @@ Page({
             countyName: address.district_name,
             detailInfo: address.detailInfo,
         }, 'POST').then(function (res) {
-            debugger
             if (res.errno === 0) {
                 try {
                     wx.setStorageSync('addressId', res.data.id);
