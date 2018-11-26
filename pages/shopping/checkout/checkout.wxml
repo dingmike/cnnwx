@@ -75,7 +75,7 @@
             <view class="l">
                 <text class="name">使用能力券</text>
             </view>
-            <view class="r" style="padding-left:82px; ">
+            <view class="r" style="padding-left:172rpx; ">
                 <wxc-counter number="0" max="{{canUserIntergralsTotal}}" min="0" color="#b4282d" bind:changenumber="onChangeNumber"></wxc-counter>
             </view>
         </view>

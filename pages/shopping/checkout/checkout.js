@@ -37,7 +37,7 @@ Page({
     //每次重新加载界面，清空数据
     app.globalData.userCoupon = 'NO_USE_COUPON';
     app.globalData.courseCouponCode = {};
-    this.getUserIntergrals();
+
     this.getDeduction();
   },
   getDeduction:function () {
@@ -84,10 +84,16 @@ Page({
     })
   },
     onChangeNumber (e) {
+      //
+        if(this.data.canUserIntergralsTotal>this.data.intergrals){
+            this.setData({
+                canUserIntergralsTotal: this.data.intergrals,
+            })
+        }
         if(e.detail.number===this.data.canUserIntergralsTotal){
             wx.showModal({
                 title: '',
-                content: '该订单能力券最多使用 '+this.data.canUserIntergralsTotal+' 张！',
+                content: '该订单最多使用 '+this.data.canUserIntergralsTotal+' 张能力券！',
                 showCancel: false,
                 confirmText: '好的',
                 success: function (res) {
@@ -102,17 +108,34 @@ Page({
 
         if(e.detail.type==='add'){
             actualTotalPrice = this.data.actualPrice-1;
-            canUserIntergrals = this.data.intergrals-1;
+            // canUserIntergrals = this.data.intergrals-1;
         }else{
             actualTotalPrice = this.data.actualPrice+1;
-            canUserIntergrals = this.data.intergrals+1;
+            // canUserIntergrals = this.data.intergrals+1;
         }
 
-    this.setData({
-        actualPrice: actualTotalPrice,
-        intergrals: canUserIntergrals,
-        realUserIntergrals: e.detail.number
-    })
+        this.setData({
+            actualPrice: actualTotalPrice,
+            // intergrals: canUserIntergrals,
+            realUserIntergrals: e.detail.number
+        })
+        console.log(this.data.intergrals)
+       /* if(this.data.intergrals<=0){
+            this.setData({
+                canUserIntergralsTotal:canUserIntergrals
+            })
+            wx.showModal({
+                title: '',
+                content: '没有更多能力券了！',
+                showCancel: false,
+                confirmText: '好的',
+                success: function (res) {
+                    if (res.confirm) {
+                        console.log('用户点击确定')
+                    }
+                }
+            })
+        }*/
 
     },
   onReady: function () {
@@ -141,6 +164,7 @@ Page({
       // Do something when catch error
       util.showErrorToast('系统错误，请联系管理员');
     }
+      this.getUserIntergrals();
       this.getCheckoutInfo();
   },
 
@@ -179,7 +203,7 @@ Page({
         url: '../selCoupon/selCoupon?buyType=' + that.data.buyType,
       })
   },
-    getUserIntergrals(){
+  getUserIntergrals(){
         util.request(api.UserIntergralInfo, { uid: wx.getStorageSync("openid") }, 'POST').then(res => {
             this.setData({
                 intergrals: res.data.intergrals
