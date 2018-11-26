@@ -179,6 +179,9 @@ page{
     line-height: 62rpx;
     overflow: hidden;
 }
+.own-changer{
+    padding-left:170rpx;
+}
 
 .order-box .order-item.no-border{
     border-bottom: none;
