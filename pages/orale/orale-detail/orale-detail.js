@@ -26,7 +26,7 @@ Page({
         this.setData({
             type: t.globalData.type
         });
-        var e = t.globalData.userInfo.avatar;
+        var e = t.globalData.userInfo.avatarUrl;
         this.setData({
             avatarUrl: e
         });

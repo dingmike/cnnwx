@@ -1,8 +1,8 @@
-::-webkit-scrollbar{
+/*::-webkit-scrollbar{
   width: 0;
   height: 0;
   color: transparent;
-}
+}*/
 .container {
   box-sizing: border-box;
   /*background-color: #f4f4f4;*/

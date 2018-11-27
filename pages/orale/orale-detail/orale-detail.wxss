@@ -204,7 +204,7 @@ page {
     height: 70rpx;
     background-color: #fff;
     right: 20rpx;
-    background-image: url('http://pc5e9xq7v.bkt.clouddn.com//1/20180905/160730963ce3d7.png');
+    background-image: url('http://bkcdn.fecstec.com/1/20180905/160730963ce3d7.png');
     background-size: 100% 100%;
 }
 

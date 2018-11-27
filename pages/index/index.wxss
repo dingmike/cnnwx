@@ -122,8 +122,8 @@ page {
 
 .index_invite {
     /*background-image: url(https://wuhoucdn.oss-cn-hangzhou.aliyuncs.com/read_poem/img/index_invite.png);*/
-    /*background-image: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180822/1128075676f24.png);*/
-    background-image: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180822/11435754799e2c.png);
+    /*background-image: url(http://bkcdn.fecstec.com1/20180822/1128075676f24.png);*/
+    background-image: url(http://bkcdn.fecstec.com/1/20180822/11435754799e2c.png);
     width:49rpx;
     height:49rpx;
     background-size:100% 100%;

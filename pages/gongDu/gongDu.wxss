@@ -118,7 +118,7 @@ page {
 }
 
 .index_invite {
-    background-image: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180822/11435754799e2c.png);
+    background-image: url(http://bkcdn.fecstec.com/1/20180822/11435754799e2c.png);
     width:48rpx;
     height:48rpx;
     background-size:100% 100%;
@@ -154,14 +154,6 @@ page {
     height: 300rpx;
 }
 
-.kefu-btn {
-    width: 150rpx;
-    height: 60rpx;
-    border-radius: 50px 0 0 50px;
-    font-size: 13px;
-    background: url('https://riyubao.net/oralproject/public/datas/img/logo2.jpg') no-repeat;
-    background-size: 100% 100%;
-}
 
 button::after {
     border: none;

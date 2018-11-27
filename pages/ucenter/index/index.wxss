@@ -115,64 +115,64 @@ page{
 
 .user-menu .icon.order{
     /*background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -437.5rpx no-repeat;*/
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180810/1301238781135a.png) center no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180810/1301238781135a.png) center no-repeat;
     background-size: 52.803rpx;
 }
 
 .user-menu .icon.coupon{
     /*background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -62.4997rpx no-repeat;*/
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180810/1323486196e3e.png) center no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180810/1323486196e3e.png) center no-repeat;
     background-size: 52.803rpx;
 }
 
 .user-menu .icon.daka{
     /*background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -187.5rpx no-repeat;*/
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180810/125812441e6709.png) center no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180810/125812441e6709.png) center no-repeat;
     background-size: 52.803rpx;
 }
 
 
 .user-menu .icon.gift{
     /*background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -187.5rpx no-repeat;*/
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180810/125812441e6709.png) center no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180810/125812441e6709.png) center no-repeat;
     background-size: 52.803rpx;
 }
 .user-menu .icon.collect{
     /*background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -187.5rpx no-repeat;*/
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180810/1303216991e85b.png) center no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180810/1303216991e85b.png) center no-repeat;
     background-size: 52.803rpx;
 }
 .user-menu .icon.footprint{
     /*background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -187.5rpx no-repeat;*/
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180810/13091846488f9f.png) center no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180810/13091846488f9f.png) center no-repeat;
     background-size: 52.803rpx;
 }
 
 .user-menu .icon.address{
     /*background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 0 no-repeat;*/
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180810/13110547069093.png) center no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180810/13110547069093.png) center no-repeat;
     background-size: 52.803rpx;
 }
 
 .user-menu .icon.security{
-    background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -500rpx no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20181127/151456284555dd.png) 0 -500rpx no-repeat;
     background-size: 52.803rpx;
 }
 
 .user-menu .icon.kefu{
     /*background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -312.5rpx no-repeat;*/
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180810/13130580960575.png) center no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180810/13130580960575.png) center no-repeat;
     background-size: 52.803rpx;
 }
 
 .user-menu .icon.help{
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180810/131932792e5b97.png) center no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180810/131932792e5b97.png) center no-repeat;
     background-size: 52.803rpx;
 }
 
 .user-menu .icon.feedback{
     /*background: url(http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/sprites/ucenter-sdf6a55ee56-f2c2b9c2f0.png) 0 -125rpx no-repeat;*/
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180810/132150558f2ee8.png) center no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180810/132150558f2ee8.png) center no-repeat;
     background-size: 52.803rpx;
 }
 .user-menu .icon.phone{

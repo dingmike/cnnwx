@@ -3,8 +3,8 @@
   <view class="main-head-avator">
 
     <view class="item side">
-      <image wx:if="{{userInfo && userInfo.avatar}}" class="userinfo-avatar" src="{{ userInfo.avatar }}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{ userInfo.nickname }}</text>
+      <image wx:if="{{userInfo && userInfo.avatarUrl}}" class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{ userInfo.nickName }}</text>
     </view>
 
 

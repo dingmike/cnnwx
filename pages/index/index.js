@@ -61,7 +61,7 @@ Page({
             }
         }
         this.getIndexData(1);
-        this.getCnnIndexTypeTwo(2); //learnTypeId=0
+
 
         this._onLoad(); // 提前
     },
@@ -150,6 +150,7 @@ Page({
         if (wx.getStorageSync('openid')) {
             this.getLearnInfo();
         }
+        this.getCnnIndexTypeTwo(2); //learnTypeId=0
     },
     onReady: function () {
         // 页面渲染完成

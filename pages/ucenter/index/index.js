@@ -45,7 +45,7 @@ Page({
             app.globalData.token = token;
         }
 
-        this.setData({
+        that.setData({
             userInfo: app.globalData.userInfo,
         });
 

@@ -1,7 +1,7 @@
 <view class="headImg">
-    <image class="headImg-img" src="{{userInfo.avatar}}"></image>
+    <image class="headImg-img" src="{{userInfo.avatarUrl}}"></image>
     <view class="head-title">
-        <text style="color:#fff;">{{userInfo.nickname}}</text>
+        <text style="color:#fff;">{{userInfo.nickName}}</text>
     </view>
 </view>
 <view class="container">

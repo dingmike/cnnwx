@@ -41,13 +41,13 @@ page{
     height: 40rpx;
     padding-left: 50rpx;
     line-height: 40rpx;
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180813/151418761b2f3e.png) 1rpx -447rpx no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180813/151418761b2f3e.png) 1rpx -447rpx no-repeat;
     background-size: 38rpx 486rpx;
     font-size: 28rpx;
 }
 
 .default-input.selected{
-    background: url(http://pc5e9xq7v.bkt.clouddn.com//1/20180813/151418761b2f3e.png) 0 -191rpx no-repeat;
+    background: url(http://bkcdn.fecstec.com/1/20180813/151418761b2f3e.png) 0 -191rpx no-repeat;
     background-size: 38rpx 486rpx;
 }
 

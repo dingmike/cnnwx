@@ -213,7 +213,12 @@ Page({
                         o.setData({
                             showModalStatus: false
                         });
-                        o.updateSuccess();
+
+                        wx.reLaunch({
+                            url: "/pages/submitInfo/submitInfo"
+                        })
+                        //查询订单状态
+                       // o.updateSuccess();
                         // wx.hideLoading();
                     }
 
