@@ -10,7 +10,6 @@ var ePush = function(e) {
 
 App({
     onLaunch: function () {
-
         //-------------
         //获取小程序更新机制兼容
         if (wx.canIUse('getUpdateManager')) {
@@ -47,7 +46,6 @@ App({
             })
         }
 
-
         //-----------------
 
 
@@ -62,7 +60,8 @@ App({
          }
          });*/
         //获取用户的登录信息
-        user.checkLogin().then(res => {
+       /* user.checkLogin().then(res => {
+            debugger
             this.globalData.userInfo = wx.getStorageSync('userInfo');
             this.globalData.token = wx.getStorageSync('token');
             //由于这里是网络请求，可能会在 Page.onLoad 之后才返回
@@ -74,7 +73,7 @@ App({
         }).catch(() => {
             wx.removeStorageSync('userInfo');
             wx.removeStorageSync('token');
-        });
+        });*/
     },
 
     globalData: {
@@ -85,7 +84,8 @@ App({
         learnTypeId2: 2,// 每日阅读计划
         type: "21天英语学习达人养成计划",
         img: "/images/item/ly.png",
-        bgimg: "/static/image/logos/123.jpg",
+        bgimg: "/static/image/logos/1-3.jpg",
+        // bgimg: "http://bkcdn.fecstec.com/1/20181127/160558808fc56.jpg",
         coimg: "/images/coimg/ly.jpg",
         detailImg: [],
         ifFree: "1",
@@ -94,8 +94,8 @@ App({
 
         // userInfo: '',
          userInfo: {
-         nickName: 'Hi,游客',
-         avatarUrl: 'http://p9kyr79ne.bkt.clouddn.com/1/20180531/150547696d798c.png'
+         nickName: '游客你好',
+         avatarUrl: 'http://bkcdn.fecstec.com/1/20181127/161640315dc4f1.png'
          },
         token: '',
         userCoupon: 'NO_USE_COUPON',//默认不适用优惠券

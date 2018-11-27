@@ -37,7 +37,7 @@ Page({
             phoneHeight: o
         });
         wx.downloadFile({
-            url: e.globalData.userInfo.avatar,
+            url: e.globalData.userInfo.avatarUrl,
             success: function (res) {
                 if (200 === res.statusCode) {
                     a.setData({
@@ -80,7 +80,7 @@ Page({
                 template: {
                     width: aThis.data.phoneWidth * 2 + 'rpx',
                     height: aThis.data.phoneHeight * 2 + 'rpx',
-                    // background: '/static/image/logos/123.jpg',
+                    // background: '/static/image/logos/1-3.jpg',
                     background: e.globalData.bgimg,
                     views: [
                        /* {
@@ -108,7 +108,7 @@ Page({
                         {
                             type: 'image',
                             // url: aThis.data.avatorUrl,
-                            url: e.globalData.userInfo.avatar,
+                            url: e.globalData.userInfo.avatarUrl,
                             css: {
                                 width: '100rpx',
                                 height: '100rpx',
