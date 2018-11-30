@@ -22,18 +22,14 @@ Page({
         nomore: false,
         totalPages: 1,
         cnnNewsList:[],
+        userReaded:[],
         showbg: !1,
         canIUse: wx.canIUse("button.open-type.getUserInfo"),
         btnDisabled: true,
         btnText: '去阅读打卡',
         style: 'width: 222rpx;background: #58b406;border-radius: 66rpx;color: #fff;',
-        style2: 'width: 222rpx;background: #58b406;margin-left:252rpx; border-radius: 66rpx;color: #fff;',
     },
-    onShow(){
-        wx.setNavigationBarTitle({
-            title: "已打卡文章"
-        });
-    },
+
     onLoad: function() {
         var a = this;
         wx.getSystemInfo({
@@ -45,6 +41,41 @@ Page({
         });
         a.getNewsList();
     },
+    onShow(){
+        wx.setNavigationBarTitle({
+            title: "全部文章"
+        });
+        // this.getAllUserReadNewsId();
+    },
+    getAllUserReadNewsId(allNews){
+        let that =this;
+        util.request(api.GetAllReadNewsId, {uid: wx.getStorageSync('openid')}).then( res =>{
+            if(res.errno===0&&res.data){
+                console.log(res.data);
+                allNews.data.map((item, index, arr) => {
+                    res.data.some((item2, index2, arr2)=>{
+                        if(item2==item.id){
+                            allNews.data[index].isReaded= true;
+                            return true;
+                        }else{
+                            allNews.data[index].isReaded= false;
+                        }
+                    })
+                })
+
+                that.setData({
+                    cnnNewsList: that.data.cnnNewsList.concat(allNews.data),
+                    page: allNews.currentPage+1,
+                    totalPages: allNews.totalPages
+                })
+
+
+                that.setData({
+                    userReaded: res.data
+                });
+            }
+        })
+    },
     getNewsList(){
         let that = this;
         if (that.data.totalPages <= that.data.page-1) {
@@ -53,21 +84,24 @@ Page({
             });
             return;
         }
-        util.request(api.GetReadNewsByUserId, {uid: wx.getStorageSync('openid'),page: that.data.page, size: that.data.size}).then( res =>{
+        //获取全部文章
+        util.request(api.GetAllNews, {uid: wx.getStorageSync('openid'),page: that.data.page, size: that.data.size}).then( res =>{
             if(res.errno===0&&res.data){
                 if(res.data.data.length!==0){
                     res.data.data.map((obj,index,array)=>{
                         obj.addTime=util.tsFormatTime(obj.addTime,'Y-M-D');
-                    })
-                    that.setData({
-                        // listTitle:'已打卡文章',
+                    });
+
+                    that.getAllUserReadNewsId(res.data);
+
+                   /* that.setData({
                         cnnNewsList: that.data.cnnNewsList.concat(res.data.data),
                         page: res.data.currentPage+1,
                         totalPages: res.data.totalPages
-                    })
+                    })*/
                 }else{
                     that.setData({
-                        listTitle:'还没有学习过的文章'
+                        listTitle:'空空如也~'
                     })
                 }
             }
@@ -81,8 +115,16 @@ Page({
         this.getNewsList()
     },
     detailPage: function(t) {
+        debugger
+        let listPage='1';
+        if(t.currentTarget.dataset.readed){
+            listPage='1';
+        }else{
+            listPage='0';
+        }
+        //1 已读文章无法打卡 0可以打卡
         wx.navigateTo({
-            url: "../dayReadDetail/dayReadDetail?listPage=1&pageId=" + t.currentTarget.dataset.value
+            url: "../dayReadDetail/dayReadDetail?today=0&listPage="+ listPage + "&pageId=" + t.currentTarget.dataset.value
         });
     },
     push: function(t) {
@@ -101,14 +143,11 @@ Page({
     },
     //去阅读当天的打卡内容
     goReadToday(){
+
+
+
         wx.navigateTo({
-            url: "../dayReadDetail/dayReadDetail?listPage=0&today=1"
-        });
-    },
-    //去全部文章列表
-    goAllNews(){
-        wx.navigateTo({
-            url: "/pages/dayCanReadList/dayCanReadList"
+            url: "../dayReadDetail/dayReadDetail?listPage=0"
         });
     }
 });

@@ -1,24 +1,23 @@
 <view class="wrap">
     <view class="main">
         <view class="section">
-            <view class="category">
-                <!--<text class="category-title">去打卡</text>-->
-                <!--<button bindtap="goReadToday" class="btn" disabled="{{btnDisabled}}">{{btnText}}</button>-->
+           <!-- <view class="category">
+                &lt;!&ndash;<text class="category-title">去打卡</text>&ndash;&gt;
+                &lt;!&ndash;<button bindtap="goReadToday" class="btn" disabled="{{btnDisabled}}">{{btnText}}</button>&ndash;&gt;
                 <wxc-cc class="part-in-btn" style="background-color:#fff;">
                     <wxc-button btnStyle="{{style}}" bindtap="goReadToday">{{btnText}} <wxc-icon color="#fff" type="arrow-right"></wxc-icon></wxc-button>
-                    <wxc-button btnStyle="{{style2}}" bindtap="goAllNews">全部文章<wxc-icon color="#fff" type="arrow-right"></wxc-icon></wxc-button>
                 </wxc-cc>
-            </view>
+            </view>-->
             <!--<view class="category-article-title"><text>{{listTitle}}</text></view>-->
             <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}};">
 
-                <view bindtap="detailPage" data-value="{{item.newsid}}" wx:for="{{cnnNewsList}}" wx:for-item="item" wx:key="{{item.id}}">
+                <view bindtap="detailPage" data-value="{{item.id}}" data-readed="{{item.isReaded}}" wx:for="{{cnnNewsList}}" wx:for-item="item" wx:key="{{item.id}}">
                     <form-push bindformpush="push">
                         <view class="news-item {{index!=cnnNewsList.length-1?'news-item-border':''}}">
                             <view class="item-left">
                                 <view class="title">{{item.title}}</view>
                                 <view class="descript">{{item.descript}}</view>
-                                <view class="detail-published">{{item.addTime}} 阅读用时:{{item.useTime}} s</view>
+                                <view class="detail-published">{{item.addTime}}  <span style="color: #ff9800">{{item.isReaded?'':'还没打卡'}}</span></view>
                             </view>
                             <view class="item-right">
                                 <view class="item-right-img">

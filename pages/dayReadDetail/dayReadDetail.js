@@ -66,8 +66,14 @@ Page({
             //列表文章查看
             i.getNewsDetail(t);
         } else {
+            if(t.today == 1){
+                i.getTodayNews(t);
+            }else{
+                i.getNewsDetail(t);
+            }
             //当天打卡文章
-            i.getTodayNews(t);
+            // i.getTodayNews(t);
+
         }
     },
     getTodayNews(t){
@@ -120,6 +126,7 @@ Page({
         })
     },
     getNewsDetail(t){
+        debugger
         var i = this;
         i.setData({
             newsId: t.pageId,

@@ -17,6 +17,11 @@ module.exports = {
     GetOneCard: NewApiRootUrl + 'gongdu/getOneCard', //每天打卡
     SetRemindTime: NewApiRootUrl + 'gongdu/setRemindTime', //设置提醒时间 /api/gdOrder
     GetReadNewsByUserId: NewApiRootUrl + 'gongdu/getReadNewsByUserId', // 获取用户阅读的文章
+    GetAllNews: NewApiRootUrl + 'gongdu/getAllNews', // 获取全部文章
+    GetAllReadNewsId: NewApiRootUrl + 'gongdu/getAllReadNewsId', // 获取全部已读文章ID数组
+
+
+
     GetNewsById: NewApiRootUrl + 'gongdu/getNewsById', // 获取用户阅读的文章
     SetNewsCard: NewApiRootUrl + 'gongdu/setNewsCard', // 用户打卡阅读的文章
     GetTodayNews: NewApiRootUrl + 'gongdu/getTodayNews', // 当天打卡阅读的文章
