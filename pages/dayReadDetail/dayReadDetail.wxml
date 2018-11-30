@@ -6,7 +6,7 @@
                 <text class="detail-title">{{pageDetail[0].title}}</text>
                 <view class="detail-published">{{pageDetail[0].addTime}}</view>
             </view>
-            <!--<button bindtap="showPopup">居中，有动画</button>-->
+            <button bindtap="voiceEnd">居中，有动画</button>
             <view class="detail-content">
                <!-- <view class="detailWxparse">
                     <rich-parse content="{{ pageDetail[0].newsDetail }}" type="html"/>
@@ -46,10 +46,15 @@
         </view>
     </view>
 
-    <view class="{{showSetCardBtn&&listPage===0?'bottom-btn-show':'bottom-btn'}}">
+    <view class="{{showSetCardBtn&&listPage==0?'bottom-btn-show':'bottom-btn'}}">
         <view class="c" bindtap='showNewsCard'>打卡得能力券</view>
     </view>
-
+<!--    <view class="{{true?'bottom-btn-show':'bottom-btn'}}">
+        <view class="c" bindtap='showNewsCard'>打卡得能力券</view>
+    </view>-->
+    <!--<view class="{{showSetCardBtn?'bottom-btn-show':'bottom-btn'}}">
+        <view class="c" bindtap='showNewsCard'>打卡得能力券</view>
+    </view>-->
     <wxc-popup class="J_Popup" animation-mode="center" align="center">
         <view class="popup-content">
             <icon class="popup-icon" type="success" size="40" color="green"/>

@@ -123,9 +123,7 @@ Page({
                         code: res.code,
                         userInfo: e.detail
                     }, 'POST', 'application/json').then(res => {
-                        debugger
                         if (res.errno === 0) {
-                            debugger
                             //存储用户信息
                             wx.setStorageSync('userInfo', res.data.userInfo);
                             wx.setStorageSync('token', res.data.token);

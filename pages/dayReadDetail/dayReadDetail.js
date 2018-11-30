@@ -38,17 +38,17 @@ Page({
         t.push.add(a);
     },
     voiceEnd: function (a) {
-        var t = this;
-        if (t.data.listPage == 0) {
-            t.setData({
-                showSetCardBtn: !0,
-                showCardBtn: !0
+        var that = this;
+        if (that.data.listPage == 0) {
+            that.setData({
+                showSetCardBtn: true,
+                showCardBtn: true
             });
         }
         //关闭音频
         let d = wx.createAudioContext("viode0");
         d.pause();
-        t.setData({
+        that.setData({
             voiceList: [false]
         });
         // t.showPopup();
@@ -83,13 +83,20 @@ Page({
             if (res.data.haveReaded >= 1) {
                 wx.showModal({
                     title: '提示',
-                    content: '今天已经打过卡了',
+                    content: '今天的文章已经打过卡了,可以去查看全部文章补卡',
                     showCancel: false,
+                    cancelText: '补卡',
                     confirmText: '返回',
-                    complete () {
-                        wx.navigateBack({
-                            delta: 1
-                        })
+                    success: function (res) {
+                        if (res.confirm) {
+                            wx.navigateBack({
+                                delta: 1
+                            })
+                        } else if (res.cancel) {
+                            wx.navigateTo({
+                                url: "/pages/dayCanReadList/dayCanReadList"
+                            });
+                        }
                     }
                 })
             } else if(res.data.haveReaded<0) {
@@ -126,7 +133,6 @@ Page({
         })
     },
     getNewsDetail(t){
-        debugger
         var i = this;
         i.setData({
             newsId: t.pageId,
