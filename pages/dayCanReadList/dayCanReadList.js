@@ -115,7 +115,6 @@ Page({
         this.getNewsList()
     },
     detailPage: function(t) {
-        debugger
         let listPage='1';
         if(t.currentTarget.dataset.readed){
             listPage='1';
