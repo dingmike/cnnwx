@@ -47,7 +47,10 @@
                 </wxc-cc>
             </view>
         </wxc-panel>
-        <!--<ad unit-id="adunit-a7d99fd7f13756b2"></ad>-->
+        <wxc-panel border="{{true}}" margin="{{true}}" >
+            <ad unit-id="adunit-a7d99fd7f13756b2"></ad>
+        </wxc-panel>
+
     </view>
 
 

@@ -10,7 +10,6 @@
             </view>-->
             <!--<view class="category-article-title"><text>{{listTitle}}</text></view>-->
             <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}};">
-
                 <view bindtap="detailPage" data-value="{{item.id}}" data-readed="{{item.isReaded}}" wx:for="{{cnnNewsList}}" wx:for-item="item" wx:key="{{item.id}}">
                     <form-push bindformpush="push">
                         <view class="news-item {{index!=cnnNewsList.length-1?'news-item-border':''}}">
