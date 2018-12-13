@@ -12,7 +12,7 @@
             <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:{{scrollHeight}};">
                 <view bindtap="detailPage" data-value="{{item.id}}" data-readed="{{item.isReaded}}" wx:for="{{cnnNewsList}}" wx:for-item="item" wx:key="{{item.id}}">
                     <form-push bindformpush="push">
-                        <view class="news-item {{index!=cnnNewsList.length-1?'news-item-border':''}}">
+                        <view wx:if="{{item.isUse==1}}" class="news-item {{index!=cnnNewsList.length-1?'news-item-border':''}}">
                             <view class="item-left">
                                 <view class="title">{{item.title}}</view>
                                 <view class="descript">{{item.descript}}</view>
