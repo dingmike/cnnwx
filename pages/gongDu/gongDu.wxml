@@ -25,7 +25,7 @@
                 </view>
                 <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
                     <view class="punchTime-set">
-                        <text class="card-time-box">打卡时间：05:00 - 10:00</text>
+                        <text class="card-time-box">打卡时间：02:00 - 24:00</text>
                         <picker bindchange="bindTimeChange" end="24:00" mode="time" name="setupTime" start="05:00" value="{{single.setupTime}}">
                             <text style="border: 1px solid #58b406; border-radius: 4px; background: #58b406; width: 100px;height: 30px; line-height: 30px;padding: 2px 4px; color: #fff;">设置提醒</text>
                             <text style="font-weight: 400">  {{single.setupTime}}</text>
@@ -72,7 +72,7 @@
             <view class="introduce-join">
                 <view class="introduce-join-text" bindtap="bindExplain">
                     <text>【21天英语学习达人养成计划】是由微信公众号(cnn每日更新)推出的英语学习计划。在这21天中，
-                        将涉及不同领域的英语学习资料包括听力训练，口语跟读练习，词汇记忆和语法理解，以及视频拓展训练。在这21天中，每天坚持10分钟，养成英语学习好习惯，提高英文能力。有效打卡时间：北京时间：5:00-10:00
+                        将涉及不同领域的英语学习资料包括听力训练，口语跟读练习，词汇记忆和语法理解，以及视频拓展训练。在这21天中，每天坚持10分钟，养成英语学习好习惯，提高英文能力。有效打卡时间：北京时间：2:00-24:00
                     </text>
                 </view>
                 <view class="introduce-explain">
