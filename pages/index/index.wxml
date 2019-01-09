@@ -10,7 +10,7 @@
             </swiper>
     </view>
     <view class="main">
-            <wxc-panel border="{{true}}" margin="{{true}}" >
+            <wxc-panel border="{{true}}"  margin="{{false}}" >
                 <view class="title">{{learnType}}</view>
                 <view class="enrollment">
                     <view class="enrollment-nums">
