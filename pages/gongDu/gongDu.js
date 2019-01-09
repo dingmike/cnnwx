@@ -22,6 +22,7 @@ Page({
         joinBtn: "继续学习",
         setTimeSty: true,
         payStatus: true,
+        systemInfo: '',
         showModalStatus: false,
         learnTypeId: app.globalData.learnTypeId1,
         orderSn: '',
@@ -49,6 +50,14 @@ Page({
     },
 
     onLoad() {
+        let that = this
+        wx.getSystemInfo({
+            success:function(res){
+                that.setData({
+                    systemInfo: res.platform,
+                })
+            }
+        })
         // 判断是否登录
       /*  user.checkLogin().then(res => {
             //已经登录
@@ -192,52 +201,94 @@ Page({
             })
         }else{
             console.log("用户还没开始付费学习");
-            o.powerDrawer(t.currentTarget.dataset.statu);
+            //提示ios用户无法加入计划
+            if(this.data.systemInfo == "ios"){
+                //ios  屏蔽支付
+                wx.showModal({
+                    title: '暂不支持',
+                    content: '十分抱歉，由于相关规范，暂时无法加入计划',
+                    showCancel: false,
+                    confirmText: '好的',
+                    success(res) {
+                        if (res.confirm) {
+                            console.log('用户点击确定')
+                        } else if (res.cancel) {
+                            console.log('用户点击取消')
+                        }
+                    }
+                })
+            }else{
+                o.powerDrawer(t.currentTarget.dataset.statu);
+            }
         }
     },
     sendPay () {
+
+
+
         let t = wx.getStorageSync("openid"), e = this.data.type, o = this;
        /* wx.showLoading({
             title: "加载中"
         });*/
-        util.request(api.GongduOrderSubmit, {uid: t, learnTypeId: o.data.learnTypeId}, 'POST').then(res => {
-            if (res.errno === 0) {
-                console.log("生成订单成功");
-                o.data.orderSn= res.data.orderSn;
-                pay.gongDuPayOrder(res.data.orderSn).then(ress => {
 
-                    if("requestPayment:ok" == ress.errMsg){
-                        wx.showToast({
-                            title: "支付成功"
-                        });
+        if(this.data.systemInfo == "ios"){
+            //ios  屏蔽支付
+            wx.showModal({
+                title: '暂不支持',
+                content: '十分抱歉，由于相关规范，暂时无法加入计划',
+                showCancel: false,
+                confirmText: '好的',
+                success(res) {
+                    if (res.confirm) {
+                        console.log('用户点击确定')
+                    } else if (res.cancel) {
+                        console.log('用户点击取消')
+                    }
+                }
+            })
+
+        }else if(this.data.systemInfo == "android"){
+            util.request(api.GongduOrderSubmit, {uid: t, learnTypeId: o.data.learnTypeId}, 'POST').then(res => {
+                if (res.errno === 0) {
+                    console.log("生成订单成功");
+                    o.data.orderSn= res.data.orderSn;
+                    pay.gongDuPayOrder(res.data.orderSn).then(ress => {
+
+                        if("requestPayment:ok" == ress.errMsg){
+                            wx.showToast({
+                                title: "支付成功"
+                            });
+                            o.setData({
+                                showModalStatus: false
+                            });
+
+                            wx.reLaunch({
+                                url: "/pages/submitInfo/submitInfo"
+                            })
+                            //查询订单状态
+                            // o.updateSuccess();
+                            // wx.hideLoading();
+                        }
+
+                        //o.updateSucces(); // 暂时用来查询微信支付成功
+                    }).catch(ress => {
+                        console.log("支付失败或取消支付");
+                        console.log(ress);
+                        wx.hideLoading();
                         o.setData({
                             showModalStatus: false
                         });
-
-                        wx.reLaunch({
-                            url: "/pages/submitInfo/submitInfo"
-                        })
-                        //查询订单状态
-                       // o.updateSuccess();
                         // wx.hideLoading();
-                    }
-
-                    //o.updateSucces(); // 暂时用来查询微信支付成功
-                }).catch(ress => {
-                    console.log("支付失败或取消支付");
-                    console.log(ress);
-                    wx.hideLoading();
-                    o.setData({
-                        showModalStatus: false
                     });
-                    // wx.hideLoading();
-                });
 
-            } else {
-                util.showErrorToast('下单失败,请重试');
-                // wx.hideLoading();
-            }
-        });
+                } else {
+                    util.showErrorToast('下单失败,请重试');
+                    // wx.hideLoading();
+                }
+            });
+        }
+
+
     },
     // 暂时使用查看是否支付成功
     updateSuccess() {
