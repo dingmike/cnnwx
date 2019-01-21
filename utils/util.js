@@ -196,6 +196,7 @@ function request(url, data = {}, method = "GET") {
                         });*/
                         wx.redirectTo({
                             url: '/pages/firstAuth/firstAuth'
+                            // url: '/pages/rank/rank'
                         });
                     } else {
                         resolve(res.data);

@@ -196,8 +196,8 @@ Page({
             if (res.errno === 0) {
                 let e = res.data.userLearnList, o = res.data.userListTotal;
 
-                if (o > 200) {
-                    o = 200;
+                if (o > 500) {
+                    o = 500;
                     that.setData({
                         learnType2: e[0].learnType,
                         studyUser2: e,
@@ -215,6 +215,11 @@ Page({
             }
         });
     },
+    goRank(){
+        wx.navigateTo({
+            url: "/pages/rank/rank"
+        });
+    }
     /*    onShareAppMessage () {
      return{
      title: '英文能力',

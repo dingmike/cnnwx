@@ -1,0 +1,20 @@
+<view class="container">
+  <block wx:for="{{dataList}}" wx:key="item">
+    <view class="rank-item">
+      <!--头像-->
+      <view class="rank-img">
+        <image src="{{item.imageUrl}}"></image>
+      </view>
+      <!--展示昵称,以及贡献值-->
+      <block>
+        <view class="rank-name">{{item.nickname}}</view>
+        <view class="rank-price">已打卡：{{item.readPage}} 篇文章</view>
+      </block>
+      <!--排名-->
+      <view class="rank-uv">
+        <text wx:if="{{item.rank>3}}">第 {{item.rank}} 名</text>
+        <image src="/static/images/rank{{item.rank}}.png" wx:if="{{item.rank<=3}}" />
+      </view>
+    </view>
+  </block>
+</view>

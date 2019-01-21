@@ -31,6 +31,7 @@ Page({
             // 未登录
             wx.navigateTo({
                 url: "/pages/firstAuth/firstAuth"
+                // url: "/pages/rank/rank"
             })
         });
         wx.setNavigationBarTitle({

@@ -1,6 +1,6 @@
-// var NewApiRootUrl = 'http://localhost:8080/api/';
+var NewApiRootUrl = 'http://localhost:8080/api/';
 // var NewApiRootUrl = 'http://cnnfront.tunnel.qydev.com/api/';
-let NewApiRootUrl = 'https://api.fecstec.com/platform-admin-1.0.0/api/';
+// let NewApiRootUrl = 'https://api.fecstec.com/platform-admin-1.0.0/api/';
 
 module.exports = {
     CnnIndexUrl: NewApiRootUrl + 'index/cnnIndex', // cnn首页数据接口
@@ -19,6 +19,7 @@ module.exports = {
     GetReadNewsByUserId: NewApiRootUrl + 'gongdu/getReadNewsByUserId', // 获取用户阅读的文章
     GetAllNews: NewApiRootUrl + 'gongdu/getAllNews', // 获取全部文章
     GetAllReadNewsId: NewApiRootUrl + 'gongdu/getAllReadNewsId', // 获取全部已读文章ID数组
+    GetRankList: NewApiRootUrl + 'gongdu/rankList', // 获取阅读排名
 
 
 

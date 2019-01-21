@@ -44,6 +44,7 @@
             <view class="button-small-wrap">
                 <wxc-cc class="part-in-btn" style="background-color:#fff;">
                     <wxc-button btnStyle="{{style}}" bindtap="takePartIn2">{{joinBtn}} <wxc-icon color="#fff" type="arrow-right"></wxc-icon></wxc-button>
+                    <wxc-button btnStyle="{{style}}" bindtap="goRank">阅读排名<wxc-icon color="#fff" type="arrow-right"></wxc-icon></wxc-button>
                 </wxc-cc>
             </view>
         </wxc-panel>
