@@ -17,7 +17,7 @@ Page({
     get_rank_list: function(){
         var that = this;
         wx.showNavigationBarLoading();
-        util.request(api.GetRankList, {limit:'',order: 1}, 'get').then(res => {
+        util.request(api.GetRankList, {limit: 10, order: 1}, 'post').then(res => {
             res.data.forEach((obj, index, arr)=>{
                 obj.rank = index+1;
             })

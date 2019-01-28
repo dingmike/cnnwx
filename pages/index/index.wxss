@@ -446,3 +446,6 @@ button::after {
     width: 550rpx;
     margin: 0 auto 140rpx;
 }
+.first-take-btn{
+    margin-right: 164rpx;
+}

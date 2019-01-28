@@ -12,7 +12,7 @@
 	"compileType": "miniprogram",
 	"appid": "wx1e7030ea0132ea90",
 	"projectname": "cnnwxmall",
-	"libVersion": "2.5.0",
+	"libVersion": "2.5.1",
 	"condition": {
 		"search": {
 			"current": -1,
